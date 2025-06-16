@@ -11,16 +11,16 @@ export const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-20 lg:pt-15">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800">
         <div className="absolute inset-0 bg-black/20" />
         <div 
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `url('/sri-lankan-students-learning.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+        backgroundImage: 'url(students-photo-1.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
           }}
         />
       </div>
@@ -58,14 +58,23 @@ export const HeroSection = () => {
           className="max-w-4xl mx-auto"
         >
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-8"
-          >
-            IEEE Young Professionals Sri Lanka
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center px-5 py-3 rounded-full backdrop-blur-lg border-2 border-white/60 mb-10 shadow-xl bg-white/20 hover:bg-white/30 transition-all duration-300"
+              style={{
+              boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+              backdropFilter: "blur(8px)",
+              }}
+            >
+              <img
+              src="ypsl-logo-white.png"
+              alt="IEEE Young Professionals Sri Lanka"
+              className="h-6 md:h-8 lg:h-10 w-auto drop-shadow-lg"
+              style={{ maxWidth: 180, filter: "brightness(1.2) contrast(1.2)" }}
+              />
+            </motion.div>
 
           {/* Main heading */}
           <motion.h1

@@ -41,15 +41,25 @@ export const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
-              src="logo.png"
+              src={`${isScrolled ? "sli-logo.png" : "sli-logo-white.png"}`}
               alt="Sri Lanka Inspire"
-              className="h-12 w-auto"
+              className="size-20 sm:size-24 lg:size-28 transition-all duration-300"
             />
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-purple-800">
+                <h1
+                className={`font-bold text-lg sm:text-xl lg:text-2xl ${
+                  isScrolled ?"text-purple-800":  "text-white"
+                }`}
+                >
                 Sri Lanka Inspire
-              </h1>
-              <p className="text-xs text-purple-600">IEEE National Project</p>
+                </h1>
+                <p
+                className={`text-xs ${
+                  isScrolled ? "text-purple-600" : "text-white"
+                }`}
+                >
+                National Project
+                </p>
             </div>
           </Link>
 
