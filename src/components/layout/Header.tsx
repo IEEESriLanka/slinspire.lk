@@ -41,7 +41,7 @@ export const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
-              src="/logo.png"
+              src="logo.png"
               alt="Sri Lanka Inspire"
               className="h-12 w-auto"
             />

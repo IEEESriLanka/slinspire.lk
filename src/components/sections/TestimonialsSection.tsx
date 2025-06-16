@@ -24,7 +24,7 @@ export const TestimonialsSection = () => {
       rating: 5,
       comment: "The career guidance sessions were instrumental in helping me make a well-informed decision about my university path. The revision workshops significantly boosted my preparation and gave me the confidence to perform well.",
       program: "CAREER COMPASS",
-      image: "/students-photo-1.png"
+      image: "students-photo-1.png"
     },
     {
       id: 2,
@@ -36,7 +36,7 @@ export const TestimonialsSection = () => {
       rating: 5,
       comment: "Sri Lanka Inspire opened my eyes to career opportunities I never knew existed. The mentorship program connected me with industry professionals who guided me towards my dream of becoming a software engineer.",
       program: "AFTER A/L",
-      image: "/event-photo-3.png"
+      image: "event-photo-3.png"
     },
     {
       id: 3,
@@ -48,7 +48,7 @@ export const TestimonialsSection = () => {
       rating: 5,
       comment: "The subject selection guidance was exactly what I needed. The counselors helped me understand which A/L stream would best suit my interests and career goals. Highly recommend to all O/L students!",
       program: "AFTER O/L",
-      image: "/workshop-photo-3.png"
+      image: "workshop-photo-3.png"
     },
     {
       id: 4,
@@ -60,7 +60,7 @@ export const TestimonialsSection = () => {
       rating: 5,
       comment: "The university admission guidance was comprehensive and practical. They helped me with scholarship applications and provided valuable insights about different universities and their programs.",
       program: "CAREER COMPASS",
-      image: "/seminar-photo-1.png"
+      image: "seminar-photo-1.png"
     },
     {
       id: 5,
@@ -72,7 +72,7 @@ export const TestimonialsSection = () => {
       rating: 5,
       comment: "Being from a rural area, I had limited access to career guidance. Sri Lanka Inspire changed that completely. The online resources and virtual sessions were incredibly helpful and accessible.",
       program: "AFTER A/L",
-      image: "/students-photo-1.png"
+      image: "students-photo-1.png"
     },
     {
       id: 6,
@@ -84,7 +84,7 @@ export const TestimonialsSection = () => {
       rating: 5,
       comment: "The career assessment tools helped me discover my strengths and interests. I now have a clear vision of my future career path and the steps I need to take to achieve my goals.",
       program: "CAREER COMPASS",
-      image: "/event-photo-3.png"
+      image: "event-photo-3.png"
     }
   ];
 

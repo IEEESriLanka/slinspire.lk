@@ -26,7 +26,7 @@ export const MonthlySeminarsSection = () => {
       status: "Open",
       participants: 150,
       description: "Comprehensive career guidance session with industry professionals and alumni panel discussion.",
-      image: "/university-of-colombo.png"
+      image: "university-of-colombo.png"
     },
     {
       id: 2,
@@ -38,7 +38,7 @@ export const MonthlySeminarsSection = () => {
       status: "Open",
       participants: 120,
       description: "Guidance for A/L completers on university admissions and alternative career paths.",
-      image: "/university-of-peradeniya.png"
+      image: "university-of-peradeniya.png"
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ export const MonthlySeminarsSection = () => {
       status: "Filling Fast",
       participants: 100,
       description: "Helping O/L students choose their A/L streams and understand future opportunities.",
-      image: "/university-of-ruhuna.png"
+      image: "university-of-ruhuna.png"
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ export const MonthlySeminarsSection = () => {
       status: "Open",
       participants: 80,
       description: "Industry-specific career guidance with professionals from engineering and medicine.",
-      image: "/university-of-jaffna.png"
+      image: "university-of-jaffna.png"
     },
     {
       id: 5,
@@ -74,7 +74,7 @@ export const MonthlySeminarsSection = () => {
       status: "Open",
       participants: 200,
       description: "Technical career pathways discussion for physical science A/L students.",
-      image: "/university-of-moratuwa.png"
+      image: "university-of-moratuwa.png"
     },
     {
       id: 6,
@@ -86,7 +86,7 @@ export const MonthlySeminarsSection = () => {
       status: "Open",
       participants: 90,
       description: "Stream selection guidance for O/L completers with aptitude test analysis.",
-      image: "/university-of-kelaniya.png"
+      image: "university-of-kelaniya.png"
     }
   ];
 

@@ -38,7 +38,7 @@ export const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <img
-                src="/logo.png"
+                src="logo.png"
                 alt="Sri Lanka Inspire"
                 className="h-12 w-auto"
               />

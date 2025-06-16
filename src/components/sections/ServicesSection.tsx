@@ -18,7 +18,7 @@ export const ServicesSection = () => {
       description: "Comprehensive career guidance system to help you discover your ideal career path with personalized recommendations.",
       icon: <Compass className="h-8 w-8" />,
       action: "Explore Careers",
-      image: "/career-compass.png",
+      image: "career-compass.png",
       featured: true,
       color: "from-purple-500 to-indigo-600"
     },
@@ -28,7 +28,7 @@ export const ServicesSection = () => {
       description: "Complete guide to career options, requirements, and pathways available in Sri Lanka and internationally.",
       icon: <BookOpen className="h-8 w-8" />,
       action: "Download Book",
-      image: "/career-book.png",
+      image: "career-book.png",
       featured: true,
       color: "from-indigo-500 to-purple-600"
     },
@@ -38,7 +38,7 @@ export const ServicesSection = () => {
       description: "Practice with thousands of categorized exam questions for O/L and A/L preparations.",
       icon: <HelpCircle className="h-6 w-6" />,
       action: "Start Practicing",
-      image: "/question-bank.png",
+      image: "question-bank.png",
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -47,7 +47,7 @@ export const ServicesSection = () => {
       description: "Access comprehensive collection of O/L and A/L past papers with model answers.",
       icon: <FileText className="h-6 w-6" />,
       action: "View Collection",
-      image: "/past-papers.png",
+      image: "past-papers.png",
       color: "from-green-500 to-teal-500"
     },
     {
@@ -56,7 +56,7 @@ export const ServicesSection = () => {
       description: "Connect with peers and experts to discuss academic topics and get guidance.",
       icon: <MessageSquare className="h-6 w-6" />,
       action: "Join Discussion",
-      image: "/online-forum.png",
+      image: "online-forum.png",
       color: "from-orange-500 to-red-500"
     },
     {
@@ -65,7 +65,7 @@ export const ServicesSection = () => {
       description: "Get paired with industry professionals and university students for personalized guidance.",
       icon: <Users className="h-6 w-6" />,
       action: "Find Mentor",
-      image: "/career-compass.png",
+      image: "career-compass.png",
       color: "from-pink-500 to-rose-500"
     }
   ];

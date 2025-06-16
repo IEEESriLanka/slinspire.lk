@@ -16,7 +16,7 @@ export const GallerySection = () => {
   const galleryItems = [
     {
       id: 1,
-      image: "/whatsapp-image-2025-03-29-at-13-06-26-f7c019eb-3-3.png",
+      image: "whatsapp-image-2025-03-29-at-13-06-26-f7c019eb-3-3.png",
       caption: "Career guidance session at University of Colombo - Amazing turnout! 🎓",
       likes: 245,
       comments: 18,
@@ -24,7 +24,7 @@ export const GallerySection = () => {
     },
     {
       id: 2,
-      image: "/whatsapp-image-2025-03-29-at-13-06-25-dd8939ba-3-3.png",
+      image: "whatsapp-image-2025-03-29-at-13-06-25-dd8939ba-3-3.png",
       caption: "Workshop on A/L subject selection - Helping students make informed decisions 📚",
       likes: 189,
       comments: 12,
@@ -32,7 +32,7 @@ export const GallerySection = () => {
     },
     {
       id: 3,
-      image: "/event-photo-3.png",
+      image: "event-photo-3.png",
       caption: "Interactive session with industry professionals from tech sector 💻",
       likes: 312,
       comments: 25,
@@ -40,7 +40,7 @@ export const GallerySection = () => {
     },
     {
       id: 4,
-      image: "/workshop-photo-3.png",
+      image: "workshop-photo-3.png",
       caption: "O/L students learning about career pathways - Future leaders! 🌟",
       likes: 156,
       comments: 8,
@@ -48,7 +48,7 @@ export const GallerySection = () => {
     },
     {
       id: 5,
-      image: "/seminar-photo-1.png",
+      image: "seminar-photo-1.png",
       caption: "Panel discussion with university professors and alumni 🎯",
       likes: 278,
       comments: 21,
@@ -56,7 +56,7 @@ export const GallerySection = () => {
     },
     {
       id: 6,
-      image: "/students-photo-1.png",
+      image: "students-photo-1.png",
       caption: "Networking session - Building connections for the future 🤝",
       likes: 203,
       comments: 15,
