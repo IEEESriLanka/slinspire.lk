@@ -116,7 +116,7 @@ export const HeroSection = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 text-lg font-semibold rounded-full backdrop-blur-sm"
+              className="border-purple-300 text-purple-100 bg-white/10 hover:bg-white/20 hover:text-purple-200 px-8 py-4 text-lg font-semibold rounded-full backdrop-blur-sm transition-colors duration-300"
             >
               Learn More
             </Button>

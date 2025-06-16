@@ -73,14 +73,14 @@ export const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
             <Button
               variant="outline"
               size="sm"
-              className={`${
-                isScrolled 
-                  ? 'border-purple-600 text-purple-600 hover:bg-purple-50' 
-                  : 'border-white text-white hover:bg-white/10'
+              className={`border transition-colors ${
+              isScrolled
+                ? 'border-purple-600 text-purple-600 bg-white hover:bg-purple-50 hover:text-purple-700'
+                : 'border-white text-white bg-transparent hover:bg-white/10 hover:text-purple-200'
               }`}
             >
               <Download className="h-4 w-4 mr-2" />
