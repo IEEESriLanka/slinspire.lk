@@ -11,7 +11,7 @@ export const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-20 lg:pt-15">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800">
         <div className="absolute inset-0 bg-black/20" />
@@ -71,7 +71,7 @@ export const HeroSection = () => {
               <img
               src="ypsl-logo-white.png"
               alt="IEEE Young Professionals Sri Lanka"
-              className="h-10 w-auto drop-shadow-lg"
+              className="h-6 md:h-8 lg:h-10 w-auto drop-shadow-lg"
               style={{ maxWidth: 180, filter: "brightness(1.2) contrast(1.2)" }}
               />
             </motion.div>
