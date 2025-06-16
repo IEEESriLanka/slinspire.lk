@@ -40,7 +40,7 @@ export const GallerySection = () => {
     },
     {
       id: 4,
-      image: "workshop-photo-3.png",
+      image: "event-photo-3.png",
       caption: "O/L students learning about career pathways - Future leaders! 🌟",
       likes: 156,
       comments: 8,
