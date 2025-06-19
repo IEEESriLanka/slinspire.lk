@@ -14,7 +14,7 @@ export const ServicesSection = () => {
   const services = [
     {
       id: 1,
-      title: "Career Compass",
+      title: "Career Compass Online Web",
       description: "Comprehensive career guidance system to help you discover your ideal career path with personalized recommendations.",
       icon: <Compass className="h-8 w-8" />,
       action: "Explore Careers",
@@ -24,7 +24,7 @@ export const ServicesSection = () => {
     },
     {
       id: 2,
-      title: "Career Book",
+      title: "Career Compass Book",
       description: "Complete guide to career options, requirements, and pathways available in Sri Lanka and internationally.",
       icon: <BookOpen className="h-8 w-8" />,
       action: "Download Book",
@@ -32,42 +32,42 @@ export const ServicesSection = () => {
       featured: true,
       color: "from-indigo-500 to-purple-600"
     },
-    {
-      id: 3,
-      title: "Question Bank",
-      description: "Practice with thousands of categorized exam questions for O/L and A/L preparations.",
-      icon: <HelpCircle className="h-6 w-6" />,
-      action: "Start Practicing",
-      image: "question-bank.png",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: 4,
-      title: "Past Papers",
-      description: "Access comprehensive collection of O/L and A/L past papers with model answers.",
-      icon: <FileText className="h-6 w-6" />,
-      action: "View Collection",
-      image: "past-papers.png",
-      color: "from-green-500 to-teal-500"
-    },
-    {
-      id: 5,
-      title: "Online Forum",
-      description: "Connect with peers and experts to discuss academic topics and get guidance.",
-      icon: <MessageSquare className="h-6 w-6" />,
-      action: "Join Discussion",
-      image: "online-forum.png",
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      id: 6,
-      title: "Mentorship Program",
-      description: "Get paired with industry professionals and university students for personalized guidance.",
-      icon: <Users className="h-6 w-6" />,
-      action: "Find Mentor",
-      image: "career-compass.png",
-      color: "from-pink-500 to-rose-500"
-    }
+    // {
+    //   id: 3,
+    //   title: "Question Bank",
+    //   description: "Practice with thousands of categorized exam questions for O/L and A/L preparations.",
+    //   icon: <HelpCircle className="h-6 w-6" />,
+    //   action: "Start Practicing",
+    //   image: "question-bank.png",
+    //   color: "from-blue-500 to-cyan-500"
+    // },
+    // {
+    //   id: 4,
+    //   title: "Past Papers",
+    //   description: "Access comprehensive collection of O/L and A/L past papers with model answers.",
+    //   icon: <FileText className="h-6 w-6" />,
+    //   action: "View Collection",
+    //   image: "past-papers.png",
+    //   color: "from-green-500 to-teal-500"
+    // },
+    // {
+    //   id: 5,
+    //   title: "Online Forum",
+    //   description: "Connect with peers and experts to discuss academic topics and get guidance.",
+    //   icon: <MessageSquare className="h-6 w-6" />,
+    //   action: "Join Discussion",
+    //   image: "online-forum.png",
+    //   color: "from-orange-500 to-red-500"
+    // },
+    // {
+    //   id: 6,
+    //   title: "Mentorship Program",
+    //   description: "Get paired with industry professionals and university students for personalized guidance.",
+    //   icon: <Users className="h-6 w-6" />,
+    //   action: "Find Mentor",
+    //   image: "career-compass.png",
+    //   color: "from-pink-500 to-rose-500"
+    // }
   ];
 
   const featuredServices = services.filter(service => service.featured);

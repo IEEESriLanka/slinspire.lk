@@ -134,7 +134,7 @@ export const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Student <span className="text-purple-600">Success Stories</span>
+            Student <span className="text-purple-600">Feedbacks</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Hear from students whose lives have been transformed through our programs and guidance.
