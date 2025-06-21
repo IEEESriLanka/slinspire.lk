@@ -5,6 +5,8 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingProvider } from "./contexts/LoadingContext";
 import { CareerCompassWeb } from "./pages/CareerCompassWebPage";
 
+console.log("Deployed at:", new Date().toLocaleString());
+
 export const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
