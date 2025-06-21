@@ -51,7 +51,7 @@ const columns: readonly Column[] = [
   { id: 'External/Internal', label: 'Type', minWidth: 100 },
 ];
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable({ filters }: DegreeSearchTableProps) {
   const [data, setData] = React.useState<Row[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [page, setPage] = React.useState(0);
@@ -79,6 +79,23 @@ export default function StickyHeadTable() {
       });
   }, []);
 
+  const filteredData = React.useMemo(() => {
+    return data.filter((row) => {
+      const universityMatch = filters.university
+        ? row['University/ Institution Name']
+          ?.toLowerCase()
+          .includes(filters.university.toLowerCase())
+        : true;
+      const courseMatch = filters.course
+        ? row['Course Name']
+          ?.toLowerCase()
+          .includes(filters.course.toLowerCase())
+        : true;
+      // Add more filter conditions as needed
+      return universityMatch && courseMatch;
+    });
+  }, [data, filters]);
+
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -90,6 +107,10 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
+  React.useEffect(() => {
+  setPage(0);
+}, [filters]);
+
   if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minHeight={300}>
@@ -99,7 +120,7 @@ export default function StickyHeadTable() {
   }
 
   return (
-    <Paper sx={{ width: '100%'}}>
+    <Paper sx={{ width: '100%' }}>
       <TableContainer sx={{ height: 600, overflow: 'auto' }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead sx={{ '& .MuiTableCell-stickyHeader': { zIndex: 10, background: '#fff' } }}>
@@ -116,7 +137,7 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data
+            {filteredData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 return (
@@ -140,7 +161,7 @@ export default function StickyHeadTable() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={data.length}
+        count={filteredData.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
