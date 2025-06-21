@@ -42,16 +42,16 @@ interface DegreeSearchTableProps {
 }
 
 const columns: readonly Column[] = [
-  { id: 'University/ Institution Name', label: 'University Name', minWidth: 170 },
-  { id: 'Course Name', label: 'Course Name', minWidth: 170 },
-  { id: 'Major Field of Study', label: 'Major Field', minWidth: 150 },
+  { id: 'University/ Institution Name', label: 'University Name', minWidth: 190 },
+  { id: 'Course Name', label: 'Course Name', minWidth: 200 },
+  { id: 'Major Field of Study', label: 'Major Field', minWidth: 180 },
   {
-    id: 'Sub Field', label: 'Sub Field', minWidth: 150,
+    id: 'Sub Field', label: 'Sub Field', minWidth: 180,
   },
   {
     id: 'Course URL',
     label: 'Course URL',
-    minWidth: 200,
+    minWidth: 100,
     format: (value: string) => (
       <a
         href={value}
@@ -139,23 +139,23 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
     const filtered = data.filter((row) => {
       const universityMatch = filters.university
         ? row['University/ Institution Name']
-            ?.toLowerCase()
-            .includes(filters.university.toLowerCase())
+          ?.toLowerCase()
+          .includes(filters.university.toLowerCase())
         : true;
       const courseMatch = filters.course
         ? row['Course Name']
-            ?.toLowerCase()
-            .includes(filters.course.toLowerCase())
+          ?.toLowerCase()
+          .includes(filters.course.toLowerCase())
         : true;
       const majorFieldMatch = filters.majorField
         ? row['Major Field of Study']
-            ?.toLowerCase()
-            .includes(filters.majorField.toLowerCase())
+          ?.toLowerCase()
+          .includes(filters.majorField.toLowerCase())
         : true;
       const typeMatch = filters.type
         ? row['External/Internal']
-            ?.toLowerCase()
-            .includes(filters.type.toLowerCase())
+          ?.toLowerCase()
+          .includes(filters.type.toLowerCase())
         : true;
       return universityMatch && courseMatch && majorFieldMatch && typeMatch;
     });
@@ -188,20 +188,59 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
       </Box>
     );
   }
-
+  // Custom scrollbar styles for TableContainer
+  const tableContainerSx = {
+    height: 600,
+    overflow: 'auto',
+    '&::-webkit-scrollbar': {
+      width: 10,
+      backgroundColor: '#ede9fe', // purple-50
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#a78bfa', // purple-400
+      borderRadius: 8,
+      border: '2px solid #ede9fe',
+    },
+    '&::-webkit-scrollbar-thumb:hover': {
+      backgroundColor: '#8b5cf6', // purple-500
+    },
+    scrollbarColor: '#a78bfa #ede9fe', // For Firefox
+    scrollbarWidth: 'thin',
+  };
   return (
     <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ height: 600, overflow: 'auto' }}>
+      <TableContainer sx={tableContainerSx}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead sx={{ '& .MuiTableCell-stickyHeader': { zIndex: 10, background: '#fff' } }}>
+          <TableHead
+            sx={{
+              '& .MuiTableCell-stickyHeader': {
+                zIndex: 10,
+                background: 'linear-gradient(to right, #ede9fe, #e0e7ff)', // purple-50 to indigo-50
+                color: '#6D28D9', // purple-700
+                fontWeight: 700, // increased font weight
+                fontSize: '1.05rem',
+                letterSpacing: '0.02em',
+                borderBottom: '2px solid #a5b4fc', // indigo-200
+                boxShadow: '0 2px 8px 0 rgba(109, 40, 217, 0.05)',
+              },
+            }}
+          >
             <TableRow>
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align || 'left'}
-                  style={{ minWidth: column.minWidth }}
+                  style={{
+                    minWidth: column.minWidth,
+                    fontWeight: 700,
+                    color: '#6D28D9', // purple-700
+                    background: 'linear-gradient(to right, #ede9fe, #e0e7ff)', // match stickyHeader background
+                    borderBottom: '2px solid #a5b4fc', // indigo-200
+                    fontSize: '1.05rem',
+                    letterSpacing: '0.02em',
+                  }}
                 >
-                  {column.label}
+                  <span style={{ fontWeight: 600 }}>{column.label}</span>
                 </TableCell>
               ))}
             </TableRow>
@@ -211,14 +250,30 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={index}
+                    sx={{
+                      transition: 'background 0.2s',
+                      '&:hover': {
+                        background: 'linear-gradient(to right, rgba(237,233,254,0.7), rgba(224,231,255,0.7))', // lighter, more transparent
+                      },
+                    }}
+                  >
                     {columns.map((column) => {
                       const value = row[column.id] || '';
                       return (
-                        <TableCell key={column.id} align={column.align || 'left'}>
-                          {column.format
-                            ? column.format(value)
-                            : value}
+                        <TableCell
+                          key={column.id}
+                          align={column.align || 'left'}
+                          sx={{
+                            background: 'linear-gradient(to right, rgba(237,233,254,0.5), rgba(224,231,255,0.5))', // lighter, more transparent
+                            fontWeight: 500,
+                          }}
+                        >
+                          {column.format ? column.format(value) : value}
                         </TableCell>
                       );
                     })}
@@ -236,6 +291,23 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        sx={{
+          background: 'linear-gradient(to right, #ede9fe, #e0e7ff)', // purple-50 to indigo-50
+          color: '#6D28D9',
+          borderTop: '2px solid #a5b4fc',
+          '.MuiTablePagination-toolbar': {
+            background: 'transparent',
+            color: '#6D28D9',
+            fontWeight: 700,
+          },
+          '.MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows': {
+            color: '#6D28D9',
+            fontWeight: 700,
+          },
+          '.MuiTablePagination-actions .MuiButtonBase-root': {
+            color: '#6D28D9',
+          },
+        }}
       />
     </Paper>
   );
