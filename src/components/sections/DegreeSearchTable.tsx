@@ -24,9 +24,24 @@ interface Row {
   [key: string]: string;
 }
 
+interface FilterOptions {
+  universities: string[];
+  majorFields: string[];
+  types: string[];
+}
+
+interface DegreeSearchTableProps {
+  filters: {
+    university: string;
+    course: string;
+    majorField: string;
+    type: string;
+  };
+  onFiltersChange: (filters: DegreeSearchTableProps['filters']) => void;
+  onFilterOptions: (options: FilterOptions) => void;
+}
+
 const columns: readonly Column[] = [
-  // { id: 'Uni ID', label: 'Uni ID', minWidth: 80 },
-  // { id: 'Uni vise Course Index', label: 'Course Index', minWidth: 80 },
   { id: 'University/ Institution Name', label: 'University Name', minWidth: 170 },
   { id: 'Course Name', label: 'Course Name', minWidth: 170 },
   { id: 'Major Field of Study', label: 'Major Field', minWidth: 150 },
@@ -51,7 +66,7 @@ const columns: readonly Column[] = [
   { id: 'External/Internal', label: 'Type', minWidth: 100 },
 ];
 
-export default function StickyHeadTable({ filters }: DegreeSearchTableProps) {
+export default function StickyHeadTable({ filters, onFiltersChange, onFilterOptions }: DegreeSearchTableProps) {
   const [data, setData] = React.useState<Row[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [page, setPage] = React.useState(0);
@@ -59,6 +74,46 @@ export default function StickyHeadTable({ filters }: DegreeSearchTableProps) {
 
   const csvUrl =
     'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=tsv';
+
+  const extractFilterOptions = React.useCallback(
+    (dataRows: Row[]) => {
+      const universities = Array.from(
+        new Set(
+          dataRows
+            .map(row => row['University/ Institution Name'])
+            .filter(Boolean)
+        )
+      ).sort();
+
+      const majorFields = Array.from(
+        new Set(
+          dataRows
+            .map(row => row['Major Field of Study'])
+            .filter(Boolean)
+        )
+      ).sort();
+
+      const types = Array.from(
+        new Set(
+          dataRows
+            .map(row => row['External/Internal'])
+            .filter(Boolean)
+        )
+      ).sort();
+
+      const options: FilterOptions = {
+        universities,
+        majorFields,
+        types,
+      };
+
+      onFilterOptions(options);
+      return options;
+    },
+    [onFilterOptions]
+  );
+
+
 
   React.useEffect(() => {
     fetch(csvUrl)
@@ -75,9 +130,10 @@ export default function StickyHeadTable({ filters }: DegreeSearchTableProps) {
           return record;
         });
         setData(dataRows);
+        extractFilterOptions(dataRows);
         setLoading(false);
       });
-  }, []);
+  }, [extractFilterOptions]);
 
   const filteredData = React.useMemo(() => {
     return data.filter((row) => {
@@ -91,8 +147,17 @@ export default function StickyHeadTable({ filters }: DegreeSearchTableProps) {
           ?.toLowerCase()
           .includes(filters.course.toLowerCase())
         : true;
-      // Add more filter conditions as needed
-      return universityMatch && courseMatch;
+      const majorFieldMatch = filters.majorField
+        ? row['Major Field of Study']
+          ?.toLowerCase()
+          .includes(filters.majorField.toLowerCase())
+        : true;
+      const typeMatch = filters.type
+        ? row['External/Internal']
+          ?.toLowerCase()
+          .includes(filters.type.toLowerCase())
+        : true;
+      return universityMatch && courseMatch && majorFieldMatch && typeMatch;
     });
   }, [data, filters]);
 
@@ -108,8 +173,8 @@ export default function StickyHeadTable({ filters }: DegreeSearchTableProps) {
   };
 
   React.useEffect(() => {
-  setPage(0);
-}, [filters]);
+    setPage(0);
+  }, [filters]);
 
   if (loading) {
     return (

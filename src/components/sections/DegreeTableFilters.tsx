@@ -1,23 +1,37 @@
 import React from 'react'
-import { TextField, Box } from '@mui/material';
+import { TextField, Box, Autocomplete } from '@mui/material';
 
 interface DegreeTableFiltersProps {
     filters: {
         university: string;
         course: string;
-        // Add more filter fields as needed
+        majorField: string;
+        type: string;
     };
     onChange: (filters: DegreeTableFiltersProps['filters']) => void;
+    universityOptions: string[];
+    majorFieldOptions: string[];
+    typeOptions: string[];
 }
 
-export const DegreeTableFilters: React.FC<DegreeTableFiltersProps> = ({ filters, onChange }) => {
+export const DegreeTableFilters: React.FC<DegreeTableFiltersProps> = ({
+    filters,
+    onChange,
+    universityOptions,
+    majorFieldOptions,
+    typeOptions,
+}) => {
     return (
         <Box display="flex" gap={2} mb={2}>
-            <TextField
-                label="University Name"
+            <Autocomplete
+                freeSolo
+                options={universityOptions}
                 value={filters.university}
-                onChange={e => onChange({ ...filters, university: e.target.value })}
-                size="small"
+                onInputChange={(_, value) => onChange({ ...filters, university: value })}
+                renderInput={(params) => (
+                    <TextField {...params} label="University Name" size="small" />
+                )}
+                sx={{ minWidth: 220 }}
             />
             <TextField
                 label="Course Name"
@@ -25,7 +39,26 @@ export const DegreeTableFilters: React.FC<DegreeTableFiltersProps> = ({ filters,
                 onChange={e => onChange({ ...filters, course: e.target.value })}
                 size="small"
             />
-            {/* Add more filters as needed */}
+            <Autocomplete
+                freeSolo
+                options={majorFieldOptions}
+                value={filters.majorField}
+                onInputChange={(_, value) => onChange({ ...filters, majorField: value })}
+                renderInput={(params) => (
+                    <TextField {...params} label="Major Field" size="small" />
+                )}
+                sx={{ minWidth: 180 }}
+            />
+            <Autocomplete
+                freeSolo
+                options={typeOptions}
+                value={filters.type}
+                onInputChange={(_, value) => onChange({ ...filters, type: value })}
+                renderInput={(params) => (
+                    <TextField {...params} label="Type" size="small" />
+                )}
+                sx={{ minWidth: 120 }}
+            />
         </Box>
     )
 }
