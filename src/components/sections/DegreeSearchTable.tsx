@@ -53,13 +53,14 @@ export default function StickyHeadTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const csvUrl =
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=csv';
+    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=tsv';
 
   React.useEffect(() => {
     fetch(csvUrl)
       .then((res) => res.text())
       .then((text) => {
-        const rows = text.split('\n').map((row) => row.split(','));
+        // Split rows by newline, then split columns by tab for TSV
+        const rows = text.split('\n').map((row) => row.split('\t'));
         const headers = rows[1].slice(2);
         const dataRows = rows.slice(2).map((row) => {
           const record: Row = {};
