@@ -17,7 +17,7 @@ interface Column {
   label: string;
   minWidth?: number;
   align?: 'right' | 'left' | 'center';
-  format?: (value: string) => string;
+  format?: (value: string) => string | JSX.Element;
 }
 
 interface Row {
@@ -25,13 +25,24 @@ interface Row {
 }
 
 const columns: readonly Column[] = [
-  { id: 'Uni ID', label: 'Uni ID', minWidth: 80 },
-  { id: 'Uni vise Course Index', label: 'Course Index', minWidth: 80 },
+  // { id: 'Uni ID', label: 'Uni ID', minWidth: 80 },
+  // { id: 'Uni vise Course Index', label: 'Course Index', minWidth: 80 },
   { id: 'University/ Institution Name', label: 'University Name', minWidth: 170 },
   { id: 'Course Name', label: 'Course Name', minWidth: 170 },
   { id: 'Major Field of Study', label: 'Major Field', minWidth: 150 },
-  { id: 'Sub Field', label: 'Sub Field', minWidth: 150 },
-  { id: 'Course URL', label: 'Course URL', minWidth: 200 },
+  {
+    id: 'Sub Field', label: 'Sub Field', minWidth: 150,
+  },
+  {
+    id: 'Course URL',
+    label: 'Course URL',
+    minWidth: 200,
+    format: (value: string) => (
+      <a href={value} target="_blank" rel="noopener noreferrer" style={{ color: '#1976d2' }}>
+        {value}
+      </a>
+    ),
+  },
   { id: 'External/Internal', label: 'Type', minWidth: 100 },
 ];
 
@@ -108,7 +119,9 @@ export default function StickyHeadTable() {
                       const value = row[column.id] || '';
                       return (
                         <TableCell key={column.id} align={column.align || 'left'}>
-                          {value}
+                          {column.format
+                            ? column.format(value)
+                            : value}
                         </TableCell>
                       );
                     })}
