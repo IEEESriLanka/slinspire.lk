@@ -165,7 +165,7 @@
   }
 }
 
-@layer base {
+@layer  {
   * {
     @apply border-border;
   }
