@@ -127,8 +127,14 @@ export const ServicesSection = () => {
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     {service.description}
                   </p>
-                  <Button 
+                  <Button
                     className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300 group`}
+                    onClick={() => window.open(
+                      service.action === "Explore Careers"
+                        ? "/slinspire.lk/career-compass-web"
+                        : "#",
+                      "_self"
+                    )}
                   >
                     {service.action}
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

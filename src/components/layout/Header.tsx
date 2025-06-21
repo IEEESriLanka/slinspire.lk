@@ -4,17 +4,24 @@ import { Menu, X, Download, ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const Header = () => {
+interface HeaderProps {
+  isMainPage: boolean;
+}
+
+export const Header = ({ isMainPage }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(isMainPage ? false : true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    if (isMainPage) {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 50);
+      };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+
   }, []);
 
   const navItems = [
@@ -30,11 +37,10 @@ export const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white/95 backdrop-blur-md shadow-lg'
+        : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -46,20 +52,18 @@ export const Header = () => {
               className="size-20 sm:size-24 lg:size-28 transition-all duration-300"
             />
             <div className="hidden sm:block">
-                <h1
-                className={`font-bold text-lg sm:text-xl lg:text-2xl ${
-                  isScrolled ?"text-purple-800":  "text-white"
-                }`}
-                >
+              <h1
+                className={`font-bold text-lg sm:text-xl lg:text-2xl ${isScrolled ? "text-purple-800" : "text-white"
+                  }`}
+              >
                 Sri Lanka Inspire
-                </h1>
-                <p
-                className={`text-xs ${
-                  isScrolled ? "text-purple-600" : "text-white"
-                }`}
-                >
+              </h1>
+              <p
+                className={`text-xs ${isScrolled ? "text-purple-600" : "text-white"
+                  }`}
+              >
                 National Project
-                </p>
+              </p>
             </div>
           </Link>
 
@@ -69,11 +73,10 @@ export const Header = () => {
               <div key={item.name} className="relative group">
                 <a
                   href={item.href}
-                  className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    isScrolled 
-                      ? 'text-gray-700 hover:text-purple-600' 
-                      : 'text-white hover:text-purple-200'
-                  }`}
+                  className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isScrolled
+                    ? 'text-gray-700 hover:text-purple-600'
+                    : 'text-white hover:text-purple-200'
+                    }`}
                 >
                   <span>{item.name}</span>
                   {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
@@ -83,15 +86,14 @@ export const Header = () => {
           </nav>
 
           {/* CTA Button */}
-            <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button
               variant="outline"
               size="sm"
-              className={`border transition-colors ${
-              isScrolled
+              className={`border transition-colors ${isScrolled
                 ? 'border-purple-600 text-purple-600 bg-white hover:bg-purple-50 hover:text-purple-700'
                 : 'border-white text-white bg-transparent hover:bg-white/10 hover:text-purple-200'
-              }`}
+                }`}
             >
               <Download className="h-4 w-4 mr-2" />
               Career Book
@@ -107,11 +109,10 @@ export const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled 
-                ? 'text-gray-700 hover:bg-gray-100' 
-                : 'text-white hover:bg-white/10'
-            }`}
+            className={`lg:hidden p-2 rounded-lg transition-colors ${isScrolled
+              ? 'text-gray-700 hover:bg-gray-100'
+              : 'text-white hover:bg-white/10'
+              }`}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
