@@ -136,30 +136,35 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
   }, [extractFilterOptions]);
 
   const filteredData = React.useMemo(() => {
-    return data.filter((row) => {
+    const filtered = data.filter((row) => {
       const universityMatch = filters.university
         ? row['University/ Institution Name']
-          ?.toLowerCase()
-          .includes(filters.university.toLowerCase())
+            ?.toLowerCase()
+            .includes(filters.university.toLowerCase())
         : true;
       const courseMatch = filters.course
         ? row['Course Name']
-          ?.toLowerCase()
-          .includes(filters.course.toLowerCase())
+            ?.toLowerCase()
+            .includes(filters.course.toLowerCase())
         : true;
       const majorFieldMatch = filters.majorField
         ? row['Major Field of Study']
-          ?.toLowerCase()
-          .includes(filters.majorField.toLowerCase())
+            ?.toLowerCase()
+            .includes(filters.majorField.toLowerCase())
         : true;
       const typeMatch = filters.type
         ? row['External/Internal']
-          ?.toLowerCase()
-          .includes(filters.type.toLowerCase())
+            ?.toLowerCase()
+            .includes(filters.type.toLowerCase())
         : true;
       return universityMatch && courseMatch && majorFieldMatch && typeMatch;
     });
-  }, [data, filters]);
+
+    // Update filter options based on filtered data
+    extractFilterOptions(filtered);
+
+    return filtered;
+  }, [data, filters, extractFilterOptions]);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
