@@ -13,7 +13,7 @@ export const App = () => {
       </div>
       <ErrorBoundary>
         <LoadingProvider>
-          <Router basename="/slinspire.lk/">
+          <Router>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/career-compass-web" element={<CareerCompassWeb />} />

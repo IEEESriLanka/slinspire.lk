@@ -131,7 +131,7 @@ export const ServicesSection = () => {
                     className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300 group`}
                     onClick={() => window.open(
                       service.action === "Explore Careers"
-                        ? "/slinspire.lk/career-compass-web"
+                        ? "/slinspire.lk/#/career-compass-web"
                         : "#",
                       "_self"
                     )}
