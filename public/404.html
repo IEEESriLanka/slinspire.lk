@@ -4,13 +4,27 @@
     <meta charset="utf-8" />
     <title>Page Not Found | IEEE Sri Lanka Inspire National Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- If you have a built CSS file, reference it here -->
-    <!-- <link href="/dist/assets/index.css" rel="stylesheet" /> -->
     <style>
       body { font-family: 'Poppins', sans-serif; background: #f3f4f6; color: #222; text-align: center; padding: 10vh 2rem; }
       h1 { font-size: 3rem; margin-bottom: 1rem; }
       p { font-size: 1.25rem; }
     </style>
+    <script>
+      // SPA redirect for GitHub Pages
+      // Only run if not already at the root
+      (function() {
+        var l = window.location;
+        // Only redirect if not already at the root
+        if (l.pathname !== '/slinspire.lk/' && l.pathname.startsWith('/slinspire.lk/')) {
+          // Remove the leading slash for hash
+          var path = l.pathname.replace('/slinspire.lk', '');
+          var search = l.search || '';
+          var hash = l.hash || '';
+          // Redirect to root with hash route
+          window.location.replace('/slinspire.lk/#' + path + search + hash);
+        }
+      })();
+    </script>
   </head>
   <body>
     <h1>404</h1>
