@@ -38,7 +38,12 @@ const columns: readonly Column[] = [
     label: 'Course URL',
     minWidth: 200,
     format: (value: string) => (
-      <a href={value} target="_blank" rel="noopener noreferrer" style={{ color: '#1976d2' }}>
+      <a
+        href={value}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: '#1976d2', wordBreak: 'break-all', position: 'relative' }}
+      >
         {value}
       </a>
     ),
@@ -94,10 +99,10 @@ export default function StickyHeadTable() {
   }
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 600 }}>
+    <Paper sx={{ width: '100%'}}>
+      <TableContainer sx={{ height: 600, overflow: 'auto' }}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
+          <TableHead sx={{ '& .MuiTableCell-stickyHeader': { zIndex: 10, background: '#fff' } }}>
             <TableRow>
               {columns.map((column) => (
                 <TableCell

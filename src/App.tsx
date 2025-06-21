@@ -7,8 +7,8 @@ import { CareerCompassWeb } from "./pages/CareerCompassWebPage";
 
 export const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 overflow-x-hidden">
-      <div className="absolute inset-0 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
+      <div className="absolute">
         {/* ... */}
       </div>
       <ErrorBoundary>
