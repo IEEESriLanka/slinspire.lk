@@ -34,6 +34,18 @@ export const CareerCompassBookPage = () => {
             seeking to enhance your skills, Career Compass is designed for you. It provides valuable information for
             anyone at any stage of their career journey.
           </p>
+          <div className="mt-10"></div>
+          <h2 className="text-2xl font-semibold mb-4">Read the Book Online</h2>
+          <div className="w-full h-[700px] rounded-lg overflow-hidden shadow-lg border">
+            <iframe
+              src="career-compass-book-2020.pdf"
+              title="Career Compass Book"
+              width="100%"
+              height="100%"
+              className="w-full h-full"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </main>
       <Footer />
