@@ -29,8 +29,8 @@ export const Header = ({ isMainPage }: HeaderProps) => {
     { name: "Services", href: "#services", hasDropdown: true },
     { name: "Seminars", href: "#seminars" },
     { name: "Gallery", href: "#gallery" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" }
+    // { name: "About", href: "#about" },
+    // { name: "Contact", href: "#contact" }
   ];
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -193,17 +193,72 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                 ))}
               </nav>
               <div className="mt-4 pt-4 border-t flex flex-col space-y-2">
-                <Button variant="outline" size="sm" className="justify-center">
+                <div className="relative">
+                  <Button
+                  variant="outline"
+                  size="sm"
+                  className="justify-center w-full flex items-center gap-2"
+                  onClick={() => setShowDropdown((prev) => !prev)}
+                  id="compass-book-dropdown-btn-mobile"
+                  aria-haspopup="true"
+                  aria-expanded={showDropdown ? "true" : "false"}
+                  >
                   <Download className="h-4 w-4 mr-2" />
                   Compass Book
-                </Button>
+                  <ChevronDown className="ml-1 h-4 w-4 shrink-0" />
+                  </Button>
+                  {showDropdown && (
+                  <div
+                    className="mt-2 w-full bg-white border border-purple-100 rounded-xl shadow-xl z-50 animate-fade-in"
+                    onMouseLeave={() => setShowDropdown(false)}
+                  >
+                    <a
+                    href="career-compass-book-2023.pdf"
+                    download
+                    className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    <Download className="h-4 w-4" />
+                    Version 2023 [PDF]
+                    </a>
+                    <a
+                    href="career-compass-book-2020.pdf"
+                    download
+                    className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    <Download className="h-4 w-4" />
+                    Version 2020 [PDF]
+                    </a>
+                    <a
+                    href="career-compass-book-2015.pdf"
+                    download
+                    className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    <Download className="h-4 w-4" />
+                    Version 2015 (Sinhala) [PDF]
+                    </a>
+                  </div>
+                  )}
+                </div>
                 <a
                   href="https://whatsapp.com/channel/0029VaXotgDHVvTh8UzRml32"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="w-full"
                 >
-                  <Button size="sm" className="bg-purple-600 hover:bg-purple-700">
-                    Join WhatsApp
+                  <Button
+                  size="sm"
+                  className="bg-purple-600 hover:bg-purple-700 w-full justify-center"
+                  >
+                  Join WhatsApp
                   </Button>
                 </a>
               </div>
