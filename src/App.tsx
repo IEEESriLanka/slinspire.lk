@@ -3,7 +3,8 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingProvider } from "./contexts/LoadingContext";
-import { CareerCompassWeb } from "./pages/CareerCompassWebPage";
+import { CareerCompassWebPage } from "./pages/CareerCompassWebPage";
+import { CareerCompassBookPage } from "./pages/CareerCompassBookPage";
 
 console.log("Deployed at:", new Date().toLocaleString());
 
@@ -18,7 +19,8 @@ export const App = () => {
           <Router>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/career-compass-web" element={<CareerCompassWeb />} />
+              <Route path="/career-compass-web" element={<CareerCompassWebPage />} />
+              <Route path="/career-compass-book" element={<CareerCompassBookPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </Router>

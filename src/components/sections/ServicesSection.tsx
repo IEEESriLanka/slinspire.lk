@@ -17,7 +17,7 @@ export const ServicesSection = () => {
       title: "Career Compass Online Web",
       description: "Comprehensive career guidance system to help you discover your ideal career path with personalized recommendations.",
       icon: <Compass className="h-8 w-8" />,
-      action: "Explore Careers",
+      action: "Explore Degree Database",
       image: "career-compass.png",
       featured: true,
       color: "from-purple-500 to-indigo-600"
@@ -27,7 +27,7 @@ export const ServicesSection = () => {
       title: "Career Compass Book",
       description: "Complete guide to career options, requirements, and pathways available in Sri Lanka and internationally.",
       icon: <BookOpen className="h-8 w-8" />,
-      action: "Download Book",
+      action: "View Career Compass Book",
       image: "career-book.png",
       featured: true,
       color: "from-indigo-500 to-purple-600"
@@ -87,7 +87,7 @@ export const ServicesSection = () => {
             Our <span className="text-purple-600">Services</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive resources and tools designed to support your educational journey 
+            Comprehensive resources and tools designed to support your educational journey
             and career development at every step.
           </p>
         </motion.div>
@@ -130,9 +130,11 @@ export const ServicesSection = () => {
                   <Button
                     className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300 group`}
                     onClick={() => window.open(
-                      service.action === "Explore Careers"
+                      service.id === 1
                         ? "/slinspire.lk/#/career-compass-web"
-                        : "#",
+                        : service.id === 2
+                          ? "/slinspire.lk/#/career-compass-book"
+                          : "#",
                       "_self"
                     )}
                   >
@@ -175,9 +177,9 @@ export const ServicesSection = () => {
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                     {service.description}
                   </p>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     className="w-full group hover:bg-purple-50 hover:border-purple-300 hover:text-purple-700"
                   >
                     {service.action}

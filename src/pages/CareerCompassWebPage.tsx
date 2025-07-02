@@ -4,7 +4,7 @@ import { Footer } from '../components/layout/Footer'
 import GoogleSheetTable from '../components/sections/DegreeSearchTable'
 import { DegreeTableFilters } from '../components/sections/DegreeTableFilters'
 
-export const CareerCompassWeb = () => {
+export const CareerCompassWebPage = () => {
     const [filters, setFilters] = React.useState({
         university: '',
         course: '',
