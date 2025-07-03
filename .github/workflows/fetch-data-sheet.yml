@@ -1,0 +1,27 @@
+name: Fetch Google Sheet Data
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # Every 12 hours (you can change this)
+  workflow_dispatch: # Allows manual run
+
+jobs:
+  fetch-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Fetch Google Sheet TSV
+        run: |
+          curl -L "https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=tsv" -o data.tsv
+          mkdir -p public/data
+          node .github/scripts/tsv-to-json.js
+
+      - name: Commit and push changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add public/data/sheet-data.json
+          git commit -m "Update sheet data [skip ci]" || echo "No changes to commit"
+          git push
