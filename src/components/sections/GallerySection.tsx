@@ -87,24 +87,24 @@ export const GallerySection = () => {
 
   return (
     <section id="gallery" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
             Event <span className="text-purple-600">Gallery</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Moments captured from our seminars, workshops, and career guidance sessions across Sri Lanka.
+          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
+          Moments captured from our career guidance sessions, seminars and workshops across the country.
           </p>
         </motion.div>
 
         {/* Masonry Grid */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="gap-6 space-y-6 columns-1 md:columns-2 lg:columns-3">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -113,7 +113,7 @@ export const GallerySection = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="break-inside-avoid"
             >
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+              <div className="overflow-hidden transition-all duration-300 bg-white shadow-lg rounded-2xl hover:shadow-xl group">
                 {/* Image */}
                 <div 
                   className="relative overflow-hidden cursor-pointer"
@@ -122,32 +122,32 @@ export const GallerySection = () => {
                   <img
                     src={item.image}
                     alt={`Gallery item ${item.id}`}
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover w-full h-auto transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <ExternalLink className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center transition-colors duration-300 bg-black/0 group-hover:bg-black/20">
+                    <ExternalLink className="w-8 h-8 text-white transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-4">
-                  <p className="text-gray-800 mb-3 leading-relaxed">
+                  <p className="mb-3 leading-relaxed text-gray-800">
                     {item.caption}
                   </p>
                   
-                  <div className="flex items-center justify-between text-gray-500 text-sm">
+                  <div className="flex items-center justify-between text-sm text-gray-500">
                     <div className="flex items-center gap-4">
-                      <button className="flex items-center gap-1 hover:text-red-500 transition-colors">
-                        <Heart className="h-4 w-4" />
+                      <button className="flex items-center gap-1 transition-colors hover:text-red-500">
+                        <Heart className="w-4 h-4" />
                         <span>{item.likes}</span>
                       </button>
-                      <button className="flex items-center gap-1 hover:text-blue-500 transition-colors">
-                        <MessageCircle className="h-4 w-4" />
+                      <button className="flex items-center gap-1 transition-colors hover:text-blue-500">
+                        <MessageCircle className="w-4 h-4" />
                         <span>{item.comments}</span>
                       </button>
-                      <button className="flex items-center gap-1 hover:text-green-500 transition-colors">
-                        <Share2 className="h-4 w-4" />
+                      <button className="flex items-center gap-1 transition-colors hover:text-green-500">
+                        <Share2 className="w-4 h-4" />
                       </button>
                     </div>
                     <span>{item.date}</span>
@@ -163,12 +163,12 @@ export const GallerySection = () => {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-12"
+          className="mt-12 text-center"
         >
           <Button
             variant="outline"
             size="lg"
-            className="px-8 py-3 border-purple-300 text-purple-600 hover:bg-purple-50"
+            className="px-8 py-3 text-purple-600 border-purple-300 hover:bg-purple-50"
           >
             Load More Photos
           </Button>
@@ -181,7 +181,7 @@ export const GallerySection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div
@@ -194,11 +194,11 @@ export const GallerySection = () => {
             <img
               src={galleryItems.find(item => item.id === selectedImage)?.image}
               alt="Gallery item"
-              className="max-w-full max-h-full object-contain rounded-lg"
+              className="object-contain max-w-full max-h-full rounded-lg"
             />
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
+              className="absolute p-2 text-white transition-colors rounded-full top-4 right-4 bg-black/50 hover:bg-black/70"
             >
               ✕
             </button>
