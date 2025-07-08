@@ -189,7 +189,7 @@ export const GallerySection = () => {
             animate={{ scale: 1 }}
             exit={{ scale: 0.8 }}
             className="relative max-w-4xl max-h-full"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: { stopPropagation: () => any; }) => e.stopPropagation()}
           >
             <img
               src={galleryItems.find(item => item.id === selectedImage)?.image}
