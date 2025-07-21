@@ -72,8 +72,8 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const csvUrl =
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=tsv';
+  // const csvUrl =
+  //   'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=tsv';
 
   const extractFilterOptions = React.useCallback(
     (dataRows: Row[]) => {
@@ -115,25 +115,36 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
 
 
 
+  // React.useEffect(() => {
+  //   fetch(csvUrl)
+  //     .then((res) => res.text())
+  //     .then((text) => {
+  //       // Split rows by newline, then split columns by tab for TSV
+  //       const rows = text.split('\n').map((row) => row.split('\t'));
+  //       const headers = rows[1].slice(2);
+  //       const dataRows = rows.slice(2).map((row) => {
+  //         const record: Row = {};
+  //         headers.forEach((header, i) => {
+  //           record[header.trim()] = row[i + 2]?.trim() || '';
+  //         });
+  //         return record;
+  //       });
+  //       setData(dataRows);
+  //       extractFilterOptions(dataRows);
+  //       setLoading(false);
+  //     });
+  // }, [extractFilterOptions]);
+
   React.useEffect(() => {
-    fetch(csvUrl)
-      .then((res) => res.text())
-      .then((text) => {
-        // Split rows by newline, then split columns by tab for TSV
-        const rows = text.split('\n').map((row) => row.split('\t'));
-        const headers = rows[1].slice(2);
-        const dataRows = rows.slice(2).map((row) => {
-          const record: Row = {};
-          headers.forEach((header, i) => {
-            record[header.trim()] = row[i + 2]?.trim() || '';
-          });
-          return record;
-        });
-        setData(dataRows);
-        extractFilterOptions(dataRows);
+    fetch('/slinspire.lk/data/sheet-data.json')
+      .then((res) => res.json())
+      .then((jsonData) => {
+        setData(jsonData);
+        extractFilterOptions(jsonData);
         setLoading(false);
       });
   }, [extractFilterOptions]);
+
 
   const filteredData = React.useMemo(() => {
     const filtered = data.filter((row) => {
