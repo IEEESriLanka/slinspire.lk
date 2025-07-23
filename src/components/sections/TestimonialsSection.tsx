@@ -125,19 +125,19 @@ export const TestimonialsSection = () => {
 
   return (
     <section id="testimonials" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
             Student <span className="text-purple-600">Feedbacks</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Hear from students whose lives have been transformed through our programs and guidance.
+          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
+          Hear from students who discovered new ideas and direction through our programs and guidance
           </p>
         </motion.div>
 
@@ -150,16 +150,16 @@ export const TestimonialsSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 md:p-12 shadow-lg"
+              className="p-8 shadow-lg bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl md:p-12"
             >
-              <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex flex-col items-center gap-8 md:flex-row">
                 {/* Student Image */}
                 <div className="flex-shrink-0">
-                  <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                  <div className="w-24 h-24 overflow-hidden border-4 border-white rounded-full shadow-lg md:w-32 md:h-32">
                     <img
                       src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].name}
-                      className="w-full h-full object-cover"
+                      className="object-cover w-full h-full"
                     />
                   </div>
                 </div>
@@ -167,17 +167,17 @@ export const TestimonialsSection = () => {
                 {/* Content */}
                 <div className="flex-1 text-center md:text-left">
                   {/* Quote Icon */}
-                  <Quote className="h-8 w-8 text-purple-400 mb-4 mx-auto md:mx-0" />
+                  <Quote className="w-8 h-8 mx-auto mb-4 text-purple-400 md:mx-0" />
 
                   {/* Rating */}
-                  <div className="flex justify-center md:justify-start mb-4">
+                  <div className="flex justify-center mb-4 md:justify-start">
                     {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
 
                   {/* Comment */}
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed italic">
+                  <p className="mb-6 text-lg italic leading-relaxed text-gray-700">
                     "{testimonials[currentIndex].comment}"
                   </p>
 
@@ -190,13 +190,13 @@ export const TestimonialsSection = () => {
                       {testimonials[currentIndex].school} • {testimonials[currentIndex].grade}
                     </p>
                     
-                    <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
+                    <div className="flex flex-wrap justify-center gap-4 mt-4 md:justify-start">
                       <div className="flex items-center gap-1 text-sm text-gray-500">
-                        <MapPin className="h-4 w-4" />
+                        <MapPin className="w-4 h-4" />
                         {testimonials[currentIndex].province}
                       </div>
                       <div className="flex items-center gap-1 text-sm text-gray-500">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="w-4 h-4" />
                         {testimonials[currentIndex].date}
                       </div>
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getProgramColor(testimonials[currentIndex].program)}`}>
@@ -214,18 +214,18 @@ export const TestimonialsSection = () => {
             variant="outline"
             size="icon"
             onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white shadow-lg hover:shadow-xl"
+            className="absolute transform -translate-y-1/2 bg-white shadow-lg left-4 top-1/2 hover:shadow-xl"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="w-5 h-5" />
           </Button>
 
           <Button
             variant="outline"
             size="icon"
             onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white shadow-lg hover:shadow-xl"
+            className="absolute transform -translate-y-1/2 bg-white shadow-lg right-4 top-1/2 hover:shadow-xl"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="w-5 h-5" />
           </Button>
         </div>
 
