@@ -262,18 +262,18 @@ export const MonthlySeminarsSection = () => {
 
   return (
     <section id="seminars" className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
             Provincial <span className="text-purple-600">Career Compass</span> Sessions
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
             Join our island-wide career guidance seminars conducted at state universities across all provinces.
           </p>
         </motion.div>
@@ -283,11 +283,11 @@ export const MonthlySeminarsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap gap-4 justify-center mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
           <div className="flex items-center gap-2">
-            <Filter className="h-5 w-5 text-gray-500" />
-            <span className="text-gray-700 font-medium">Filter by:</span>
+            <Filter className="w-5 h-5 text-gray-500" />
+            <span className="font-medium text-gray-700">Filter by:</span>
           </div>
 
           <select
@@ -327,12 +327,12 @@ export const MonthlySeminarsSection = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
             >
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white flex flex-col h-full">
+              <Card className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
                 <div className="relative h-48 overflow-hidden rounded-t-lg">
                   <img
                     src={seminar.image}
                     alt={seminar.university}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 left-4">
@@ -346,34 +346,34 @@ export const MonthlySeminarsSection = () => {
                     </Badge>
                   </div>
                 </div>
-                <CardContent className="p-6 flex flex-col flex-1">
+                <CardContent className="flex flex-col flex-1 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-bold text-gray-900">
                       {seminar.university}
                     </h3>
-                    <span className="text-sm font-medium text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
+                    <span className="px-3 py-1 text-sm font-medium text-purple-600 rounded-full bg-purple-50">
                       {seminar.province} Province
                     </span>
                   </div>
-                  <div className="flex items-center gap-4 mb-4 text-gray-600 flex-wrap">
+                  <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-600">
                     <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar className="w-4 h-4" />
                       <span className="text-sm">{seminar.date}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
+                      <MapPin className="w-4 h-4" />
                       <span className="text-sm">{seminar.time}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Users className="h-4 w-4" />
+                      <Users className="w-4 h-4" />
                       <span className="text-sm">{seminar.participants} seats</span>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-6 leading-relaxed flex-1">
+                  <p className="flex-1 mb-6 leading-relaxed text-gray-600">
                     {seminar.description}
                   </p>
                   <Button
-                    className="w-full bg-purple-600 hover:bg-purple-700 mt-auto"
+                    className="w-full mt-auto bg-purple-600 hover:bg-purple-700"
                     disabled={seminar.status === "Full"}
                   >
                     {seminar.status === "Full" ? "Registration Closed" : "Register Now"}
