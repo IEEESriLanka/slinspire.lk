@@ -42,14 +42,12 @@ interface DegreeSearchTableProps {
 }
 
 const columns: readonly Column[] = [
-  { id: 'University/ Institution Name', label: 'University Name', minWidth: 190 },
-  { id: 'Course Name', label: 'Course Name', minWidth: 200 },
-  { id: 'Major Field of Study', label: 'Major Field', minWidth: 180 },
+  { id: '3', label: 'University Name', minWidth: 190 },
+  { id: '4', label: 'Course Name', minWidth: 200 },
+  { id: '10', label: 'Major Field', minWidth: 180 },
+  { id: '11', label: 'Sub Field', minWidth: 180 },
   {
-    id: 'Sub Field', label: 'Sub Field', minWidth: 180,
-  },
-  {
-    id: 'Course URL',
+    id: '9',
     label: 'Course URL',
     minWidth: 100,
     format: (value: string) => (
@@ -63,7 +61,7 @@ const columns: readonly Column[] = [
       </a>
     ),
   },
-  { id: 'External/Internal', label: 'Type', minWidth: 100 },
+  { id: '26', label: 'Type', minWidth: 100 },
 ];
 
 export default function StickyHeadTable({ filters, onFiltersChange, onFilterOptions }: DegreeSearchTableProps) {
@@ -80,7 +78,7 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
       const universities = Array.from(
         new Set(
           dataRows
-            .map(row => row['University/ Institution Name'])
+            .map(row => row['3']) //University/ Institution Name
             .filter(Boolean)
         )
       ).sort();
@@ -88,7 +86,7 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
       const majorFields = Array.from(
         new Set(
           dataRows
-            .map(row => row['Major Field of Study'])
+            .map(row => row['10']) //Major Field of Study
             .filter(Boolean)
         )
       ).sort();
@@ -96,7 +94,7 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
       const types = Array.from(
         new Set(
           dataRows
-            .map(row => row['External/Internal'])
+            .map(row => row['26']) // External/Internal
             .filter(Boolean)
         )
       ).sort();
@@ -113,30 +111,8 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
     [onFilterOptions]
   );
 
-
-
-  // React.useEffect(() => {
-  //   fetch(csvUrl)
-  //     .then((res) => res.text())
-  //     .then((text) => {
-  //       // Split rows by newline, then split columns by tab for TSV
-  //       const rows = text.split('\n').map((row) => row.split('\t'));
-  //       const headers = rows[1].slice(2);
-  //       const dataRows = rows.slice(2).map((row) => {
-  //         const record: Row = {};
-  //         headers.forEach((header, i) => {
-  //           record[header.trim()] = row[i + 2]?.trim() || '';
-  //         });
-  //         return record;
-  //       });
-  //       setData(dataRows);
-  //       extractFilterOptions(dataRows);
-  //       setLoading(false);
-  //     });
-  // }, [extractFilterOptions]);
-
   React.useEffect(() => {
-    fetch('/slinspire.lk/data/sheet-data.json')
+    fetch('data/sheet-data.json')
       .then((res) => res.json())
       .then((jsonData) => {
         setData(jsonData);
@@ -147,35 +123,26 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
 
 
   const filteredData = React.useMemo(() => {
-    const filtered = data.filter((row) => {
+    return data.filter((row) => {
       const universityMatch = filters.university
-        ? row['University/ Institution Name']
-          ?.toLowerCase()
-          .includes(filters.university.toLowerCase())
+        ? row['3']?.toLowerCase().includes(filters.university.toLowerCase())
         : true;
       const courseMatch = filters.course
-        ? row['Course Name']
-          ?.toLowerCase()
-          .includes(filters.course.toLowerCase())
+        ? row['4']?.toLowerCase().includes(filters.course.toLowerCase())
         : true;
       const majorFieldMatch = filters.majorField
-        ? row['Major Field of Study']
-          ?.toLowerCase()
-          .includes(filters.majorField.toLowerCase())
+        ? row['10']?.toLowerCase().includes(filters.majorField.toLowerCase())
         : true;
       const typeMatch = filters.type
-        ? row['External/Internal']
-          ?.toLowerCase()
-          .includes(filters.type.toLowerCase())
+        ? row['26']?.toLowerCase().includes(filters.type.toLowerCase())
         : true;
       return universityMatch && courseMatch && majorFieldMatch && typeMatch;
     });
+  }, [data, filters]);
 
-    // Update filter options based on filtered data
-    extractFilterOptions(filtered);
-
-    return filtered;
-  }, [data, filters, extractFilterOptions]);
+  React.useEffect(() => {
+    extractFilterOptions(filteredData);
+  }, [filteredData, extractFilterOptions]);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);

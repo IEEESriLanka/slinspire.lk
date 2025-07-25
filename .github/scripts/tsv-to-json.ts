@@ -1,9 +1,9 @@
 // File: .github/scripts/tsv-to-json.ts
 
-import fs from 'fs';
-import path from 'path';
-import https from 'https';
-import dotenv from 'dotenv';
+import * as fs from 'fs';
+import * as path from 'path';
+import fetch from 'node-fetch';
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -14,14 +14,15 @@ if (!url) {
     process.exit(1);
 }
 
-https.get(url, (res) => {
-    let data = '';
+(async () => {
+    try {
+        const response = await fetch(url);
 
-    res.on('data', (chunk: Buffer) => {
-        data += chunk.toString();
-    });
+        if (!response.ok) {
+            throw new Error(`Failed to fetch TSV. Status: ${response.status}`);
+        }
 
-    res.on('end', () => {
+        const data = await response.text();
         const lines = data.trim().split('\n');
         const headers = lines[0].split('\t');
 
@@ -39,13 +40,12 @@ https.get(url, (res) => {
             fs.mkdirSync(outDir, { recursive: true });
         }
 
-        fs.writeFileSync(
-            path.join(outDir, 'sheet-data.json'),
-            JSON.stringify(json, null, 2)
-        );
+        const outputPath = path.join(outDir, 'sheet-data.json');
+        fs.writeFileSync(outputPath, JSON.stringify(json, null, 2));
 
-        console.log('Converted TSV to JSON successfully!');
-    });
-}).on('error', (err) => {
-    console.error('Error fetching TSV:', err);
-});
+        console.log(`Converted TSV to JSON successfully! File saved at: ${outputPath}`);
+    } catch (error) {
+        console.error('Error fetching or converting TSV:', error);
+        process.exit(1);
+    }
+})();
