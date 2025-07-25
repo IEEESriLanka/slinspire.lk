@@ -26,7 +26,7 @@ if (!url) {
         const lines = data.trim().split('\n');
         const headers = lines[0].split('\t');
 
-        const json = lines.slice(1).map((line) => {
+        const json = lines.slice(2).map((line) => {
             const values = line.split('\t');
             const obj: Record<string, string> = {};
             headers.forEach((h, i) => {
