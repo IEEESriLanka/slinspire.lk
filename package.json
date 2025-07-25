@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "convert": "node --loader ts-node/esm .github/scripts/tsv-to-json.ts",
-    "predev": "npm run convert"
+    "convert": "node --loader ts-node/esm .github/scripts/tsv-to-json.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
