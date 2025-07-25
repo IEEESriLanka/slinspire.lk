@@ -70,9 +70,6 @@ export default function StickyHeadTable({ filters, onFiltersChange, onFilterOpti
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  // const csvUrl =
-  //   'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=tsv';
-
   const extractFilterOptions = React.useCallback(
     (dataRows: Row[]) => {
       const universities = Array.from(
