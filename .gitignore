@@ -1,4 +1,4 @@
-
 /node_modules
 /dist
+# Ignore locally, but GitHub Actions will force add it
 public/data/sheet-data.json
