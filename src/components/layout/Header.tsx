@@ -64,7 +64,7 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                 className={`text-xs ${isScrolled ? "text-purple-600" : "text-white"
                   }`}
               >
-                National Project
+                IEEE Yong Proffessionals Sri Lanka
               </p>
             </div>
           </Link>
