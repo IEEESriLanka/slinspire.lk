@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Target, Users, BookOpen, Globe, Award, Heart } from "lucide-react";
+import { VolunteeringInterest } from "./VolunteeringInterest";
 
 export const GoalsSection = () => {
   const [ref, inView] = useInView({
@@ -74,7 +75,7 @@ export const GoalsSection = () => {
             Our <span className="text-purple-600">Goals</span>
           </h2>
           <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
-          What we strive to achieve through our initiatives and programs.
+            What we strive to achieve through our initiatives and programs.
           </p>
         </motion.div>
 
@@ -90,7 +91,7 @@ export const GoalsSection = () => {
               <div className="h-full overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
                 {/* Header with gradient */}
                 <div className={`h-2 bg-gradient-to-r ${goal.color}`} />
-                
+
                 <div className="p-8">
                   {/* Icon */}
                   <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${goal.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -101,7 +102,7 @@ export const GoalsSection = () => {
                   <h3 className="mb-4 text-2xl font-bold text-gray-900">
                     {goal.title}
                   </h3>
-                  
+
                   <p className="mb-6 leading-relaxed text-gray-600">
                     {goal.description}
                   </p>
@@ -147,6 +148,9 @@ export const GoalsSection = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* Volunteering CTA */}
+        <VolunteeringInterest inView={inView} />
       </div>
     </section>
   );

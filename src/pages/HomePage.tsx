@@ -19,8 +19,6 @@ export const HomePage = () => {
         <ServicesSection />
         <MonthlySeminarsSection />
         <RegistrationSection />
-        <PartnersSection />
-        <GoalsSection />
         <TestimonialsSection />
       </main>
       <Footer />

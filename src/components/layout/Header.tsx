@@ -25,13 +25,13 @@ export const Header = ({ isMainPage }: HeaderProps) => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services", hasDropdown: false },
-    { name: "Seminars", href: "#seminars" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Our Team", href: "#team" },
-    // { name: "About", href: "#about" },
-    // { name: "Contact", href: "#contact" }
+    { name: "Home", href: "#home", hasDropdown: false },
+    // { name: "Services", href: "#services", hasDropdown: false },
+    // { name: "Seminars", href: "#seminars" },
+    { name: "Gallery", href: "#gallery", hasDropdown: false },
+    { name: "About Us", href: "#aboutus", hasDropdown: false },
+    { name: "Our Partners", href: "#patners", hasDropdown: false },
+    { name: "Our Team", href: "#team", hasDropdown: true },
   ];
 
   const [showDropdown, setShowDropdown] = useState(false);
