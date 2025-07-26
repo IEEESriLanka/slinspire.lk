@@ -18,7 +18,6 @@ export const HomePage = () => {
         <HeroSection />
         <ServicesSection />
         <MonthlySeminarsSection />
-        <GallerySection />
         <RegistrationSection />
         <PartnersSection />
         <GoalsSection />

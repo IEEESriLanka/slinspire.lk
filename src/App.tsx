@@ -5,6 +5,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingProvider } from "./contexts/LoadingContext";
 import { CareerCompassWebPage } from "./pages/CareerCompassWebPage";
 import { CareerCompassBookPage } from "./pages/CareerCompassBookPage";
+import { GalleryPage } from "./pages/GalleryPage";
 
 console.log("Deployed at:", new Date().toLocaleString());
 
@@ -21,6 +22,7 @@ export const App = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/career-compass-web" element={<CareerCompassWebPage />} />
               <Route path="/career-compass-book" element={<CareerCompassBookPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </Router>
