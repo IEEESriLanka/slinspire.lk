@@ -18,7 +18,7 @@ export const HeroSection = () => {
     {
       icon: <Calendar className="w-6 h-6" />,
       label: "Annual Seminars",
-      value: "10",
+      value: "17+",
     },
   ];
 
