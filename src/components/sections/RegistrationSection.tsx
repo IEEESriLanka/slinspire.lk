@@ -33,20 +33,20 @@ export const RegistrationSection = () => {
       features: ["Resource Material", "Personalized Guidance", "Career Appraisal", "Industry Insights"]
     },
     {
-      id: "after-al",
-      title: "After A/L Session",
-      description: "Specialized guidance for A/L completers based on their results,  University admissions and desired career opportunities.",
-      icon: "🎓",
-      color: "from-blue-500 to-cyan-600",
-      features: ["Application filling and Degree selection", "Scholarship Information", "Vocational Pathways", "Professional Pathways"]
-    },
-    {
       id: "after-ol",
       title: "After O/L Session",
       description: "Guide O/L students in selecting their A/L streams aligned with their ambitions, while educating them about future career opportunities.",
       icon: "📚",
       color: "from-green-500 to-teal-600",
       features: ["Stream Selection", "Subject Guidance", "Future Planning", "Aptitude Tests"]
+    },
+    {
+      id: "after-al",
+      title: "After A/L Session",
+      description: "Specialized guidance for A/L completers based on their results,  University admissions and desired career opportunities.",
+      icon: "🎓",
+      color: "from-blue-500 to-cyan-600",
+      features: ["Application filling and Degree selection", "Scholarship Information", "Vocational Pathways", "Professional Pathways"]
     }
   ];
 
@@ -88,7 +88,7 @@ export const RegistrationSection = () => {
             Registration <span className="text-purple-600">Forms</span>
           </h2>
           <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
-          Sign up for our upcoming sessions to take the first step towards a bright future.
+            Sign up for our upcoming sessions to take the first step towards a bright future.
           </p>
         </motion.div>
 
@@ -102,14 +102,14 @@ export const RegistrationSection = () => {
             >
               <Card className="h-full overflow-hidden transition-all duration-300 bg-white border-0 group hover:shadow-xl">
                 <div className={`h-2 bg-gradient-to-r ${type.color}`} />
-                
+
                 <CardContent className="p-8 text-center">
                   <div className="mb-6 text-6xl">{type.icon}</div>
-                  
+
                   <h3 className="mb-4 text-2xl font-bold text-gray-900">
                     {type.title}
                   </h3>
-                  
+
                   <p className="mb-6 leading-relaxed text-gray-600">
                     {type.description}
                   </p>
