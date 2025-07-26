@@ -16,7 +16,7 @@ export const GoalsSection = () => {
       description: "Provide equal opportunities for all Sri Lankan students regardless of location or socio-economic background.",
       icon: <BookOpen className="w-8 h-8" />,
       color: "from-blue-500 to-cyan-500",
-      stats: "20+ Provinces Covered"
+      stats: "9 Provinces Covered"
     },
     {
       id: 2,
@@ -42,22 +42,22 @@ export const GoalsSection = () => {
       color: "from-orange-500 to-red-500",
       stats: "50+ Global Partners"
     },
-    {
-      id: 5,
-      title: "Excellence Recognition",
-      description: "Recognize and celebrate academic achievements and career successes of our students.",
-      icon: <Award className="w-8 h-8" />,
-      color: "from-yellow-500 to-orange-500",
-      stats: "100+ Awards Given"
-    },
-    {
-      id: 6,
-      title: "Social Impact",
-      description: "Create positive social change by empowering the next generation of Sri Lankan leaders.",
-      icon: <Heart className="w-8 h-8" />,
-      color: "from-pink-500 to-rose-500",
-      stats: "Nationwide Impact"
-    }
+    // {
+    //   id: 5,
+    //   title: "Excellence Recognition",
+    //   description: "Recognize and celebrate academic achievements and career successes of our students.",
+    //   icon: <Award className="w-8 h-8" />,
+    //   color: "from-yellow-500 to-orange-500",
+    //   stats: "100+ Awards Given"
+    // },
+    // {
+    //   id: 6,
+    //   title: "Social Impact",
+    //   description: "Create positive social change by empowering the next generation of Sri Lankan leaders.",
+    //   icon: <Heart className="w-8 h-8" />,
+    //   color: "from-pink-500 to-rose-500",
+    //   stats: "Nationwide Impact"
+    // }
   ];
 
   return (
@@ -78,7 +78,7 @@ export const GoalsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {goals.map((goal, index) => (
             <motion.div
               key={goal.id}
@@ -111,7 +111,7 @@ export const GoalsSection = () => {
                     <span className="text-transparent bg-gradient-to-r bg-clip-text" style={{
                       backgroundImage: `linear-gradient(to right, ${goal.color.split(' ')[1]}, ${goal.color.split(' ')[3]})`
                     }}>
-                      {goal.stats}
+                      {/* {goal.stats} */}
                     </span>
                   </div>
                 </div>
