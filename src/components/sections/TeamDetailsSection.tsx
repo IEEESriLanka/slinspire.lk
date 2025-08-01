@@ -5,7 +5,8 @@ export const TeamDetailsSection = () => {
     <div>TeamDetailsSection</div>
 
     // Yahen --> implement team details section here
-    // Use ProjectTeamsDetails from src/data/ProjectTeamsDetails.ts
+    // Use ProjectTeamsDetails from src/data/ProjectTeamsDetails.ts (total number of team members is 15 for each year)
+    // i will update the data with real team members later
     // Display team members with their position, name, contact, email, and image
     //use card layout to display a team member
     // Use responsive design to ensure it looks good on all devices
