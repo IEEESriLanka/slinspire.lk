@@ -25,12 +25,13 @@ export const Header = ({ isMainPage }: HeaderProps) => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services", hasDropdown: false },
-    { name: "Seminars", href: "#seminars" },
-    { name: "Gallery", href: "#gallery" },
-    // { name: "About", href: "#about" },
-    // { name: "Contact", href: "#contact" }
+    { name: "Home", href: "#home", hasDropdown: false },
+    // { name: "Services", href: "#services", hasDropdown: false },
+    // { name: "Seminars", href: "#seminars" },
+    { name: "Gallery", href: "#gallery", hasDropdown: false },
+    { name: "About Us", href: "#aboutus", hasDropdown: false },
+    { name: "Our Partners", href: "#patners", hasDropdown: false },
+    { name: "Our Team", href: "#team", hasDropdown: true },
   ];
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -43,14 +44,14 @@ export const Header = ({ isMainPage }: HeaderProps) => {
         : 'bg-transparent'
         }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
               src={`${isScrolled ? "sli-logo.png" : "sli-logo-white.png"}`}
               alt="Sri Lanka Inspire"
-              className="size-20 sm:size-24 lg:size-28 transition-all duration-300"
+              className="transition-all duration-300 size-20 sm:size-24 lg:size-28"
             />
             <div className="hidden sm:block">
               <h1
@@ -63,13 +64,13 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                 className={`text-xs ${isScrolled ? "text-purple-600" : "text-white"
                   }`}
               >
-                National Project
+                IEEE Young Professionals Sri Lanka
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="items-center hidden space-x-8 lg:flex">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
                 <a
@@ -80,14 +81,14 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                     }`}
                 >
                   <span>{item.name}</span>
-                  {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
+                  {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
                 </a>
               </div>
             ))}
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="items-center hidden space-x-4 lg:flex">
             <div className="relative">
               <Button
                 variant="outline"
@@ -101,43 +102,43 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                 aria-haspopup="true"
                 aria-expanded={showDropdown ? "true" : "false"}
               >
-                <Download className="h-4 w-4 shrink-0" />
+                <Download className="w-4 h-4 shrink-0" />
                 <span>Compass Book</span>
-                <ChevronDown className="ml-1 h-4 w-4 shrink-0" />
+                <ChevronDown className="w-4 h-4 ml-1 shrink-0" />
               </Button>
               {showDropdown && (
                 <div
-                  className="absolute right-0 mt-2 w-64 bg-white border border-purple-100 rounded-xl shadow-xl z-50 animate-fade-in"
+                  className="absolute right-0 z-50 w-64 mt-2 bg-white border border-purple-100 shadow-xl rounded-xl animate-fade-in"
                   onMouseLeave={() => setShowDropdown(false)}
                 >
                   <a
                     href="career-compass-book-2023.pdf"
                     download
-                    className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Download className="h-4 w-4" />
+                    <Download className="w-4 h-4" />
                     Version 2023 [PDF]
                   </a>
                   <a
                     href="career-compass-book-2020.pdf"
                     download
-                    className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Download className="h-4 w-4" />
+                    <Download className="w-4 h-4" />
                     Version 2020 [PDF]
                   </a>
                   <a
                     href="career-compass-book-2015.pdf"
                     download
-                    className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Download className="h-4 w-4" />
+                    <Download className="w-4 h-4" />
                     Version 2015 (Sinhala) [PDF]
                   </a>
                 </div>
@@ -150,7 +151,7 @@ export const Header = ({ isMainPage }: HeaderProps) => {
             >
               <Button
                 size="sm"
-                className="bg-purple-600 hover:bg-purple-700 text-white"
+                className="text-white bg-purple-600 hover:bg-purple-700"
               >
                 Join WhatsApp
               </Button>
@@ -165,7 +166,7 @@ export const Header = ({ isMainPage }: HeaderProps) => {
               : 'text-white hover:bg-white/10'
               }`}
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
@@ -177,72 +178,72 @@ export const Header = ({ isMainPage }: HeaderProps) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t shadow-lg"
+            className="bg-white border-t shadow-lg lg:hidden"
           >
-            <div className="container mx-auto px-4 py-4">
+            <div className="container px-4 py-4 mx-auto">
               <nav className="flex flex-col space-y-2">
                 {navItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="px-3 py-2 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                    className="px-3 py-2 text-gray-700 transition-colors rounded-lg hover:bg-purple-50 hover:text-purple-600"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
                   </a>
                 ))}
               </nav>
-              <div className="mt-4 pt-4 border-t flex flex-col space-y-2">
+              <div className="flex flex-col pt-4 mt-4 space-y-2 border-t">
                 <div className="relative">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="justify-center w-full flex items-center gap-2"
+                    className="flex items-center justify-center w-full gap-2"
                     onClick={() => setShowDropdown((prev) => !prev)}
                     id="compass-book-dropdown-btn-mobile"
                     aria-haspopup="true"
                     aria-expanded={showDropdown ? "true" : "false"}
                   >
-                    <Download className="h-4 w-4 mr-2" />
+                    <Download className="w-4 h-4 mr-2" />
                     Compass Book
-                    <ChevronDown className="ml-1 h-4 w-4 shrink-0" />
+                    <ChevronDown className="w-4 h-4 ml-1 shrink-0" />
                   </Button>
                   {showDropdown && (
                     <div
-                      className="mt-2 w-full bg-white border border-purple-100 rounded-xl shadow-xl z-50 animate-fade-in"
+                      className="z-50 w-full mt-2 bg-white border border-purple-100 shadow-xl rounded-xl animate-fade-in"
                       onMouseLeave={() => setShowDropdown(false)}
                     >
                       <a
                         href="career-compass-book-2023.pdf"
                         download
-                        className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                        className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Download className="h-4 w-4" />
+                        <Download className="w-4 h-4" />
                         Version 2023 [PDF]
                       </a>
                       <a
                         href="career-compass-book-2020.pdf"
                         download
-                        className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                        className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Download className="h-4 w-4" />
+                        <Download className="w-4 h-4" />
                         Version 2020 [PDF]
                       </a>
                       <a
                         href="career-compass-book-2015.pdf"
                         download
-                        className="flex items-center gap-2 px-4 py-3 text-purple-800 hover:bg-purple-50 hover:text-purple-900 transition-colors font-medium"
+                        className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Download className="h-4 w-4" />
+                        <Download className="w-4 h-4" />
                         Version 2015 (Sinhala) [PDF]
                       </a>
                     </div>
@@ -256,7 +257,7 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                 >
                   <Button
                     size="sm"
-                    className="bg-purple-600 hover:bg-purple-700 w-full justify-center"
+                    className="justify-center w-full bg-purple-600 hover:bg-purple-700"
                   >
                     Join WhatsApp
                   </Button>

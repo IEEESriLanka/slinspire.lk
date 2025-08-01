@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Calendar, MapPin, Users, Filter, Search } from "lucide-react";
+import { Calendar, MapPin, Users, Filter, Search, School } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
+import { careerCompassSessions } from "../../data/CareerCompassSessions";
 
 export const MonthlySeminarsSection = () => {
   const [ref, inView] = useInView({
@@ -15,229 +16,10 @@ export const MonthlySeminarsSection = () => {
   const [selectedProvince, setSelectedProvince] = useState("All");
   const [selectedYear, setSelectedYear] = useState(currentYear.toString());
 
-  const seminars = [
-    {
-      id: 1,
-      province: "Western",
-      university: "University of Colombo",
-      date: "2024-02-15",
-      time: "2:00 PM",
-      year: "2024",
-      status: "Completed",
-      participants: 150,
-      description: "Comprehensive career guidance session with industry professionals and alumni panel discussion.",
-      image: "university-of-colombo.png"
-    },
-    {
-      id: 2,
-      province: "Central",
-      university: "University of Peradeniya",
-      date: "2024-02-20",
-      time: "10:00 AM",
-      year: "2024",
-      status: "Completed",
-      participants: 120,
-      description: "Guidance for A/L completers on university admissions and alternative career paths.",
-      image: "university-of-peradeniya.png"
-    },
-    {
-      id: 3,
-      province: "Southern",
-      university: "University of Ruhuna",
-      date: "2024-02-25",
-      time: "9:00 AM",
-      year: "2024",
-      status: "Completed",
-      participants: 100,
-      description: "Helping O/L students choose their A/L streams and understand future opportunities.",
-      image: "university-of-ruhuna.png"
-    },
-    {
-      id: 4,
-      province: "Northern",
-      university: "University of Jaffna",
-      date: "2024-03-05",
-      time: "1:00 PM",
-      year: "2024",
-      status: "Completed",
-      participants: 80,
-      description: "Industry-specific career guidance with professionals from engineering and medicine.",
-      image: "university-of-jaffna.png"
-    },
-    {
-      id: 5,
-      province: "Eastern",
-      university: "South Eastern University of Sri Lanka",
-      date: "2024-03-10",
-      time: "11:00 AM",
-      year: "2024",
-      status: "Completed",
-      participants: 110,
-      description: "Career guidance for students in the Eastern province with focus on local opportunities.",
-      image: "south-eastern-university.png"
-    },
-    {
-      id: 6,
-      province: "North Western",
-      university: "Wayamba University of Sri Lanka",
-      date: "2024-03-15",
-      time: "2:30 PM",
-      year: "2024",
-      status: "Completed",
-      participants: 90,
-      description: "Stream selection guidance for O/L completers with aptitude test analysis.",
-      image: "wayamba-university.png"
-    },
-    {
-      id: 7,
-      province: "North Central",
-      university: "Rajarata University of Sri Lanka",
-      date: "2024-03-20",
-      time: "10:00 AM",
-      year: "2024",
-      status: "Completed",
-      participants: 85,
-      description: "Career guidance for students in agriculture and engineering fields.",
-      image: "rajarata-university.png"
-    },
-    {
-      id: 8,
-      province: "Uva",
-      university: "Uva Wellassa University",
-      date: "2024-03-25",
-      time: "9:30 AM",
-      year: "2024",
-      status: "Completed",
-      participants: 70,
-      description: "Entrepreneurship and technology career pathways for Uva province students.",
-      image: "uva-wellassa-university.png"
-    },
-    {
-      id: 9,
-      province: "Sabaragamuwa",
-      university: "Sabaragamuwa University of Sri Lanka",
-      date: "2024-03-30",
-      time: "1:30 PM",
-      year: "2024",
-      status: "Completed",
-      participants: 95,
-      description: "Career guidance and motivational session for Sabaragamuwa province students.",
-      image: "sabaragamuwa-university.png"
-    },
-    {
-      id: 10,
-      province: "Western",
-      university: "University of Kelaniya",
-      date: "2025-02-12",
-      time: "10:00 AM",
-      year: "2025",
-      status: "TODO",
-      participants: 140,
-      description: "Career planning and soft skills workshop for undergraduates in the Western province.",
-      image: "university-of-kelaniya.png"
-    },
-    {
-      id: 11,
-      province: "Central",
-      university: "University of Sri Jayewardenepura",
-      date: "2025-02-18",
-      time: "2:00 PM",
-      year: "2025",
-      status: "TODO",
-      participants: 130,
-      description: "Panel discussion on emerging career trends and opportunities for Central province students.",
-      image: "university-of-sri-jayewardenepura.png"
-    },
-    {
-      id: 12,
-      province: "Southern",
-      university: "Ocean University of Sri Lanka",
-      date: "2025-02-24",
-      time: "9:00 AM",
-      year: "2025",
-      status: "TODO",
-      participants: 90,
-      description: "Guidance on marine and environmental career paths for Southern province youth.",
-      image: "ocean-university.png"
-    },
-    {
-      id: 13,
-      province: "Northern",
-      university: "Vavuniya Campus",
-      date: "2025-03-03",
-      time: "11:00 AM",
-      year: "2025",
-      status: "TODO",
-      participants: 75,
-      description: "Career guidance for technology and business management students in the Northern region.",
-      image: "vavuniya-campus.png"
-    },
-    {
-      id: 14,
-      province: "Eastern",
-      university: "Eastern University of Sri Lanka",
-      date: "2025-03-09",
-      time: "1:00 PM",
-      year: "2025",
-      status: "TODO",
-      participants: 105,
-      description: "Seminar on higher education and scholarship opportunities for Eastern province students.",
-      image: "eastern-university.png"
-    },
-    {
-      id: 15,
-      province: "North Western",
-      university: "University of the Visual and Performing Arts",
-      date: "2025-03-14",
-      time: "10:30 AM",
-      year: "2025",
-      status: "TODO",
-      participants: 80,
-      description: "Creative careers and portfolio development workshop for North Western province students.",
-      image: "uvpa.png"
-    },
-    {
-      id: 16,
-      province: "North Central",
-      university: "Open University of Sri Lanka (Anuradhapura)",
-      date: "2025-03-19",
-      time: "2:00 PM",
-      year: "2025",
-      status: "TODO",
-      participants: 95,
-      description: "Distance learning and flexible career options for North Central province youth.",
-      image: "open-university-anuradhapura.png"
-    },
-    {
-      id: 17,
-      province: "Uva",
-      university: "Badulla Campus",
-      date: "2025-03-24",
-      time: "9:30 AM",
-      year: "2025",
-      status: "TODO",
-      participants: 65,
-      description: "Entrepreneurship and innovation seminar for students in the Uva province.",
-      image: "badulla-campus.png"
-    },
-    {
-      id: 18,
-      province: "Sabaragamuwa",
-      university: "Sabaragamuwa University of Sri Lanka",
-      date: "2025-03-29",
-      time: "1:30 PM",
-      year: "2025",
-      status: "TODO",
-      participants: 100,
-      description: "Motivational session and career guidance for Sabaragamuwa province undergraduates.",
-      image: "sabaragamuwa-university.png"
-    }
-  ];
+  const provinces = ["All", ...new Set(careerCompassSessions.map(s => s.province))];
+  const years = ["All", ...new Set(careerCompassSessions.map(s => s.year))];
 
-  const provinces = ["All", ...new Set(seminars.map(s => s.province))];
-  const years = ["All", ...new Set(seminars.map(s => s.year))];
-
-  const filteredSeminars = seminars.filter(seminar => {
+  const filteredSeminars = careerCompassSessions.filter(seminar => {
     return (selectedProvince === "All" || seminar.province === selectedProvince) &&
       (selectedYear === "All" || seminar.year === selectedYear);
   });
@@ -262,18 +44,18 @@ export const MonthlySeminarsSection = () => {
 
   return (
     <section id="seminars" className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
             Provincial <span className="text-purple-600">Career Compass</span> Sessions
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
             Join our island-wide career guidance seminars conducted at state universities across all provinces.
           </p>
         </motion.div>
@@ -283,11 +65,11 @@ export const MonthlySeminarsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap gap-4 justify-center mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
           <div className="flex items-center gap-2">
-            <Filter className="h-5 w-5 text-gray-500" />
-            <span className="text-gray-700 font-medium">Filter by:</span>
+            <Filter className="w-5 h-5 text-gray-500" />
+            <span className="font-medium text-gray-700">Filter by:</span>
           </div>
 
           <select
@@ -296,7 +78,7 @@ export const MonthlySeminarsSection = () => {
               setSelectedProvince(e.target.value);
               if (e.target.value != "All") {
                 setSelectedYear("All");
-              }else{
+              } else {
                 setSelectedYear(currentYear.toString());
               }
             }}
@@ -327,56 +109,67 @@ export const MonthlySeminarsSection = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
             >
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white flex flex-col h-full">
+              <Card className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
                 <div className="relative h-48 overflow-hidden rounded-t-lg">
                   <img
                     src={seminar.image}
-                    alt={seminar.university}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    alt={seminar.vanue}
+                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 text-sm font-medium text-purple-600 rounded-full bg-purple-50">
+                      {seminar.province} Province
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4 flex flex-col items-end space-y-2">
+                    <Badge className={getStatusColor(seminar.status)}>
+                      {seminar.status}
+                    </Badge>
                     <Badge className={getYearColor(seminar.year)}>
                       {seminar.year}
                     </Badge>
                   </div>
-                  <div className="absolute top-4 right-4">
-                    <Badge className={getStatusColor(seminar.status)}>
-                      {seminar.status}
-                    </Badge>
-                  </div>
                 </div>
-                <CardContent className="p-6 flex flex-col flex-1">
+                <CardContent className="flex flex-col flex-1 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-bold text-gray-900">
-                      {seminar.university}
+                      {seminar.name}
                     </h3>
-                    <span className="text-sm font-medium text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
-                      {seminar.province} Province
-                    </span>
                   </div>
-                  <div className="flex items-center gap-4 mb-4 text-gray-600 flex-wrap">
+                  <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-600">
                     <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar className="w-4 h-4" />
                       <span className="text-sm">{seminar.date}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
-                      <span className="text-sm">{seminar.time}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Users className="h-4 w-4" />
-                      <span className="text-sm">{seminar.participants} seats</span>
+                      <MapPin className="w-4 h-4" />
+                      <span className="text-sm">{seminar.vanue}</span>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-6 leading-relaxed flex-1">
+                  <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-600">
+                    <div className="flex items-center gap-1">
+                      <School className="w-4 h-4" />
+                      <span className="text-sm">{seminar.schools ? `${seminar.schools} schools` : "N/A"}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Users className="w-4 h-4" />
+                      <span className="text-sm">{seminar.participants ? `${seminar.participants} Students` : "N/A"}</span>
+                    </div>
+                  </div>
+                  <p className="flex-1 mb-6 leading-relaxed text-gray-600">
                     {seminar.description}
                   </p>
                   <Button
-                    className="w-full bg-purple-600 hover:bg-purple-700 mt-auto"
-                    disabled={seminar.status === "Full"}
+                    className="w-full mt-auto bg-purple-600 hover:bg-purple-700"
+                    disabled={seminar.status !== "Completed" || !seminar.albumURL}
+                    onClick={() => {
+                      if (seminar.albumURL) {
+                        window.open(seminar.albumURL, "_blank", "noopener,noreferrer");
+                      }
+                    }}
                   >
-                    {seminar.status === "Full" ? "Registration Closed" : "Register Now"}
+                    View Album
                   </Button>
                 </CardContent>
               </Card>
