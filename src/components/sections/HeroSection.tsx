@@ -110,7 +110,7 @@ export const HeroSection = () => {
             transition={{ delay: 0.6 }}
             className="mb-4 text-xl font-light text-purple-100 md:text-2xl"
           >
-            National Project
+            IEEE National Project
           </motion.p>
 
           <motion.p
