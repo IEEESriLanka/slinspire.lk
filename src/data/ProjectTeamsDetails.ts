@@ -190,7 +190,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94702525880",
         email: "chathuryaekanyake@ieee.org",
         linkedIn: "https://www.linkedin.com/in/chathurya-ekanayake",
-        image: "oc/2025/chathurya.jpeg",
+        image: "oc/2025/Chathurya.jpeg",
         year: 2025,
     },
     {
@@ -201,7 +201,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94774743603",
         email: "kavindra.weerasinghe@ieee.org",
         linkedIn: "https://www.linkedin.com/in/kavindra-weerasinghe",
-        image: "oc/2025/Kavindra.png",
+        image: "oc/2025/Kavindra.jpg",
         year: 2025,
     },
 
@@ -213,7 +213,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94769851160",
         email: "sajaniksn@ieee.org",
         linkedIn: "https://www.linkedin.com/in/sajani-nawagomuwage-576b3b26b",
-        image: "oc/2025/Sajani.png",
+        image: "oc/2025/Sajani.jpg",
         year: 2025,
     },
 
@@ -225,7 +225,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94775524461",
         email: "Sithumsankajith@ieee.org",
         linkedIn: "https://www.linkedin.com/in/sithum-sankajith/",
-        image: "oc/2025/Sithum.png",
+        image: "oc/2025/Sithum.jpg",
         year: 2025,
     },
     {
@@ -236,7 +236,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94764953014",
         email: "raeesahamed@ieee.org",
         linkedIn: "https://www.linkedin.com/in/raees-ahmedh-b1416b219",
-        image: "oc/2025/Raees.png",
+        image: "oc/2025/Raees.jpg",
         year: 2025,
     },
 
@@ -248,7 +248,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94711371419",
         email: "layanjalajayasundara@ieee.org",
         linkedIn: "https://www.linkedin.com/in/yasashrini-jayasundara-a5b422221",
-        image: "oc/2025/Layanjala.png",
+        image: "oc/2025/Layanjala.jpg",
         year: 2025,
     },
 ]
