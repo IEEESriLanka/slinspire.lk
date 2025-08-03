@@ -38,7 +38,7 @@ export const TeamMemberCard: React.FC<TeamMemberProps> = ({
 
             {/* Content */}
             <div className="p-4 flex flex-col items-center">
-                <p className="text-sm text-gray-500 font-medium">{position}</p>
+                <p className="text-sm  font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-0 text-center">{position}</p>
                 <h2 className="text-lg font-bold text-gray-800 text-center">{name}</h2>
 
                 {/* Icons */}
