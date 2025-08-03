@@ -30,7 +30,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94762775398",
         email: "ann000461@gmail.com",
         linkedIn: "https://www.linkedin.com/in/anne-dulanthi-perera-651280217",
-        image: "oc/2024/anne.jpeg",
+        image: "oc/2024/anne.jpg",
         year: 2024,
     },
 
@@ -42,7 +42,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94774743603",
         email: "kavindra.weerasinghe@ieee.org",
         linkedIn: "https://www.linkedin.com/in/kavindra-weerasinghe",
-        image: "oc/2024/kavindra.jpg",
+        image: "oc/2025/Kavindra.jpg",
         year: 2024,
     },
     {
@@ -65,7 +65,7 @@ export const ProjectTeamsDetails: any[] = [
         whatsapp: "https://wa.me/94719915061",
         email: "rupasinghenadun399@gmail.com",
         linkedIn: "http://www.linkedin.com/in/nadun-rupasinghe-139b71221",
-        image: "oc/2024/nadun.jpeg",
+        image: "oc/2024/nadun.jpg",
         year: 2024,
     },
     {
@@ -121,7 +121,7 @@ export const ProjectTeamsDetails: any[] = [
         // whatsapp: "abc",
         // email: "abc",
         linkedIn: "https://www.linkedin.com/in/muditha-imalka-739a122a2",
-        image: "oc/2024/muditha.jpeg",
+        image: "oc/2024/muditha.jpg",
         year: 2024,
     },
     {
@@ -143,7 +143,7 @@ export const ProjectTeamsDetails: any[] = [
         // whatsapp: "abc",
         // email: "abc",
         linkedIn: "https://www.linkedin.com/in/nethmini-devyanjalee",
-        image: "oc/2024/nethmini.jpeg",
+        image: "oc/2024/nethmini.jpg",
         year: 2024,
     },
     {
@@ -249,6 +249,18 @@ export const ProjectTeamsDetails: any[] = [
         email: "layanjalajayasundara@ieee.org",
         linkedIn: "https://www.linkedin.com/in/yasashrini-jayasundara-a5b422221",
         image: "oc/2025/Layanjala.jpg",
+        year: 2025,
+    },
+
+    {
+        id: 23,
+        position: "Member Coordinator",
+        name: "Yashen Fernando",
+        contact: "tel:+94711974973",
+        whatsapp: "https://wa.me/94711974973",
+        email: "yashensavindu@gmail.com",
+        linkedIn: "https://www.linkedin.com/in/yashenfernando/",
+        image: "oc/2025/Yashen.png",
         year: 2025,
     },
 ]
