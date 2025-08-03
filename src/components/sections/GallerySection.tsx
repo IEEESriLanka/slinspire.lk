@@ -86,7 +86,7 @@ export const GallerySection = () => {
                   </p>
 
                   <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center gap-4">
+                    {/* <div className="flex items-center gap-4">
                       <button className="flex items-center gap-1 transition-colors hover:text-red-500">
                         <Heart className="w-4 h-4" />
                         <span>{item.likes}</span>
@@ -98,7 +98,7 @@ export const GallerySection = () => {
                       <button className="flex items-center gap-1 transition-colors hover:text-green-500">
                         <Share2 className="w-4 h-4" />
                       </button>
-                    </div>
+                    </div> */}
                     <span>{item.date}</span>
                   </div>
                 </div>

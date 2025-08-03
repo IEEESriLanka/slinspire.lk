@@ -1,11 +1,11 @@
 export const GallerySectionData: any[] = [
     {
         id: 1,
-        image: "whatsapp-image-2025-03-29-at-13-06-26-f7c019eb-3-3.png",
+        image: "gallery-img-1.png", //use this pattern for all images related to the gallery section , rename number with id
         caption: "Career guidance session at University of Colombo - Amazing turnout! 🎓",
-        likes: 245,
-        comments: 18,
-        date: "2 days ago"
+        // likes: 245,
+        // comments: 18, remove all comment and likes from below dataset ass well
+        date: "2024 December 15"
     },
     {
         id: 2,
