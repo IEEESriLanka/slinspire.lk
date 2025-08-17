@@ -1,15 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Youtube, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Bell, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import { Separator } from "../ui/separator";
 
 export const Footer = () => {
   const socialLinks = [
-    { icon: <Facebook className="w-6 h-6" />, href: "#", label: "Facebook" },
-    { icon: <Instagram className="w-6 h-6" />, href: "#", label: "Instagram" },
-    { icon: <Youtube className="w-6 h-6" />, href: "#", label: "YouTube" },
-    { icon: <Linkedin className="w-6 h-6" />, href: "#", label: "LinkedIn" },
-    { icon: <MessageCircle className="w-6 h-6" />, href: "#", label: "WhatsApp" }
+    { icon: <Facebook className="w-6 h-6" />, href: "https://www.facebook.com/share/1F5JkhFjdZ/", label: "Facebook" },
+    { icon: <Instagram className="w-6 h-6" />, href: "https://www.instagram.com/ieee_slinspire", label: "Instagram" },
+    { icon: <Youtube className="w-6 h-6" />, href: "https://youtube.com/@slinspire9085?si=ysbCYBoduJUc4Fv1", label: "YouTube" },
+    { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/company/slinspire/", label: "LinkedIn" },
+    { icon: <Bell className="w-6 h-6" />, href: "https://whatsapp.com/channel/0029VaXotgDHVvTh8UzRml32", label: "WhatsApp" }
   ];
 
   const quickLinks = [
@@ -113,15 +113,16 @@ export const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="flex-shrink-0 w-5 h-5 mt-1 text-purple-400" />
                 <div>
-                  <p className="text-gray-300">+94 77 474 3603</p>
-                  <p className="text-gray-300">+94 76 985 1160</p>
+                  <p className="text-gray-300">+94 77 474 3603 (Chairperson)</p>
+                  <p className="text-gray-300">+94 76 985 1160 (Secretary)</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="flex-shrink-0 w-5 h-5 mt-1 text-purple-400" />
                 <p className="text-gray-300">
-                  IEEE Sri Lanka Section<br />
-                  Colombo, Sri Lanka
+                  IEEE Young Professionals Sri Lanka<br />
+                  Bay No. 06, Trace Expert City,<br />
+                  Maradana, Colombo 10.
                 </p>
               </div>
             </div>
