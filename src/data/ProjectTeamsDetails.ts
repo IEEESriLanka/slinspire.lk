@@ -302,7 +302,7 @@ export const ProjectTeamsDetails: any[] = [
         contact: "tel:+94763168381",
         whatsapp: "https://wa.me/94763168381",
         email: "kavindyatissadeniya@ieee.org",
-        // linkedIn: "abc",
+        linkedIn: "https://www.linkedin.com/in/kavindya-tissadeniya-29b15934a",
         image: "oc/2025/Kavindya.jpg",
         year: 2025,
     },

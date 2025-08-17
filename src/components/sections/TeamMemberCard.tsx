@@ -30,7 +30,7 @@ export const TeamMemberCard: React.FC<TeamMemberProps> = ({
             {/* Image */}
             <div className="h-[280px] overflow-hidden">
                 <img
-                    src={`public/${image}`}
+                    src={`${import.meta.env.BASE_URL}${image}`}
                     alt={name}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
