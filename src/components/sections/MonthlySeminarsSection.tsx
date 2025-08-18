@@ -107,11 +107,11 @@ export const MonthlySeminarsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-6 mb-12 bg-white/70 rounded-xl shadow-sm px-6 py-4 border border-purple-100"
         >
-          <div className="flex items-center gap-2">
-            <Filter className="w-5 h-5 text-gray-500" />
-            <span className="font-medium text-gray-700">Filter by:</span>
+          <div className="flex items-center gap-2 pr-4 border-r border-purple-100">
+            <Filter className="w-5 h-5 text-purple-500" />
+            <span className="font-semibold text-purple-700 text-base">Filter by:</span>
           </div>
 
           <select
@@ -124,20 +124,24 @@ export const MonthlySeminarsSection = () => {
                 setSelectedYear(currentYear.toString());
               }
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="px-5 py-2 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 font-medium focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm hover:bg-purple-100"
           >
             {provinces.map(province => (
-              <option key={province} value={province}>{province} Province</option>
+              <option key={province} value={province}>
+                {province} Province
+              </option>
             ))}
           </select>
 
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="px-5 py-2 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 font-medium focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm hover:bg-purple-100"
           >
             {years.map(year => (
-              <option key={year} value={year}>{year}</option>
+              <option key={year} value={year}>
+                {year}
+              </option>
             ))}
           </select>
         </motion.div>
