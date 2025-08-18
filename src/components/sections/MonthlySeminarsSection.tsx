@@ -6,6 +6,16 @@ import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { careerCompassSessions } from "../../data/CareerCompassSessions";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from "../ui/pagination";
+import { SeminarPagination } from "../ui/SeminarPagination";
 
 export const MonthlySeminarsSection = () => {
   const [ref, inView] = useInView({
@@ -15,6 +25,8 @@ export const MonthlySeminarsSection = () => {
   let currentYear = new Date().getFullYear();
   const [selectedProvince, setSelectedProvince] = useState("All");
   const [selectedYear, setSelectedYear] = useState(currentYear.toString());
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 9;
 
   const provinces = ["All", ...new Set(careerCompassSessions.map(s => s.province))];
   const years = ["All", ...new Set(careerCompassSessions.map(s => s.year))];
@@ -23,6 +35,19 @@ export const MonthlySeminarsSection = () => {
     return (selectedProvince === "All" || seminar.province === selectedProvince) &&
       (selectedYear === "All" || seminar.year === selectedYear);
   });
+
+  // Pagination logic
+  const totalCards = filteredSeminars.length;
+  const totalPages = Math.ceil(totalCards / cardsPerPage);
+  const paginatedSeminars = filteredSeminars.slice(
+    (currentPage - 1) * cardsPerPage,
+    currentPage * cardsPerPage
+  );
+
+  // Reset to first page when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedProvince, selectedYear]);
 
   const getYearColor = (year: string) => {
     switch (year) {
@@ -40,6 +65,23 @@ export const MonthlySeminarsSection = () => {
       case "TODO": return "bg-red-100 text-red-800";
       default: return "bg-gray-100 text-gray-800";
     }
+  };
+
+  // Helper to render page numbers (with ellipsis if needed)
+  const getPageNumbers = () => {
+    const pages = [];
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      if (currentPage <= 3) {
+        pages.push(1, 2, 3, 4, "...", totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages);
+      }
+    }
+    return pages;
   };
 
   return (
@@ -65,11 +107,11 @@ export const MonthlySeminarsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-6 mb-12 bg-white/70 rounded-xl shadow-sm px-6 py-4 border border-purple-100"
         >
-          <div className="flex items-center gap-2">
-            <Filter className="w-5 h-5 text-gray-500" />
-            <span className="font-medium text-gray-700">Filter by:</span>
+          <div className="flex items-center gap-2 pr-4 border-r border-purple-100">
+            <Filter className="w-5 h-5 text-purple-500" />
+            <span className="font-semibold text-purple-700 text-base">Filter by:</span>
           </div>
 
           <select
@@ -82,27 +124,37 @@ export const MonthlySeminarsSection = () => {
                 setSelectedYear(currentYear.toString());
               }
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="px-5 py-2 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 font-medium focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm hover:bg-purple-100"
           >
             {provinces.map(province => (
-              <option key={province} value={province}>{province} Province</option>
+              <option key={province} value={province}>
+                {province} Province
+              </option>
             ))}
           </select>
 
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="px-5 py-2 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 font-medium focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm hover:bg-purple-100"
           >
             {years.map(year => (
-              <option key={year} value={year}>{year}</option>
+              <option key={year} value={year}>
+                {year}
+              </option>
             ))}
           </select>
         </motion.div>
 
+        <SeminarPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+          getPageNumbers={getPageNumbers}
+        />
         {/* Card Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredSeminars.slice(0, 9).map((seminar) => (
+          {paginatedSeminars.map((seminar) => (
             <motion.div
               key={seminar.id}
               initial={{ opacity: 0, y: 30 }}
@@ -112,7 +164,7 @@ export const MonthlySeminarsSection = () => {
               <Card className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
                 <div className="relative h-48 overflow-hidden rounded-t-lg">
                   <img
-                    src={seminar.image}
+                    src={`${import.meta.env.BASE_URL}${seminar.image}`}
                     alt={seminar.vanue}
                     className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                   />
@@ -176,6 +228,12 @@ export const MonthlySeminarsSection = () => {
             </motion.div>
           ))}
         </div>
+        <SeminarPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+          getPageNumbers={getPageNumbers}
+        />
       </div>
     </section>
   );
