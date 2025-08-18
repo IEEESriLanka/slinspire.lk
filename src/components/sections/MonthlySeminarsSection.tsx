@@ -6,6 +6,16 @@ import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { careerCompassSessions } from "../../data/CareerCompassSessions";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from "../ui/pagination";
+import { SeminarPagination } from "../ui/SeminarPagination";
 
 export const MonthlySeminarsSection = () => {
   const [ref, inView] = useInView({
@@ -15,6 +25,8 @@ export const MonthlySeminarsSection = () => {
   let currentYear = new Date().getFullYear();
   const [selectedProvince, setSelectedProvince] = useState("All");
   const [selectedYear, setSelectedYear] = useState(currentYear.toString());
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 9;
 
   const provinces = ["All", ...new Set(careerCompassSessions.map(s => s.province))];
   const years = ["All", ...new Set(careerCompassSessions.map(s => s.year))];
@@ -23,6 +35,19 @@ export const MonthlySeminarsSection = () => {
     return (selectedProvince === "All" || seminar.province === selectedProvince) &&
       (selectedYear === "All" || seminar.year === selectedYear);
   });
+
+  // Pagination logic
+  const totalCards = filteredSeminars.length;
+  const totalPages = Math.ceil(totalCards / cardsPerPage);
+  const paginatedSeminars = filteredSeminars.slice(
+    (currentPage - 1) * cardsPerPage,
+    currentPage * cardsPerPage
+  );
+
+  // Reset to first page when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedProvince, selectedYear]);
 
   const getYearColor = (year: string) => {
     switch (year) {
@@ -40,6 +65,23 @@ export const MonthlySeminarsSection = () => {
       case "TODO": return "bg-red-100 text-red-800";
       default: return "bg-gray-100 text-gray-800";
     }
+  };
+
+  // Helper to render page numbers (with ellipsis if needed)
+  const getPageNumbers = () => {
+    const pages = [];
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      if (currentPage <= 3) {
+        pages.push(1, 2, 3, 4, "...", totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages);
+      }
+    }
+    return pages;
   };
 
   return (
@@ -100,9 +142,15 @@ export const MonthlySeminarsSection = () => {
           </select>
         </motion.div>
 
+        <SeminarPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+          getPageNumbers={getPageNumbers}
+        />
         {/* Card Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredSeminars.slice(0, 9).map((seminar) => (
+          {paginatedSeminars.map((seminar) => (
             <motion.div
               key={seminar.id}
               initial={{ opacity: 0, y: 30 }}
@@ -176,6 +224,12 @@ export const MonthlySeminarsSection = () => {
             </motion.div>
           ))}
         </div>
+        <SeminarPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+          getPageNumbers={getPageNumbers}
+        />
       </div>
     </section>
   );
