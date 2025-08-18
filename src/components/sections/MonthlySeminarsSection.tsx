@@ -112,7 +112,7 @@ export const MonthlySeminarsSection = () => {
               <Card className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
                 <div className="relative h-48 overflow-hidden rounded-t-lg">
                   <img
-                    src={seminar.image}
+                    src={`${import.meta.env.BASE_URL}${seminar.image}`}
                     alt={seminar.vanue}
                     className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                   />
