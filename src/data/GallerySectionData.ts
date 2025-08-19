@@ -13,7 +13,7 @@ export const GallerySectionData: any[] = [
         caption: "Workshop on A/L subject selection - Helping students make informed decisions 📚",
         likes: 189,
         comments: 12,
-        date: "4 days ago"
+        date: "2024 December 20"
     },
     {
         id: 3,
