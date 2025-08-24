@@ -117,7 +117,7 @@ export const ServicesSection = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <Card className="h-full overflow-hidden transition-all duration-500 border-0 shadow-xl group hover:shadow-2xl bg-gradient-to-br from-white to-gray-50">
+              <Card className="h-full overflow-hidden flex flex-col transition-all duration-500 border-0 shadow-xl group hover:shadow-2xl bg-gradient-to-br from-white to-gray-50">
                 <div className="relative h-64 overflow-hidden">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-45`}
@@ -133,7 +133,7 @@ export const ServicesSection = () => {
                     </div>
                   </div>
                 </div>
-                <CardContent className="p-8">
+                <CardContent className="p-8 flex flex-col flex-1">
                   <div className="flex items-center mb-4">
                     <div
                       className={`p-3 rounded-xl bg-gradient-to-br ${service.color} text-white mr-4`}
@@ -144,19 +144,21 @@ export const ServicesSection = () => {
                       {service.title}
                     </h3>
                   </div>
-                  <p className="mb-6 leading-relaxed text-gray-600">
+                  <p className="mb-6 leading-relaxed text-gray-600 flex-1">
                     {service.description}
                   </p>
-                  <Button
-                    className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300 group`}
-                    disabled={!service.actionURL}
-                    onClick={() =>
-                      window.open(service.actionURL, "_self")
-                    }
-                  >
-                    {service.btnName}
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Button>
+                  <div className="mt-auto">
+                    <Button
+                      className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300 group`}
+                      disabled={!service.actionURL}
+                      onClick={() =>
+                        window.open(service.actionURL, "_self")
+                      }
+                    >
+                      {service.btnName}
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
