@@ -17,14 +17,14 @@ interface TeamMemberProps {
 }
 
 export const TeamMemberCard: React.FC<TeamMemberProps> = ({
-                                                              position,
-                                                              name,
-                                                              image,
-                                                              contact,
-                                                              whatsapp,
-                                                              email,
-                                                              linkedIn,
-                                                          }) => {
+    position,
+    name,
+    image,
+    contact,
+    whatsapp,
+    email,
+    linkedIn,
+}) => {
     return (
         <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group w-full md:w-[250px]">
             {/* Image */}
