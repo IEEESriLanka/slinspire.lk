@@ -3,48 +3,107 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Page Not Found | IEEE Sri Lanka Inspire National Project</title>
+  <title>Page Not Found | IEEE Sri Lanka INSPIRE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="The page you are looking for cannot be found on IEEE Sri Lanka INSPIRE. Navigate back to the homepage and continue exploring educational and career resources." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
       background: #f3f4f6;
-      color: #222;
+      color: #1f2937;
       text-align: center;
       padding: 10vh 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    img.logo {
+      max-width: 180px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 5rem;
+      font-weight: 700;
       margin-bottom: 1rem;
+      color: #8b005d;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.4s;
     }
 
     p {
       font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #8b005d;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 1.2s;
+    }
+
+    a:hover {
+      background-color: #a10070;
     }
   </style>
+
   <script>
-    // SPA redirect for GitHub Pages
-    // Only run if not already at the root
+    // SPA redirect for GitHub Pages (React Router / Vite SPA Fallback)
     (function () {
       var l = window.location;
-      // Only redirect if not already at the root
-      if (l.pathname !== '/slinspire.lk/' && l.pathname.startsWith('/slinspire.lk/')) {
-        // Remove the leading slash for hash
-        var path = l.pathname.replace('/slinspire.lk', '');
-        var search = l.search || '';
-        var hash = l.hash || '';
-        // Redirect to root with hash route
-        window.location.replace('/slinspire.lk/#' + path + search + hash);
+      if (l.pathname !== '/' && !l.pathname.includes('.')) {
+        var path = l.pathname + l.search + l.hash;
+        window.location.replace('/#' + path);
       }
     })();
   </script>
 </head>
 
 <body>
+  <!-- Logo -->
+  <img src="/sli-logo.png" alt="IEEE Sri Lanka INSPIRE Logo" class="logo" />
+
   <h1>404</h1>
-  <p>Sorry, the page you are looking for does not exist.</p>
-  <a href="/slinspire.lk/">Go Home</a>
+  <p>Oops! The page you’re looking for isn’t here.</p>
+  <a href="/">Back to Home</a>
 </body>
 
 </html>
