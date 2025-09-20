@@ -7,19 +7,19 @@ import { GallerySection } from "../components/sections/GallerySection";
 import { RegistrationSection } from "../components/sections/RegistrationSection";
 import { PartnersSection } from "../components/sections/PartnersSection";
 import { GoalsSection } from "../components/sections/GoalsSection";
-import { TestimonialsSection } from "../components/sections/TestimonialsSection";
+import { FeedbacksSection } from "../components/sections/FeedbacksSection";
 import { Footer } from "../components/layout/Footer";
 
 export const HomePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
-      <Header isMainPage={true}/>
+      <Header isMainPage={true} />
       <main>
         <HeroSection />
         <ServicesSection />
         <MonthlySeminarsSection />
         <RegistrationSection />
-        <TestimonialsSection />
+        <FeedbacksSection />
       </main>
       <Footer />
     </div>

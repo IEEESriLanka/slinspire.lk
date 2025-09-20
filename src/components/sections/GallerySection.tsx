@@ -3,7 +3,15 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ExternalLink, Heart, MessageCircle, Share2 } from "lucide-react";
 import { Button } from "../ui/button";
-import { GallerySectionData } from "../../data/GallerySectionData";
+
+interface GalleryItem {
+  id: string;
+  title: string;
+  image: string;
+  caption: string;
+  date: string;
+}
+
 
 export const GallerySection = () => {
   const [ref, inView] = useInView({
@@ -11,7 +19,18 @@ export const GallerySection = () => {
     threshold: 0.1
   });
 
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [galleryData, setGalleryData] = useState<GalleryItem[]>([]);
+
+  //fetch JSON data
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/GallerySectionData.json`)
+      .then((res) => res.json())
+      .then((data: GalleryItem[]) => {
+        setGalleryData(data);
+      })
+      .catch((err) => console.error("Error loading gallery data", err));
+  }, [])
 
   // Lightbox functionality
   useEffect(() => {
@@ -53,25 +72,25 @@ export const GallerySection = () => {
         </motion.div>
 
         {/* Masonry Grid */}
-        <div className="gap-6 space-y-6 columns-1 md:columns-2 lg:columns-3">
-          {GallerySectionData.map((item, index) => (
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {galleryData.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="break-inside-avoid"
+              className="flex flex-col"
             >
-              <div className="overflow-hidden transition-all duration-300 bg-white shadow-lg rounded-2xl hover:shadow-xl group">
+              <div className="overflow-hidden transition-all duration-300 bg-white shadow-lg rounded-2xl hover:shadow-xl group flex flex-col h-full">
                 {/* Image */}
                 <div
                   className="relative overflow-hidden cursor-pointer"
                   onClick={() => setSelectedImage(item.id)}
                 >
                   <img
-                    src={item.image}
+                    src={`${import.meta.env.BASE_URL}${"gallery/"}${item.image}`}
                     alt={`Gallery item ${item.id}`}
-                    className="object-cover w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 flex items-center justify-center transition-colors duration-300 bg-black/0 group-hover:bg-black/20">
@@ -80,26 +99,14 @@ export const GallerySection = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-4">
-                  <p className="mb-3 leading-relaxed text-gray-800">
+                <div className="p-4 flex flex-col flex-1">
+                  <h5 className="flex items-center text-sm text-gray-500">{item.title}</h5>
+                  <p className="mb-3 leading-relaxed text-gray-800 flex-1">
                     {item.caption}
                   </p>
-
                   <div className="flex items-center justify-between text-sm text-gray-500">
-                    {/* <div className="flex items-center gap-4">
-                      <button className="flex items-center gap-1 transition-colors hover:text-red-500">
-                        <Heart className="w-4 h-4" />
-                        <span>{item.likes}</span>
-                      </button>
-                      <button className="flex items-center gap-1 transition-colors hover:text-blue-500">
-                        <MessageCircle className="w-4 h-4" />
-                        <span>{item.comments}</span>
-                      </button>
-                      <button className="flex items-center gap-1 transition-colors hover:text-green-500">
-                        <Share2 className="w-4 h-4" />
-                      </button>
-                    </div> */}
-                    <span>{item.date}</span>
+                    <div />
+                    <div>{item.date}</div>
                   </div>
                 </div>
               </div>
@@ -108,7 +115,7 @@ export const GallerySection = () => {
         </div>
 
         {/* Load More Button */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -121,39 +128,41 @@ export const GallerySection = () => {
           >
             Load More Photos
           </Button>
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* Lightbox */}
-      {selectedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
-          onClick={() => setSelectedImage(null)}
-        >
+      {
+        selectedImage && (
           <motion.div
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0.8 }}
-            className="relative max-w-4xl max-h-full"
-            onClick={(e: { stopPropagation: () => any; }) => e.stopPropagation()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+            onClick={() => setSelectedImage(null)}
           >
-            <img
-              src={GallerySectionData.find(item => item.id === selectedImage)?.image}
-              alt="Gallery item"
-              className="object-contain max-w-full max-h-full rounded-lg"
-            />
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute p-2 text-white transition-colors rounded-full top-4 right-4 bg-black/50 hover:bg-black/70"
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              className="relative max-w-4xl max-h-full"
+              onClick={(e: { stopPropagation: () => any; }) => e.stopPropagation()}
             >
-              ✕
-            </button>
+              <img
+                src={`${import.meta.env.BASE_URL}${"gallery/"}${galleryData.find(item => item.id === selectedImage)?.image}`}
+                alt="Gallery item"
+                className="object-contain max-w-full max-h-full rounded-lg"
+              />
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute p-2 text-white transition-colors rounded-full top-4 right-4 bg-black/50 hover:bg-black/70"
+              >
+                ✕
+              </button>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </section>
+        )
+      }
+    </section >
   );
 };
