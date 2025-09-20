@@ -33,7 +33,7 @@ export const HeroSection = () => {
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: "url(students-photo-1.png)",
+            backgroundImage: "url(hero_bg.jpeg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
