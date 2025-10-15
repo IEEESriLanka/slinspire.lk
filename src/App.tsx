@@ -27,7 +27,7 @@ export const App = () => {
               <Route path="/career-compass-book" element={<CareerCompassBookPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/aboutus" element={<AboutUsPage />} />
-              <Route path="/patners" element={<PatnersPage />} />
+              {/* <Route path="/patners" element={<PatnersPage />} /> */}
               <Route path="/team" element={<TeamPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
-import { GoalsSection } from '../components/sections/GoalsSection';
+import { GoalsSection } from '../components/sections/AboutUsSection';
 
 export const AboutUsPage = () => {
 

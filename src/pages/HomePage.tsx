@@ -6,7 +6,7 @@ import { MonthlySeminarsSection } from "../components/sections/MonthlySeminarsSe
 import { GallerySection } from "../components/sections/GallerySection";
 import { RegistrationSection } from "../components/sections/RegistrationSection";
 import { PartnersSection } from "../components/sections/PartnersSection";
-import { GoalsSection } from "../components/sections/GoalsSection";
+import { GoalsSection } from "../components/sections/AboutUsSection";
 import { FeedbacksSection } from "../components/sections/FeedbacksSection";
 import { Footer } from "../components/layout/Footer";
 
