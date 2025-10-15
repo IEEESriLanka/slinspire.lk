@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Target, Users, BookOpen, Globe, Award, Heart } from "lucide-react";
+
 import { VolunteeringInterest } from "./VolunteeringInterest";
 import { ExternalLink } from "lucide-react";
+import { aboutUsData_goals, aboutUsData_partners, aboutUsData_uniPatners } from "../../data/AboutUSData";
 
 export const GoalsSection = () => {
   const [ref, inView] = useInView({
@@ -11,76 +12,7 @@ export const GoalsSection = () => {
     threshold: 0.1
   });
 
-  const goals = [
-    {
-      id: 1,
-      title: "Educational Access",
-      description: "Provide equal opportunities for all Sri Lankan students regardless of location or socio-economic background.",
-      icon: <BookOpen className="w-8 h-8" />,
-      color: "from-blue-500 to-cyan-500",
-      stats: "9 Provinces Covered"
-    },
-    {
-      id: 2,
-      title: "Career Guidance",
-      description: "Help students make informed decisions about their future through comprehensive guidance sessions.",
-      icon: <Target className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-500",
-      stats: "2000+ Students Guided"
-    },
-    {
-      id: 3,
-      title: "Community Building",
-      description: "Create a supportive network to students with educators, and professionals across the island.",
-      icon: <Users className="w-8 h-8" />,
-      color: "from-green-500 to-teal-500",
-      stats: "500+ Community Members"
-    },
-    {
-      id: 4,
-      title: "Global Opportunities",
-      description: "Connect Sri Lankan students to international educational and career opportunities.",
-      icon: <Globe className="w-8 h-8" />,
-      color: "from-orange-500 to-red-500",
-      stats: "50+ Global Partners"
-    },
-  ];
 
-  const partners = [
-    {
-      id: 1,
-      name: "IEEE Sri Lanka",
-      logo: "ieee-blue-logo.png",
-      description: "Leading professional organization for technology advancement",
-      website: "https://ieee.lk",
-      category: "Technology Partner"
-    },
-    {
-      id: 2,
-      name: "IFS Sri Lanka",
-      logo: "ifs-logo-1.png",
-      description: "Global enterprise software company supporting education",
-      website: "https://ifs.com",
-      category: "Sponsoring Partner"
-    },
-    {
-      id: 3,
-      name: "SL2C Sri Lanka",
-      logo: "whatsapp-image-2025-04-28-at-00-14-42-3d774b8e-1.png",
-      description: "Educational technology and career development organization",
-      website: "#",
-      category: "Educational Partner"
-    }
-  ];
-
-  const sponsors = [
-    { name: "University of Colombo", logo: "university-of-colombo.png" },
-    { name: "University of Peradeniya", logo: "university-of-peradeniya.png" },
-    { name: "University of Moratuwa", logo: "university-of-moratuwa.png" },
-    { name: "University of Kelaniya", logo: "university-of-kelaniya.png" },
-    { name: "University of Ruhuna", logo: "university-of-ruhuna.png" },
-    { name: "University of Jaffna", logo: "university-of-jaffna.png" }
-  ];
 
   return (
     <section id="goals" className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
@@ -100,46 +32,52 @@ export const GoalsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {goals.map((goal, index) => (
-            <motion.div
-              key={goal.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="h-full overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
-                {/* Header with gradient */}
-                <div className={`h-2 bg-gradient-to-r ${goal.color}`} />
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {
 
-                <div className="p-8">
-                  {/* Icon */}
-                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${goal.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    {goal.icon}
+            aboutUsData_goals.map((goal, index) => {
+              const Icon = goal.icon;
+
+              return (
+                <motion.div
+                  key={goal.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="h-full overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
+                    {/* Header with gradient */}
+                    <div className={`h-2 bg-gradient-to-r ${goal.color}`} />
+
+                    <div className="p-8">
+                      {/* Icon */}
+                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${goal.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-8 h-8" />
+                      </div>
+
+                      {/* Content */}
+                      <h3 className="mb-4 text-2xl font-bold text-gray-900">
+                        {goal.title}
+                      </h3>
+
+                      <p className="mb-6 leading-relaxed text-gray-600">
+                        {goal.description}
+                      </p>
+
+                      {/* Stats */}
+                      <div className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r ${goal.color} bg-opacity-10 text-sm font-semibold`}>
+                        <span className="text-transparent bg-gradient-to-r bg-clip-text" style={{
+                          backgroundImage: `linear-gradient(to right, ${goal.color.split(' ')[1]}, ${goal.color.split(' ')[3]})`
+                        }}>
+                          {/* {goal.stats} */}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Content */}
-                  <h3 className="mb-4 text-2xl font-bold text-gray-900">
-                    {goal.title}
-                  </h3>
-
-                  <p className="mb-6 leading-relaxed text-gray-600">
-                    {goal.description}
-                  </p>
-
-                  {/* Stats */}
-                  <div className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r ${goal.color} bg-opacity-10 text-sm font-semibold`}>
-                    <span className="text-transparent bg-gradient-to-r bg-clip-text" style={{
-                      backgroundImage: `linear-gradient(to right, ${goal.color.split(' ')[1]}, ${goal.color.split(' ')[3]})`
-                    }}>
-                      {/* {goal.stats} */}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                </motion.div>
+              )
+            })}
         </div>
 
         {/* Mission Statement */}
@@ -187,7 +125,7 @@ export const GoalsSection = () => {
 
         {/* Main Partners */}
         <div className="grid gap-8 mb-16 md:grid-cols-3">
-          {partners.map((partner, index) => (
+          {aboutUsData_partners.map((partner, index) => (
             <motion.div
               key={partner.id}
               initial={{ opacity: 0, y: 50 }}
@@ -245,7 +183,7 @@ export const GoalsSection = () => {
           </h3>
 
           <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
-            {sponsors.map((sponsor, index) => (
+            {aboutUsData_uniPatners.map((sponsor, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
