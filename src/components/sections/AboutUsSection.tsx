@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 import { VolunteeringInterest } from "./VolunteeringInterest";
 import { ExternalLink } from "lucide-react";
-import { aboutUsData_goals, aboutUsData_partners, aboutUsData_uniPatners } from "../../data/AboutUSData";
+import { aboutUsData_aboutUs, aboutUsData_goals, aboutUsData_partners, aboutUsData_uniPatners } from "../../data/AboutUSData";
 
 export const GoalsSection = () => {
   const [ref, inView] = useInView({
@@ -17,7 +17,40 @@ export const GoalsSection = () => {
   return (
     <section id="goals" className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
       <div className="container px-4 mx-auto">
-        <motion.div
+        {aboutUsData_aboutUs.map((ourData, index) => (
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: index * 0.08 }}
+            className="mb-16 text-center"
+            key={ourData.id}
+          >
+            <div className="mx-auto max-w-4xl px-4">
+              <h2 className="mb-5 text-4xl font-bold text-gray-900 md:text-5xl">
+                {ourData.topic1} <span className="text-purple-600">{ourData.topic2}</span>
+              </h2>
+
+              {/* <div className="mx-auto mb-6 w-24 h-1 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600" /> */}
+
+              <div className="inline-flex items-center justify-center p-4 mb-8 rounded-full bg-white/60 backdrop-blur-md border border-white/20 shadow-sm hover:scale-105 transition-transform">
+                <img
+                  src={ourData.logo}
+                  alt={ourData.id}
+                  className="h-14 md:h-20 object-contain"
+                  style={{ maxWidth: 220, filter: "brightness(1.05) contrast(1.05)" }}
+                />
+              </div>
+
+              <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700">
+                {ourData.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+
+
+        < motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -81,7 +114,7 @@ export const GoalsSection = () => {
         </div>
 
         {/* Mission Statement */}
-        <motion.div
+        < motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -206,6 +239,6 @@ export const GoalsSection = () => {
         {/* Volunteering CTA */}
         <VolunteeringInterest inView={inView} />
       </div>
-    </section>
+    </section >
   );
 };
