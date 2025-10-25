@@ -46,28 +46,28 @@ export const aboutUsData_uniPatners = [
 
 
 export const aboutUsData_partners = [
-    {
-        id: 1,
-        name: "IEEE Sri Lanka",
-        logo: "ieee-blue-logo.png",
-        description: "Leading professional organization for technology advancement",
-        website: "https://ieee.lk",
-        category: "Technology Partner"
-    },
+    // {
+    //     id: 1,
+    //     name: "IEEE Sri Lanka",
+    //     logo: "ieee-blue-logo.png",
+    //     description: "Leading professional organization for technology advancement",
+    //     website: "https://ieee.lk",
+    //     category: "Technology Partner"
+    // },
     {
         id: 2,
-        name: "IFS Sri Lanka",
-        logo: "ifs-logo-1.png",
-        description: "Global enterprise software company supporting education",
+        name: "IFS",
+        logo: "logo/ifs-logo.png",
+        description: "IFS is a leading global software company with a long-standing presence in Sri Lanka, known for investing significantly in technology talent, education and community development across the country. Through its dedicated outreach and the IFS Foundation, IFS partners closely with IEEE Sri Lanka Inspire to bring logistical support to the Career Compass - Career guidance program, broadening student access to university admissions guidance, scholarship pathways, technical and vocational routes, and practical career skills. IFS’s collaboration with IEEE Sri Lanka Inspire began in March 2020, has enhanced both the scale and quality of these initiatives by enabling more school and regional sessions, speaker engagements and resource sharing, thereby creating valuable connections between students and professionals. In addition to their contributions to IEEE Sri Lanka Inspire, IFS and its Foundation also support a range of broader community projects that improve education, healthcare, and employment for young people and communities throughout Sri Lanka.",
         website: "https://ifs.com",
         category: "Sponsoring Partner"
     },
     {
         id: 3,
-        name: "SL2C Sri Lanka",
-        logo: "whatsapp-image-2025-04-28-at-00-14-42-3d774b8e-1.png",
-        description: "Educational technology and career development organization",
-        website: "#",
+        name: "SL2C",
+        logo: "logo/sl2c-logo.png",
+        description: "SL2College is a Sri Lankan educational nonprofit established in 2005 with the mission of helping students achieve their higher education goals by sharing experiences, providing guidance, and offering practical information on both local and international study options. Since partnering with IEEE Sri Lanka Inspire in 2015, SL2College has played a pivotal role in strengthening the Career Compass program by contributing volunteer mentors and specialized guidance on university admissions, scholarships, standardized tests, and program selection—particularly for students at the O/L and A/L stages preparing for higher education. The strategies and content developed through this collaboration continue to support Career Compass sessions, university-based seminars, and various school outreach activities, where ambassadors and mentors share practical timelines, decision pathways, and real-life experiences to help students make confident, well-informed choices. Beyond its collaboration with IEEE Sri Lanka Inspire, SL2College continues its broader mission through webinars, an active ambassador network, and ongoing mentorship, empowering students to navigate higher education opportunities in Sri Lanka and beyond.",
+        website: "https://web.facebook.com/sl2college/",
         category: "Educational Partner"
     }
 ];

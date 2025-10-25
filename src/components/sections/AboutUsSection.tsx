@@ -42,7 +42,7 @@ export const GoalsSection = () => {
                 />
               </div>
 
-              <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700">
+              <p className="mx-auto max-w-3xl text-lg text-justify leading-relaxed text-gray-700">
                 {ourData.description}
               </p>
             </div>
@@ -156,48 +156,64 @@ export const GoalsSection = () => {
           </p>
         </motion.div>
 
-        {/* Main Partners */}
-        <div className="grid gap-8 mb-16 md:grid-cols-3">
+        {/* Main Partners - horizontal full-width cards */}
+        <div className="flex flex-col gap-6 mb-16">
           {aboutUsData_partners.map((partner, index) => (
             <motion.div
               key={partner.id}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.12 }}
               className="group"
             >
-              <div className="overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
-                <div className="flex items-center justify-center h-48 p-8 bg-gradient-to-br from-purple-50 to-indigo-50">
+              <div className="w-full flex flex-col md:flex-row items-stretch overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
+                {/* Image / Logo panel */}
+                <div className="md:w-1/3 w-full flex items-center justify-center p-6 bg-gradient-to-br from-purple-50 to-indigo-50">
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105"
+                    className="object-contain max-w-full max-h-28 md:max-h-40 transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {partner.name}
-                    </h3>
-                    <span className="px-2 py-1 text-xs font-medium text-purple-600 rounded-full bg-purple-50">
-                      {partner.category}
-                    </span>
+                {/* Content panel */}
+                <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
+                  <div className="flex items-start md:items-center justify-between gap-4 mb-3">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-gray-900">
+                        {partner.name}
+                      </h3>
+                      <p className="text-sm text-gray-500 mt-1 hidden md:block">
+                        {partner.category}
+                      </p>
+                    </div>
+
+                    <div className="md:ml-4">
+                      <span className="px-3 py-1 text-xs font-medium text-purple-600 rounded-full bg-purple-50">
+                        {partner.category}
+                      </span>
+                    </div>
                   </div>
 
-                  <p className="mb-4 leading-relaxed text-gray-600">
+                  <p className="mb-4 leading-relaxed text-justify text-gray-600">
                     {partner.description}
                   </p>
 
-                  <a
-                    href={partner.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center font-medium text-purple-600 transition-colors hover:text-purple-700"
-                  >
-                    Visit Website
-                    <ExternalLink className="w-4 h-4 ml-1" />
-                  </a>
+                  <div className="mt-2 flex items-center justify-between">
+                    <a
+                      href={partner.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-purple-600 bg-white border border-purple-100 rounded-lg shadow-sm hover:bg-purple-50 transition-colors"
+                    >
+                      Visit Website
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </a>
+
+                    <div className="text-sm text-gray-400 hidden md:block">
+                      {/* optional small meta or date */}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
