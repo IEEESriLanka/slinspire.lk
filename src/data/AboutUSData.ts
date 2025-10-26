@@ -36,12 +36,15 @@ export const aboutUsData_goals: Goal[] = [
 ];
 
 export const aboutUsData_uniPatners = [
-    { name: "University of Colombo", logo: "university-of-colombo.png" },
-    { name: "University of Peradeniya", logo: "university-of-peradeniya.png" },
-    { name: "University of Moratuwa", logo: "university-of-moratuwa.png" },
-    { name: "University of Kelaniya", logo: "university-of-kelaniya.png" },
-    { name: "University of Ruhuna", logo: "university-of-ruhuna.png" },
-    { name: "University of Jaffna", logo: "university-of-jaffna.png" }
+    { name: "University of Kelaniya", logo: "uok-sb-logo.png" },
+    { name: "University of Ruhuna", logo: "uor-sb-logo.png" },
+    { name: "University of Vavuniya", logo: "uov-sb-logo.png" },
+    { name: "University of Peradeniya", logo: "uop-sb-logo.png" },
+    { name: "Sabaragamuwa University of Sri Lanka", logo: "susl-sb-logo.png" },
+    { name: "Rajarata University of Sri Lanka", logo: "rusl-sb-logo.png" },
+    { name: "Uwa Wellassa University ", logo: "uwu-sb-logo.png" },
+    { name: "Wayamba University of Sri Lanka", logo: "wusl-sb-logo.png" },
+    { name: "South Eastern University of Sri Lanka", logo: "seusl-sb-logo.png" },
 ];
 
 

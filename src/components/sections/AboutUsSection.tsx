@@ -227,12 +227,14 @@ export const GoalsSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <h3 className="mb-8 text-2xl font-bold text-gray-900">
+          <h2 className="mb-3 text-3xl font-bold text-gray-900">
             University Partners
-          </h3>
-
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
-            {aboutUsData_uniPatners.map((sponsor, index) => (
+          </h2>
+          <p className="max-w-3xl mb-8 mx-auto text-l leading-relaxed text-gray-600">
+            IEEE Sri Lanka Inspire collaborates with 22 IEEE Student Branches established at universities across Sri Lanka, enabling the Career Compass program to reach schools in all nine provinces through local hosting, volunteer support, and speaker coordination. With these branches as on‑ground partners, sessions are delivered consistently and contextually, ensuring equitable access to higher‑education guidance and mentoring nationwide.
+          </p>
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {aboutUsData_uniPatners.map((uni, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -242,8 +244,8 @@ export const GoalsSection = () => {
               >
                 <div className="p-4 transition-all duration-300 border border-gray-100 bg-gray-50 rounded-xl hover:bg-white hover:shadow-lg">
                   <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
+                    src={`${import.meta.env.BASE_URL}${"logo/sb/"}${uni.logo}`}
+                    alt={uni.name}
                     className="object-contain w-full h-16 transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
