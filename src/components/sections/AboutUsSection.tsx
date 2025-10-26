@@ -58,11 +58,11 @@ export const GoalsSection = () => {
           className="mb-16 text-center"
         >
           <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
-            Our <span className="text-purple-600">Goals</span>
+            What <span className="text-purple-600">We Provide</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
+          {/* <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
             What we strive to achieve through our initiatives and programs.
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

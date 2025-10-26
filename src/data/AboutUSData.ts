@@ -11,27 +11,27 @@ export interface Goal {
 export const aboutUsData_goals: Goal[] = [
     {
         id: 1,
-        title: "Educational Access",
-        description: "Provide equal opportunities for all Sri Lankan students regardless of location or socio-economic background.",
-        icon: BookOpen,
+        title: "Tools",
+        description: "Verified degree pathways with entry requirements and a comparison feature to help students find the best-fit programs for their goals.",
+        icon: Globe,
         color: "from-blue-500 to-cyan-500",
-        stats: "9 Provinces Covered"
+        stats: ""
     },
     {
         id: 2,
-        title: "Career Guidance",
-        description: "Help students make informed decisions about their future through comprehensive guidance sessions.",
+        title: "Guidance",
+        description: "Career guidance sessions across all provinces to raise awareness about academic, professional, and vocational qualifications.",
         icon: Target,
         color: "from-purple-500 to-pink-500",
-        stats: "2000+ Students Guided"
+        stats: ""
     },
     {
         id: 3,
-        title: "Community Building",
-        description: "Create a supportive network to students with educators, and professionals across the island.",
-        icon: Users,
+        title: "Resources",
+        description: "Trusted, well-maintained handbooks to help individuals choose the right career paths and higher-education options.",
+        icon: BookOpen,
         color: "from-green-500 to-teal-500",
-        stats: "500+ Community Members"
+        stats: ""
     },
 ];
 
@@ -78,7 +78,7 @@ export const aboutUsData_aboutUs = [
         topic1: "About",
         topic2: "SLInspire",
         logo: "logo/sli-logo.png",
-        description: "IEEE Sri Lanka Inspire (SLInspire) began as a collaborative effort by IEEE  Sri Lanka Section and SL2College to close guidance gaps for school students at key stages in their studies, and it has grown from university‑based seminars into a steady, island‑wide program built on mentorship, partnerships, and practical, student‑focused resources. Over time, shaped by feedback from teachers, counselors and students, IEEE Sri Lanka Inspire strengthened its Career Compass series and mentoring to show clear routes into higher education, scholarships, technical and vocational options, and early career skills. Today, IEEE Sri Lanka Inspire works across all provinces as a national volunteer network, offering structured outreach, clear guidance, and easy‑to‑use resources that help pre university students - O/L and A/L students to make confident, informed choices. For the nation, IEEE Sri Lanka Inspire promotes fair access to opportunity, supports talent pipelines with industry‑relevant skills, and builds a culture of mentorship and civic responsibility, ensuring students, regardless of location, can navigate higher education and contribute meaningfully to Sri Lanka’s knowledge, economy and social progress."
+        description: "IEEE Sri Lanka Inspire (SLInspire) began as a collaborative effort by IEEE  Sri Lanka Section and SL2College to close guidance gaps for school students at key stages in their studies, and it has grown from University‑based seminars into a steady, island‑wide program built on mentorship, partnerships, and practical, student‑focused resources. Over time, shaped by feedback from teachers, counselors and students, IEEE Sri Lanka Inspire strengthened its Career Guidance series and mentoring to show clear routes into higher education, scholarships, technical and vocational options and early career skills. Today, IEEE Sri Lanka Inspire works across all provinces as a national volunteer network under the IEEE Young Professionals Sri Lanka, offering structured outreach, clear guidance, and easy‑to‑use resources that help pre university students - O/L and A/L students to make confident, informed choices. For the nation, IEEE Sri Lanka Inspire promotes fair access to opportunity, supports talent pipelines with industry‑relevant skills, and builds a culture of mentorship and civic responsibility, ensuring students, regardless of location, can navigate higher education and contribute meaningfully to Sri Lanka’s knowledge, economy and social progress."
     },
     {
         id: "ypsl",
