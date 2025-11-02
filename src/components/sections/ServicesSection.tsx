@@ -40,10 +40,10 @@ export const ServicesSection = () => {
       id: 3,
       title: "Session Recordings",
       description:
-        "A categorized collection of past session recordings by the Sri Lanka Inspire team for knowledge and career guidance.",
+          "A categorized collection of past session recordings by the Sri Lanka Inspire team for knowledge and career guidance.",
       icon: <Video className="w-8 h-8" />,
       btnName: "View Past Session Recordings",
-      // actionURL: `${import.meta.env.BASE_URL}/#/career-compass-web`,
+      actionURL: "#/session-recordings",
       image: "service_bg/recording_service_bg.png",
       featured: true,
       color: "from-indigo-500 to-purple-600",
