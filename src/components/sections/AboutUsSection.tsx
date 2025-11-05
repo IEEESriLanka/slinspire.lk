@@ -1,38 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
 import { VolunteeringInterest } from "./VolunteeringInterest";
 import { ExternalLink } from "lucide-react";
-import { aboutUsData_aboutUs, aboutUsData_goals, aboutUsData_partners, aboutUsData_uniPatners } from "../../data/AboutUSData";
+import {
+  aboutUsData_aboutUs,
+  aboutUsData_goals,
+  aboutUsData_partners,
+  aboutUsData_uniPatners
+} from "../../data/AboutUSData";
 
 export const AbousUsSection = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-
-
-
   return (
     <section id="goals" className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
       <div className="container px-4 mx-auto">
         {aboutUsData_aboutUs.map((ourData, index) => (
           <motion.div
-            ref={ref}
+            key={ourData.id}
             initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8, delay: index * 0.08 }}
             className="mb-16 text-center"
-            key={ourData.id}
           >
             <div className="mx-auto max-w-4xl px-4">
               <h2 className="mb-5 text-4xl font-bold text-gray-900 md:text-5xl">
                 {ourData.topic1} <span className="text-purple-600">{ourData.topic2}</span>
               </h2>
-
-              {/* <div className="mx-auto mb-6 w-24 h-1 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600" /> */}
-
               <div className="inline-flex items-center justify-center p-4 mb-8 rounded-full bg-white/60 backdrop-blur-md border border-white/20 shadow-sm hover:scale-105 transition-transform">
                 <img
                   src={ourData.logo}
@@ -41,7 +35,6 @@ export const AbousUsSection = () => {
                   style={{ maxWidth: 220, filter: "brightness(1.05) contrast(1.05)" }}
                 />
               </div>
-
               <p className="mx-auto max-w-3xl text-lg text-justify leading-relaxed text-gray-700">
                 {ourData.description}
               </p>
@@ -49,57 +42,52 @@ export const AbousUsSection = () => {
           </motion.div>
         ))}
 
-
-        < motion.div
-          ref={ref}
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
           <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
             What <span className="text-purple-600">We Provide</span>
           </h2>
-          {/* <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
-            What we strive to achieve through our initiatives and programs.
-          </p> */}
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {
+          {aboutUsData_goals.map((goal, index) => {
+            const Icon = goal.icon;
+            return (
+              <motion.div
+                key={goal.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="h-full flex flex-col overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
+                  {/* Header with gradient */}
+                  <div className={`h-2 bg-gradient-to-r ${goal.color}`} />
 
-            aboutUsData_goals.map((goal, index) => {
-              const Icon = goal.icon;
-
-              return (
-                <motion.div
-                  key={goal.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className="h-full overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
-                    {/* Header with gradient */}
-                    <div className={`h-2 bg-gradient-to-r ${goal.color}`} />
-
-                    <div className="p-8">
-                      {/* Icon */}
-                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${goal.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="w-8 h-8" />
+                  <div className="p-8 flex flex-col flex-1">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`inline-flex items-center justify-center p-3 rounded-xl bg-gradient-to-r ${goal.color} text-white group-hover:scale-105 transition-transform`}>
+                        <Icon className="w-6 h-6" />
                       </div>
+                      <h3 className="text-xl font-bold text-gray-900">{goal.title}</h3>
+                    </div>
 
-                      {/* Content */}
-                      <h3 className="mb-4 text-2xl font-bold text-gray-900">
-                        {goal.title}
-                      </h3>
 
-                      <p className="mb-6 leading-relaxed text-gray-600">
+                    <div className="mb-6">
+                      <p className="leading-relaxed text-gray-600 h-30 md:h-30 lg:h-30 overflow-hidden">
                         {goal.description}
                       </p>
+                    </div>
 
-                      {/* Stats */}
-                      <div className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r ${goal.color} bg-opacity-10 text-sm font-semibold`}>
+                    {/* Stats */}
+                    <div className="mt-auto mb-0 flex items-center justify-between">
+                      <div className={`inline-flex items-center px-4 py-1 rounded-full bg-gradient-to-r ${goal.color} bg-opacity-10 text-sm font-semibold`}>
                         <span className="text-transparent bg-gradient-to-r bg-clip-text" style={{
                           backgroundImage: `linear-gradient(to right, ${goal.color.split(' ')[1]}, ${goal.color.split(' ')[3]})`
                         }}>
@@ -108,24 +96,24 @@ export const AbousUsSection = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              )
-            })}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Mission Statement */}
-        < motion.div
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mb-16 mt-10 text-center"
         >
           <div className="max-w-4xl p-8 mx-auto bg-white shadow-lg rounded-2xl md:p-12">
-            <h3 className="mb-6 text-3xl font-bold text-gray-900">
-              Our Mission
-            </h3>
+            <h3 className="mb-6 text-3xl font-bold text-gray-900">Our Mission</h3>
             <p className="mb-8 text-xl leading-relaxed text-gray-600">
-              "Physically delivering our resources more efficiently and maintaining essential data libraries on online platforms that can be used in the long run"
+              "Physically delivering our resources more efficiently and maintaining essential data
+              libraries on online platforms that can be used in the long run"
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="px-6 py-3 font-semibold text-purple-700 rounded-full bg-purple-50">
@@ -142,9 +130,9 @@ export const AbousUsSection = () => {
         </motion.div>
 
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
@@ -152,22 +140,22 @@ export const AbousUsSection = () => {
             Our <span className="text-purple-600">Partners</span>
           </h2>
           <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
-            Collaborating with leading organizations to provide guidance on the best educational opportunities for Sri Lankan students.
+            Collaborating with leading organizations to provide guidance on the best educational
+            opportunities for Sri Lankan students.
           </p>
         </motion.div>
 
-        {/* Main Partners - horizontal full-width cards */}
         <div className="flex flex-col gap-6 mb-16">
           {aboutUsData_partners.map((partner, index) => (
             <motion.div
               key={partner.id}
               initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.8, delay: index * 0.12 }}
               className="group"
             >
               <div className="w-full flex flex-col md:flex-row items-stretch overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
-                {/* Image / Logo panel */}
                 <div className="md:w-1/3 w-full flex items-center justify-center p-6 bg-gradient-to-br from-purple-50 to-indigo-50">
                   <img
                     src={partner.logo}
@@ -175,30 +163,21 @@ export const AbousUsSection = () => {
                     className="object-contain max-w-full max-h-28 md:max-h-40 transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
-
-                {/* Content panel */}
                 <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
                   <div className="flex items-start md:items-center justify-between gap-4 mb-3">
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-900">
-                        {partner.name}
-                      </h3>
-                      <p className="text-sm text-gray-500 mt-1 hidden md:block">
-                        {partner.category}
-                      </p>
+                      <h3 className="text-xl font-semibold text-gray-900">{partner.name}</h3>
+                      <p className="text-sm text-gray-500 mt-1 hidden md:block">{partner.category}</p>
                     </div>
-
                     <div className="md:ml-4">
                       <span className="px-3 py-1 text-xs font-medium text-purple-600 rounded-full bg-purple-50">
                         {partner.category}
                       </span>
                     </div>
                   </div>
-
                   <p className="mb-4 leading-relaxed text-justify text-gray-600">
                     {partner.description}
                   </p>
-
                   <div className="mt-2 flex items-center justify-between">
                     <a
                       href={partner.website}
@@ -209,10 +188,6 @@ export const AbousUsSection = () => {
                       Visit Website
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </a>
-
-                    <div className="text-sm text-gray-400 hidden md:block">
-                      {/* optional small meta or date */}
-                    </div>
                   </div>
                 </div>
               </div>
@@ -220,25 +195,29 @@ export const AbousUsSection = () => {
           ))}
         </div>
 
-        {/* University Partners */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <h2 className="mb-3 text-3xl font-bold text-gray-900">
-            University Partners
-          </h2>
+          <h2 className="mb-3 text-3xl font-bold text-gray-900">University Partners</h2>
           <p className="max-w-3xl mb-8 mx-auto text-l leading-relaxed text-gray-600">
-            IEEE Sri Lanka Inspire collaborates with 22 IEEE Student Branches established at universities across Sri Lanka, enabling the Career Compass program to reach schools in all nine provinces through local hosting, volunteer support, and speaker coordination. With these branches as on‑ground partners, sessions are delivered consistently and contextually, ensuring equitable access to higher‑education guidance and mentoring nationwide.
+            IEEE Sri Lanka Inspire collaborates with 22 IEEE Student Branches established at
+            universities across Sri Lanka, enabling the Career Compass program to reach schools in
+            all nine provinces through local hosting, volunteer support, and speaker coordination.
+            With these branches as on-ground partners, sessions are delivered consistently and
+            contextually, ensuring equitable access to higher-education guidance and mentoring
+            nationwide.
           </p>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
             {aboutUsData_uniPatners.map((uni, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 className="group"
               >
@@ -254,9 +233,8 @@ export const AbousUsSection = () => {
           </div>
         </motion.div>
 
-        {/* Volunteering CTA */}
-        <VolunteeringInterest inView={inView} />
-      </div>
+        <VolunteeringInterest />
+      </div >
     </section >
   );
 };
