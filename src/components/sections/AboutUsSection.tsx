@@ -6,7 +6,7 @@ import { VolunteeringInterest } from "./VolunteeringInterest";
 import { ExternalLink } from "lucide-react";
 import { aboutUsData_aboutUs, aboutUsData_goals, aboutUsData_partners, aboutUsData_uniPatners } from "../../data/AboutUSData";
 
-export const GoalsSection = () => {
+export const AbousUsSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1

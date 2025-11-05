@@ -9,6 +9,7 @@ import { GalleryPage } from "./pages/GalleryPage";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { TeamPage } from "./pages/TeamPage";
 import { PatnersPage } from "./pages/PatnersPage";
+import { CareerExplorerPage } from "./pages/CareerExplorerPage";
 
 console.log("Deployed at:", new Date().toLocaleString());
 
@@ -25,6 +26,7 @@ export const App = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/career-compass-web" element={<CareerCompassWebPage />} />
               <Route path="/career-compass-book" element={<CareerCompassBookPage />} />
+              <Route path="/career-explorer" element={<CareerExplorerPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/aboutus" element={<AboutUsPage />} />
               {/* <Route path="/patners" element={<PatnersPage />} /> */}

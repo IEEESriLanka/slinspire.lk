@@ -48,6 +48,19 @@ export const ServicesSection = () => {
       featured: true,
       color: "from-indigo-500 to-purple-600",
     },
+    {
+      id: 4,
+      title: "Job Explorer",
+      description:
+        "Explore various job roles, local and foreign job opportunities based on different career sub-fields and Major-fields",
+      icon: <Compass className="w-8 h-8" />,
+      btnName: "Explore Degree Database",
+      actionURL: `${import.meta.env.BASE_URL}#/career-explorer`,
+      image: "service_bg/database1_service_bg.png",
+      featured: true,
+      color: "from-purple-500 to-indigo-600",
+    },
+
     // {
     //   id: 3,
     //   title: "Question Bank",
