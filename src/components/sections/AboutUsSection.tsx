@@ -66,32 +66,34 @@ export const AbousUsSection = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="h-full overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
+                <div className="h-full flex flex-col overflow-hidden transition-all duration-300 bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl">
                   {/* Header with gradient */}
                   <div className={`h-2 bg-gradient-to-r ${goal.color}`} />
 
-                  <div className="p-8">
-                    {/* Icon */}
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${goal.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className="w-8 h-8" />
+                  <div className="p-8 flex flex-col flex-1">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`inline-flex items-center justify-center p-3 rounded-xl bg-gradient-to-r ${goal.color} text-white group-hover:scale-105 transition-transform`}>
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">{goal.title}</h3>
                     </div>
 
-                    {/* Content */}
-                    <h3 className="mb-4 text-2xl font-bold text-gray-900">
-                      {goal.title}
-                    </h3>
 
-                    <p className="mb-6 leading-relaxed text-gray-600">
-                      {goal.description}
-                    </p>
+                    <div className="mb-6">
+                      <p className="leading-relaxed text-gray-600 h-30 md:h-30 lg:h-30 overflow-hidden">
+                        {goal.description}
+                      </p>
+                    </div>
 
                     {/* Stats */}
-                    <div className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r ${goal.color} bg-opacity-10 text-sm font-semibold`}>
-                      <span className="text-transparent bg-gradient-to-r bg-clip-text" style={{
-                        backgroundImage: `linear-gradient(to right, ${goal.color.split(' ')[1]}, ${goal.color.split(' ')[3]})`
-                      }}>
-                        {/* {goal.stats} */}
-                      </span>
+                    <div className="mt-auto mb-0 flex items-center justify-between">
+                      <div className={`inline-flex items-center px-4 py-1 rounded-full bg-gradient-to-r ${goal.color} bg-opacity-10 text-sm font-semibold`}>
+                        <span className="text-transparent bg-gradient-to-r bg-clip-text" style={{
+                          backgroundImage: `linear-gradient(to right, ${goal.color.split(' ')[1]}, ${goal.color.split(' ')[3]})`
+                        }}>
+                          {/* {goal.stats} */}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -232,7 +234,7 @@ export const AbousUsSection = () => {
         </motion.div>
 
         <VolunteeringInterest />
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };
