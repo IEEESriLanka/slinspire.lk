@@ -66,8 +66,23 @@ export const VideoPlaylistPage = () => {
                     <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
                         {category?.description || 'Browse through our video collection'}
                     </p>
-                    <div className="mt-4 text-sm text-gray-500">
-                        {filteredAndSortedVideos.length} video{filteredAndSortedVideos.length !== 1 ? 's' : ''} available
+                    {/* viedo counts and sorted view  */}
+                    <div className="mt-4 flex items-center justify-center gap-3" aria-live="polite" aria-atomic="true">
+                        <span
+                            className="inline-flex items-center justify-center px-3 py-1.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-md"
+                            title="Number of videos"
+                        >
+                            {filteredAndSortedVideos.length}
+                        </span>
+
+                        <span className="text-sm text-gray-600 tracking-wide">
+                            {filteredAndSortedVideos.length === 1 ? 'Video available' : 'Videos available'}
+                        </span>
+
+                        {/* optional small meta badge (shows current sort) */}
+                        <span className="hidden sm:inline-flex items-center text-xs text-gray-500 bg-white/60 px-2 py-1 rounded-full border border-gray-100">
+                            Sorted: <span className="ml-1 font-medium text-gray-700">{sortOrder === 'newest' ? 'Newest' : 'Oldest'}</span>
+                        </span>
                     </div>
                 </motion.div>
 
