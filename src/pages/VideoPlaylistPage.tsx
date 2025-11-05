@@ -6,6 +6,7 @@ import { videos } from '../data/Videos.ts';
 import { videoCategories } from '../data/videoCategories';
 import { Search, SlidersHorizontal, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export const VideoPlaylistPage = () => {
     const { categoryId } = useParams();
@@ -52,17 +53,23 @@ export const VideoPlaylistPage = () => {
             <Header isMainPage={false} />
             <main className="max-w-5xl mx-auto px-4 py-24">
                 {/* Page Header */}
-                <div className="mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                        {category?.name || 'Video Playlist'}
-                    </h1>
-                    <p className="text-lg text-gray-600">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="mb-12 mt-7 text-center"
+                >
+                    <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
+                        {category?.name || 'Video Playlist'} <span className="text-purple-600">{""}</span>
+                    </h2>
+                    <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
                         {category?.description || 'Browse through our video collection'}
                     </p>
                     <div className="mt-4 text-sm text-gray-500">
                         {filteredAndSortedVideos.length} video{filteredAndSortedVideos.length !== 1 ? 's' : ''} available
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Search and Sort Controls */}
                 <div className="bg-white rounded-xl shadow-md p-4 mb-8 flex flex-col md:flex-row gap-4">
@@ -113,11 +120,10 @@ export const VideoPlaylistPage = () => {
                                 <button
                                     onClick={() => handlePageChange(currentPage - 1)}
                                     disabled={currentPage === 1}
-                                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all ${
-                                        currentPage === 1
-                                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                            : 'bg-white text-purple-600 hover:bg-purple-50 shadow-md'
-                                    }`}
+                                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all ${currentPage === 1
+                                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                        : 'bg-white text-purple-600 hover:bg-purple-50 shadow-md'
+                                        }`}
                                 >
                                     <ChevronLeft className="w-5 h-5" />
                                     Previous
@@ -129,11 +135,10 @@ export const VideoPlaylistPage = () => {
                                         <button
                                             key={page}
                                             onClick={() => handlePageChange(page)}
-                                            className={`w-10 h-10 rounded-lg font-medium transition-all ${
-                                                currentPage === page
-                                                    ? 'bg-purple-600 text-white shadow-md'
-                                                    : 'bg-white text-gray-700 hover:bg-purple-50 shadow-md'
-                                            }`}
+                                            className={`w-10 h-10 rounded-lg font-medium transition-all ${currentPage === page
+                                                ? 'bg-purple-600 text-white shadow-md'
+                                                : 'bg-white text-gray-700 hover:bg-purple-50 shadow-md'
+                                                }`}
                                         >
                                             {page}
                                         </button>
@@ -144,11 +149,10 @@ export const VideoPlaylistPage = () => {
                                 <button
                                     onClick={() => handlePageChange(currentPage + 1)}
                                     disabled={currentPage === totalPages}
-                                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all ${
-                                        currentPage === totalPages
-                                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                            : 'bg-white text-purple-600 hover:bg-purple-50 shadow-md'
-                                    }`}
+                                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all ${currentPage === totalPages
+                                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                        : 'bg-white text-purple-600 hover:bg-purple-50 shadow-md'
+                                        }`}
                                 >
                                     Next
                                     <ChevronRight className="w-5 h-5" />
