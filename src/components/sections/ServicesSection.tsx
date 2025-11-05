@@ -50,53 +50,16 @@ export const ServicesSection = () => {
     },
     {
       id: 4,
-      title: "Job Explorer",
+      title: "Career Explorer",
       description:
         "Explore various job roles, local and foreign job opportunities based on different career sub-fields and Major-fields",
       icon: <Compass className="w-8 h-8" />,
-      btnName: "Explore Degree Database",
+      btnName: "Explore Career Opportunities",
       actionURL: `${import.meta.env.BASE_URL}#/career-explorer`,
-      image: "service_bg/database1_service_bg.png",
+      image: "service_bg/career_service_bg.png",
       featured: true,
       color: "from-purple-500 to-indigo-600",
     },
-
-    // {
-    //   id: 3,
-    //   title: "Question Bank",
-    //   description: "Practice with thousands of categorized exam questions for O/L and A/L preparations.",
-    //   icon: <HelpCircle className="w-6 h-6" />,
-    //   btnName: "Start Practicing",
-    //   image: "question-bank.png",
-    //   color: "from-blue-500 to-cyan-500"
-    // },
-    // {
-    //   id: 4,
-    //   title: "Past Papers",
-    //   description: "Access comprehensive collection of O/L and A/L past papers with model answers.",
-    //   icon: <FileText className="w-6 h-6" />,
-    //   btnName: "View Collection",
-    //   image: "past-papers.png",
-    //   color: "from-green-500 to-teal-500"
-    // },
-    // {
-    //   id: 5,
-    //   title: "Online Forum",
-    //   description: "Connect with peers and experts to discuss academic topics and get guidance.",
-    //   icon: <MessageSquare className="w-6 h-6" />,
-    //   btnName: "Join Discussion",
-    //   image: "online-forum.png",
-    //   color: "from-orange-500 to-red-500"
-    // },
-    // {
-    //   id: 6,
-    //   title: "Mentorship Program",
-    //   description: "Get paired with industry professionals and university students for personalized guidance.",
-    //   icon: <Users className="w-6 h-6" />,
-    //   btnName: "Find Mentor",
-    //   image: "career-compass.png",
-    //   color: "from-pink-500 to-rose-500"
-    // }
   ];
 
   const featuredServices = services.filter(service => service.featured);
