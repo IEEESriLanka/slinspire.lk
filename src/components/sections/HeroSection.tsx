@@ -98,9 +98,9 @@ export const HeroSection = () => {
             transition={{ delay: 0.4 }}
             className="mb-6 text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl"
           >
-            Sri Lanka{" "}
+            IEEE Sri Lanka{" "}
             <span className="text-transparent bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text">
-              INSPIRE
+              Inspire
             </span>
           </motion.h1>
 
@@ -110,7 +110,7 @@ export const HeroSection = () => {
             transition={{ delay: 0.6 }}
             className="mb-4 text-xl font-light text-purple-100 md:text-2xl"
           >
-            IEEE National Project
+            National Project
           </motion.p>
 
           <motion.p
@@ -151,7 +151,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="grid max-w-3xl grid-cols-1 gap-8 mx-auto md:grid-cols-3"
+            className="grid max-w-3xl grid-cols-1 mb-5 gap-8 mx-auto md:grid-cols-3"
           >
             {stats.map((stat, index) => (
               <motion.div

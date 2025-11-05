@@ -30,7 +30,7 @@ export const Header = ({ isMainPage }: HeaderProps) => {
     // { name: "Seminars", href: "#seminars" },
     { name: "Gallery", href: "#gallery", hasDropdown: false },
     { name: "About Us", href: "#aboutus", hasDropdown: false },
-    { name: "Our Partners", href: "#patners", hasDropdown: false },
+    // { name: "Our Partners", href: "#patners", hasDropdown: false },
     { name: "Our Team", href: "#team", hasDropdown: true },
   ];
 

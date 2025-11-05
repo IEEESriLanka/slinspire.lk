@@ -9,6 +9,7 @@ import { GalleryPage } from "./pages/GalleryPage";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { TeamPage } from "./pages/TeamPage";
 import { PatnersPage } from "./pages/PatnersPage";
+import { ScrollToTop } from "./components/layout/ScrollTop";
 
 console.log("Deployed at:", new Date().toLocaleString());
 
@@ -21,13 +22,14 @@ export const App = () => {
       <ErrorBoundary>
         <LoadingProvider>
           <Router>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/career-compass-web" element={<CareerCompassWebPage />} />
               <Route path="/career-compass-book" element={<CareerCompassBookPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/aboutus" element={<AboutUsPage />} />
-              <Route path="/patners" element={<PatnersPage />} />
+              {/* <Route path="/patners" element={<PatnersPage />} /> */}
               <Route path="/team" element={<TeamPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
