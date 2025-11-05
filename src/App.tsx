@@ -9,8 +9,8 @@ import { GalleryPage } from "./pages/GalleryPage";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { TeamPage } from "./pages/TeamPage";
 import { PatnersPage } from "./pages/PatnersPage";
-import {SessionRecordingsPage} from "./pages/SessionRecordingsPage.tsx";
-import {VideoPlaylistPage} from "./pages/VideoPlaylistPage.tsx";
+import { SessionRecordingsPage } from "./pages/SessionRecordingsPage.tsx";
+import { VideoPlaylistPage } from "./pages/VideoPlaylistPage.tsx";
 import { ScrollToTop } from "./components/layout/ScrollTop";
 
 console.log("Deployed at:", new Date().toLocaleString());
