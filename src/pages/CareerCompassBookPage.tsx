@@ -12,6 +12,7 @@ export const CareerCompassBookPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Career Compass <span className="text-purple-600">Book</span>
           </h1>
+          <h2 className='text-3xl font-bold my-5 text-red-400'>{`{This section of the website is still under development}`}</h2>
           <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed">
             Explore your career options with our comprehensive guide, designed to empower Sri Lankan students and professionals. [Sample Texts]
           </p>
