@@ -11,6 +11,9 @@ import { TeamPage } from "./pages/TeamPage";
 import { PatnersPage } from "./pages/PatnersPage";
 import {SessionRecordingsPage} from "./pages/SessionRecordingsPage.tsx";
 import {VideoPlaylistPage} from "./pages/VideoPlaylistPage.tsx";
+import StepUpPage from "./pages/step-up/page.tsx";
+import RegisterPage from "./pages/step-up/register.tsx";
+import SuccessPage from "./pages/step-up/success.tsx";
 
 console.log("Deployed at:", new Date().toLocaleString());
 
@@ -33,7 +36,14 @@ export const App = () => {
               <Route path="/team" element={<TeamPage />} />
               <Route path="/session-recordings" element={<SessionRecordingsPage />} />
               <Route path="/playlist/:categoryId" element={<VideoPlaylistPage />} />
+
+              {/* Step Up Event*/}
+              <Route path="/step-up" element={<StepUpPage />} />
+              <Route path="/step-up/register" element={<RegisterPage />} />
+              <Route path="/step-up/success" element={<SuccessPage />} />
+
               <Route path="*" element={<HomePage />} />
+
             </Routes>
           </Router>
         </LoadingProvider>
