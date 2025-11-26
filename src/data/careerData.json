@@ -1,0 +1,2546 @@
+[
+    {
+        "major": "Arts (Visual & Performing)",
+        "sub": "Performing Arts - Music, Dance, Drama",
+        "localJobs": [
+            "Music Teacher",
+            "Dance Instructor",
+            "Drama Teacher",
+            "Theater Actor",
+            "Event Performer",
+            "Cultural Officer",
+            "TV/Radio Artist",
+            "Stage Manager"
+        ],
+        "foreignJobs": [
+            "International Performer",
+            "Cruise Ship Entertainer",
+            "Broadway/West End Actor",
+            "Music Therapist",
+            "Arts Administrator",
+            "Festival Coordinator"
+        ]
+    },
+    {
+        "major": "Arts (Visual & Performing)",
+        "sub": "Visual Arts - Art, Sculpture",
+        "localJobs": [
+            "Art Teacher",
+            "Graphic Designer",
+            "Illustrator",
+            "Sculptor",
+            "Gallery Curator",
+            "Art Director",
+            "Set Designer",
+            "Fine Artist"
+        ],
+        "foreignJobs": [
+            "Museum Curator",
+            "Art Gallery Manager",
+            "International Artist",
+            "Art Conservator",
+            "Exhibition Designer",
+            "Art Auction Specialist"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "Anthropology",
+        "localJobs": [
+            "Research Officer",
+            "Cultural Heritage Officer",
+            "Museum Curator",
+            "Social Researcher",
+            "NGO Program Officer",
+            "Development Worker"
+        ],
+        "foreignJobs": [
+            "International Development Consultant",
+            "Cultural Anthropologist",
+            "Field Researcher",
+            "UN Agency Officer",
+            "Archaeological Anthropologist"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "Archaeology",
+        "localJobs": [
+            "Archaeological Officer",
+            "Museum Curator",
+            "Heritage Site Manager",
+            "Research Assistant",
+            "Conservation Officer",
+            "Field Archaeologist"
+        ],
+        "foreignJobs": [
+            "International Archaeological Consultant",
+            "Heritage Conservator",
+            "Museum Archaeologist",
+            "Field Director",
+            "Cultural Resource Manager"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "Geography",
+        "localJobs": [
+            "Geography Teacher",
+            "GIS Analyst",
+            "Urban Planner",
+            "Environmental Consultant",
+            "Cartographer",
+            "Survey Officer",
+            "Climate Analyst"
+        ],
+        "foreignJobs": [
+            "GIS Specialist",
+            "Remote Sensing Analyst",
+            "Urban Development Consultant",
+            "Climate Change Researcher",
+            "Environmental Geographer"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "History",
+        "localJobs": [
+            "History Teacher",
+            "Archivist",
+            "Museum Curator",
+            "Research Officer",
+            "Heritage Officer",
+            "Content Writer",
+            "Historian"
+        ],
+        "foreignJobs": [
+            "International Historian",
+            "Archive Manager",
+            "Historical Consultant",
+            "Museum Director",
+            "Academic Researcher",
+            "Heritage Advisor"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "Philosophy",
+        "localJobs": [
+            "Philosophy Lecturer",
+            "Ethics Consultant",
+            "Content Writer",
+            "Researcher",
+            "Corporate Trainer",
+            "Policy Analyst"
+        ],
+        "foreignJobs": [
+            "Ethics Advisor",
+            "Academic Researcher",
+            "Think Tank Analyst",
+            "Corporate Ethics Officer",
+            "Philosophy Professor"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "Political Science",
+        "localJobs": [
+            "Policy Analyst",
+            "Political Researcher",
+            "Government Officer",
+            "NGO Program Manager",
+            "Political Consultant",
+            "Diplomat"
+        ],
+        "foreignJobs": [
+            "International Relations Officer",
+            "UN Agency Staff",
+            "Think Tank Researcher",
+            "Political Risk Analyst",
+            "Diplomatic Service Officer"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "International Relations",
+        "localJobs": [
+            "Foreign Service Officer",
+            "International Relations Analyst",
+            "NGO Coordinator",
+            "Trade Officer",
+            "Embassy Staff"
+        ],
+        "foreignJobs": [
+            "UN Agency Officer",
+            "International Development Consultant",
+            "Global Policy Analyst",
+            "Diplomatic Corps",
+            "International Trade Specialist"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "Psychology",
+        "localJobs": [
+            "Clinical Psychologist",
+            "Counselor",
+            "HR Consultant",
+            "Organizational Psychologist",
+            "School Counselor",
+            "Therapist",
+            "Research Officer"
+        ],
+        "foreignJobs": [
+            "Clinical Psychologist",
+            "Neuropsychologist",
+            "International Counselor",
+            "Research Psychologist",
+            "Occupational Therapist"
+        ]
+    },
+    {
+        "major": "Humanities & Social Sciences",
+        "sub": "Sociology",
+        "localJobs": [
+            "Social Researcher",
+            "NGO Program Officer",
+            "Community Development Officer",
+            "Policy Analyst",
+            "Market Researcher",
+            "Social Worker"
+        ],
+        "foreignJobs": [
+            "International Development Officer",
+            "Social Policy Consultant",
+            "UN Agency Staff",
+            "Research Sociologist",
+            "Community Development Specialist"
+        ]
+    },
+    {
+        "major": "Law & Human Rights",
+        "sub": "Law",
+        "localJobs": [
+            "Attorney-at-Law",
+            "Legal Officer",
+            "Corporate Lawyer",
+            "Judge",
+            "Magistrate",
+            "Legal Consultant",
+            "Notary Public",
+            "Company Secretary"
+        ],
+        "foreignJobs": [
+            "International Lawyer",
+            "Legal Consultant",
+            "Corporate Counsel",
+            "Human Rights Lawyer",
+            "International Court Attorney"
+        ]
+    },
+    {
+        "major": "Law & Human Rights",
+        "sub": "Human Rights",
+        "localJobs": [
+            "Human Rights Officer",
+            "Legal Aid Lawyer",
+            "NGO Program Manager",
+            "Advocacy Officer",
+            "Policy Analyst",
+            "Researcher"
+        ],
+        "foreignJobs": [
+            "UN Human Rights Officer",
+            "International Human Rights Lawyer",
+            "Advocacy Specialist",
+            "Human Rights Researcher",
+            "Tribunal Attorney"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "English",
+        "localJobs": [
+            "English Teacher",
+            "Content Writer",
+            "Editor",
+            "Translator",
+            "Corporate Trainer",
+            "Copywriter",
+            "Proofreader",
+            "Publishing Executive"
+        ],
+        "foreignJobs": [
+            "ESL Teacher",
+            "International Content Creator",
+            "Editor",
+            "Technical Writer",
+            "Literary Agent",
+            "Publishing Professional"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "Sinhala",
+        "localJobs": [
+            "Sinhala Teacher",
+            "Translator",
+            "Content Writer",
+            "Editor",
+            "Media Professional",
+            "Cultural Officer",
+            "Publishing Staff"
+        ],
+        "foreignJobs": [
+            "Sinhala Language Specialist",
+            "Cultural Liaison",
+            "Translator",
+            "Diaspora Community Officer"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "Tamil",
+        "localJobs": [
+            "Tamil Teacher",
+            "Translator",
+            "Content Writer",
+            "Editor",
+            "Media Professional",
+            "Cultural Officer",
+            "Publishing Staff"
+        ],
+        "foreignJobs": [
+            "Tamil Language Specialist",
+            "Translator",
+            "Cultural Consultant",
+            "International Media Professional"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "Japanese",
+        "localJobs": [
+            "Japanese Teacher",
+            "Translator",
+            "Tour Guide",
+            "BPO Executive",
+            "Corporate Trainer",
+            "Embassy Staff"
+        ],
+        "foreignJobs": [
+            "Japanese Language Teacher (JET Programme)",
+            "Translator",
+            "Interpreter",
+            "International Business Liaison",
+            "Language Consultant"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "Hindi",
+        "localJobs": [
+            "Hindi Teacher",
+            "Translator",
+            "Media Professional",
+            "BPO Executive",
+            "Tour Guide",
+            "Cultural Officer"
+        ],
+        "foreignJobs": [
+            "Hindi Language Teacher",
+            "Translator",
+            "Indian Diaspora Liaison",
+            "Bollywood Industry Professional"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "German",
+        "localJobs": [
+            "German Teacher",
+            "Translator",
+            "Tour Guide",
+            "BPO Executive",
+            "Embassy Staff",
+            "Corporate Trainer"
+        ],
+        "foreignJobs": [
+            "German Language Teacher",
+            "Translator",
+            "Interpreter",
+            "EU Agency Staff",
+            "International Business Consultant"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "Chinese",
+        "localJobs": [
+            "Chinese Teacher",
+            "Translator",
+            "Business Liaison",
+            "BPO Executive",
+            "Tour Guide",
+            "Trade Officer"
+        ],
+        "foreignJobs": [
+            "Chinese Language Teacher",
+            "Translator",
+            "International Business Consultant",
+            "Interpreter",
+            "Cultural Liaison"
+        ]
+    },
+    {
+        "major": "Languages and Literature",
+        "sub": "Other Languages",
+        "localJobs": [
+            "Language Teacher",
+            "Translator",
+            "Interpreter",
+            "BPO Executive",
+            "Cultural Officer",
+            "Tour Guide"
+        ],
+        "foreignJobs": [
+            "Language Specialist",
+            "UN Translator",
+            "International Interpreter",
+            "Language Consultant",
+            "Diplomatic Translator"
+        ]
+    },
+    {
+        "major": "Religious Studies",
+        "sub": "Buddist & Pali Studies",
+        "localJobs": [
+            "Buddhist Studies Teacher",
+            "Religious Officer",
+            "Temple Administrator",
+            "Pali Scholar",
+            "Cultural Officer",
+            "Museum Curator"
+        ],
+        "foreignJobs": [
+            "Buddhist Studies Professor",
+            "Pali Scholar",
+            "International Temple Administrator",
+            "Religious Studies Researcher"
+        ]
+    },
+    {
+        "major": "Religious Studies",
+        "sub": "Arabic & Islamic Studies",
+        "localJobs": [
+            "Arabic Teacher",
+            "Islamic Studies Teacher",
+            "Translator",
+            "Religious Officer",
+            "Cultural Liaison",
+            "Researcher"
+        ],
+        "foreignJobs": [
+            "Arabic Language Teacher (Middle East)",
+            "Islamic Studies Professor",
+            "Translator",
+            "Cultural Consultant",
+            "International Religious Affairs Officer"
+        ]
+    },
+    {
+        "major": "Religious Studies",
+        "sub": "Hindusm",
+        "localJobs": [
+            "Hindu Studies Teacher",
+            "Religious Officer",
+            "Temple Administrator",
+            "Cultural Officer",
+            "Researcher"
+        ],
+        "foreignJobs": [
+            "Hindu Studies Scholar",
+            "International Religious Affairs Officer",
+            "Cultural Consultant",
+            "Temple Administrator (International)"
+        ]
+    },
+    {
+        "major": "Religious Studies",
+        "sub": "Christianity",
+        "localJobs": [
+            "Christian Studies Teacher",
+            "Religious Officer",
+            "Church Administrator",
+            "Chaplain",
+            "NGO Worker",
+            "Researcher"
+        ],
+        "foreignJobs": [
+            "Missionary",
+            "International Church Administrator",
+            "Religious Studies Professor",
+            "Chaplain",
+            "NGO Director"
+        ]
+    },
+    {
+        "major": "Religious Studies",
+        "sub": "Other Religious Studies",
+        "localJobs": [
+            "Religious Studies Teacher",
+            "Interfaith Coordinator",
+            "Cultural Officer",
+            "Researcher",
+            "NGO Program Officer"
+        ],
+        "foreignJobs": [
+            "Comparative Religion Scholar",
+            "Interfaith Dialogue Facilitator",
+            "Religious Studies Researcher",
+            "UN Religious Affairs Officer"
+        ]
+    },
+    {
+        "major": "Education, Teaching & Library",
+        "sub": "Education",
+        "localJobs": [
+            "Educational Consultant",
+            "Curriculum Developer",
+            "Education Officer",
+            "School Principal",
+            "Education Researcher",
+            "Policy Analyst"
+        ],
+        "foreignJobs": [
+            "International School Administrator",
+            "Educational Consultant",
+            "Curriculum Developer",
+            "UNESCO Officer",
+            "Education Researcher"
+        ]
+    },
+    {
+        "major": "Education, Teaching & Library",
+        "sub": "Teaching & Teacher Training",
+        "localJobs": [
+            "Teacher",
+            "Teacher Trainer",
+            "Education Officer",
+            "School Administrator",
+            "Tutor",
+            "Educational Consultant"
+        ],
+        "foreignJobs": [
+            "International School Teacher",
+            "Teacher Trainer",
+            "Curriculum Specialist",
+            "Educational Consultant",
+            "Online Educator"
+        ]
+    },
+    {
+        "major": "Education, Teaching & Library",
+        "sub": "Library Information / Sciences",
+        "localJobs": [
+            "Librarian",
+            "Information Officer",
+            "Digital Archivist",
+            "Records Manager",
+            "Knowledge Manager",
+            "Research Assistant"
+        ],
+        "foreignJobs": [
+            "Digital Librarian",
+            "Information Architect",
+            "Knowledge Manager",
+            "Academic Librarian",
+            "Archive Specialist"
+        ]
+    },
+    {
+        "major": "Training / Coaching",
+        "sub": "Training / Coaching",
+        "localJobs": [
+            "Corporate Trainer",
+            "Life Coach",
+            "Skills Development Officer",
+            "Training Manager",
+            "Soft Skills Trainer",
+            "Career Coach"
+        ],
+        "foreignJobs": [
+            "International Corporate Trainer",
+            "Executive Coach",
+            "Leadership Coach",
+            "Professional Development Consultant",
+            "Online Coach"
+        ]
+    },
+    {
+        "major": "Administration & Secretarial Studies",
+        "sub": "Administration & Secretarial Studies",
+        "localJobs": [
+            "Administrative Officer",
+            "Executive Secretary",
+            "Office Manager",
+            "Personal Assistant",
+            "Admin Executive",
+            "Records Officer"
+        ],
+        "foreignJobs": [
+            "Executive Assistant (International)",
+            "Office Manager",
+            "Administrative Consultant",
+            "Virtual Assistant",
+            "Corporate Secretary"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Journalism",
+        "localJobs": [
+            "Journalist",
+            "News Reporter",
+            "Editor",
+            "News Anchor",
+            "Investigative Reporter",
+            "Sub-Editor",
+            "Content Writer"
+        ],
+        "foreignJobs": [
+            "International Correspondent",
+            "Foreign Bureau Chief",
+            "Freelance Journalist",
+            "News Agency Reporter",
+            "Investigative Journalist"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Print Media (News Paper, Magazine)",
+        "localJobs": [
+            "Print Journalist",
+            "Magazine Editor",
+            "Feature Writer",
+            "Sub-Editor",
+            "Publisher",
+            "Layout Designer"
+        ],
+        "foreignJobs": [
+            "International Magazine Editor",
+            "Feature Writer",
+            "Publishing Executive",
+            "Content Strategist"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Television (TV)",
+        "localJobs": [
+            "TV Producer",
+            "News Anchor",
+            "Video Editor",
+            "Cameraman",
+            "Program Director",
+            "Content Producer",
+            "TV Reporter"
+        ],
+        "foreignJobs": [
+            "International TV Producer",
+            "Broadcasting Professional",
+            "Documentary Filmmaker",
+            "TV Correspondent"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Radio",
+        "localJobs": [
+            "Radio Presenter",
+            "Radio Producer",
+            "Audio Engineer",
+            "Program Director",
+            "RJ",
+            "Content Producer"
+        ],
+        "foreignJobs": [
+            "International Radio Producer",
+            "Podcast Producer",
+            "Broadcasting Specialist",
+            "Audio Content Creator"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Film / Cinema",
+        "localJobs": [
+            "Film Director",
+            "Cinematographer",
+            "Film Editor",
+            "Producer",
+            "Screenwriter",
+            "Film Critic",
+            "Production Manager"
+        ],
+        "foreignJobs": [
+            "International Film Producer",
+            "Director",
+            "Cinematographer",
+            "Film Festival Programmer",
+            "Post-Production Specialist"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Social Media & Internet",
+        "localJobs": [
+            "Social Media Manager",
+            "Content Creator",
+            "Digital Marketing Specialist",
+            "Influencer",
+            "Community Manager",
+            "SEO Specialist"
+        ],
+        "foreignJobs": [
+            "Global Social Media Strategist",
+            "Digital Content Creator",
+            "International Influencer",
+            "Social Media Consultant"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Photography & Videography",
+        "localJobs": [
+            "Photographer",
+            "Videographer",
+            "Wedding Photographer",
+            "Commercial Photographer",
+            "Photo Editor",
+            "Video Editor"
+        ],
+        "foreignJobs": [
+            "International Photographer",
+            "Documentary Photographer",
+            "Commercial Videographer",
+            "Stock Photographer"
+        ]
+    },
+    {
+        "major": "Journalism, Media & Communication",
+        "sub": "Communication",
+        "localJobs": [
+            "Communication Officer",
+            "PR Specialist",
+            "Corporate Communications Manager",
+            "Media Relations Officer",
+            "Content Strategist"
+        ],
+        "foreignJobs": [
+            "Global Communications Manager",
+            "International PR Consultant",
+            "Corporate Communications Director",
+            "Crisis Communication Specialist"
+        ]
+    },
+    {
+        "major": "Medicine (Western & Traditional)",
+        "sub": "Medicine - Western (MBBS)",
+        "localJobs": [
+            "Medical Officer",
+            "General Practitioner",
+            "Specialist Doctor",
+            "Surgeon",
+            "Consultant Physician",
+            "Hospital Administrator"
+        ],
+        "foreignJobs": [
+            "Hospital Doctor (UK",
+            "Middle East",
+            "Australia)",
+            "Specialist Physician",
+            "Surgeon",
+            "Medical Researcher",
+            "WHO Medical Officer"
+        ]
+    },
+    {
+        "major": "Medicine (Western & Traditional)",
+        "sub": "Dental Sciences",
+        "localJobs": [
+            "Dental Surgeon",
+            "Orthodontist",
+            "General Dentist",
+            "Oral Surgeon",
+            "Dental Consultant",
+            "Dental Hospital Administrator"
+        ],
+        "foreignJobs": [
+            "Dentist (UK",
+            "Middle East",
+            "Australia",
+            "Canada)",
+            "Specialist Dentist",
+            "Oral Surgeon",
+            "Dental Researcher"
+        ]
+    },
+    {
+        "major": "Medicine (Western & Traditional)",
+        "sub": "Veterinary Medicine",
+        "localJobs": [
+            "Veterinary Surgeon",
+            "Animal Health Officer",
+            "Livestock Officer",
+            "Pet Clinic Doctor",
+            "Zoo Veterinarian",
+            "Research Officer"
+        ],
+        "foreignJobs": [
+            "Veterinary Surgeon (International)",
+            "Animal Health Consultant",
+            "Zoo Veterinarian",
+            "Wildlife Veterinarian",
+            "Research Veterinarian"
+        ]
+    },
+    {
+        "major": "Medicine (Western & Traditional)",
+        "sub": "Ayurvedic Medicine",
+        "localJobs": [
+            "Ayurvedic Physician",
+            "Ayurveda Hospital Doctor",
+            "Wellness Consultant",
+            "Spa Therapist",
+            "Herbal Medicine Specialist"
+        ],
+        "foreignJobs": [
+            "Ayurvedic Consultant (International)",
+            "Wellness Center Physician",
+            "Holistic Health Practitioner",
+            "Ayurveda Researcher"
+        ]
+    },
+    {
+        "major": "Medicine (Western & Traditional)",
+        "sub": "Unani Medicine",
+        "localJobs": [
+            "Unani Physician",
+            "Traditional Medicine Practitioner",
+            "Wellness Consultant",
+            "Hospital Doctor"
+        ],
+        "foreignJobs": [
+            "Unani Medicine Specialist (Middle East)",
+            "Traditional Medicine Consultant",
+            "Holistic Practitioner"
+        ]
+    },
+    {
+        "major": "Medicine (Western & Traditional)",
+        "sub": "Siddha Medicine",
+        "localJobs": [
+            "Siddha Physician",
+            "Traditional Medicine Practitioner",
+            "Wellness Consultant",
+            "Hospital Doctor"
+        ],
+        "foreignJobs": [
+            "Siddha Medicine Specialist (India",
+            "International)",
+            "Traditional Medicine Researcher",
+            "Holistic Health Practitioner"
+        ]
+    },
+    {
+        "major": "Medicine (Western & Traditional)",
+        "sub": "Accupuncture",
+        "localJobs": [
+            "Acupuncturist",
+            "Pain Management Specialist",
+            "Wellness Therapist",
+            "Alternative Medicine Practitioner"
+        ],
+        "foreignJobs": [
+            "Licensed Acupuncturist (USA",
+            "UK",
+            "Australia)",
+            "Traditional Chinese Medicine Practitioner",
+            "Wellness Consultant"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Biomedical Sciences",
+        "localJobs": [
+            "Biomedical Scientist",
+            "Medical Laboratory Technician",
+            "Research Officer",
+            "Quality Control Officer",
+            "Hospital Lab Staff"
+        ],
+        "foreignJobs": [
+            "Biomedical Scientist (UK",
+            "Middle East)",
+            "Medical Researcher",
+            "Laboratory Manager",
+            "Clinical Trial Coordinator"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Health Promotion",
+        "localJobs": [
+            "Health Promotion Officer",
+            "Public Health Officer",
+            "Community Health Worker",
+            "Health Educator",
+            "NGO Health Officer"
+        ],
+        "foreignJobs": [
+            "International Health Promotion Specialist",
+            "WHO Health Officer",
+            "Global Health Consultant",
+            "Public Health Advisor"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Medical Laboratory Sciences",
+        "localJobs": [
+            "Medical Laboratory Technologist",
+            "Lab Technician",
+            "Pathology Lab Officer",
+            "Quality Control Officer",
+            "Research Assistant"
+        ],
+        "foreignJobs": [
+            "Medical Laboratory Scientist (UK",
+            "Middle East",
+            "Australia)",
+            "Lab Manager",
+            "Clinical Laboratory Specialist"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Nursing",
+        "localJobs": [
+            "Registered Nurse",
+            "Ward Sister",
+            "Nursing Officer",
+            "ICU Nurse",
+            "Theatre Nurse",
+            "Community Nurse",
+            "Nursing Administrator"
+        ],
+        "foreignJobs": [
+            "Registered Nurse (UK",
+            "Middle East",
+            "Australia",
+            "USA",
+            "Canada)",
+            "Travel Nurse",
+            "Specialist Nurse",
+            "Nurse Practitioner"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Pharmacy",
+        "localJobs": [
+            "Pharmacist",
+            "Hospital Pharmacist",
+            "Retail Pharmacist",
+            "Clinical Pharmacist",
+            "Quality Assurance Officer",
+            "Drug Inspector"
+        ],
+        "foreignJobs": [
+            "Registered Pharmacist (UK",
+            "Middle East",
+            "Australia",
+            "Canada)",
+            "Clinical Pharmacist",
+            "Pharmaceutical Researcher"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Physiotherapy",
+        "localJobs": [
+            "Physiotherapist",
+            "Sports Physiotherapist",
+            "Hospital Physiotherapist",
+            "Rehabilitation Specialist",
+            "Private Practitioner"
+        ],
+        "foreignJobs": [
+            "Physiotherapist (UK",
+            "Middle East",
+            "Australia",
+            "Canada)",
+            "Sports Physiotherapist",
+            "Rehabilitation Specialist"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Radiography",
+        "localJobs": [
+            "Radiographer",
+            "CT/MRI Technologist",
+            "Ultrasound Technician",
+            "Radiation Therapist",
+            "Hospital Imaging Staff"
+        ],
+        "foreignJobs": [
+            "Diagnostic Radiographer (UK",
+            "Middle East",
+            "Australia)",
+            "MRI Specialist",
+            "Radiation Therapist",
+            "Imaging Specialist"
+        ]
+    },
+    {
+        "major": "Allied Health Sciences",
+        "sub": "Speech & Hearing Science",
+        "localJobs": [
+            "Speech Therapist",
+            "Audiologist",
+            "Special Education Teacher",
+            "Rehabilitation Officer",
+            "Hospital Therapist"
+        ],
+        "foreignJobs": [
+            "Speech-Language Pathologist (USA",
+            "Canada",
+            "Australia)",
+            "Audiologist",
+            "Hearing Aid Specialist",
+            "Clinical Therapist"
+        ]
+    },
+    {
+        "major": "Sports Related Studies",
+        "sub": "Sports Science",
+        "localJobs": [
+            "Sports Scientist",
+            "Fitness Trainer",
+            "Sports Nutritionist",
+            "Athletic Trainer",
+            "Sports Researcher",
+            "Performance Analyst"
+        ],
+        "foreignJobs": [
+            "Sports Scientist (International)",
+            "Performance Coach",
+            "Athletic Trainer",
+            "Sports Nutritionist",
+            "Fitness Consultant"
+        ]
+    },
+    {
+        "major": "Sports Related Studies",
+        "sub": "Physical Education",
+        "localJobs": [
+            "PE Teacher",
+            "Sports Coach",
+            "Fitness Instructor",
+            "Sports Coordinator",
+            "School Sports Master",
+            "Athletic Coach"
+        ],
+        "foreignJobs": [
+            "International School PE Teacher",
+            "Sports Coach",
+            "Athletic Director",
+            "Fitness Consultant"
+        ]
+    },
+    {
+        "major": "Formal Sciences",
+        "sub": "Mathematics",
+        "localJobs": [
+            "Mathematics Teacher",
+            "Data Analyst",
+            "Statistician",
+            "Actuary",
+            "Research Officer",
+            "Quantitative Analyst",
+            "Academic"
+        ],
+        "foreignJobs": [
+            "Data Scientist",
+            "Quantitative Analyst",
+            "Actuary",
+            "Mathematics Professor",
+            "Research Mathematician",
+            "Financial Analyst"
+        ]
+    },
+    {
+        "major": "Formal Sciences",
+        "sub": "Statistics",
+        "localJobs": [
+            "Statistician",
+            "Data Analyst",
+            "Research Officer",
+            "Biostatistician",
+            "Market Researcher",
+            "Quality Analyst"
+        ],
+        "foreignJobs": [
+            "Data Scientist",
+            "Statistical Consultant",
+            "Biostatistician",
+            "Market Research Analyst",
+            "Econometrician"
+        ]
+    },
+    {
+        "major": "Formal Sciences",
+        "sub": "Logic",
+        "localJobs": [
+            "Logic Teacher",
+            "AI Researcher",
+            "Systems Analyst",
+            "Data Scientist",
+            "Academic Researcher",
+            "Philosopher"
+        ],
+        "foreignJobs": [
+            "AI Researcher",
+            "Computational Logic Specialist",
+            "Academic Professor",
+            "Formal Methods Engineer"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Astronomy",
+        "localJobs": [
+            "Astronomy Researcher",
+            "Science Educator",
+            "Planetarium Officer",
+            "Observatory Staff",
+            "Science Communicator"
+        ],
+        "foreignJobs": [
+            "Astronomer",
+            "Astrophysicist",
+            "Space Agency Researcher",
+            "Observatory Scientist",
+            "Space Mission Specialist"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Biology",
+        "localJobs": [
+            "Biology Teacher",
+            "Research Officer",
+            "Lab Technician",
+            "Conservation Officer",
+            "Quality Control Officer",
+            "Biologist"
+        ],
+        "foreignJobs": [
+            "Research Biologist",
+            "Biotech Researcher",
+            "Conservation Biologist",
+            "Marine Biologist",
+            "Wildlife Biologist"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Chemistry",
+        "localJobs": [
+            "Chemist",
+            "Chemistry Teacher",
+            "Quality Control Officer",
+            "Lab Technician",
+            "Research Officer",
+            "Industrial Chemist"
+        ],
+        "foreignJobs": [
+            "Research Chemist",
+            "Pharmaceutical Chemist",
+            "Analytical Chemist",
+            "Chemical Engineer",
+            "Laboratory Manager"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Earth Sciences",
+        "localJobs": [
+            "Geologist",
+            "Environmental Consultant",
+            "Mining Geologist",
+            "Gem Specialist",
+            "Research Officer",
+            "Survey Officer"
+        ],
+        "foreignJobs": [
+            "Geologist",
+            "Environmental Consultant",
+            "Mining Engineer",
+            "Petroleum Geologist",
+            "Geophysicist"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Zoology",
+        "localJobs": [
+            "Zoologist",
+            "Wildlife Officer",
+            "Zoo Keeper",
+            "Conservation Officer",
+            "Research Officer",
+            "Environmental Consultant"
+        ],
+        "foreignJobs": [
+            "Wildlife Biologist",
+            "Zoologist",
+            "Conservation Scientist",
+            "Zoo Curator",
+            "Wildlife Researcher"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Botany",
+        "localJobs": [
+            "Botanist",
+            "Plant Research Officer",
+            "Agricultural Officer",
+            "Herbarium Curator",
+            "Environmental Consultant",
+            "Science Teacher"
+        ],
+        "foreignJobs": [
+            "Plant Scientist",
+            "Botanical Researcher",
+            "Horticulturist",
+            "Conservation Botanist",
+            "Plant Pathologist"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Physics",
+        "localJobs": [
+            "Physics Teacher",
+            "Research Officer",
+            "Industrial Physicist",
+            "Quality Control Officer",
+            "Lab Technician",
+            "Academic"
+        ],
+        "foreignJobs": [
+            "Physicist",
+            "Research Scientist",
+            "Medical Physicist",
+            "Quantum Computing Specialist",
+            "Astrophysicist"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Microbiology",
+        "localJobs": [
+            "Microbiologist",
+            "Lab Technician",
+            "Quality Control Officer",
+            "Research Officer",
+            "Hospital Lab Staff",
+            "Food Microbiologist"
+        ],
+        "foreignJobs": [
+            "Microbiologist",
+            "Clinical Microbiologist",
+            "Research Scientist",
+            "Quality Assurance Microbiologist"
+        ]
+    },
+    {
+        "major": "Natural Science",
+        "sub": "Biochemistry",
+        "localJobs": [
+            "Biochemist",
+            "Lab Technician",
+            "Research Officer",
+            "Quality Control Officer",
+            "Clinical Biochemist",
+            "Pharmaceutical Researcher"
+        ],
+        "foreignJobs": [
+            "Biochemist",
+            "Research Scientist",
+            "Pharmaceutical Researcher",
+            "Clinical Biochemist",
+            "Biotech Scientist"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Agriculture, Plantation",
+        "localJobs": [
+            "Agricultural Officer",
+            "Plantation Manager",
+            "Extension Officer",
+            "Crop Specialist",
+            "Tea/Rubber/Coconut Manager",
+            "Agri-Business Officer"
+        ],
+        "foreignJobs": [
+            "Agricultural Consultant",
+            "Plantation Manager (International)",
+            "Crop Specialist",
+            "Agricultural Researcher",
+            "Farm Manager"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Animal Science, Livestock",
+        "localJobs": [
+            "Livestock Officer",
+            "Animal Husbandry Officer",
+            "Dairy Farm Manager",
+            "Poultry Farm Manager",
+            "Animal Nutritionist"
+        ],
+        "foreignJobs": [
+            "Livestock Consultant",
+            "Animal Scientist",
+            "Dairy Specialist",
+            "Ranch Manager",
+            "Animal Nutrition Specialist"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Biotechnology & Moleculor Biology",
+        "localJobs": [
+            "Biotechnologist",
+            "Research Officer",
+            "Lab Technician",
+            "Quality Control Officer",
+            "Molecular Biologist",
+            "Genetic Analyst"
+        ],
+        "foreignJobs": [
+            "Biotechnology Researcher",
+            "Molecular Biologist",
+            "Genetic Engineer",
+            "Biotech Consultant",
+            "R&D Scientist"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Environmental Science",
+        "localJobs": [
+            "Environmental Officer",
+            "EIA Consultant",
+            "Sustainability Officer",
+            "Climate Change Officer",
+            "Conservation Officer",
+            "Research Officer"
+        ],
+        "foreignJobs": [
+            "Environmental Consultant",
+            "Sustainability Manager",
+            "Climate Analyst",
+            "Conservation Scientist",
+            "Environmental Researcher"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Fisheries, Aqua Culture & Marine Sciences",
+        "localJobs": [
+            "Fisheries Officer",
+            "Aquaculture Manager",
+            "Marine Biologist",
+            "Fish Farm Manager",
+            "Research Officer",
+            "Extension Officer"
+        ],
+        "foreignJobs": [
+            "Marine Biologist",
+            "Aquaculture Consultant",
+            "Fisheries Manager",
+            "Marine Researcher",
+            "Oceanographer"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Food Science",
+        "localJobs": [
+            "Food Technologist",
+            "Quality Assurance Officer",
+            "Product Development Officer",
+            "Food Safety Officer",
+            "R&D Officer"
+        ],
+        "foreignJobs": [
+            "Food Scientist",
+            "Quality Manager",
+            "Product Developer",
+            "Food Safety Consultant",
+            "R&D Manager"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Microbiology",
+        "localJobs": [
+            "Microbiologist",
+            "Lab Technician",
+            "Quality Control Officer",
+            "Research Officer",
+            "Hospital Lab Staff",
+            "Food Microbiologist"
+        ],
+        "foreignJobs": [
+            "Microbiologist",
+            "Clinical Microbiologist",
+            "Research Scientist",
+            "Quality Assurance Microbiologist"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Nanotechnology",
+        "localJobs": [
+            "Nanotechnology Researcher",
+            "Lab Technician",
+            "Quality Control Officer",
+            "R&D Officer",
+            "Material Scientist"
+        ],
+        "foreignJobs": [
+            "Nanotechnology Researcher",
+            "Material Scientist",
+            "Nanotech Engineer",
+            "R&D Scientist",
+            "Product Developer"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Nutrition",
+        "localJobs": [
+            "Nutritionist",
+            "Dietitian",
+            "Public Health Nutritionist",
+            "Sports Nutritionist",
+            "Clinical Nutritionist",
+            "Consultant"
+        ],
+        "foreignJobs": [
+            "Registered Dietitian (USA",
+            "UK",
+            "Australia)",
+            "Clinical Nutritionist",
+            "Sports Nutritionist",
+            "Public Health Nutritionist"
+        ]
+    },
+    {
+        "major": "Applied Sciences",
+        "sub": "Electronics",
+        "localJobs": [
+            "Electronics Engineer",
+            "Technician",
+            "Service Engineer",
+            "Quality Control Engineer",
+            "R&D Engineer",
+            "Production Engineer"
+        ],
+        "foreignJobs": [
+            "Electronics Engineer",
+            "Hardware Engineer",
+            "R&D Engineer",
+            "Test Engineer",
+            "Design Engineer"
+        ]
+    },
+    {
+        "major": "Banking & Insurance",
+        "sub": "Banking",
+        "localJobs": [
+            "Bank Officer",
+            "Credit Analyst",
+            "Relationship Manager",
+            "Branch Manager",
+            "Treasury Officer",
+            "Loan Officer",
+            "Operations Manager"
+        ],
+        "foreignJobs": [
+            "Investment Banker",
+            "Financial Analyst",
+            "Risk Manager",
+            "Treasury Manager",
+            "Wealth Manager",
+            "Banking Consultant"
+        ]
+    },
+    {
+        "major": "Banking & Insurance",
+        "sub": "Insurance",
+        "localJobs": [
+            "Insurance Underwriter",
+            "Claims Officer",
+            "Insurance Agent",
+            "Actuary",
+            "Risk Analyst",
+            "Insurance Consultant"
+        ],
+        "foreignJobs": [
+            "Actuary",
+            "Risk Manager",
+            "Insurance Underwriter",
+            "Claims Manager",
+            "Reinsurance Specialist",
+            "Insurance Consultant"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Accounting & Finance",
+        "localJobs": [
+            "Accountant",
+            "Financial Analyst",
+            "Auditor",
+            "Tax Consultant",
+            "Management Accountant",
+            "Finance Manager",
+            "CFO"
+        ],
+        "foreignJobs": [
+            "Chartered Accountant (International)",
+            "Financial Analyst",
+            "Investment Analyst",
+            "Tax Consultant",
+            "Corporate Finance Manager"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Business Administration / Management",
+        "localJobs": [
+            "Business Manager",
+            "Operations Manager",
+            "General Manager",
+            "Business Analyst",
+            "Consultant",
+            "CEO",
+            "Entrepreneur"
+        ],
+        "foreignJobs": [
+            "Business Consultant",
+            "Operations Manager",
+            "Strategy Consultant",
+            "General Manager",
+            "Business Development Manager"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Business Economics",
+        "localJobs": [
+            "Economist",
+            "Business Analyst",
+            "Market Researcher",
+            "Policy Analyst",
+            "Economic Consultant",
+            "Research Officer"
+        ],
+        "foreignJobs": [
+            "Economist",
+            "Economic Consultant",
+            "Policy Advisor",
+            "Market Analyst",
+            "International Development Economist"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Business Information Systems",
+        "localJobs": [
+            "Business Analyst",
+            "Systems Analyst",
+            "IT Manager",
+            "ERP Consultant",
+            "Data Analyst",
+            "Project Manager"
+        ],
+        "foreignJobs": [
+            "Business Intelligence Analyst",
+            "Systems Architect",
+            "IT Consultant",
+            "ERP Specialist",
+            "Data Analytics Manager"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Entrepreneurship",
+        "localJobs": [
+            "Entrepreneur",
+            "Startup Founder",
+            "Business Owner",
+            "Innovation Consultant",
+            "Incubator Manager",
+            "Business Advisor"
+        ],
+        "foreignJobs": [
+            "International Entrepreneur",
+            "Startup Founder",
+            "Innovation Consultant",
+            "Business Accelerator Manager",
+            "Venture Consultant"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Human Resources Management (HRM)",
+        "localJobs": [
+            "HR Manager",
+            "Recruitment Specialist",
+            "Training Manager",
+            "HR Business Partner",
+            "HR Consultant",
+            "Talent Manager"
+        ],
+        "foreignJobs": [
+            "HR Manager",
+            "Talent Acquisition Manager",
+            "Global HR Consultant",
+            "Compensation & Benefits Manager",
+            "HRIS Specialist"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "International Business",
+        "localJobs": [
+            "Export Manager",
+            "Import Manager",
+            "Trade Officer",
+            "International Business Consultant",
+            "Logistics Manager"
+        ],
+        "foreignJobs": [
+            "International Trade Manager",
+            "Global Business Consultant",
+            "Export/Import Manager",
+            "International Relations Officer"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Marketing & Sales",
+        "localJobs": [
+            "Marketing Manager",
+            "Sales Manager",
+            "Brand Manager",
+            "Digital Marketer",
+            "Sales Executive",
+            "Marketing Executive"
+        ],
+        "foreignJobs": [
+            "Global Marketing Manager",
+            "International Sales Manager",
+            "Brand Strategist",
+            "Digital Marketing Specialist",
+            "Growth Hacker"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Quality Management",
+        "localJobs": [
+            "Quality Manager",
+            "QA/QC Officer",
+            "Compliance Officer",
+            "Quality Auditor",
+            "Process Improvement Specialist"
+        ],
+        "foreignJobs": [
+            "Quality Manager",
+            "Six Sigma Consultant",
+            "Quality Auditor",
+            "Compliance Manager",
+            "TQM Specialist"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Supply Chain Management",
+        "localJobs": [
+            "Supply Chain Manager",
+            "Logistics Manager",
+            "Procurement Officer",
+            "Warehouse Manager",
+            "Operations Coordinator"
+        ],
+        "foreignJobs": [
+            "Global Supply Chain Manager",
+            "Logistics Consultant",
+            "Procurement Manager",
+            "Supply Chain Analyst"
+        ]
+    },
+    {
+        "major": "Business Management",
+        "sub": "Project Management",
+        "localJobs": [
+            "Project Manager",
+            "Project Coordinator",
+            "PMO Manager",
+            "Agile Coach",
+            "Scrum Master",
+            "Program Manager"
+        ],
+        "foreignJobs": [
+            "International Project Manager",
+            "PMP Consultant",
+            "Program Director",
+            "Portfolio Manager",
+            "Agile Coach"
+        ]
+    },
+    {
+        "major": "Aviation & Shipping",
+        "sub": "Air Ticketing & Aviation",
+        "localJobs": [
+            "Airline Ticketing Agent",
+            "Ground Staff",
+            "Customer Service Officer",
+            "Cargo Agent",
+            "Airport Operations Officer"
+        ],
+        "foreignJobs": [
+            "Airline Staff (International)",
+            "Airport Manager",
+            "Aviation Consultant",
+            "Flight Operations Officer"
+        ]
+    },
+    {
+        "major": "Aviation & Shipping",
+        "sub": "Shipping & Cargo",
+        "localJobs": [
+            "Shipping Executive",
+            "Cargo Officer",
+            "Port Operations Officer",
+            "Freight Forwarder",
+            "Shipping Agent",
+            "Logistics Officer"
+        ],
+        "foreignJobs": [
+            "Shipping Manager",
+            "Port Operations Manager",
+            "Maritime Consultant",
+            "Cargo Superintendent",
+            "Ship Broker"
+        ]
+    },
+    {
+        "major": "Hospitality, Tourism & Event Management",
+        "sub": "Tourism Hospitality & Hotel Management",
+        "localJobs": [
+            "Hotel Manager",
+            "Front Office Manager",
+            "F&B Manager",
+            "Tour Operator",
+            "Travel Agent",
+            "Resort Manager",
+            "Chef"
+        ],
+        "foreignJobs": [
+            "International Hotel Manager",
+            "Resort Manager",
+            "Cruise Ship Staff",
+            "Hospitality Consultant",
+            "Hotel Operations Director"
+        ]
+    },
+    {
+        "major": "Hospitality, Tourism & Event Management",
+        "sub": "Event Management",
+        "localJobs": [
+            "Event Manager",
+            "Event Coordinator",
+            "Wedding Planner",
+            "Conference Organizer",
+            "MICE Specialist",
+            "Exhibition Manager"
+        ],
+        "foreignJobs": [
+            "International Event Manager",
+            "Destination Wedding Planner",
+            "Conference Director",
+            "MICE Specialist"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Aerospace Engineering",
+        "localJobs": [
+            "Aerospace Engineer",
+            "Design Engineer",
+            "Research Officer",
+            "Quality Engineer",
+            "Manufacturing Engineer"
+        ],
+        "foreignJobs": [
+            "Aerospace Engineer (USA",
+            "Europe)",
+            "Aircraft Design Engineer",
+            "Flight Test Engineer",
+            "Space Systems Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Automobile Engineering",
+        "localJobs": [
+            "Automotive Engineer",
+            "Service Engineer",
+            "Quality Engineer",
+            "Production Engineer",
+            "R&D Engineer",
+            "Technical Officer"
+        ],
+        "foreignJobs": [
+            "Automotive Engineer (Germany",
+            "Japan",
+            "USA)",
+            "Design Engineer",
+            "Vehicle Dynamics Engineer",
+            "R&D Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Agricultural Engineering",
+        "localJobs": [
+            "Agricultural Engineer",
+            "Irrigation Engineer",
+            "Farm Mechanization Officer",
+            "Design Engineer",
+            "Extension Officer"
+        ],
+        "foreignJobs": [
+            "Agricultural Engineer",
+            "Irrigation Specialist",
+            "Farm Systems Engineer",
+            "Agricultural Consultant"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Chemical & Process Engineering",
+        "localJobs": [
+            "Chemical Engineer",
+            "Process Engineer",
+            "Production Engineer",
+            "Quality Engineer",
+            "Plant Manager",
+            "R&D Engineer"
+        ],
+        "foreignJobs": [
+            "Chemical Engineer",
+            "Process Engineer",
+            "Plant Manager",
+            "Refinery Engineer",
+            "Petrochemical Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Civil Engineering",
+        "localJobs": [
+            "Civil Engineer",
+            "Site Engineer",
+            "Project Engineer",
+            "Structural Engineer",
+            "Highway Engineer",
+            "Consultant"
+        ],
+        "foreignJobs": [
+            "Civil Engineer (Middle East",
+            "Australia",
+            "UK)",
+            "Structural Engineer",
+            "Project Manager",
+            "Construction Manager"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Computer Engineering",
+        "localJobs": [
+            "Computer Engineer",
+            "Hardware Engineer",
+            "Embedded Systems Engineer",
+            "Network Engineer",
+            "Systems Engineer"
+        ],
+        "foreignJobs": [
+            "Computer Engineer",
+            "Hardware Design Engineer",
+            "Embedded Systems Specialist",
+            "Systems Architect"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Earth Resources Engineering",
+        "localJobs": [
+            "Mining Engineer",
+            "Quarry Manager",
+            "Geological Engineer",
+            "Gem Mining Engineer",
+            "Resource Engineer"
+        ],
+        "foreignJobs": [
+            "Mining Engineer (Australia",
+            "Canada)",
+            "Geological Engineer",
+            "Resource Extraction Specialist",
+            "Mine Manager"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Electrical Engineering",
+        "localJobs": [
+            "Electrical Engineer",
+            "Design Engineer",
+            "Power Engineer",
+            "Project Engineer",
+            "Maintenance Engineer",
+            "Consultant"
+        ],
+        "foreignJobs": [
+            "Electrical Engineer",
+            "Power Systems Engineer",
+            "Design Engineer",
+            "Electrical Consultant",
+            "Grid Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Electronic Engineering",
+        "localJobs": [
+            "Electronic Engineer",
+            "Design Engineer",
+            "Test Engineer",
+            "R&D Engineer",
+            "Telecommunication Engineer",
+            "Service Engineer"
+        ],
+        "foreignJobs": [
+            "Electronic Design Engineer",
+            "IC Design Engineer",
+            "Test Engineer",
+            "R&D Engineer",
+            "Hardware Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Environmental Engineering",
+        "localJobs": [
+            "Environmental Engineer",
+            "EIA Consultant",
+            "Waste Management Engineer",
+            "Water Resources Engineer",
+            "Project Engineer"
+        ],
+        "foreignJobs": [
+            "Environmental Engineer",
+            "Sustainability Consultant",
+            "Water Resources Engineer",
+            "Environmental Manager"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Marine Engineering",
+        "localJobs": [
+            "Marine Engineer",
+            "Ship Engineer",
+            "Port Engineer",
+            "Naval Architect",
+            "Offshore Engineer",
+            "Dockyard Engineer"
+        ],
+        "foreignJobs": [
+            "Marine Engineer (International Shipping)",
+            "Chief Engineer",
+            "Offshore Engineer",
+            "Naval Architect",
+            "Port Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Mechanical Engineering",
+        "localJobs": [
+            "Mechanical Engineer",
+            "Design Engineer",
+            "Production Engineer",
+            "Maintenance Engineer",
+            "HVAC Engineer",
+            "Quality Engineer"
+        ],
+        "foreignJobs": [
+            "Mechanical Engineer",
+            "Design Engineer",
+            "Manufacturing Engineer",
+            "Project Engineer",
+            "R&D Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Mechatronic Engineering",
+        "localJobs": [
+            "Mechatronics Engineer",
+            "Automation Engineer",
+            "Robotics Engineer",
+            "Control Systems Engineer",
+            "Design Engineer"
+        ],
+        "foreignJobs": [
+            "Mechatronics Engineer",
+            "Robotics Engineer",
+            "Automation Specialist",
+            "Control Systems Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Production Engineering",
+        "localJobs": [
+            "Production Engineer",
+            "Manufacturing Engineer",
+            "Plant Engineer",
+            "Quality Engineer",
+            "Process Engineer",
+            "Operations Manager"
+        ],
+        "foreignJobs": [
+            "Manufacturing Engineer",
+            "Production Manager",
+            "Industrial Engineer",
+            "Operations Engineer"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Telecommunication Engineering",
+        "localJobs": [
+            "Telecom Engineer",
+            "Network Engineer",
+            "RF Engineer",
+            "Transmission Engineer",
+            "Telecom Consultant",
+            "Project Engineer"
+        ],
+        "foreignJobs": [
+            "Telecom Engineer",
+            "Network Architect",
+            "RF Engineer",
+            "Wireless Engineer",
+            "5G Specialist"
+        ]
+    },
+    {
+        "major": "Engineering",
+        "sub": "Textile Engineering",
+        "localJobs": [
+            "Textile Engineer",
+            "Production Manager",
+            "Quality Engineer",
+            "Design Engineer",
+            "Dyeing & Printing Engineer",
+            "Plant Manager"
+        ],
+        "foreignJobs": [
+            "Textile Engineer",
+            "Technical Textile Specialist",
+            "Production Manager",
+            "Quality Manager"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Fashiion & Textile Designing",
+        "localJobs": [
+            "Fashion Designer",
+            "Textile Designer",
+            "Merchandiser",
+            "Pattern Maker",
+            "Fashion Illustrator",
+            "Boutique Owner"
+        ],
+        "foreignJobs": [
+            "Fashion Designer (International)",
+            "Textile Designer",
+            "Fashion Merchandiser",
+            "Brand Designer",
+            "Fashion Consultant"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Gem and Jewellery",
+        "localJobs": [
+            "Gem Specialist",
+            "Jewellery Designer",
+            "Gemologist",
+            "Diamond Grader",
+            "Jewellery Merchandiser",
+            "Gem Trader"
+        ],
+        "foreignJobs": [
+            "Gemologist",
+            "Jewellery Designer",
+            "Diamond Expert",
+            "Gem Trader",
+            "Luxury Brand Designer"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Leather and Footwear",
+        "localJobs": [
+            "Leather Designer",
+            "Footwear Designer",
+            "Production Manager",
+            "Quality Controller",
+            "Product Developer"
+        ],
+        "foreignJobs": [
+            "Footwear Designer",
+            "Leather Goods Designer",
+            "Product Developer",
+            "Brand Designer"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Metal and Light Engineering",
+        "localJobs": [
+            "Metal Craftsman",
+            "Product Designer",
+            "Production Supervisor",
+            "Quality Inspector",
+            "Workshop Manager"
+        ],
+        "foreignJobs": [
+            "Metal Designer",
+            "Product Development Specialist",
+            "Manufacturing Consultant"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Rubber and Plastic",
+        "localJobs": [
+            "Rubber Technologist",
+            "Plastic Engineer",
+            "Production Manager",
+            "Quality Officer",
+            "Product Developer",
+            "Plant Manager"
+        ],
+        "foreignJobs": [
+            "Polymer Engineer",
+            "Plastics Technologist",
+            "Manufacturing Engineer",
+            "R&D Specialist"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Printing And Packaging",
+        "localJobs": [
+            "Printing Technologist",
+            "Packaging Designer",
+            "Production Manager",
+            "Pre-Press Technician",
+            "Quality Controller"
+        ],
+        "foreignJobs": [
+            "Packaging Designer",
+            "Print Production Manager",
+            "Graphic Production Specialist"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Wood Related",
+        "localJobs": [
+            "Furniture Designer",
+            "Carpenter",
+            "Wood Technologist",
+            "Production Manager",
+            "Quality Inspector",
+            "Workshop Manager"
+        ],
+        "foreignJobs": [
+            "Furniture Designer",
+            "Wood Technologist",
+            "Craft Specialist",
+            "Product Designer"
+        ]
+    },
+    {
+        "major": "Designing & Crafting",
+        "sub": "Creative Designing",
+        "localJobs": [
+            "Graphic Designer",
+            "UI/UX Designer",
+            "Product Designer",
+            "Creative Director",
+            "Brand Designer",
+            "Visual Designer"
+        ],
+        "foreignJobs": [
+            "Creative Director",
+            "UI/UX Designer",
+            "Brand Strategist",
+            "Design Consultant",
+            "Visual Designer"
+        ]
+    },
+    {
+        "major": "Construction Related Fields",
+        "sub": "Architecture",
+        "localJobs": [
+            "Architect",
+            "Design Architect",
+            "Project Architect",
+            "Landscape Architect",
+            "Urban Designer",
+            "Interior Architect"
+        ],
+        "foreignJobs": [
+            "Architect (Middle East",
+            "Australia",
+            "UK)",
+            "Urban Planner",
+            "Design Consultant",
+            "Landscape Architect"
+        ]
+    },
+    {
+        "major": "Construction Related Fields",
+        "sub": "Facilities Management",
+        "localJobs": [
+            "Facilities Manager",
+            "Property Manager",
+            "Maintenance Manager",
+            "Building Manager",
+            "Operations Manager"
+        ],
+        "foreignJobs": [
+            "Facilities Manager",
+            "Property Manager",
+            "Real Estate Manager",
+            "FM Consultant"
+        ]
+    },
+    {
+        "major": "Construction Related Fields",
+        "sub": "Interior Designing",
+        "localJobs": [
+            "Interior Designer",
+            "Space Planner",
+            "Furniture Designer",
+            "Design Consultant",
+            "Showroom Designer"
+        ],
+        "foreignJobs": [
+            "Interior Designer",
+            "Space Planner",
+            "Design Consultant",
+            "Hospitality Designer",
+            "Retail Designer"
+        ]
+    },
+    {
+        "major": "Construction Related Fields",
+        "sub": "Land Surveying",
+        "localJobs": [
+            "Land Surveyor",
+            "Survey Engineer",
+            "GIS Officer",
+            "Cadastral Surveyor",
+            "Engineering Surveyor"
+        ],
+        "foreignJobs": [
+            "Land Surveyor",
+            "Geospatial Engineer",
+            "Survey Consultant",
+            "Cadastral Specialist"
+        ]
+    },
+    {
+        "major": "Construction Related Fields",
+        "sub": "Landscaping",
+        "localJobs": [
+            "Landscape Designer",
+            "Horticulturist",
+            "Garden Designer",
+            "Landscape Architect",
+            "Green Space Planner"
+        ],
+        "foreignJobs": [
+            "Landscape Architect",
+            "Urban Landscape Designer",
+            "Golf Course Designer",
+            "Landscape Consultant"
+        ]
+    },
+    {
+        "major": "Construction Related Fields",
+        "sub": "Quantity Surveying",
+        "localJobs": [
+            "Quantity Surveyor",
+            "Cost Estimator",
+            "Project QS",
+            "Contract Administrator",
+            "Cost Consultant"
+        ],
+        "foreignJobs": [
+            "Quantity Surveyor (Middle East",
+            "UK",
+            "Australia)",
+            "Cost Manager",
+            "Commercial Manager",
+            "Contract Consultant"
+        ]
+    },
+    {
+        "major": "Computer Science & IT",
+        "sub": "Hardware and Networking",
+        "localJobs": [
+            "Network Engineer",
+            "System Administrator",
+            "Network Administrator",
+            "IT Support Engineer",
+            "Hardware Engineer"
+        ],
+        "foreignJobs": [
+            "Network Architect",
+            "Cloud Engineer",
+            "Infrastructure Engineer",
+            "IT Consultant",
+            "System Engineer"
+        ]
+    },
+    {
+        "major": "Computer Science & IT",
+        "sub": "Information Communication Technology (ICT)",
+        "localJobs": [
+            "ICT Officer",
+            "IT Manager",
+            "Systems Administrator",
+            "IT Consultant",
+            "Technology Coordinator"
+        ],
+        "foreignJobs": [
+            "IT Consultant",
+            "Technology Manager",
+            "Digital Transformation Specialist",
+            "ICT Project Manager"
+        ]
+    },
+    {
+        "major": "Computer Science & IT",
+        "sub": "Information Security",
+        "localJobs": [
+            "Information Security Analyst",
+            "Cybersecurity Specialist",
+            "Security Engineer",
+            "Penetration Tester",
+            "Security Consultant"
+        ],
+        "foreignJobs": [
+            "Cybersecurity Analyst",
+            "Security Architect",
+            "Ethical Hacker",
+            "SOC Analyst",
+            "Security Consultant"
+        ]
+    },
+    {
+        "major": "Computer Science & IT",
+        "sub": "Software Engineering / Computer Science",
+        "localJobs": [
+            "Software Engineer",
+            "Full Stack Developer",
+            "Backend Developer",
+            "Frontend Developer",
+            "Mobile App Developer",
+            "DevOps Engineer",
+            "Data Scientist",
+            "AI/ML Engineer",
+            "QA Engineer",
+            "System Analyst"
+        ],
+        "foreignJobs": [
+            "Software Engineer (USA",
+            "UK",
+            "Australia",
+            "Canada)",
+            "Data Scientist",
+            "AI Engineer",
+            "Cloud Architect",
+            "Solutions Architect",
+            "Tech Lead"
+        ]
+    },
+    {
+        "major": "Computer Science & IT",
+        "sub": "Web Development",
+        "localJobs": [
+            "Web Developer",
+            "Frontend Developer",
+            "Backend Developer",
+            "Full Stack Developer",
+            "WordPress Developer",
+            "E-commerce Developer"
+        ],
+        "foreignJobs": [
+            "Web Developer",
+            "Frontend Engineer",
+            "Backend Engineer",
+            "Full Stack Engineer",
+            "Remote Developer"
+        ]
+    },
+    {
+        "major": "Computer Science & IT",
+        "sub": "Data Base Management",
+        "localJobs": [
+            "Database Administrator",
+            "Database Developer",
+            "Data Engineer",
+            "SQL Developer",
+            "DBA Consultant"
+        ],
+        "foreignJobs": [
+            "Database Administrator",
+            "Data Engineer",
+            "Database Architect",
+            "SQL Specialist",
+            "Data Platform Engineer"
+        ]
+    },
+    {
+        "major": "Industry based skills",
+        "sub": "Industry based skills",
+        "localJobs": [
+            "Technical Officer",
+            "Skilled Worker",
+            "Technician",
+            "Operations Staff",
+            "Supervisor",
+            "Foreman"
+        ],
+        "foreignJobs": [
+            "Technical Specialist",
+            "Skilled Tradesperson",
+            "Industrial Technician",
+            "Operations Supervisor"
+        ]
+    },
+    {
+        "major": "Technology",
+        "sub": "Bio System Technology",
+        "localJobs": [
+            "Biosystems Engineer",
+            "Agricultural Technologist",
+            "Food Process Engineer",
+            "Environmental Technologist"
+        ],
+        "foreignJobs": [
+            "Biosystems Engineer",
+            "Agricultural Technology Specialist",
+            "Process Engineer",
+            "Technology Consultant"
+        ]
+    },
+    {
+        "major": "Technology",
+        "sub": "Engineering Technology",
+        "localJobs": [
+            "Engineering Technologist",
+            "Technical Officer",
+            "Production Technologist",
+            "Quality Technologist",
+            "Maintenance Technologist"
+        ],
+        "foreignJobs": [
+            "Engineering Technologist",
+            "Technical Specialist",
+            "Process Technologist",
+            "Manufacturing Technologist"
+        ]
+    },
+    {
+        "major": "Forensic Sciences",
+        "sub": "Crime Investigation",
+        "localJobs": [
+            "Crime Investigator",
+            "Forensic Analyst",
+            "Scene of Crime Officer",
+            "Investigation Officer",
+            "Intelligence Officer"
+        ],
+        "foreignJobs": [
+            "Forensic Investigator",
+            "Crime Scene Investigator",
+            "Intelligence Analyst",
+            "Investigation Specialist"
+        ]
+    },
+    {
+        "major": "Forensic Sciences",
+        "sub": "Criminology",
+        "localJobs": [
+            "Criminologist",
+            "Research Officer",
+            "Policy Analyst",
+            "Probation Officer",
+            "Correctional Officer",
+            "Crime Analyst"
+        ],
+        "foreignJobs": [
+            "Criminologist",
+            "Criminal Justice Researcher",
+            "Policy Advisor",
+            "Crime Analyst",
+            "Forensic Consultant"
+        ]
+    }
+]

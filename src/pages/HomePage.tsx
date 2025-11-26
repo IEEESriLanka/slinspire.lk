@@ -3,10 +3,7 @@ import { Header } from "../components/layout/Header";
 import { HeroSection } from "../components/sections/HeroSection";
 import { ServicesSection } from "../components/sections/ServicesSection";
 import { MonthlySeminarsSection } from "../components/sections/MonthlySeminarsSection";
-import { GallerySection } from "../components/sections/GallerySection";
 import { RegistrationSection } from "../components/sections/RegistrationSection";
-import { PartnersSection } from "../components/sections/PartnersSection";
-import { GoalsSection } from "../components/sections/AboutUsSection";
 import { FeedbacksSection } from "../components/sections/FeedbacksSection";
 import { Footer } from "../components/layout/Footer";
 
