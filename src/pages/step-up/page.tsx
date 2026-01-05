@@ -240,13 +240,13 @@ export default function StepUpPage() {
                 </div>
             </section>
 
-            {/* SPEAKER & AGENDA - Mobile First */}
+            {/* Speaker & Agenda - Mobile First */}
             <section ref={agendaRef} className="py-20 px-4 relative z-20">
                 <h2 className="text-4xl sm:text-6xl font-black text-center pb-16 mb-16 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
                     Featured Speaker & Agenda
                 </h2>
 
-                {/* Speaker Card - Full Width on Mobile */}
+                {/* Speaker Card */}
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 sm:p-10 text-center mb-12">
                         <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto mb-8">
@@ -257,7 +257,7 @@ export default function StepUpPage() {
                             </div>
                         </div>
                         <h3 className="text-3xl sm:text-4xl font-black">Mr. Rushdi Hadhi</h3>
-                        <p className="text-xl sm:text-2xl text-purple-300 mt-3">Senior Manager - Startup Ecosystem Development at ICTA</p>
+                        <p className="text-xl sm:text-2xl text-purple-300 mt-3">Career Consultant & Coach</p>
                         <p className="text-gray-300 mt-2">Ecosystem Builder • Career Consultant • Certified HR Trainer</p>
                         <div className="mt-8 bg-white/5 rounded-2xl p-6 border border-white/10">
                             <p className="text-gray-400">Keynote Topic:</p>
@@ -265,19 +265,26 @@ export default function StepUpPage() {
                         </div>
                     </div>
 
-                    {/* Agenda - Stacked on Mobile */}
+                    {/* AGENDA - Updated from your document */}
                     <div className="space-y-4">
                         {[
-                            { time: "09:30 AM", title: "Registration & Welcome Coffee" },
-                            { time: "10:00 AM", title: "Opening Ceremony", speaker: "Organizers" },
-                            { time: "10:30 AM", title: "Keynote Speech", speaker: "Mr. Rushdi Hadhi" },
-                            { time: "11:30 AM", title: "University Guidance Panel" },
-                            { time: "01:00 PM", title: "Networking Lunch" },
-                            { time: "02:00 PM", title: "1-on-1 Career Counseling" },
-                            { time: "03:30 PM", title: "Certificate Ceremony & Group Photo" },
+                            { time: "09.00 - 09.30 AM", title: "Arrival of the guests and gathering" },
+                            { time: "09.30 - 09.40 AM", title: "Welcome Speech" },
+                            { time: "09.40 - 09.50 AM", title: "Session Introduction" },
+                            { time: "09.50 - 10.00 AM", title: "Official Launching" },
+                            { time: "10.00 - 10.20 AM", title: "Guest Speech", speaker: "Representative from the Ministry of Education" },
+                            { time: "10.20 - 11.50 AM", title: "Main Session - Section 1", speaker: "Mr. Rushdi Hadhi" },
+                            { time: "11.50 - 12.50 PM", title: "Main Session - Section 2", speaker: "SLI Team" },
+                            { time: "12.50 - 01.00 PM", title: "Q&A Session" },
                         ].map((item, i) => (
-                            <div key={i} className="flex gap-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5">
-                                <div className="text-xl sm:text-2xl font-bold text-purple-400 w-24 sm:w-32 shrink-0">{item.time}</div>
+                            <div key={i} className="flex flex-col sm:flex-row gap-2 sm:gap-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:items-center hover:bg-white/10 transition">
+                                
+                                {/* TIME COLUMN: Increased width + whitespace-nowrap prevents line break */}
+                                <div className="text-xl sm:text-2xl font-bold text-purple-400 w-full sm:w-64 shrink-0 whitespace-nowrap">
+                                    {item.time}
+                                </div>
+
+                                {/* CONTENT COLUMN */}
                                 <div>
                                     <h4 className="text-lg sm:text-xl font-semibold">{item.title}</h4>
                                     {item.speaker && <p className="text-purple-300 text-sm sm:text-base mt-1">{item.speaker}</p>}
