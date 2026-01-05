@@ -40,7 +40,7 @@ export default function StepUpPage() {
     }, []);
 
     useEffect(() => {
-        const target = new Date('2025-12-18T10:00:00').getTime();
+        const target = new Date('2026-01-17T10:00:00').getTime();
         const i = setInterval(() => {
             const diff = target - Date.now();
             if (diff > 0) {
@@ -68,33 +68,85 @@ export default function StepUpPage() {
     };
 
     return (
-        <div className="bg-black text-white min-h-screen">
+        <div className="bg-black text-white min-h-screen overflow-x-hidden">
 
-            {/* NAVBAR - Mobile Friendly */}
-            <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-black/90 border-b border-white/10">
+            {/* NAVBAR - Fully Transparent with Larger Right Logo */}
+            <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent pt-4">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+                    
+                    {/* Left Logo */}
                     <img src="/step-up/logo.png" alt="IEEE" className="h-10 sm:h-12" />
-                    <button onClick={shareEvent} className="flex items-center gap-2 px-4 py-2 text-sm sm:text-base bg-white/10 rounded-full hover:bg-white/20 transition">
+                    
+                    {/* Center Share Button */}
+                    <button onClick={shareEvent} className="flex items-center gap-2 px-4 py-2 text-sm sm:text-base bg-white/10 rounded-full hover:bg-white/20 transition backdrop-blur-md">
                         <Share2 className="w-4 h-4 sm:w-5 sm:h-5" /> Share
                     </button>
-                    <img src="/step-up/YPSummit2025.png" alt="YP SUMMIT 2025" className="h-10 sm:h-12" />
+                    
+                    {/* Right Logo (Increased Size) */}
+                    {/* Changed from h-12 to h-16 (mobile) and h-24 (desktop) */}
+                    <img 
+                        src="/step-up/YPSummit2025.png" 
+                        alt="YP SUMMIT 2025" 
+                        className="h-14 sm:h-24 object-contain" 
+                    />
                 </div>
             </nav>
 
-            {/* HERO - Fully Responsive */}
-            <section className="pt-24 pb-20 px-4 min-h-screen flex items-center justify-center">
-                <div ref={heroRef} className={`text-center transition-all duration-1000 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight">
+            {/* HERO - With Floating Robot */}
+            <section className="relative pt-24 pb-20 px-4 min-h-screen flex items-center justify-center overflow-hidden">
+                
+                {/* --- ROBOT LAYER START --- */}
+                {/* This allows the robot to sit behind the text but in front of the black background */}
+                <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none select-none z-0">
+                    
+                    {/* Glowing Aura behind robot */}
+                    <div className="absolute w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] animate-pulse" />
+                    
+                    {/* Floating Robot Image */}
+                    {/* Replace '/step-up/robot.png' with your actual transparent robot image */}
+                    <motion.img 
+                        src="/step-up/robot.png" 
+                        alt="AI Companion"
+                        initial={{ y: 0, opacity: 0 }}
+                        animate={{ 
+                            y: [0, -20, 0], // Gentle floating motion
+                            opacity: 0.6 // Keep opacity slightly lower to not distract from text
+                        }}
+                        transition={{ 
+                            y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                            opacity: { duration: 1, delay: 0.5 }
+                        }}
+                        className="w-[300px] md:w-[500px] lg:w-[600px] object-contain drop-shadow-2xl mix-blend-lighten"
+                        style={{
+                            // Position it slightly to the right to balance the centered text
+                            // Or keep it centered if you want it directly behind
+                            transform: 'translateX(20%)' 
+                        }}
+                    />
+                </div>
+                {/* --- ROBOT LAYER END --- */}
+
+                {/* Main Content - z-10 ensures it sits ON TOP of the robot */}
+                <div ref={heroRef} className={`relative z-10 text-center transition-all duration-1000 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight drop-shadow-xl">
                         <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
                             STEP UP TO THE FUTURE
                         </span>
                     </h1>
-                    <p className="text-2xl sm:text-4xl md:text-5xl text-gray-300 mb-6">After A/L — Find Your Future Path</p>
-                    <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 px-4">
+                    
+                    {/* Added a subtle backdrop to text to ensure readability over the robot */}
+                    <div className="inline-block relative">
+                         <p className="text-2xl sm:text-4xl md:text-5xl text-gray-100 font-bold mb-6 drop-shadow-lg">
+                            After A/L — Find Your Future Path
+                        </p>
+                    </div>
+
+                    <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 px-4 drop-shadow-md bg-black/30 backdrop-blur-sm rounded-xl py-2">
                         Join 110 top A/L students for the biggest career guidance event in Sri Lanka. Meet CEOs, deans, and experts — all in one day.
                     </p>
+                    
                     {!isSoldOut ? (
-                        <Link to="/step-up/register" className="inline-flex items-center gap-3 px-10 py-5 sm:px-14 sm:py-7 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-xl sm:text-2xl font-bold hover:scale-110 transition shadow-2xl">
+                        <Link to="/step-up/register" className="inline-flex items-center gap-3 px-10 py-5 sm:px-14 sm:py-7 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-xl sm:text-2xl font-bold hover:scale-110 transition shadow-2xl hover:shadow-purple-500/50">
                             Register Now <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8" />
                         </Link>
                     ) : (
@@ -104,7 +156,7 @@ export default function StepUpPage() {
             </section>
 
             {/* LIVE STATS - Mobile Grid */}
-            <section className="py-12 bg-white/5 border-y border-white/10">
+            <section className="py-12 bg-white/5 border-y border-white/10 relative z-20">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                     <div className="grid grid-cols-3 gap-4 sm:gap-8">
                         <div>
@@ -131,7 +183,7 @@ export default function StepUpPage() {
             </section>
 
             {/* COUNTDOWN - Mobile Optimized */}
-            <section ref={countdownRef} className="py-20 px-4">
+            <section ref={countdownRef} className="py-20 px-4 relative z-20">
                 <h2 className="text-4xl sm:text-6xl font-black text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                     Event Starts In
                 </h2>
@@ -154,7 +206,7 @@ export default function StepUpPage() {
             </section>
 
             {/* EVENT DESCRIPTION */}
-            <section className="py-16 px-4 bg-white/5">
+            <section className="py-16 px-4 bg-white/5 relative z-20">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl sm:text-5xl font-black mb-8">What is STEP UP TO THE FUTURE?</h2>
                     <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
@@ -166,12 +218,12 @@ export default function StepUpPage() {
             </section>
 
             {/* ORGANIZERS - Mobile Stacked */}
-            <section ref={orgRef} className="py-16 px-4">
+            <section ref={orgRef} className="py-16 px-4 relative z-20">
                 <h2 className="text-4xl sm:text-5xl font-black text-center mb-12">Organized By</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {[
                         { name: "IEEE Sri Lanka INSPIRE", logo: "/logo/sli-logo.png", desc: "IEEE initiative empowering students nationwide with guidance." },
-                        { name: "SL2C", logo: "/logo/sl2c-logo.png", desc: "SL2College strengthening student futures through mentorship and guidance." }
+                        { name: "SL2C", logo: "/logo/yp_logo.png", desc: "SL2College strengthening student futures through mentorship and guidance." }
                     ].map((org, i) => (
                         <motion.div
                             key={i}
@@ -189,7 +241,7 @@ export default function StepUpPage() {
             </section>
 
             {/* SPEAKER & AGENDA - Mobile First */}
-            <section ref={agendaRef} className="py-20 px-4">
+            <section ref={agendaRef} className="py-20 px-4 relative z-20">
                 <h2 className="text-4xl sm:text-6xl font-black text-center pb-16 mb-16 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
                     Featured Speaker & Agenda
                 </h2>
@@ -205,7 +257,7 @@ export default function StepUpPage() {
                             </div>
                         </div>
                         <h3 className="text-3xl sm:text-4xl font-black">Mr. Rushdi Hadhi</h3>
-                        <p className="text-xl sm:text-2xl text-purple-300 mt-3">Career Consultant & Coach</p>
+                        <p className="text-xl sm:text-2xl text-purple-300 mt-3">Senior Manager - Startup Ecosystem Development at ICTA</p>
                         <p className="text-gray-300 mt-2">Ecosystem Builder • Career Consultant • Certified HR Trainer</p>
                         <div className="mt-8 bg-white/5 rounded-2xl p-6 border border-white/10">
                             <p className="text-gray-400">Keynote Topic:</p>
@@ -237,7 +289,7 @@ export default function StepUpPage() {
             </section>
 
             {/* DATE, TIME & LOCATION */}
-            <section className="py-16 px-4 bg-white/5">
+            <section className="py-16 px-4 bg-white/5 relative z-20">
                 <h2 className="text-4xl sm:text-5xl font-black text-center mb-12">When & Where</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
                     <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 text-center">
@@ -269,7 +321,7 @@ export default function StepUpPage() {
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-24 px-4 text-center">
+            <section className="py-24 px-4 text-center relative z-20">
                 <h2 className="text-5xl sm:text-7xl font-black mb-10 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                     Secure Your Spot Now
                 </h2>
