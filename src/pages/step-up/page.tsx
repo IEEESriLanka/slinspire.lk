@@ -210,9 +210,9 @@ export default function StepUpPage() {
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl sm:text-5xl font-black mb-8">What is STEP UP TO THE FUTURE?</h2>
                     <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                        STEP UP is Sri Lanka’s most exclusive career guidance event for A/L completed students.
-                        Get direct guidance from university deans, top CEOs, and industry leaders.
-                        Only 110 seats — handpicked for the most ambitious students in the country.
+                        Are you wondering what comes next after your A/L examinations? Feeling unsure about choosing the right degree or planning a successful career path?
+
+IEEE Sri Lanka Inspire proudly presents a comprehensive career guidance session designed especially for after A/L students to help you make informed decisions about your future.
                     </p>
                 </div>
             </section>
@@ -301,12 +301,12 @@ export default function StepUpPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
                     <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 text-center">
                         <Calendar className="w-12 h-12 mx-auto mb-4 text-purple-400" />
-                        <p className="text-2xl sm:text-3xl font-black">December 18, 2025</p>
-                        <p className="text-gray-400">Wednesday</p>
+                        <p className="text-2xl sm:text-3xl font-black">January 17, 2026</p>
+                        <p className="text-gray-400">Saturday</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 text-center">
                         <Clock className="w-12 h-12 mx-auto mb-4 text-pink-400" />
-                        <p className="text-2xl sm:text-3xl font-black">10:00 AM - 4:00 PM</p>
+                        <p className="text-2xl sm:text-3xl font-black">9:00 AM-1:00 PM</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 text-center">
                         <MapPin className="w-12 h-12 mx-auto mb-4 text-cyan-400" />

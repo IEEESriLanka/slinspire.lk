@@ -1,8 +1,8 @@
 // src/pages/step-up/register.tsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Loader2, CheckCircle } from "lucide-react";
+import { ArrowRight, Loader2, CheckCircle, ChevronLeft } from "lucide-react";
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxylGlC8OofZg_DpFeymtV13ddD5LFo1Tn3qvSYYZ1ZaadquDDpXwRduGS7Pw6bV-DZ/exec";
 
@@ -44,7 +44,7 @@ export default function RegisterPage() {
         finally {
             setLoading(false);
             setSuccess(true);
-            setTimeout(() => navigate("/step-up/success"), 3000);
+            setTimeout(() => navigate("/step-up"), 4000);
         }
     };
 
@@ -55,140 +55,240 @@ export default function RegisterPage() {
                 input:-webkit-autofill:hover,
                 input:-webkit-autofill:focus {
                     -webkit-text-fill-color: #ffffff !important;
-                    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+                    -webkit-box-shadow: 0 0 0 1000px #000000 inset !important;
                     transition: background-color 5000s ease-in-out 0s;
                 }
                 select option {
-                    background: #1a0033 !important;
+                    background: #0f0c29 !important;
                     color: white !important;
+                    padding: 10px;
                 }
-                @keyframes float {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-20px); }
-                }
-                .float { animation: float 12s ease-in-out infinite; }
             `}</style>
 
-            <div className="min-h-screen bg-black flex items-center justify-center px-4 sm:px-6 py-12 relative overflow-hidden">
-                {/* Background Orbs */}
-                <div className="fixed inset-0 -z-10 pointer-events-none">
-                    <div className="absolute top-10 left-10 w-72 h-72 sm:w-96 sm:h-96 bg-purple-700/50 rounded-full blur-3xl float" />
-                    <div className="absolute bottom-10 right-10 w-72 h-72 sm:w-96 sm:h-96 bg-pink-700/50 rounded-full blur-3xl float delay-3000" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 bg-cyan-700/40 rounded-full blur-3xl float delay-6000" />
+            <div className="min-h-screen bg-black text-white relative overflow-hidden flex flex-col">
+                
+                {/* BACKGROUND GLOWS */}
+                <div className="fixed inset-0 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse" />
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-600/20 rounded-full blur-[120px] animate-pulse delay-1000" />
                 </div>
 
-                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-4xl">
-                    {/* Header */}
-                    <div className="text-center mb-10 sm:mb-16">
-                        <motion.h1
-                            initial={{ scale: 0.8 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: "spring", stiffness: 200 }}
-                            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
+                {/* NAVBAR */}
+                <nav className="relative z-50 px-6 py-6 flex justify-between items-center">
+                    <Link to="/step-up" className="flex items-center gap-2 text-gray-400 hover:text-white transition group">
+                        <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition" />
+                        <span className="text-lg font-medium">Back to Event</span>
+                    </Link>
+                    <img src="/step-up/logo.png" alt="IEEE" className="h-8 sm:h-10 opacity-80" />
+                </nav>
+
+                {/* MAIN CONTENT */}
+                <div className="flex-1 flex items-center justify-center p-4 relative z-10">
+                    <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        
+                        {/* LEFT SIDE: Floating Robot */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="hidden lg:block text-center lg:text-left"
                         >
-                            STEP UP IN TO THE FUTURE 2025
-                        </motion.h1>
-                        <p className="text-lg sm:text-2xl text-gray-300 mt-4">December 18 • TRACE Expert City</p>
-                        <p className="text-base sm:text-xl text-red-400 font-bold mt-2">Only 110 seats • Almost gone!</p>
-                    </div>
-
-                    {/* SUCCESS */}
-                    {success ? (
-                        <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="text-center py-20">
-                            <CheckCircle className="w-20 h-20 sm:w-32 sm:h-32 text-green-400 mx-auto mb-6" />
-                            <h2 className="text-5xl sm:text-7xl font-black bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
-                                You're Registered!
-                            </h2>
-                            <p className="text-xl sm:text-3xl text-gray-300 mt-6">See you on December 18th</p>
-                        </motion.div>
-                    ) : (
-                        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
-                            {/* ALL INPUTS – NO ICONS, NO TEXT, ONLY PLACEHOLDER */}
-                            <GlassInput label="Full Name"        name="name"     required value={formData.name}     onChange={handleChange} />
-                            <GlassInput label="Email Address"    name="email"    type="email" required value={formData.email}    onChange={handleChange} />
-                            <GlassInput label="Phone Number"     name="phone"    required value={formData.phone}    onChange={handleChange} />
-                            <GlassInput label="NIC Number"       name="nic"      required value={formData.nic}      onChange={handleChange} />
-                            <GlassInput label="School"           name="school"   required value={formData.school}   onChange={handleChange} />
-                            <GlassInput label="District"         name="district" required value={formData.district} onChange={handleChange} />
-
-                            <GlassSelect
-                                label="A/L Stream"
-                                name="stream"
-                                value={formData.stream}
-                                onChange={handleChange}
-                                options={["Biological Science", "Physical Science", "Commerce", "Arts", "Technology"]}
-                                required
-                            />
-
-                            <GlassSelect
-                                label="Interested Field"
-                                name="field"
-                                value={formData.field}
-                                onChange={handleChange}
-                                options={["Medicine", "Engineering", "IT & Software", "Business & Management", "Law", "Design", "Not Sure Yet"]}
-                                required
-                            />
-
-                            {/* Submit Button */}
-                            <div className="md:col-span-2 mt-8 sm:mt-12 flex justify-center">
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    className="group relative w-full max-w-md px-12 py-6 sm:px-20 sm:py-8 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 rounded-3xl text-2xl sm:text-3xl font-bold shadow-2xl hover:shadow-purple-600/70 transition-all duration-500 flex items-center justify-center gap-4 overflow-hidden disabled:opacity-70"
-                                >
-                                    <span className="relative z-10">
-                                        {loading ? "Registering..." : "Complete Registration"}
-                                    </span>
-                                    {loading ? (
-                                        <Loader2 className="w-10 h-10 sm:w-12 sm:h-12 animate-spin relative z-10" />
-                                    ) : (
-                                        <ArrowRight className="w-10 h-10 sm:w-12 sm:h-12 group-hover:translate-x-4 transition relative z-10" />
-                                    )}
-                                    <div className="absolute inset-0 bg-white/20 blur-2xl group-hover:blur-3xl transition-all" />
-                                </button>
+                            <div className="relative inline-block mb-8">
+                                <motion.img 
+                                    src="/step-up/robot2.png" 
+                                    alt="Assistant"
+                                    animate={{ y: [0, -20, 0] }}
+                                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                                    className="w-[400px] mx-auto lg:mx-0 object-contain drop-shadow-2xl"
+                                />
+                                <div className="absolute inset-0 bg-cyan-500/20 blur-[80px] -z-10" />
                             </div>
-                        </form>
-                    )}
-                </motion.div>
+                            
+                            <h1 className="text-5xl font-black mb-4 leading-tight">
+                                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                                    Join the Future
+                                </span>
+                            </h1>
+                            <p className="text-xl text-gray-400 max-w-md">
+                                Fill in your details to secure one of the exclusive 110 seats.
+                            </p>
+                        </motion.div>
+
+                        {/* RIGHT SIDE: The Form */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2, duration: 0.8 }}
+                            className="w-full max-w-xl mx-auto"
+                        >
+                            {success ? (
+                                <motion.div 
+                                    initial={{ scale: 0.8, opacity: 0 }} 
+                                    animate={{ scale: 1, opacity: 1 }} 
+                                    className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-12 text-center"
+                                >
+                                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <CheckCircle className="w-12 h-12 text-green-400" />
+                                    </div>
+                                    <h2 className="text-4xl font-black mb-4">Registration Successful!</h2>
+                                    <p className="text-xl text-gray-300">
+                                        You have successfully registered for Step Up 2025.
+                                    </p>
+                                </motion.div>
+                            ) : (
+                                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                                    
+                                    <div className="lg:hidden text-center mb-8">
+                                        <h1 className="text-3xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+                                            Secure Your Spot
+                                        </h1>
+                                        <p className="text-gray-400 text-sm">Fill the form below to register.</p>
+                                    </div>
+
+                                    <form onSubmit={handleSubmit} className="space-y-5">
+                                        <GlassInput label="Full Name" name="name" required value={formData.name} onChange={handleChange} />
+                                        <GlassInput label="Email Address" name="email" type="email" required value={formData.email} onChange={handleChange} />
+                                        
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <GlassInput label="Phone Number" name="phone" required value={formData.phone} onChange={handleChange} />
+                                            <GlassInput label="NIC Number" name="nic" required value={formData.nic} onChange={handleChange} />
+                                        </div>
+
+                                        <GlassInput label="School Attended" name="school" required value={formData.school} onChange={handleChange} />
+                                        
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <GlassSelect 
+                                                label="Select District" 
+                                                name="district" 
+                                                required 
+                                                value={formData.district} 
+                                                onChange={handleChange}
+                                                options={[
+                                                    "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", 
+                                                    "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara", 
+                                                    "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", "Mannar", 
+                                                    "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliya", 
+                                                    "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"
+                                                ]}
+                                            />
+                                            <GlassSelect 
+                                                label="A/L Stream" 
+                                                name="stream" 
+                                                required 
+                                                value={formData.stream} 
+                                                onChange={handleChange}
+                                                options={["Physical Science", "Biological Science", "Commerce", "Arts", "Technology"]}
+                                            />
+                                        </div>
+
+                                        <GlassSelect 
+                                            label="Preferred Career Field" 
+                                            name="field" 
+                                            required 
+                                            value={formData.field} 
+                                            onChange={handleChange}
+                                            options={["Engineering & Tech", "Medicine & Biology", "Business & Management", "Law & Arts", "Not Sure Yet"]}
+                                        />
+
+                                        <button
+                                            type="submit"
+                                            disabled={loading}
+                                            className="w-full mt-8 py-5 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 rounded-2xl text-xl font-bold text-white shadow-xl hover:shadow-purple-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-3"
+                                        >
+                                            {loading ? (
+                                                <>
+                                                    <Loader2 className="w-6 h-6 animate-spin" /> Processing...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    Confirm Registration <ArrowRight className="w-6 h-6" />
+                                                </>
+                                            )}
+                                        </button>
+                                    </form>
+                                </div>
+                            )}
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </>
     );
 }
 
-// CLEAN INPUT – No icons, no extra text
-const GlassInput = ({ label, value, onChange, ...props }: any) => (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="relative group">
-        <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-purple-600/50 to-pink-600/50 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition" />
-        <div className="relative bg-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl px-6 sm:px-10 py-5 sm:py-7">
+// --- FIXED COMPONENTS ---
+
+// 1. FIXED GLASS INPUT (Uses State Logic)
+const GlassInput = ({ label, value, onFocus, onBlur, ...props }: any) => {
+    const [isFocused, setIsFocused] = useState(false);
+    // Check if user has typed something OR if the input is focused
+    const isActive = isFocused || (value && value.length > 0);
+
+    return (
+        <div className="relative group">
             <input
-                className="bg-transparent text-white text-base sm:text-xl w-full focus:outline-none placeholder-gray-400 caret-purple-400"
-                placeholder={label}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-transparent focus:outline-none focus:border-purple-500/50 focus:bg-white/10 transition-all"
                 value={value}
-                onChange={onChange}
-                autoComplete="off"
+                onFocus={(e) => {
+                    setIsFocused(true);
+                    onFocus?.(e);
+                }}
+                onBlur={(e) => {
+                    setIsFocused(false);
+                    onBlur?.(e);
+                }}
                 {...props}
             />
+            <label
+                className={`absolute left-5 transition-all pointer-events-none px-2 rounded-md ${
+                    isActive
+                        ? "-top-2.5 text-xs text-purple-400 bg-black" // FLOATING STATE
+                        : "top-4 text-gray-500 text-base bg-transparent" // RESTING STATE
+                }`}
+            >
+                {label}
+            </label>
         </div>
-    </motion.div>
-);
+    );
+};
 
-// CLEAN SELECT – No icons, no extra text
-const GlassSelect = ({ label, options, ...props }: any) => (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="relative group">
-        <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-purple-600/50 to-pink-600/50 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition" />
-        <div className="relative bg-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl px-6 sm:px-10 py-5 sm:py-7 flex items-center">
+// 2. FIXED GLASS SELECT (Uses State Logic)
+const GlassSelect = ({ label, value, options, onFocus, onBlur, ...props }: any) => {
+    const [isFocused, setIsFocused] = useState(false);
+    const isActive = isFocused || (value && value.length > 0);
+
+    return (
+        <div className="relative group">
             <select
-                className="bg-transparent text-white text-base sm:text-xl w-full focus:outline-none appearance-none cursor-pointer pr-10"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-purple-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
+                value={value}
+                onFocus={(e) => {
+                    setIsFocused(true);
+                    onFocus?.(e);
+                }}
+                onBlur={(e) => {
+                    setIsFocused(false);
+                    onBlur?.(e);
+                }}
                 {...props}
             >
-                <option value="" disabled selected hidden>{label}</option>
+                <option value="" disabled hidden></option>
                 {options.map((opt: string) => (
                     <option key={opt} value={opt}>{opt}</option>
                 ))}
             </select>
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 pointer-events-none absolute right-6 sm:right-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
-            </svg>
+            <label
+                className={`absolute left-5 transition-all pointer-events-none px-2 rounded-md ${
+                    isActive
+                        ? "-top-2.5 text-xs text-purple-400 bg-black"
+                        : "top-4 text-gray-500 text-base bg-transparent"
+                }`}
+            >
+                {label}
+            </label>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
         </div>
-    </motion.div>
-);
+    );
+};
