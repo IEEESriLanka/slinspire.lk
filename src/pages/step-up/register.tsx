@@ -9,7 +9,7 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxylGlC8OofZg
 export default function RegisterPage() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    
+
     // Removed 'success' state as we are redirecting immediately
 
     const [formData, setFormData] = useState({
@@ -88,9 +88,9 @@ export default function RegisterPage() {
                 {/* MAIN CONTENT */}
                 <div className="flex-1 flex items-center justify-center p-4 relative z-10">
                     <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                        
+
                         {/* LEFT SIDE: Robot */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: -30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
@@ -125,48 +125,48 @@ export default function RegisterPage() {
                             className="w-full max-w-xl mx-auto"
                         >
                             <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-                                
+
                                 <form onSubmit={handleSubmit} className="space-y-5">
                                     <GlassInput label="Full Name" name="name" required value={formData.name} onChange={handleChange} />
                                     <GlassInput label="Email Address" name="email" type="email" required value={formData.email} onChange={handleChange} />
-                                    
+
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                        <GlassInput label="Phone Number" name="phone" required value={formData.phone} onChange={handleChange} />
+                                        <GlassInput label="WhatsApp Number" name="phone" required value={formData.phone} onChange={handleChange} />
                                         <GlassInput label="NIC Number" name="nic" required value={formData.nic} onChange={handleChange} />
                                     </div>
 
-                                    <GlassInput label="School Attended" name="school" required value={formData.school} onChange={handleChange} />
-                                    
+                                    <GlassInput label="School" name="school" required value={formData.school} onChange={handleChange} />
+
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                        <GlassSelect 
-                                            label="Select District" 
-                                            name="district" 
-                                            required 
-                                            value={formData.district} 
+                                        <GlassSelect
+                                            label="Select District"
+                                            name="district"
+                                            required
+                                            value={formData.district}
                                             onChange={handleChange}
                                             options={[
-                                                "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", 
-                                                "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara", 
-                                                "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", "Mannar", 
-                                                "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliya", 
+                                                "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo",
+                                                "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara",
+                                                "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", "Mannar",
+                                                "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliya",
                                                 "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"
                                             ]}
                                         />
-                                        <GlassSelect 
-                                            label="A/L Stream" 
-                                            name="stream" 
-                                            required 
-                                            value={formData.stream} 
+                                        <GlassSelect
+                                            label="A/L Stream"
+                                            name="stream"
+                                            required
+                                            value={formData.stream}
                                             onChange={handleChange}
                                             options={["Physical Science", "Biological Science", "Commerce", "Arts", "Technology"]}
                                         />
                                     </div>
 
-                                    <GlassSelect 
-                                        label="Preferred Career Field" 
-                                        name="field" 
-                                        required 
-                                        value={formData.field} 
+                                    <GlassSelect
+                                        label="Preferred Career Field"
+                                        name="field"
+                                        required
+                                        value={formData.field}
                                         onChange={handleChange}
                                         options={[
                                             "Administration & Secretarial Studies",
