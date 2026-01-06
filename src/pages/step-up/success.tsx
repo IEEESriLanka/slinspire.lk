@@ -1,188 +1,168 @@
-// src/pages/step-up/success.tsx
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import { CheckCircle, PartyPopper, Mail, Shirt, CalendarClock, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Calendar, MapPin, Share2, ExternalLink, Sparkles, Home } from 'lucide-react';
 
-// Ensure TypeScript knows about the confetti library
-declare global {
-    interface Window {
-        confetti: any;
-    }
+// Interfaces
+interface InfoRowProps {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  subValue?: string;
+  colorClass: string;
+  bgColorClass: string;
 }
 
-export default function SuccessPage() {
-    // Confetti explosion on load
-    useEffect(() => {
-        const fireConfetti = () => {
-            if (window.confetti) {
-                window.confetti({
-                    particleCount: 150,
-                    spread: 100,
-                    origin: { y: 0.6 },
-                    colors: ['#a855f7', '#ec4899', '#06b6d4', '#ffffff', '#f59e0b']
-                });
-            }
-        };
-        // Fire a few bursts for celebration
-        setTimeout(fireConfetti, 500);
-        setTimeout(fireConfetti, 1500);
-        setTimeout(fireConfetti, 2500);
-    }, []);
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2, delayChildren: 0.3 }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 30, opacity: 0 },
-        visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } }
-    };
-
-    return (
-        <>
-            {/* Confetti Script */}
-            <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
-            <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-12 relative overflow-hidden">
-                
-                {/* BACKGROUND GLOWS */}
-                <div className="fixed inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[120px] animate-pulse" />
-                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-600/30 rounded-full blur-[120px] animate-pulse delay-1000" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-600/20 rounded-full blur-[100px]" />
-                </div>
-
-                <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                    
-                    {/* LEFT SIDE: Relaxing Robot */}
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, type: "spring" }}
-                        className="hidden lg:flex flex-col items-center justify-center"
-                    >
-                        <div className="relative">
-                            {/* ROBOT: Lying Down / Relaxing Pose */}
-                            {/* Animation: Slow, dreamy float since he is lying down */}
-                            <motion.img 
-                                src="/step-up/robot3.png" 
-                                alt="Mission Accomplished"
-                                animate={{ 
-                                    y: [0, -15, 0],      
-                                    rotate: [0, 2, 0]    
-                                }}
-                                transition={{ 
-                                    duration: 6, 
-                                    repeat: Infinity, 
-                                    ease: "easeInOut" 
-                                }}
-                                className="w-[500px] object-contain drop-shadow-2xl z-10 relative"
-                            />
-                            
-                            {/* Intense "Success" Glow behind him */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-r from-green-500/20 to-cyan-500/20 blur-[80px] -z-10 animate-pulse" />
-                        </div>
-                        <h2 className="text-4xl font-black mt-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                            Mission Accomplished!
-                        </h2>
-                    </motion.div>
-
-                    {/* RIGHT SIDE: Success Message Glass Panel */}
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[3rem] p-8 sm:p-12 text-center shadow-2xl relative"
-                    >
-                        {/* Decorative Party Poppers */}
-                        <PartyPopper className="absolute top-8 left-8 w-12 h-12 text-purple-400 rotate-12 animate-bounce opacity-50" />
-                        <PartyPopper className="absolute top-8 right-8 w-12 h-12 text-pink-400 -rotate-12 animate-bounce delay-300 opacity-50" />
-
-                        {/* Big Checkmark */}
-                        <motion.div variants={itemVariants} className="mb-6 relative inline-block">
-                             <div className="absolute inset-0 bg-green-500/30 blur-3xl rounded-full animate-pulse" />
-                            <CheckCircle className="w-32 h-32 sm:w-40 sm:h-40 mx-auto text-green-400 drop-shadow-[0_0_25px_rgba(74,222,128,0.5)] relative z-10" />
-                        </motion.div>
-
-                        {/* Main Heading */}
-                        <motion.h1
-                            variants={itemVariants}
-                            className="text-6xl sm:text-7xl md:text-8xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent leading-none mb-4"
-                        >
-                            YOU'RE IN!
-                        </motion.h1>
-
-                        <motion.p variants={itemVariants} className="text-2xl sm:text-3xl font-bold text-white">
-                            Welcome to the <span className="text-purple-300">STEP UP 2025</span> family.
-                        </motion.p>
-                        <motion.p variants={itemVariants} className="text-gray-300 mt-2 text-lg">
-                            Your seat is officially secured. Let's get you ready.
-                        </motion.p>
-
-                        {/* Info Cards (Data Chips) */}
-                        <motion.div variants={containerVariants} className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-                            <InfoChip 
-                                icon={Mail} 
-                                color="text-purple-400" 
-                                title="Check Email" 
-                                desc="Verification sent. Check spam too!" 
-                                delay={1}
-                            />
-                            <InfoChip 
-                                icon={Shirt} 
-                                color="text-pink-400" 
-                                title="Dress Code" 
-                                desc="Smart Casual. Dress to impress." 
-                                delay={1.2}
-                            />
-                             <InfoChip 
-                                icon={CalendarClock} 
-                                color="text-cyan-400" 
-                                title="Be There" 
-                                desc="Dec 18th @ 9:00 AM. Don't be late!" 
-                                delay={1.4}
-                            />
-                        </motion.div>
-
-                        {/* Back to Home Button */}
-                        <motion.div variants={itemVariants} className="mt-12">
-                            <Link
-                                to="/step-up" 
-                                className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 rounded-full text-xl sm:text-2xl font-bold shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 overflow-hidden"
-                            >
-                                <span className="relative z-10">Back to Event Page</span>
-                                <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition relative z-10" />
-                                <div className="absolute inset-0 bg-white/20 blur-2xl group-hover:blur-3xl transition-all opacity-0 group-hover:opacity-100" />
-                            </Link>
-                        </motion.div>
-
-                        <motion.p variants={itemVariants} className="mt-8 text-gray-400 text-sm">
-                            See you at TRACE Expert City!
-                        </motion.p>
-                    </motion.div>
-                </div>
-            </div>
-        </>
-    );
-}
-
-// Info Chip Component
-const InfoChip = ({ icon: Icon, color, title, desc, delay }: any) => (
-    <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: delay, type: "spring" }}
-        className="bg-black/40 border border-white/10 rounded-2xl p-5 flex flex-col items-center sm:items-start text-center sm:text-left hover:bg-white/5 transition-colors group"
-    >
-        <div className={`p-3 rounded-full bg-white/5 mb-3 group-hover:scale-110 transition-transform ${color} drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]`}>
-            <Icon className="w-8 h-8" />
-        </div>
-        <h3 className="text-lg font-bold text-white mb-1">{title}</h3>
-        <p className="text-gray-400 text-sm leading-tight">{desc}</p>
-    </motion.div>
+const InfoRow: React.FC<InfoRowProps> = ({ icon, label, value, subValue, colorClass, bgColorClass }) => (
+  <div className="flex items-center gap-4 p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all duration-300 group/item cursor-default relative overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover/item:translate-x-[100%] transition-transform duration-1000 pointer-events-none" />
+    
+    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${bgColorClass} ${colorClass} group-hover/item:scale-110 group-hover/item:rotate-3 transition-transform duration-300 shadow-inner shrink-0`}>
+      {icon}
+    </div>
+    <div>
+      <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-0.5">{label}</p>
+      <p className="text-gray-100 font-semibold text-sm md:text-base tracking-wide leading-tight">{value}</p>
+      {subValue && <p className="text-gray-400 text-xs mt-0.5">{subValue}</p>}
+    </div>
+  </div>
 );
+
+const SuccessInvitation: React.FC = () => {
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'You\'re In! - STEP UP 2026',
+          text: 'I just secured my seat for STEP UP 2026 at Trace Expert City!',
+          url: 'https://slinspire.ieeeyp.lk/#step-up',
+        });
+      } catch (error) {
+        console.log('Error sharing:', error);
+      }
+    } else {
+      alert('See you at Trace Expert City!');
+    }
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-[#030303] flex items-center justify-center overflow-x-hidden relative selection:bg-purple-500 selection:text-white font-sans py-12 lg:py-0">
+      
+      {/* Background Ambience */}
+      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none brightness-100 contrast-150 mix-blend-overlay"></div>
+
+      {/* MAIN GRID */}
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center px-6 z-10">
+        
+        {/* LEFT: 3D Mascot (NOW VISIBLE ON MOBILE) */}
+        {/* Changed 'hidden lg:flex' to just 'flex' and added responsive sizing */}
+        <div className="flex col-span-1 lg:col-span-5 justify-center items-center relative mb-4 lg:mb-0 order-1">
+           <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-transparent blur-3xl rounded-full scale-110" />
+           <img 
+            src="/step-up/robot3.png" 
+            alt="Mascot" 
+            // max-w-[200px] on mobile, max-w-[500px] on desktop
+            className="relative z-10 w-full max-w-[200px] lg:max-w-[500px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float"
+          />
+        </div>
+
+        {/* RIGHT: Invitation Card */}
+        <div className="col-span-1 lg:col-span-7 flex justify-center lg:justify-start order-2">
+          <div className="w-full max-w-[480px] relative group perspective-1000">
+            
+            {/* Animated Border Glow */}
+            <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-purple-500 to-blue-500 rounded-[2.5rem] opacity-30 group-hover:opacity-100 transition duration-700 blur-sm"></div>
+            
+            {/* CARD BODY */}
+            <div className="relative bg-[#0a0a0a]/95 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl overflow-hidden">
+              
+              {/* Header: Congratulations Badge */}
+              <div className="flex justify-between items-start mb-6">
+                 <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-400 text-[10px] font-bold tracking-[0.2em] uppercase shadow-[0_0_15px_rgba(234,179,8,0.1)]">
+                    <Sparkles className="w-3 h-3" />
+                    Congratulations
+                 </div>
+                 <div className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-500 font-mono">
+                    2026 EDITION
+                 </div>
+              </div>
+
+              {/* Main Title */}
+              <div className="mb-8">
+                <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-1 text-white leading-[0.9]">
+                  YOU'RE <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 animate-gradient-x">IN!</span>
+                </h1>
+                <p className="text-gray-400 text-sm md:text-base font-medium mt-4 leading-relaxed max-w-sm">
+                  Welcome to the elite circle of <span className="text-white font-semibold">STEP UP 2026</span>. Your seat is officially reserved.
+                </p>
+              </div>
+
+              {/* Details Grid */}
+              <div className="space-y-3 mb-8">
+                <InfoRow 
+                  icon={<Calendar className="w-5 h-5" />}
+                  label="Date"
+                  value="January 17, 2026"
+                  colorClass="text-blue-400"
+                  bgColorClass="bg-blue-500/10"
+                />
+                <InfoRow 
+                  icon={<MapPin className="w-5 h-5" />}
+                  label="Venue"
+                  value="Trace Expert City"
+                  subValue="Maradana, Colombo"
+                  colorClass="text-purple-400"
+                  bgColorClass="bg-purple-500/10"
+                />
+              </div>
+
+              {/* Navigation Buttons Area */}
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                <a 
+                  href="https://slinspire.ieeeyp.lk/#step-up"
+                  className="col-span-1 group/btn flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-gray-200 hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] text-center"
+                >
+                  <Home className="w-4 h-4" />
+                  <span>Event Home</span>
+                </a>
+                
+                <a 
+                  href="https://slinspire.ieeeyp.lk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="col-span-1 group/btn flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/20 hover:scale-[1.02] transition-all text-center"
+                >
+                  <span>SL Inspire</span>
+                  <ExternalLink className="w-4 h-4 text-gray-400 group-hover/btn:text-white transition-colors" />
+                </a>
+              </div>
+
+              {/* Footer */}
+              <div className="border-t border-white/10 pt-6 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                   <span className="text-xs font-medium text-gray-500 uppercase tracking-widest">
+                     Official Invitation
+                   </span>
+                </div>
+                
+                <button 
+                    onClick={handleShare}
+                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-black hover:scale-110 transition-all duration-300"
+                    title="Share Ticket"
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default SuccessInvitation;
