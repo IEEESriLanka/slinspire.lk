@@ -2,14 +2,16 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Loader2, CheckCircle, ChevronLeft } from "lucide-react";
+import { ArrowRight, Loader2, ChevronLeft } from "lucide-react";
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxylGlC8OofZg_DpFeymtV13ddD5LFo1Tn3qvSYYZ1ZaadquDDpXwRduGS7Pw6bV-DZ/exec";
 
 export default function RegisterPage() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
+    
+    // Removed 'success' state as we are redirecting immediately
+
     const [formData, setFormData] = useState({
         name: "", email: "", phone: "", nic: "", school: "", district: "", stream: "", field: ""
     });
@@ -40,11 +42,12 @@ export default function RegisterPage() {
                 mode: "no-cors",
                 headers: { "Content-Type": "text/plain" }
             });
-        } catch (err) { }
-        finally {
+        } catch (err) {
+            console.error("Submission error", err);
+        } finally {
             setLoading(false);
-            setSuccess(true);
-            setTimeout(() => navigate("/step-up/success"), 700);
+            // DIRECT REDIRECT TO SUCCESS PAGE
+            navigate("/step-up/success");
         }
     };
 
@@ -85,13 +88,13 @@ export default function RegisterPage() {
                 {/* MAIN CONTENT */}
                 <div className="flex-1 flex items-center justify-center p-4 relative z-10">
                     <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-
-                        {/* LEFT SIDE: Robot (Now Visible on Mobile) */}
-                        <motion.div
-                            initial={{ opacity: 0, y: -30 }} // Changed animation to slide down
+                        
+                        {/* LEFT SIDE: Robot */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: -30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-center lg:text-left" // Centered on mobile
+                            className="text-center lg:text-left"
                         >
                             <div className="relative inline-block mb-6 lg:mb-8">
                                 <motion.img
@@ -99,7 +102,6 @@ export default function RegisterPage() {
                                     alt="Assistant"
                                     animate={{ y: [0, -20, 0] }}
                                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                                    // UPDATED SIZE: w-[250px] on mobile, w-[400px] on desktop
                                     className="w-[250px] lg:w-[400px] mx-auto lg:mx-0 object-contain drop-shadow-2xl"
                                 />
                                 <div className="absolute inset-0 bg-cyan-500/20 blur-[80px] -z-10" />
@@ -122,112 +124,94 @@ export default function RegisterPage() {
                             transition={{ delay: 0.2, duration: 0.8 }}
                             className="w-full max-w-xl mx-auto"
                         >
-                            {success ? (
-                                <motion.div
-                                    initial={{ scale: 0.8, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-12 text-center"
-                                >
-                                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                        <CheckCircle className="w-12 h-12 text-green-400" />
+                            <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                                
+                                <form onSubmit={handleSubmit} className="space-y-5">
+                                    <GlassInput label="Full Name" name="name" required value={formData.name} onChange={handleChange} />
+                                    <GlassInput label="Email Address" name="email" type="email" required value={formData.email} onChange={handleChange} />
+                                    
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                        <GlassInput label="Phone Number" name="phone" required value={formData.phone} onChange={handleChange} />
+                                        <GlassInput label="NIC Number" name="nic" required value={formData.nic} onChange={handleChange} />
                                     </div>
-                                    <h2 className="text-4xl font-black mb-4">Registration Successful!</h2>
-                                    <p className="text-xl text-gray-300">
-                                        You have successfully registered for Step Up 2025.
-                                    </p>
-                                </motion.div>
-                            ) : (
-                                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
 
-                                    {/* Removed "Secure Your Spot" text on mobile to avoid duplicate titles with the Robot section */}
-
-                                    <form onSubmit={handleSubmit} className="space-y-5">
-                                        <GlassInput label="Full Name" name="name" required value={formData.name} onChange={handleChange} />
-                                        <GlassInput label="Email Address" name="email" type="email" required value={formData.email} onChange={handleChange} />
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                            <GlassInput label="WhatsApp Number" name="phone" required value={formData.phone} onChange={handleChange} />
-                                            <GlassInput label="NIC Number" name="nic" required value={formData.nic} onChange={handleChange} />
-                                        </div>
-
-                                        <GlassInput label="School" name="school" required value={formData.school} onChange={handleChange} />
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                            <GlassSelect
-                                                label="Select District"
-                                                name="district"
-                                                required
-                                                value={formData.district}
-                                                onChange={handleChange}
-                                                options={[
-                                                    "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo",
-                                                    "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara",
-                                                    "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", "Mannar",
-                                                    "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliya",
-                                                    "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"
-                                                ]}
-                                            />
-                                            <GlassSelect
-                                                label="A/L Stream"
-                                                name="stream"
-                                                required
-                                                value={formData.stream}
-                                                onChange={handleChange}
-                                                options={["Physical Science", "Biological Science", "Commerce", "Arts", "Technology"]}
-                                            />
-                                        </div>
-
-                                        <GlassSelect
-                                            label="Preferred Career Field"
-                                            name="field"
-                                            required
-                                            value={formData.field}
+                                    <GlassInput label="School Attended" name="school" required value={formData.school} onChange={handleChange} />
+                                    
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                        <GlassSelect 
+                                            label="Select District" 
+                                            name="district" 
+                                            required 
+                                            value={formData.district} 
                                             onChange={handleChange}
                                             options={[
-                                                "Administration & Secretarial Studies",
-                                                "Allied Health Sciences",
-                                                "Applied Sciences",
-                                                "Arts (Visual & Performing)",
-                                                "Aviation & Shipping",
-                                                "Banking & Insurance",
-                                                "Business Management",
-                                                "Computer Science & IT",
-                                                "Construction Related Fields",
-                                                "Designing & Crafting",
-                                                "Education, Teaching & Library",
-                                                "Engineering",
-                                                "Formal Sciences",
-                                                "Hospitality, Tourism & Event Management",
-                                                "Humanities & Social Sciences",
-                                                "Journalism, Media & Communication",
-                                                "Languages and Literature",
-                                                "Law & Human Rights",
-                                                "Medicine (Western & Traditional)",
-                                                "Natural Science",
-                                                "Religious Studies",
-                                                "Sports Related Studies",
-                                                "Training / Coaching"
+                                                "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", 
+                                                "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara", 
+                                                "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", "Mannar", 
+                                                "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliya", 
+                                                "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"
                                             ]}
                                         />
+                                        <GlassSelect 
+                                            label="A/L Stream" 
+                                            name="stream" 
+                                            required 
+                                            value={formData.stream} 
+                                            onChange={handleChange}
+                                            options={["Physical Science", "Biological Science", "Commerce", "Arts", "Technology"]}
+                                        />
+                                    </div>
 
-                                        <button
-                                            type="submit"
-                                            disabled={loading}
-                                            className="w-full mt-8 py-5 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 rounded-2xl text-xl font-bold text-white shadow-xl hover:shadow-purple-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-3"
-                                        >
-                                            {loading ? (
-                                                <>
-                                                    <Loader2 className="w-6 h-6 animate-spin" /> Processing...
-                                                </>
-                                            ) : (
-                                                <>
-                                                    Confirm Registration <ArrowRight className="w-6 h-6" />
-                                                </>
-                                            )}
-                                        </button>
-                                    </form>
-                                </div>
-                            )}
+                                    <GlassSelect 
+                                        label="Preferred Career Field" 
+                                        name="field" 
+                                        required 
+                                        value={formData.field} 
+                                        onChange={handleChange}
+                                        options={[
+                                            "Administration & Secretarial Studies",
+                                            "Allied Health Sciences",
+                                            "Applied Sciences",
+                                            "Arts (Visual & Performing)",
+                                            "Aviation & Shipping",
+                                            "Banking & Insurance",
+                                            "Business Management",
+                                            "Computer Science & IT",
+                                            "Construction Related Fields",
+                                            "Designing & Crafting",
+                                            "Education, Teaching & Library",
+                                            "Engineering",
+                                            "Formal Sciences",
+                                            "Hospitality, Tourism & Event Management",
+                                            "Humanities & Social Sciences",
+                                            "Journalism, Media & Communication",
+                                            "Languages and Literature",
+                                            "Law & Human Rights",
+                                            "Medicine (Western & Traditional)",
+                                            "Natural Science",
+                                            "Religious Studies",
+                                            "Sports Related Studies",
+                                            "Training / Coaching"
+                                        ]}
+                                    />
+
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="w-full mt-8 py-5 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 rounded-2xl text-xl font-bold text-white shadow-xl hover:shadow-purple-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-3"
+                                    >
+                                        {loading ? (
+                                            <>
+                                                <Loader2 className="w-6 h-6 animate-spin" /> Processing...
+                                            </>
+                                        ) : (
+                                            <>
+                                                Confirm Registration <ArrowRight className="w-6 h-6" />
+                                            </>
+                                        )}
+                                    </button>
+                                </form>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
