@@ -32,7 +32,7 @@ export default function StepUpPage() {
                 const res = await fetch(GOOGLE_SCRIPT_URL + `?t=${Date.now()}`);
                 const data = await res.json();
                 setStats({ registered: data.count || 0, available: 110 });
-            } catch (e) {}
+            } catch (e) { }
         };
         fetchCount();
         const i = setInterval(fetchCount, 10000);
@@ -73,46 +73,46 @@ export default function StepUpPage() {
             {/* NAVBAR - Fully Transparent with Larger Right Logo */}
             <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent pt-4">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-                    
+
                     {/* Left Logo */}
                     <img src="/step-up/logo.png" alt="IEEE" className="h-10 sm:h-12" />
-                    
+
                     {/* Center Share Button */}
                     <button onClick={shareEvent} className="flex items-center gap-2 px-4 py-2 text-sm sm:text-base bg-white/10 rounded-full hover:bg-white/20 transition backdrop-blur-md">
                         <Share2 className="w-4 h-4 sm:w-5 sm:h-5" /> Share
                     </button>
-                    
+
                     {/* Right Logo (Increased Size) */}
                     {/* Changed from h-12 to h-16 (mobile) and h-24 (desktop) */}
-                    <img 
-                        src="/step-up/YPSummit2025.png" 
-                        alt="YP SUMMIT 2025" 
-                        className="h-14 sm:h-24 object-contain" 
+                    <img
+                        src="/step-up/YPSummit2025.png"
+                        alt="YP SUMMIT 2025"
+                        className="h-14 sm:h-24 object-contain"
                     />
                 </div>
             </nav>
 
             {/* HERO - With Floating Robot */}
             <section className="relative pt-24 pb-20 px-4 min-h-screen flex items-center justify-center overflow-hidden">
-                
+
                 {/* --- ROBOT LAYER START --- */}
                 {/* This allows the robot to sit behind the text but in front of the black background */}
                 <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none select-none z-0">
-                    
+
                     {/* Glowing Aura behind robot */}
                     <div className="absolute w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] animate-pulse" />
-                    
+
                     {/* Floating Robot Image */}
                     {/* Replace '/step-up/robot.png' with your actual transparent robot image */}
-                    <motion.img 
-                        src="/step-up/robot.png" 
+                    <motion.img
+                        src="/step-up/robot.png"
                         alt="AI Companion"
                         initial={{ y: 0, opacity: 0 }}
-                        animate={{ 
+                        animate={{
                             y: [0, -20, 0], // Gentle floating motion
                             opacity: 0.6 // Keep opacity slightly lower to not distract from text
                         }}
-                        transition={{ 
+                        transition={{
                             y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
                             opacity: { duration: 1, delay: 0.5 }
                         }}
@@ -120,7 +120,7 @@ export default function StepUpPage() {
                         style={{
                             // Position it slightly to the right to balance the centered text
                             // Or keep it centered if you want it directly behind
-                            transform: 'translateX(20%)' 
+                            transform: 'translateX(20%)'
                         }}
                     />
                 </div>
@@ -133,18 +133,18 @@ export default function StepUpPage() {
                             STEP UP TO THE FUTURE
                         </span>
                     </h1>
-                    
+
                     {/* Added a subtle backdrop to text to ensure readability over the robot */}
                     <div className="inline-block relative">
-                         <p className="text-2xl sm:text-4xl md:text-5xl text-gray-100 font-bold mb-6 drop-shadow-lg">
+                        <p className="text-2xl sm:text-4xl md:text-5xl text-gray-100 font-bold mb-6 drop-shadow-lg">
                             After A/L — Find Your Future Path
                         </p>
                     </div>
 
                     <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 px-4 drop-shadow-md bg-black/30 backdrop-blur-sm rounded-xl py-2">
-                        Join 110 top A/L students for the biggest career guidance event in Sri Lanka. Meet CEOs, deans, and experts — all in one day.
+                        Join us to explore higher education and career opportunities after A/Ls — helping you make confident, informed decisions about your future.
                     </p>
-                    
+
                     {!isSoldOut ? (
                         <Link to="/step-up/register" className="inline-flex items-center gap-3 px-10 py-5 sm:px-14 sm:py-7 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-xl sm:text-2xl font-bold hover:scale-110 transition shadow-2xl hover:shadow-purple-500/50">
                             Register Now <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -210,9 +210,7 @@ export default function StepUpPage() {
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl sm:text-5xl font-black mb-8">What is STEP UP TO THE FUTURE?</h2>
                     <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                        Are you wondering what comes next after your A/L examinations? Feeling unsure about choosing the right degree or planning a successful career path?
-
-IEEE Sri Lanka Inspire proudly presents a comprehensive career guidance session designed especially for after A/L students to help you make informed decisions about your future.
+                        Step Up to the Future with IEEE Sri Lanka Inspire is a career guidance initiative for students who have recently completed their G.C.E. Advanced Level examination, providing insights into education options, career pathways, and future opportunities to support informed decision-making.
                     </p>
                 </div>
             </section>
@@ -222,8 +220,8 @@ IEEE Sri Lanka Inspire proudly presents a comprehensive career guidance session 
                 <h2 className="text-4xl sm:text-5xl font-black text-center mb-12">Organized By</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {[
-                        { name: "IEEE Sri Lanka INSPIRE", logo: "/logo/sli-logo.png", desc: "IEEE initiative empowering students nationwide with guidance." },
-                        { name: "SL2C", logo: "/logo/yp_logo.png", desc: "SL2College strengthening student futures through mentorship and guidance." }
+                        { name: "IEEE Sri Lanka INSPIRE", logo: "/logo/sli-logo.png", desc: "An IEEE Sri Lanka Inspire initiative dedicated to empowering pre-university students through structured career guidance, mentorship, and informed pathway selection." },
+                        { name: "IEEE Young Professionals Sri Lanka", logo: "/logo/yp_logo.png", desc: "A vibrant community supporting young professionals by providing mentorship, leadership development, and career growth opportunities within IEEE." }
                     ].map((org, i) => (
                         <motion.div
                             key={i}
@@ -278,7 +276,7 @@ IEEE Sri Lanka Inspire proudly presents a comprehensive career guidance session 
                             { time: "12.50 - 01.00 PM", title: "Q&A Session" },
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col sm:flex-row gap-2 sm:gap-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:items-center hover:bg-white/10 transition">
-                                
+
                                 {/* TIME COLUMN: Increased width + whitespace-nowrap prevents line break */}
                                 <div className="text-xl sm:text-2xl font-bold text-purple-400 w-full sm:w-64 shrink-0 whitespace-nowrap">
                                     {item.time}
@@ -344,7 +342,7 @@ IEEE Sri Lanka Inspire proudly presents a comprehensive career guidance session 
             {/* WhatsApp Button */}
             <div className="fixed bottom-4 right-4 z-50">
                 <a href="https://wa.me/94769851160" target="_blank" rel="noopener noreferrer"
-                   className="flex items-center gap-3 px-5 py-4 bg-green-600 rounded-full shadow-2xl hover:scale-110 transition text-lg font-bold">
+                    className="flex items-center gap-3 px-5 py-4 bg-green-600 rounded-full shadow-2xl hover:scale-110 transition text-lg font-bold">
                     <MessageCircle className="w-7 h-7" /> Help
                 </a>
             </div>
