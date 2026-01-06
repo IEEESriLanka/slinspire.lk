@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, Share2, ExternalLink, Sparkles, Home } from 'lucide-react';
+import { Calendar, MapPin, Share2, ExternalLink, Sparkles, Home, MessageCircle } from 'lucide-react';
 
 // Interfaces
 interface InfoRowProps {
@@ -55,14 +55,12 @@ const SuccessInvitation: React.FC = () => {
       {/* MAIN GRID */}
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center px-6 z-10">
         
-        {/* LEFT: 3D Mascot (NOW VISIBLE ON MOBILE) */}
-        {/* Changed 'hidden lg:flex' to just 'flex' and added responsive sizing */}
+        {/* LEFT: 3D Mascot (Mobile: Small & Centered, Desktop: Large) */}
         <div className="flex col-span-1 lg:col-span-5 justify-center items-center relative mb-4 lg:mb-0 order-1">
            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-transparent blur-3xl rounded-full scale-110" />
            <img 
             src="/step-up/robot3.png" 
             alt="Mascot" 
-            // max-w-[200px] on mobile, max-w-[500px] on desktop
             className="relative z-10 w-full max-w-[200px] lg:max-w-[500px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float"
           />
         </div>
@@ -118,25 +116,41 @@ const SuccessInvitation: React.FC = () => {
                 />
               </div>
 
-              {/* Navigation Buttons Area */}
-              <div className="grid grid-cols-2 gap-3 mb-8">
-                <a 
-                  href="https://slinspire.ieeeyp.lk/#step-up"
-                  className="col-span-1 group/btn flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-gray-200 hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] text-center"
-                >
-                  <Home className="w-4 h-4" />
-                  <span>Event Home</span>
-                </a>
+              {/* ACTION AREA */}
+              <div className="mb-8 space-y-3">
                 
+                {/* PRIMARY ACTION: WHATSAPP GROUP */}
                 <a 
-                  href="https://slinspire.ieeeyp.lk/"
+                  href="https://chat.whatsapp.com/DrJhtaCuxsZ3cNwK22KHug"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="col-span-1 group/btn flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/20 hover:scale-[1.02] transition-all text-center"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold text-lg shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:scale-[1.02] transition-all group/whatsapp relative overflow-hidden"
                 >
-                  <span>SL Inspire</span>
-                  <ExternalLink className="w-4 h-4 text-gray-400 group-hover/btn:text-white transition-colors" />
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/whatsapp:translate-y-0 transition-transform duration-300" />
+                  <MessageCircle className="w-6 h-6 fill-current relative z-10" />
+                  <span className="relative z-10">Join WhatsApp Group</span>
                 </a>
+
+                {/* Secondary Actions Grid */}
+                <div className="grid grid-cols-2 gap-3">
+                  <a 
+                    href="https://slinspire.ieeeyp.lk/#step-up"
+                    className="col-span-1 group/btn flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white text-black font-bold text-xs md:text-sm hover:bg-gray-200 hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] text-center"
+                  >
+                    <Home className="w-4 h-4" />
+                    <span>Event Home</span>
+                  </a>
+                  
+                  <a 
+                    href="https://slinspire.ieeeyp.lk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="col-span-1 group/btn flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-xs md:text-sm hover:bg-white/10 hover:border-white/20 hover:scale-[1.02] transition-all text-center"
+                  >
+                    <span>SL Inspire</span>
+                    <ExternalLink className="w-4 h-4 text-gray-400 group-hover/btn:text-white transition-colors" />
+                  </a>
+                </div>
               </div>
 
               {/* Footer */}
