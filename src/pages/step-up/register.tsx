@@ -65,7 +65,7 @@ export default function RegisterPage() {
                 }
             `}</style>
 
-            <div className="min-h-screen bg-black text-white relative overflow-hidden flex flex-col">
+            <div className="min-h-screen bg-black text-white relative overflow-x-hidden flex flex-col">
                 
                 {/* BACKGROUND GLOWS */}
                 <div className="fixed inset-0 pointer-events-none">
@@ -84,32 +84,33 @@ export default function RegisterPage() {
 
                 {/* MAIN CONTENT */}
                 <div className="flex-1 flex items-center justify-center p-4 relative z-10">
-                    <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                         
-                        {/* LEFT SIDE: Floating Robot */}
+                        {/* LEFT SIDE: Robot (Now Visible on Mobile) */}
                         <motion.div 
-                            initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: -30 }} // Changed animation to slide down
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="hidden lg:block text-center lg:text-left"
+                            className="text-center lg:text-left" // Centered on mobile
                         >
-                            <div className="relative inline-block mb-8">
+                            <div className="relative inline-block mb-6 lg:mb-8">
                                 <motion.img 
                                     src="/step-up/robot2.png" 
                                     alt="Assistant"
                                     animate={{ y: [0, -20, 0] }}
                                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                                    className="w-[400px] mx-auto lg:mx-0 object-contain drop-shadow-2xl"
+                                    // UPDATED SIZE: w-[250px] on mobile, w-[400px] on desktop
+                                    className="w-[250px] lg:w-[400px] mx-auto lg:mx-0 object-contain drop-shadow-2xl"
                                 />
                                 <div className="absolute inset-0 bg-cyan-500/20 blur-[80px] -z-10" />
                             </div>
                             
-                            <h1 className="text-5xl font-black mb-4 leading-tight">
+                            <h1 className="text-4xl lg:text-5xl font-black mb-4 leading-tight">
                                 <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                                     Join the Future
                                 </span>
                             </h1>
-                            <p className="text-xl text-gray-400 max-w-md">
+                            <p className="text-lg lg:text-xl text-gray-400 max-w-md mx-auto lg:mx-0">
                                 Fill in your details to secure one of the exclusive 110 seats.
                             </p>
                         </motion.div>
@@ -138,13 +139,8 @@ export default function RegisterPage() {
                             ) : (
                                 <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
                                     
-                                    <div className="lg:hidden text-center mb-8">
-                                        <h1 className="text-3xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
-                                            Secure Your Spot
-                                        </h1>
-                                        <p className="text-gray-400 text-sm">Fill the form below to register.</p>
-                                    </div>
-
+                                    {/* Removed "Secure Your Spot" text on mobile to avoid duplicate titles with the Robot section */}
+                                    
                                     <form onSubmit={handleSubmit} className="space-y-5">
                                         <GlassInput label="Full Name" name="name" required value={formData.name} onChange={handleChange} />
                                         <GlassInput label="Email Address" name="email" type="email" required value={formData.email} onChange={handleChange} />
@@ -187,7 +183,31 @@ export default function RegisterPage() {
                                             required 
                                             value={formData.field} 
                                             onChange={handleChange}
-                                            options={["Engineering & Tech", "Medicine & Biology", "Business & Management", "Law & Arts", "Not Sure Yet"]}
+                                            options={[
+                                                "Administration & Secretarial Studies",
+                                                "Allied Health Sciences",
+                                                "Applied Sciences",
+                                                "Arts (Visual & Performing)",
+                                                "Aviation & Shipping",
+                                                "Banking & Insurance",
+                                                "Business Management",
+                                                "Computer Science & IT",
+                                                "Construction Related Fields",
+                                                "Designing & Crafting",
+                                                "Education, Teaching & Library",
+                                                "Engineering",
+                                                "Formal Sciences",
+                                                "Hospitality, Tourism & Event Management",
+                                                "Humanities & Social Sciences",
+                                                "Journalism, Media & Communication",
+                                                "Languages and Literature",
+                                                "Law & Human Rights",
+                                                "Medicine (Western & Traditional)",
+                                                "Natural Science",
+                                                "Religious Studies",
+                                                "Sports Related Studies",
+                                                "Training / Coaching"
+                                            ]}
                                         />
 
                                         <button
@@ -216,12 +236,10 @@ export default function RegisterPage() {
     );
 }
 
-// --- FIXED COMPONENTS ---
+// --- REUSABLE COMPONENTS (Unchanged) ---
 
-// 1. FIXED GLASS INPUT (Uses State Logic)
 const GlassInput = ({ label, value, onFocus, onBlur, ...props }: any) => {
     const [isFocused, setIsFocused] = useState(false);
-    // Check if user has typed something OR if the input is focused
     const isActive = isFocused || (value && value.length > 0);
 
     return (
@@ -229,30 +247,17 @@ const GlassInput = ({ label, value, onFocus, onBlur, ...props }: any) => {
             <input
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-transparent focus:outline-none focus:border-purple-500/50 focus:bg-white/10 transition-all"
                 value={value}
-                onFocus={(e) => {
-                    setIsFocused(true);
-                    onFocus?.(e);
-                }}
-                onBlur={(e) => {
-                    setIsFocused(false);
-                    onBlur?.(e);
-                }}
+                onFocus={(e) => { setIsFocused(true); onFocus?.(e); }}
+                onBlur={(e) => { setIsFocused(false); onBlur?.(e); }}
                 {...props}
             />
-            <label
-                className={`absolute left-5 transition-all pointer-events-none px-2 rounded-md ${
-                    isActive
-                        ? "-top-2.5 text-xs text-purple-400 bg-black" // FLOATING STATE
-                        : "top-4 text-gray-500 text-base bg-transparent" // RESTING STATE
-                }`}
-            >
+            <label className={`absolute left-5 transition-all pointer-events-none px-2 rounded-md ${isActive ? "-top-2.5 text-xs text-purple-400 bg-black" : "top-4 text-gray-500 text-base bg-transparent"}`}>
                 {label}
             </label>
         </div>
     );
 };
 
-// 2. FIXED GLASS SELECT (Uses State Logic)
 const GlassSelect = ({ label, value, options, onFocus, onBlur, ...props }: any) => {
     const [isFocused, setIsFocused] = useState(false);
     const isActive = isFocused || (value && value.length > 0);
@@ -262,28 +267,14 @@ const GlassSelect = ({ label, value, options, onFocus, onBlur, ...props }: any) 
             <select
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-purple-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
                 value={value}
-                onFocus={(e) => {
-                    setIsFocused(true);
-                    onFocus?.(e);
-                }}
-                onBlur={(e) => {
-                    setIsFocused(false);
-                    onBlur?.(e);
-                }}
+                onFocus={(e) => { setIsFocused(true); onFocus?.(e); }}
+                onBlur={(e) => { setIsFocused(false); onBlur?.(e); }}
                 {...props}
             >
                 <option value="" disabled hidden></option>
-                {options.map((opt: string) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                ))}
+                {options.map((opt: string) => <option key={opt} value={opt}>{opt}</option>)}
             </select>
-            <label
-                className={`absolute left-5 transition-all pointer-events-none px-2 rounded-md ${
-                    isActive
-                        ? "-top-2.5 text-xs text-purple-400 bg-black"
-                        : "top-4 text-gray-500 text-base bg-transparent"
-                }`}
-            >
+            <label className={`absolute left-5 transition-all pointer-events-none px-2 rounded-md ${isActive ? "-top-2.5 text-xs text-purple-400 bg-black" : "top-4 text-gray-500 text-base bg-transparent"}`}>
                 {label}
             </label>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
