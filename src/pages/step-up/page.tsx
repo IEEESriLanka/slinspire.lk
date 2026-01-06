@@ -256,7 +256,7 @@ export default function StepUpPage() {
                         </div>
                         <h3 className="text-3xl sm:text-4xl font-black">Mr. Rushdi Hadhi</h3>
                         <p className="text-xl sm:text-2xl text-purple-300 mt-3">Career Consultant & Coach</p>
-                        <p className="text-gray-300 mt-2">Ecosystem Builder • Career Consultant • Certified HR Trainer</p>
+                        <p className="text-gray-300 mt-2">Senior Manager - Startup Ecosystem Development at ICTA</p>
                         <div className="mt-8 bg-white/5 rounded-2xl p-6 border border-white/10">
                             <p className="text-gray-400">Keynote Topic:</p>
                             <p className="text-2xl font-bold text-pink-300 mt-2">"After A/L — Find Your Future Path"</p>
@@ -308,7 +308,10 @@ export default function StepUpPage() {
                     </div>
                     <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 text-center">
                         <MapPin className="w-12 h-12 mx-auto mb-4 text-cyan-400" />
-                        <p className="text-2xl sm:text-3xl font-black">TRACE Expert City</p>
+                        <p className="text-xl sm:text-2xl font-black">
+                            Neo Ventures, Bay 13</p>
+                        <p className="text-2xl sm:text-3xl font-black">
+                            TRACE Expert City</p>
                         <p className="text-gray-400">Maradana, Colombo</p>
                     </div>
                 </div>

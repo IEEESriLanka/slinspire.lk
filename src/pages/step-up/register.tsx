@@ -113,7 +113,7 @@ export default function RegisterPage() {
                                 </span>
                             </h1>
                             <p className="text-lg lg:text-xl text-gray-400 max-w-md mx-auto lg:mx-0">
-                                Fill in your details to secure one of the exclusive 110 seats.
+                                Fill in your details to secure one of the exclusive limited seats.
                             </p>
                         </motion.div>
 
@@ -162,7 +162,7 @@ export default function RegisterPage() {
                                         />
                                     </div>
 
-                                    <GlassSelect
+                                    {/* <GlassSelect
                                         label="Preferred Career Field"
                                         name="field"
                                         required
@@ -193,7 +193,7 @@ export default function RegisterPage() {
                                             "Sports Related Studies",
                                             "Training / Coaching"
                                         ]}
-                                    />
+                                    /> */}
 
                                     <button
                                         type="submit"
