@@ -256,7 +256,8 @@ export default function StepUpPage() {
                         </div>
                         <h3 className="text-3xl sm:text-4xl font-black">Mr. Rushdi Hadhi</h3>
                         <p className="text-xl sm:text-2xl text-purple-300 mt-3">Career Consultant & Coach</p>
-                        <p className="text-gray-300 mt-2">Senior Manager - Startup Ecosystem Development at ICTA</p>
+                        <p className="text-gray-300 mt-2">Founder - IChampion</p>
+                        <p className="text-gray-300 mt-2">SL Inspire - Advisor & Volunteer Trainer</p>
                         <div className="mt-8 bg-white/5 rounded-2xl p-6 border border-white/10">
                             <p className="text-gray-400">Keynote Topic:</p>
                             <p className="text-2xl font-bold text-pink-300 mt-2">"After A/L — Find Your Future Path"</p>
