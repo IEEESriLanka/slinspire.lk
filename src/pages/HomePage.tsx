@@ -6,6 +6,7 @@ import { MonthlySeminarsSection } from "../components/sections/MonthlySeminarsSe
 import { RegistrationSection } from "../components/sections/RegistrationSection";
 import { FeedbacksSection } from "../components/sections/FeedbacksSection";
 import { Footer } from "../components/layout/Footer";
+import { StepUpPopup } from "../components/ui/StepUpPopup";
 
 export const HomePage = () => {
   return (
@@ -19,6 +20,7 @@ export const HomePage = () => {
         <FeedbacksSection />
       </main>
       <Footer />
+      <StepUpPopup />
     </div>
   );
 };
