@@ -16,6 +16,7 @@ import StepUpPage from "./pages/step-up/page.tsx";
 import RegisterPage from "./pages/step-up/register.tsx";
 import SuccessPage from "./pages/step-up/success.tsx";
 import { ScrollToTop } from "./components/layout/ScrollTop";
+import {LaunchCeremony} from "./pages/web-launch/page.tsx";
 
 console.log("Deployed at:", new Date().toLocaleString());
 
@@ -45,6 +46,9 @@ export const App = () => {
               <Route path="/step-up" element={<StepUpPage />} />
               <Route path="/step-up/register" element={<RegisterPage />} />
               <Route path="/step-up/success" element={<SuccessPage />} />
+
+              {/* website launch */}
+              <Route path="/web-launch" element={<LaunchCeremony />} />
 
               <Route path="*" element={<HomePage />} />
 
