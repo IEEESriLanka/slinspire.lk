@@ -20,7 +20,7 @@ export const HomePage = () => {
         <FeedbacksSection />
       </main>
       <Footer />
-      <StepUpPopup />
+      {/* <StepUpPopup /> */}
     </div>
   );
 };
