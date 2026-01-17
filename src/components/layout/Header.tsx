@@ -112,6 +112,16 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                   onMouseLeave={() => setShowDropdown(false)}
                 >
                   <a
+                    href="career-compass-book-2025.pdf"
+                    download
+                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Download className="w-4 h-4" />
+                    Version 2025 [PDF]
+                  </a>
+                  <a
                     href="career-compass-book-2023.pdf"
                     download
                     className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"

@@ -9,13 +9,17 @@ export const CareerCompassWebPage = () => {
         university: '',
         course: '',
         majorField: '',
+        subField: '', // Added: New state for sub-field
         type: '',
     });
+
     const [filterOptions, setFilterOptions] = React.useState({
         universities: [] as string[],
         majorFields: [] as string[],
+        subFields: [] as string[], // Added: New options array
         types: [] as string[],
     });
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
             <Header isMainPage={false} />
@@ -25,6 +29,7 @@ export const CareerCompassWebPage = () => {
                     onChange={setFilters}
                     universityOptions={filterOptions.universities}
                     majorFieldOptions={filterOptions.majorFields}
+                    subFieldOptions={filterOptions.subFields} // Added: Pass sub-field options
                     typeOptions={filterOptions.types}
                 />
                 <GoogleSheetTable
