@@ -3,9 +3,10 @@ import { CareerData } from "../../types/career.type";
 
 interface JobSearchProps {
     onSearch: (query: string) => CareerData[];
+    onSelect: (major: string, sub: string) => void;
 }
 
-export const JobSearch: React.FC<JobSearchProps> = ({ onSearch }) => {
+export const JobSearch: React.FC<JobSearchProps> = ({ onSearch, onSelect }) => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<CareerData[]>([]);
 
@@ -35,7 +36,15 @@ export const JobSearch: React.FC<JobSearchProps> = ({ onSearch }) => {
                     </h4>
                     <ul className="space-y-1">
                         {results.map((r, i) => (
-                            <li key={i} className="text-sm">
+                            <li
+                                key={i}
+                                onClick={() => {
+                                    onSelect(r.major, r.sub);
+                                    setQuery(`${r.sub} (${r.major})`);
+                                    setResults([]);
+                                }}
+                                className="text-sm cursor-pointer hover:bg-indigo-50 p-2 rounded transition"
+                            >
                                 <span className="font-medium text-indigo-600">{r.major}</span> →{" "}
                                 {r.sub}
                             </li>

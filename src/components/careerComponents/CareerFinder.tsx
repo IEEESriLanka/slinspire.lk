@@ -37,7 +37,14 @@ export const CareerFinder: React.FC = () => {
             </div>
 
             <JobList selectedSubData={selectedSubData} />
-            <JobSearch onSearch={searchByJobRole} />
+            <JobSearch
+                onSearch={searchByJobRole}
+                onSelect={(major, sub) => {
+                    setSelectedMajor(major);
+                    setSelectedSub(sub);
+                }}
+
+            />
         </div>
     );
 };
