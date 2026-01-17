@@ -16,7 +16,13 @@ export const TeamDetailsSection = () => {
   const filteredMembers = ProjectTeamsDetails.filter(member => member.year === selectedYear);
 
   return (
-    <div className="p-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.8 }}
+      className="p-6"
+    >
       <div className='mb-16 text-center'>
         <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
           Sri Lanka Inspire <br />
@@ -28,7 +34,6 @@ export const TeamDetailsSection = () => {
       </div>
 
       <div className="flex justify-end items-end mb-6 flex-wrap gap-4">
-
         {/* <h1 className="text-2xl font-bold"> {selectedYear}</h1> */}
         <select
           value={selectedYear}
@@ -43,20 +48,26 @@ export const TeamDetailsSection = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredMembers.map(member => (
-          <TeamMemberCard
+          <motion.div
             key={member.id}
-            position={member.position}
-            name={member.name}
-            image={member.image}
-            contact={member.contact}
-            whatsapp={member.whatsapp}
-            email={member.email}
-            linkedIn={member.linkedIn}
-          />
-
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <TeamMemberCard
+              position={member.position}
+              name={member.name}
+              image={member.image}
+              contact={member.contact}
+              whatsapp={member.whatsapp}
+              email={member.email}
+              linkedIn={member.linkedIn}
+            />
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
