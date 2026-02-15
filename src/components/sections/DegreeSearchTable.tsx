@@ -61,7 +61,7 @@ export default function GoogleSheetTable({ filters, onFilterOptions }: DegreeSea
 
   const extractFilterOptions = React.useCallback(
     (dataRows: Row[]) => {
-      const getOptions = (key: string) => 
+      const getOptions = (key: string) =>
         Array.from(new Set(dataRows.map(row => row[key]).filter(Boolean))).sort();
 
       const options: FilterOptions = {
@@ -97,7 +97,7 @@ export default function GoogleSheetTable({ filters, onFilterOptions }: DegreeSea
 
   const filteredData = React.useMemo(() => {
     const filtered = data.filter((row) => {
-      const match = (val: string, filter: string) => 
+      const match = (val: string, filter: string) =>
         !filter || val?.toLowerCase().includes(filter.toLowerCase());
 
       return (
@@ -140,7 +140,11 @@ export default function GoogleSheetTable({ filters, onFilterOptions }: DegreeSea
             {filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => (
               <TableRow hover key={i}>
                 {columns.map((column) => (
-                  <TableCell key={column.id}>{row[column.id]}</TableCell>
+                  <TableCell key={column.id}>
+                    {column.format
+                      ? column.format(row[column.id])
+                      : row[column.id]}
+                  </TableCell>
                 ))}
               </TableRow>
             ))}

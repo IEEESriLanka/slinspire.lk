@@ -24,7 +24,7 @@ export const MonthlySeminarsSection = () => {
   });
   let currentYear = new Date().getFullYear();
   const [selectedProvince, setSelectedProvince] = useState("All");
-  const [selectedYear, setSelectedYear] = useState(currentYear.toString());
+  const [selectedYear, setSelectedYear] = useState("2025");
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 9;
 

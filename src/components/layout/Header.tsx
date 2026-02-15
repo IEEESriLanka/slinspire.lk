@@ -8,6 +8,11 @@ interface HeaderProps {
   isMainPage: boolean;
 }
 
+interface bookDownloadItemsProps {
+  href: string;
+  name: string;
+}
+
 export const Header = ({ isMainPage }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(isMainPage ? false : true);
@@ -34,6 +39,13 @@ export const Header = ({ isMainPage }: HeaderProps) => {
     { name: "Our Team", href: "#team", hasDropdown: true },
   ];
 
+  const bookDownloadItems: bookDownloadItemsProps[] = [
+    { name: 'Version 2025 [PDF]', href: 'career-compass-book-2025.pdf' },
+    { name: 'Version 2023 [PDF]', href: 'career-compass-book-2023.pdf' },
+    { name: 'Version 2020 [PDF]', href: 'career-compass-book-2020.pdf' },
+    { name: 'Version 2015 (Sinhala) [PDF]', href: 'career-compass-book-2015.pdf' },
+
+  ];
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <motion.header
@@ -111,46 +123,18 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                   className="absolute right-0 z-50 w-64 mt-2 bg-white border border-purple-100 shadow-xl rounded-xl animate-fade-in"
                   onMouseLeave={() => setShowDropdown(false)}
                 >
-                  <a
-                    href="career-compass-book-2025.pdf"
-                    download
-                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="w-4 h-4" />
-                    Version 2025 [PDF]
-                  </a>
-                  <a
-                    href="career-compass-book-2023.pdf"
-                    download
-                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="w-4 h-4" />
-                    Version 2023 [PDF]
-                  </a>
-                  <a
-                    href="career-compass-book-2020.pdf"
-                    download
-                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="w-4 h-4" />
-                    Version 2020 [PDF]
-                  </a>
-                  <a
-                    href="career-compass-book-2015.pdf"
-                    download
-                    className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="w-4 h-4" />
-                    Version 2015 (Sinhala) [PDF]
-                  </a>
+                  {bookDownloadItems.map((item) => (
+                    <a
+                      href={item.href}
+                      download
+                      className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="w-4 h-4" />
+                      {item.name}
+                    </a>
+                  ))}
                 </div>
               )}
             </div>
@@ -223,39 +207,19 @@ export const Header = ({ isMainPage }: HeaderProps) => {
                       className="z-50 w-full mt-2 bg-white border border-purple-100 shadow-xl rounded-xl animate-fade-in"
                       onMouseLeave={() => setShowDropdown(false)}
                     >
-                      <a
-                        href="career-compass-book-2023.pdf"
-                        download
-                        className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <Download className="w-4 h-4" />
-                        Version 2023 [PDF]
-                      </a>
-                      <a
-                        href="career-compass-book-2020.pdf"
-                        download
-                        className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <Download className="w-4 h-4" />
-                        Version 2020 [PDF]
-                      </a>
-                      <a
-                        href="career-compass-book-2015.pdf"
-                        download
-                        className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <Download className="w-4 h-4" />
-                        Version 2015 (Sinhala) [PDF]
-                      </a>
+                      {bookDownloadItems.map((item) => (
+                        <a
+                          href={item.href}
+                          download
+                          className="flex items-center gap-2 px-4 py-3 font-medium text-purple-800 transition-colors hover:bg-purple-50 hover:text-purple-900"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <Download className="w-4 h-4" />
+                          {item.name}
+                        </a>
+                      ))}
                     </div>
                   )}
                 </div>
