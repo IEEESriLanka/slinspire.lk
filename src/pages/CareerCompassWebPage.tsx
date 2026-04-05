@@ -1,8 +1,8 @@
 import React from 'react'
 import { Header } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
-import GoogleSheetTable from '../components/sections/DegreeSearchTable'
 import { DegreeTableFilters } from '../components/sections/DegreeTableFilters'
+import DegreeCardGrid from '../components/sections/DegreeCardGrid'
 
 export const CareerCompassWebPage = () => {
     const [filters, setFilters] = React.useState({
@@ -32,7 +32,12 @@ export const CareerCompassWebPage = () => {
                     subFieldOptions={filterOptions.subFields} // Added: Pass sub-field options
                     typeOptions={filterOptions.types}
                 />
-                <GoogleSheetTable
+                {/* <GoogleSheetTable
+                    filters={filters}
+                    onFiltersChange={setFilters}
+                    onFilterOptions={setFilterOptions}
+                /> */}
+                <DegreeCardGrid
                     filters={filters}
                     onFiltersChange={setFilters}
                     onFilterOptions={setFilterOptions}
