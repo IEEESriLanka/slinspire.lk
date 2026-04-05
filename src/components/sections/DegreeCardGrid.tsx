@@ -125,6 +125,7 @@ export default function DegreeCardGrid({ filters, onFilterOptions }: DegreeSearc
                                 {row['Major Field of Study']} {row['Sub Field'] ? `- ${row['Sub Field']}` : ''}
                             </div>                            
                         </div>
+                        <div className='my-auto'></div>
                         <hr/>
                         <a href={row['Course URL']} target="_blank" className='text-sm bg-purple-600 text-white px-4 py-2 rounded-lg inline-flex items-center gap-1 justify-end self-end font-medium hover:bg-purple-700'>
                             <Link size={14} className='mr-2'/> View Course
