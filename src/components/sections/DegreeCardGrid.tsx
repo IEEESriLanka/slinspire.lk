@@ -3,19 +3,8 @@ import {
     CircularProgress, Box,
     Paper,
     TablePagination,
-    Card,
-    CardActionArea,
-    CardContent,
-    Typography,
-    CardActions,
-    Button,
-    Grid,
-    CardHeader,
-    Avatar,
-    Chip,
 } from '@mui/material';
-import { red } from '@mui/material/colors';
-import { University } from 'lucide-react';
+import { BookOpen, Link, University } from 'lucide-react';
 
 interface Row { [key: string]: string; }
 
@@ -42,7 +31,7 @@ export default function DegreeCardGrid({ filters, onFilterOptions }: DegreeSearc
     const [data, setData] = React.useState<Row[]>([]);
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(12);
 
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJBfGbPad3bQTSZ9JJD-mBE1i2XAZOZ16U9nbIDErq9yczJbNmxtUKU-AaYqO1BH3vUPPi-uJq4y7a/pub?gid=213263041&single=true&output=tsv';
 
@@ -113,42 +102,38 @@ export default function DegreeCardGrid({ filters, onFilterOptions }: DegreeSearc
 
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden', padding: 3 }}>
-            <Grid container spacing={3}>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, _) => (
-                    <Grid size={4}>
-                        <Card sx={{}}>
-                            <CardActionArea>
-                                <CardHeader
-                                    avatar={
-                                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                                            <University size={20} color='white' />
-                                        </Avatar>
-                                    }
-                                    title={row['University/ Institution Name']}
-                                    subheader={row['Major Field of Study']}
-                                />
-                                <CardContent>
-                                    <Chip label={row['External/Internal']} size="small" color={row['External/Internal'] === 'External' ? 'primary' : 'default'} sx={{ mb: 1 }} />
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        {row['Course Name']}
-                                    </Typography>
-                                    <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                                        {row['Major Field of Study']} {row['Sub Field'] ? `- ${row['Sub Field']}` : ''}
-                                    </Typography>
-                                </CardContent>
-
-                            </CardActionArea>
-                            <CardActions>
-                                <Button size="small" color="primary" href={row['Course URL']} target="_blank">
-                                    Learn More
-                                </Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
+                    <div className='bg-white p-4  border-t-4 border-purple-500 rounded-lg shadow-lg flex flex-col gap-3 hover:shadow-xl duration-100' >
+                        <div id='card-header' className='flex gap-4'>
+                            <div className='w-10 h-10 rounded-xl bg-purple-200 flex items-center justify-center'>
+                                <University size={20} color='purple' className='m-auto' />
+                            </div>
+                            <div className='flex flex-col'>
+                                <h3 className='text-md font-medium'>{row['University/ Institution Name']}</h3>
+                                <span className='text-xs text-gray-600 inline-flex items-center gap-1 -ml-1'><BookOpen className='h-3'/> {row['Major Field of Study']}</span>
+                            </div>
+                        </div>
+                        <div id="card-content" className='flex flex-col gap-2 items-start'>
+                            <div className='text-xs font-medium  inline-block px-3 py-1 data-[internal=true]:text-purple-700  data-[internal=true]:bg-purple-500/30 bg-gray-100 rounded-lg' data-internal={row['External/Internal'] === 'Internal' ? 'true' : 'false'}>
+                                {row['External/Internal'].toUpperCase()}
+                            </div>
+                            <div>
+                                <h2 className='font-semibold text-foreground text-lg leading-tight'>{row['Course Name']}</h2>
+                            </div>
+                            <div className='text-sm text-muted-foreground'>
+                                {row['Major Field of Study']} {row['Sub Field'] ? `- ${row['Sub Field']}` : ''}
+                            </div>                            
+                        </div>
+                        <hr/>
+                        <a href={row['Course URL']} target="_blank" className='text-sm bg-purple-600 text-white px-4 py-2 rounded-lg inline-flex items-center gap-1 justify-end self-end font-medium hover:bg-purple-700'>
+                            <Link size={14} className='mr-2'/> View Course
+                        </a>
+                    </div>
                 ))}
-            </Grid>
+            </div>
             <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
+                rowsPerPageOptions={[12, 24, 100]}
                 component="div"
                 count={filteredData.length}
                 rowsPerPage={rowsPerPage}
