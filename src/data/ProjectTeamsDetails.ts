@@ -365,7 +365,7 @@ export const ProjectTeamsDetails: any[] = [
   },
   {
     id: 33,
-    position: "Vice Chair - Program",
+    position: "YPSL Representative",
     name: "Kavindra Weerasinghe",
     contact: "tel:+94774743603",
     whatsapp: "https://wa.me/94774743603",
