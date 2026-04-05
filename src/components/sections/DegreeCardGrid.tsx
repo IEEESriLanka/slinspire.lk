@@ -4,7 +4,7 @@ import {
     Paper,
     TablePagination,
 } from '@mui/material';
-import { BookOpen, Link, University } from 'lucide-react';
+import { BookOpen, Boxes, CircleChevronRightIcon, Link, University } from 'lucide-react';
 
 interface Row { [key: string]: string; }
 
@@ -114,15 +114,20 @@ export default function DegreeCardGrid({ filters, onFilterOptions }: DegreeSearc
                                 <span className='text-xs text-gray-600 inline-flex items-center gap-1 -ml-1'><BookOpen className='h-3'/> {row['Major Field of Study']}</span>
                             </div>
                         </div>
-                        <div id="card-content" className='flex flex-col gap-2 items-start'>
+                        <div id="card-content" className='flex flex-col gap-3 items-start'>
                             <div className='text-xs font-medium  inline-block px-3 py-1 data-[internal=true]:text-purple-700  data-[internal=true]:bg-purple-500/30 bg-gray-100 rounded-lg' data-internal={row['External/Internal'] === 'Internal' ? 'true' : 'false'}>
                                 {row['External/Internal'].toUpperCase()}
                             </div>
                             <div>
                                 <h2 className='font-semibold text-foreground text-lg leading-tight'>{row['Course Name']}</h2>
                             </div>
-                            <div className='text-sm text-muted-foreground'>
-                                {row['Major Field of Study']} {row['Sub Field'] ? `- ${row['Sub Field']}` : ''}
+                            <div className='text-sm font-medium bg-gray-200 text-gray-800 px-2 py-1 rounded-lg inline-flex items-center'>
+                                <Boxes size={14} className='mr-2' color='gray'/>
+                                <span className='text-gray-500 font-normal mr-2'>Major Field : </span> {row['Major Field of Study']}
+                            </div>
+                            <div className='text-sm items-baseline font-medium bg-gray-200 text-gray-800 px-2 py-1 rounded-lg inline-flex aria-hidden:hidden' aria-hidden={!row['Sub Field']}>
+                                <CircleChevronRightIcon size={14} className='mr-2' color='gray'/>
+                                <span className='text-gray-500 font-normal'>Sub Field : </span> {row['Sub Field'] ? row['Sub Field'] : ''}
                             </div>                            
                         </div>
                         <div className='my-auto'></div>
