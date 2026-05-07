@@ -40,10 +40,11 @@ export const Header = ({ isMainPage }: HeaderProps) => {
   ];
 
   const bookDownloadItems: bookDownloadItemsProps[] = [
-    { name: 'Version 2025 [PDF]', href: 'career-compass-book-2025.pdf' },
-    { name: 'Version 2023 [PDF]', href: 'career-compass-book-2023.pdf' },
-    { name: 'Version 2020 [PDF]', href: 'career-compass-book-2020.pdf' },
-    { name: 'Version 2015 (Sinhala) [PDF]', href: 'career-compass-book-2015.pdf' },
+    { name: 'Version 2026 [PDF]', href: 'book/career-compass-book-2026.pdf' },
+    { name: 'Version 2025 [PDF]', href: 'book/career-compass-book-2025.pdf' },
+    { name: 'Version 2023 [PDF]', href: 'book/career-compass-book-2023.pdf' },
+    { name: 'Version 2020 [PDF]', href: 'book/career-compass-book-2020.pdf' },
+    { name: 'Version 2015 (Sinhala) [PDF]', href: 'book/career-compass-book-2015.pdf' },
 
   ];
   const [showDropdown, setShowDropdown] = useState(false);

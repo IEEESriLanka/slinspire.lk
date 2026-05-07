@@ -3,6 +3,9 @@ import { Footer } from '../components/layout/Footer'
 import { Header } from '../components/layout/Header'
 
 export const CareerCompassBookPage = () => {
+  
+  const book = 'book/career-compass-book-2026.pdf';
+  
   return (
 
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 flex flex-col">
@@ -17,7 +20,7 @@ export const CareerCompassBookPage = () => {
             Explore your career options with our comprehensive guide, designed to empower Sri Lankan students and professionals. [Sample Texts]
           </p> */}
           <a
-            href="career-compass-book-2025.pdf"
+            href={book}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 text-lg"
@@ -36,19 +39,19 @@ export const CareerCompassBookPage = () => {
             <li>Understand the skills needed for various roles</li>
             <li>Get tips on job searching and career development</li>
             <li>Access resources for further learning</li>[Sample Texts]
-          </ul> */}
-          {/* <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-purple-700">Who is it for?</h2> */}
-          {/* <p className="text-lg text-gray-700 mb-8">
+          </ul>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-purple-700">Who is it for?</h2>
+          <p className="text-lg text-gray-700 mb-8">
             Whether you are a student exploring career options, a professional looking to switch fields, or someone
             seeking to enhance your skills, Career Compass is designed for you. It provides valuable information for
             anyone at any stage of their career journey.[Sample Texts]
           </p> */}
         </div>
-        <div className="mb-16">
+        <div className="mb-16 w-full">
           <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-purple-700 text-center">Read the Book Online</h2>
           <div className="w-full h-[700px] rounded-2xl overflow-hidden shadow-2xl border-2 border-purple-100 bg-gradient-to-br from-purple-50 to-indigo-50">
             <iframe
-              src="career-compass-book-2025.pdf"
+              src={book}
               title="Career Compass Book"
               width="100%"
               height="100%"
