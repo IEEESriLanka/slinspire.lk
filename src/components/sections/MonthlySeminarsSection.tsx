@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Calendar, MapPin, Users, Filter, Search, School } from "lucide-react";
+import { Calendar, MapPin, Users, Filter, School } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { careerCompassSessions } from "../../data/CareerCompassSessions";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationEllipsis,
-} from "../ui/pagination";
 import { SeminarPagination } from "../ui/SeminarPagination";
 
 export const MonthlySeminarsSection = () => {
@@ -24,7 +15,7 @@ export const MonthlySeminarsSection = () => {
   });
   let currentYear = new Date().getFullYear();
   const [selectedProvince, setSelectedProvince] = useState("All");
-  const [selectedYear, setSelectedYear] = useState("2025");
+  const [selectedYear, setSelectedYear] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 9;
 
@@ -34,7 +25,7 @@ export const MonthlySeminarsSection = () => {
   const filteredSeminars = careerCompassSessions.filter(seminar => {
     return (selectedProvince === "All" || seminar.province === selectedProvince) &&
       (selectedYear === "All" || seminar.year === selectedYear);
-  });
+  }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());;
 
   // Pagination logic
   const totalCards = filteredSeminars.length;

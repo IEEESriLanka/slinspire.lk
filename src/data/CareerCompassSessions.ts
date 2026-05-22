@@ -236,7 +236,7 @@ export const careerCompassSessions = [
         participants: 175,
         description: "Central Provincial Career Compass session conducted in collaboration with the IEEE Student Branch of University of  Peradeniya.",
         image: "session/2025/2025_05.jpg",
-        // albumURL: "#"
+        albumURL: "https://www.facebook.com/share/p/1ALMC9vT8V/"
     },
 
     {
@@ -246,7 +246,7 @@ export const careerCompassSessions = [
         vanue: "TBD",
         date: "2025 August 21",
         year: "2025",
-        status: "Ongoing",
+        status: "Completed",
         schools: 1,
         participants: 150,
         description: "Career Compass Session in collaboration with KDU - Envision 3.0 Project.",
@@ -261,12 +261,12 @@ export const careerCompassSessions = [
         vanue: "University of Ruhuna",
         date: "2025 August 08",
         year: "2025",
-        status: "Ongoing",
+        status: "Completed",
         // schools: 1,
         // participants: 145,
         description: "Southern  Provincial Career Compass session in collaboration with the IEEE Student Branch of University of  Ruhuna to support and guide students in their career development.",
         image: "session/2025/2025_07.jpg",
-        albumURL: "#"
+        albumURL: "https://www.facebook.com/share/p/1895sgB1Wz/"
     },
 
     {
@@ -276,12 +276,12 @@ export const careerCompassSessions = [
         vanue: "Wayamba University of Sri Lanka",
         date: "2025 September",
         year: "2025",
-        status: "TODO",
+        status: "Completed",
         // schools: 1,
         // participants: 80,
         description: "North Western Provincial Career Compass session in collaboration with the IEEE Student Branch of Wayamba University of Sri Lanka to support and guide students in their career development.",
         image: "session/2025/2025_08.jpg",
-        albumURL: "#"
+        albumURL: "https://www.facebook.com/share/p/1JpeMXns6N/"
     },
 
     {
@@ -291,12 +291,12 @@ export const careerCompassSessions = [
         vanue: "Sabaragamuwa University",
         date: "2025 October",
         year: "2025",
-        status: "TODO",
+        status: "Completed",
         // schools: 1,
         // participants: 150,
         description: "Sabragamuwa Provincial Career Compass session in collaboration with the IEEE Student Branch of Sabaragamuwa University of Sri Lanka.",
         image: "session/2025/2025_09.jpg",
-        albumURL: "#"
+        albumURL: "https://www.facebook.com/share/p/1ByVEqhgW3/"
     },
 
     {
@@ -306,12 +306,12 @@ export const careerCompassSessions = [
         vanue: "Uva Wellassa University",
         date: "2025 October",
         year: "2025",
-        status: "TODO",
+        status: "Completed",
         // schools: 13,
         // participants: 155,
         description: "Uva Provincial Career Compass session in collaboration with the IEEE Student Branch of Uva Wellassa University of Sri Lanka.",
         image: "session/2025/2025_10.jpg",
-        albumURL: "#"
+        albumURL: "https://www.facebook.com/share/p/1AmnDhQhzx/"
     },
 
     {
@@ -321,12 +321,12 @@ export const careerCompassSessions = [
         vanue: "South Eastern University of Sri Lanka",
         date: "2025 November",
         year: "2025",
-        status: "TODO",
+        status: "Completed",
         // schools: 1,
         // participants: 155,
         description: "Eastern Provincial Career Compass session in collaboration with the IEEE Student Branch of South Eastern University of Sri Lanka.",
         image: "session/2025/2025_11.jpg",
-        albumURL: "#"
+        albumURL: "https://www.facebook.com/share/p/1BQ2fTQjjn/"
     },
 
     {
@@ -336,10 +336,136 @@ export const careerCompassSessions = [
         vanue: "University of Kelaniya",
         date: "2025 December",
         year: "2025",
-        status: "TODO",
+        status: "Completed",
         // schools: 1,
         // participants: 80,
         description: "Western Provincial Career Compass session in collaboration with the IEEE Student Branch of University of Kelaniya.",
+        image: "session/2025/2025_12.jpg",
+        albumURL: "https://www.facebook.com/share/p/1CwiNY1hjV/"
+    },
+    {
+        id: 2026_07,
+        name: "SLInspire Central Province Career Compass Session - 2026",
+        province: "Central",
+        vanue: "University of Peradeniya",
+        date: "2026 July",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "Central Provincial Career Compass session in collaboration with the IEEE Student Branch of University of Peradeniya.",
+        image: "session/2025/2025_05.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2026_06,
+        name: "SLInspire Eastern Province Career Compass Session - 2026",
+        province: "Eastern",
+        vanue: "South Eastern University of Sri Lanka",
+        date: "2026 June",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "Eastern Provincial Career Compass session in collaboration with the IEEE Student Branch of South Eastern University of Sri Lanka.",
+        image: "session/2025/2025_11.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2026_06,
+        name: "SLInspire North Central Province Career Compass Session - 2026",
+        province: "North Central",
+        vanue: "Rajarata University of Sri Lanka",
+        date: "2026 June",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "North Central Provincial Career Compass session in collaboration with the IEEE Student Branch of Rajarata University of Sri Lanka.",
+        image: "session/2025/2025_03.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2026_09,
+        name: "SLInspire North Western Province Career Compass Session - 2026",
+        province: "North Western",
+        vanue: "Wayamba University of Sri Lanka",
+        date: "2026 September",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "North Western Provincial Career Compass session in collaboration with the IEEE Student Branch of Wayamba University of Sri Lanka.",
+        image: "session/2025/2025_08.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2026_06,
+        name: "SLInspire Northern Province Career Compass Session - 2026",
+        province: "Northern",
+        vanue: "University of Jaffna",
+        date: "2026 June 27",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "Northern Provincial Career Compass session in collaboration with the IEEE Student Branch of University of Jaffna.",
+        image: "session/2025/2025_04.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2026_10,
+        name: "SLInspire Sabaragamuwa Province Career Compass Session - 2026",
+        province: "Sabaragamuwa",
+        vanue: "Sabaragamuwa University",
+        date: "2026 October",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "Sabaragamuwa Provincial Career Compass session in collaboration with the IEEE Student Branch of Sabaragamuwa University of Sri Lanka.",
+        image: "session/2025/2025_09.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2026_09,
+        name: "SLInspire Southern Province Career Compass Session - 2026",
+        province: "Southern",
+        vanue: "University of Ruhuna",
+        date: "2026 September",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "Southern Provincial Career Compass session in collaboration with the IEEE Student Branch of University of Ruhuna.",
+        image: "session/2025/2025_07.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2026_11,
+        name: "SLInspire Uva Province Career Compass Session - 2026",
+        province: "Uva",
+        vanue: "Uva Wellassa University",
+        date: "2026 November",
+        year: "2026",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "Uva Provincial Career Compass session in collaboration with the IEEE Student Branch of Uva Wellassa University.",
+        image: "session/2025/2025_10.jpg",
+        albumURL: "#"
+    },
+    {
+        id: 2027_05,
+        name: "SLInspire Western Province Career Compass Session - 2027",
+        province: "Western",
+        vanue: "University of Jayewardenepura",
+        date: "2027 May",
+        year: "2027",
+        status: "Upcoming",
+        // schools: 1,
+        // participants: 80,
+        description: "Western Provincial Career Compass session in collaboration with the IEEE Student Branch of University of Jayewardenepura.",
         image: "session/2025/2025_12.jpg",
         albumURL: "#"
     },
