@@ -53,7 +53,7 @@ export const MonthlySeminarsSection = () => {
     switch (status) {
       case "Completed": return "bg-green-100 text-green-800";
       case "Ongoing": return "bg-orange-100 text-orange-800";
-      case "TODO": return "bg-red-100 text-red-800";
+      case "Upcoming": return "bg-red-100 text-red-800";
       default: return "bg-gray-100 text-gray-800";
     }
   };
