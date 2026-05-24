@@ -15,25 +15,28 @@ export const MonthlySeminarsSection = () => {
   });
   let currentYear = new Date().getFullYear();
   const [selectedProvince, setSelectedProvince] = useState("All");
-  const [selectedYear, setSelectedYear] = useState("All");
+  const [selectedYear, setSelectedYear] = useState("2026");
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 9;
+  const [totalPages, setTotalPages] = useState(Math.ceil(careerCompassSessions.length / cardsPerPage));
+  const [paginatedSeminars, setPaginatedSeminars] = useState(careerCompassSessions.slice(0, cardsPerPage));
 
   const provinces = ["All", ...new Set(careerCompassSessions.map(s => s.province))];
   const years = ["All", ...new Set(careerCompassSessions.map(s => s.year))];
 
-  const filteredSeminars = careerCompassSessions.filter(seminar => {
-    return (selectedProvince === "All" || seminar.province === selectedProvince) &&
-      (selectedYear === "All" || seminar.year === selectedYear);
-  }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());;
+  React.useEffect(() => {
+    const filtered = careerCompassSessions.filter(seminar => {
+      return (selectedProvince === "All" || seminar.province === selectedProvince) &&
+        (selectedYear === "All" || seminar.year === selectedYear);
+    }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    const paginated = filtered.slice(
+      (currentPage - 1) * cardsPerPage,
+      currentPage * cardsPerPage
+    );
 
-  // Pagination logic
-  const totalCards = filteredSeminars.length;
-  const totalPages = Math.ceil(totalCards / cardsPerPage);
-  const paginatedSeminars = filteredSeminars.slice(
-    (currentPage - 1) * cardsPerPage,
-    currentPage * cardsPerPage
-  );
+    setTotalPages(Math.ceil(filtered.length / cardsPerPage));
+    setPaginatedSeminars(paginated);
+  }, [selectedProvince, selectedYear, currentPage]);
 
   // Reset to first page when filters change
   React.useEffect(() => {
@@ -146,77 +149,77 @@ export const MonthlySeminarsSection = () => {
         {/* Card Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {paginatedSeminars.map((seminar) => (
-            <motion.div
-              key={seminar.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
-            >
-              <Card className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
-                <div className="relative h-48 overflow-hidden rounded-t-lg">
-                  <img
-                    src={`${import.meta.env.BASE_URL}${seminar.image}`}
-                    alt={seminar.vanue}
-                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 text-sm font-medium text-purple-600 rounded-full bg-purple-50">
-                      {seminar.province} Province
-                    </span>
+            // <motion.div
+            //   key={seminar.id}
+            //   initial={{ opacity: 0, y: 30 }}
+            //   animate={inView ? { opacity: 1, y: 0 } : {}}
+            //   transition={{ duration: 0.7 }}
+            // >
+            <Card className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
+              <div className="relative h-48 overflow-hidden rounded-t-lg">
+                <img
+                  src={`${import.meta.env.BASE_URL}${seminar.image}`}
+                  alt={seminar.vanue}
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 text-sm font-medium text-purple-600 rounded-full bg-purple-50">
+                    {seminar.province} Province
+                  </span>
+                </div>
+                <div className="absolute top-4 right-4 flex flex-col items-end space-y-2">
+                  <Badge className={getStatusColor(seminar.status)}>
+                    {seminar.status}
+                  </Badge>
+                  <Badge className={getYearColor(seminar.year)}>
+                    {seminar.year}
+                  </Badge>
+                </div>
+              </div>
+              <CardContent className="flex flex-col flex-1 p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {seminar.name}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-600">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    <span className="text-sm">{seminar.date}</span>
                   </div>
-                  <div className="absolute top-4 right-4 flex flex-col items-end space-y-2">
-                    <Badge className={getStatusColor(seminar.status)}>
-                      {seminar.status}
-                    </Badge>
-                    <Badge className={getYearColor(seminar.year)}>
-                      {seminar.year}
-                    </Badge>
+                  <div className="flex items-center gap-1">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-sm">{seminar.vanue}</span>
                   </div>
                 </div>
-                <CardContent className="flex flex-col flex-1 p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {seminar.name}
-                    </h3>
+                <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-600">
+                  <div className="flex items-center gap-1">
+                    <School className="w-4 h-4" />
+                    <span className="text-sm">{seminar.schools ? `${seminar.schools} schools` : "N/A"}</span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      <span className="text-sm">{seminar.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      <span className="text-sm">{seminar.vanue}</span>
-                    </div>
+                  <div className="flex items-center gap-1">
+                    <Users className="w-4 h-4" />
+                    <span className="text-sm">{seminar.participants ? `${seminar.participants} Students` : "N/A"}</span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <School className="w-4 h-4" />
-                      <span className="text-sm">{seminar.schools ? `${seminar.schools} schools` : "N/A"}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
-                      <span className="text-sm">{seminar.participants ? `${seminar.participants} Students` : "N/A"}</span>
-                    </div>
-                  </div>
-                  <p className="flex-1 mb-6 leading-relaxed text-gray-600">
-                    {seminar.description}
-                  </p>
-                  <Button
-                    className="w-full mt-auto bg-purple-600 hover:bg-purple-700"
-                    disabled={seminar.status !== "Completed" || !seminar.albumURL}
-                    onClick={() => {
-                      if (seminar.albumURL) {
-                        window.open(seminar.albumURL, "_blank", "noopener,noreferrer");
-                      }
-                    }}
-                  >
-                    View Album
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </div>
+                <p className="flex-1 mb-6 leading-relaxed text-gray-600">
+                  {seminar.description}
+                </p>
+                <Button
+                  className="w-full mt-auto bg-purple-600 hover:bg-purple-700"
+                  disabled={seminar.status !== "Completed" || !seminar.albumURL}
+                  onClick={() => {
+                    if (seminar.albumURL) {
+                      window.open(seminar.albumURL, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                >
+                  View Album
+                </Button>
+              </CardContent>
+            </Card>
+            // </motion.div>
           ))}
         </div>
         <SeminarPagination
