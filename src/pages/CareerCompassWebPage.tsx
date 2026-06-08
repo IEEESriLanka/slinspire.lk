@@ -11,6 +11,10 @@ export const CareerCompassWebPage = () => {
         majorField: '',
         subField: '', // Added: New state for sub-field
         type: '',
+        isPaid: '',
+        courseMode: '',
+        qualificationLevel: '',
+        stream: '',
     });
 
     const [filterOptions, setFilterOptions] = React.useState({
@@ -18,6 +22,10 @@ export const CareerCompassWebPage = () => {
         majorFields: [] as string[],
         subFields: [] as string[], // Added: New options array
         types: [] as string[],
+        paymentStatuses: [] as string[],
+        courseModes: [] as string[],
+        qualificationLevels: [] as string[],
+        streams: [] as string[],
     });
 
     return (
@@ -31,6 +39,10 @@ export const CareerCompassWebPage = () => {
                     majorFieldOptions={filterOptions.majorFields}
                     subFieldOptions={filterOptions.subFields} // Added: Pass sub-field options
                     typeOptions={filterOptions.types}
+                    isPaidOptions={filterOptions.paymentStatuses}
+                    courseModeOptions={filterOptions.courseModes}
+                    qualificationLevelOptions={filterOptions.qualificationLevels}
+                    streamOptions={filterOptions.streams}
                 />
                 {/* <GoogleSheetTable
                     filters={filters}
