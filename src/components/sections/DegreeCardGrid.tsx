@@ -7,6 +7,7 @@ import DegreeCard from './DegreeCard';
 
 export interface DegreeRecord {
     id: string;
+    uniId: string;
     universityName: string;
     courseName: string;
     majorField: string;
@@ -108,6 +109,7 @@ export default function DegreeCardGrid({ filters, onFilterOptions }: DegreeSearc
                      // Log each row for debugging
                     const record: DegreeRecord = {
                         id: String(rows.indexOf(row) - 1),
+                        uniId: row[gn('1')]?.trim() || '',
                         universityName: row[gn('3')]?.trim() || '',
                         courseName: row[gn('4')]?.trim() || '',
                         majorField: row[gn('10')]?.trim() || '',
