@@ -1,9 +1,6 @@
-export interface VideoCategory {
-    id: number;
-    name: string;
-    description: string;
-    image?: string;
-}
+import { VideoCategory } from "@/features/videos/types";
+
+export type { VideoCategory };
 
 export const videoCategories: VideoCategory[] = [
     {

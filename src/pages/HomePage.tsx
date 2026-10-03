@@ -1,23 +1,16 @@
-import { Header } from "../components/layout/Header";
-import { HeroSection } from "../components/sections/HeroSection";
-import { ServicesSection } from "../components/sections/ServicesSection";
-import { MonthlySeminarsSection } from "../components/sections/MonthlySeminarsSection";
-import { FeedbacksSection } from "../components/sections/FeedbacksSection";
-import { Footer } from "../components/layout/Footer";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { HeroSection } from "@/features/landing/components/HeroSection";
+import { ServicesSection } from "@/features/landing/components/ServicesSection";
+import { MonthlySeminarsSection } from "@/features/sessions/components/MonthlySeminarsSection";
+import { FeedbacksSection } from "@/features/testimonials/components/FeedbacksSection";
 
 export const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
-      <Header isMainPage={true} />
-      <main>
-        <HeroSection />
-        <ServicesSection />
-        <MonthlySeminarsSection />
-        {/* <RegistrationSection /> */}
-        <FeedbacksSection />
-      </main>
-      <Footer />
-      {/* <StepUpPopup /> */}
-    </div>
+    <PageLayout isMainPage={true} container="none">
+      <HeroSection />
+      <ServicesSection />
+      <MonthlySeminarsSection />
+      <FeedbacksSection />
+    </PageLayout>
   );
 };
