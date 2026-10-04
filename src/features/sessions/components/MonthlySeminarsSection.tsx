@@ -155,7 +155,7 @@ export const MonthlySeminarsSection = () => {
             //   animate={inView ? { opacity: 1, y: 0 } : {}}
             //   transition={{ duration: 0.7 }}
             // >
-            <Card className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
+            <Card key={seminar.id} className="flex flex-col h-full transition-all duration-300 bg-white border-0 group hover:shadow-xl">
               <div className="relative h-48 overflow-hidden rounded-t-lg">
                 <img
                   src={`${import.meta.env.BASE_URL}${seminar.image}`}

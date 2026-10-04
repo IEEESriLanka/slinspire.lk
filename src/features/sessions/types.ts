@@ -1,3 +1,5 @@
+export type SessionStatus = "Completed" | "Ongoing" | "Upcoming";
+
 export interface SeminarSession {
   id: number | string;
   name: string;
@@ -6,9 +8,9 @@ export interface SeminarSession {
   venue?: string;
   date: string;
   year: string;
-  status: "Completed" | "Ongoing" | "Upcoming" | string;
-  schools: number;
-  participants: number;
+  status: SessionStatus;
+  schools?: number;
+  participants?: number;
   description: string;
   image: string;
   albumURL?: string;

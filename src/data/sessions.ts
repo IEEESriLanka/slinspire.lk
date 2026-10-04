@@ -2,7 +2,7 @@ import { SeminarSession } from "@/features/sessions/types";
 
 export const careerCompassSessions: SeminarSession[] = [
     {
-        id: 2024_01,
+        id: 2024.1,
         name: "SLInspire Sabaragamuwa Province Career Compass Session - 2024",
         province: "Sabaragamuwa",
         vanue: "Galigamuwa Central College, Galigamuwa",
@@ -17,7 +17,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_02,
+        id: 2024.2,
         name: "SLInspire Western Province Career Compass Session - 2024",
         province: "Western",
         vanue: "Sri Pannananda College, Kahapola, Piliyandala",
@@ -31,7 +31,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "https://www.facebook.com/share/p/e3hKLqYzt47vWxEf/?mibextid=qi2Omg"
     },
     {
-        id: 2024_03,
+        id: 2024.3,
         name: "IEEE Education Week Career Compass Session - 2024",
         province: "Western",
         vanue: "Trace Expert City, Colombo",
@@ -46,7 +46,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_04,
+        id: 2024.4,
         name: "SLInspire North Western Province Career Compass Session - 2024",
         province: "North Western",
         vanue: "Sripathi Royal College, Kuliyapitiya",
@@ -61,7 +61,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_05,
+        id: 2024.5,
         name: "SLInspire Southern Province Career Compass Session - 2024",
         province: "Southern",
         vanue: "G/Aluthwala Madya Vidyalaya",
@@ -76,7 +76,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_06,
+        id: 2024.6,
         name: "SLInspire North Central Province Career Compass Session - 2024",
         province: "North Central",
         vanue: "A/Pahalamaragahawewa Vidyartha Maha Vidayla",
@@ -91,7 +91,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_07,
+        id: 2024.7,
         name: "SLInspire Eastern Province Career Compass Session - 2024",
         province: "Eastern",
         vanue: "Panama Maha Vidyalaya, Ampara",
@@ -106,7 +106,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_08,
+        id: 2024.8,
         name: "SLInspire Central Province Career Compass Session - 2024",
         province: "Central",
         vanue: "Ovilikanda Maha Vidyalaya, Matale",
@@ -121,7 +121,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_09,
+        id: 2024.9,
         name: "SLInspire Northern Province Career Compass Session - 2024",
         province: "Northern",
         vanue: "J/Mahajana College",
@@ -136,7 +136,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_10,
+        id: 2024.10,
         name: "SLInspire Uva Province Career Compass Session - 2024",
         province: "Uva",
         vanue: "Uva Wellassa University",
@@ -151,15 +151,15 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2024_11,
+        id: 2024.11,
         name: "EDEX - Nanapahana Event, Career Compass Session By SLInspire - 2024",
         province: "Uva",
         vanue: "Divisional Secretariat - Buttala",
         date: "2024 December 13",
         year: "2024",
         status: "Completed",
-        schools: "28",
-        participants: "50",
+        schools: 28,
+        participants: 50,
         description: "Career Compass session conducted at the EDEX Nenapahana event as part of the Transformative CSR Initiative in the Buththala Divisional Secretariat Area.",
         image: "session/2024/2024_11.jpg",
         albumURL: "https://www.facebook.com/share/p/16aChWwdCM/"
@@ -168,7 +168,7 @@ export const careerCompassSessions: SeminarSession[] = [
 
     // 2025 Session List
     {
-        id: 2025_01,
+        id: 2025.1,
         name: "SLInspire North Western Province Career Compass Session - 2025",
         province: "North Western",
         vanue: "Wayamba University of Sri Lanka",
@@ -182,7 +182,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "https://www.facebook.com/share/p/1FomDJev2i/"
     },
     {
-        id: 2025_02,
+        id: 2025.2,
         name: "IEEE Education Week Career Compass Session - 2025",
         province: "Western",
         vanue: "Trace Expert City, Colombo",
@@ -197,7 +197,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_03,
+        id: 2025.3,
         name: "SLInspire North Central Province Career Compass Session - 2025",
         province: "North Central",
         vanue: "Rajarata University of Sri Lanka",
@@ -212,7 +212,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_04,
+        id: 2025.4,
         name: "SLInspire Northern Province Career Compass Session - 2025",
         province: "Northern",
         vanue: "University of Vavuniya",
@@ -227,7 +227,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_05,
+        id: 2025.5,
         name: "SLInspire Central Province Career Compass Session - 2025",
         province: "Central",
         vanue: "University of Peradeniya",
@@ -242,7 +242,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_06,
+        id: 2025.6,
         name: "KDU - Envision 3.0 Project in Collaboration with SLInspire, Career Compass Session - 2025",
         province: "Western",
         vanue: "TBD",
@@ -257,7 +257,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_07,
+        id: 2025.7,
         name: "SLInspire Southern Province Career Compass Session - 2025",
         province: "Southern",
         vanue: "University of Ruhuna",
@@ -272,7 +272,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_08,
+        id: 2025.8,
         name: "SLInspire North Western Province Career Compass Session - 2025",
         province: "North Western",
         vanue: "Wayamba University of Sri Lanka",
@@ -287,7 +287,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_09,
+        id: 2025.9,
         name: "SLInspire Sabaragamuwa Province Career Compass Session - 2025",
         province: "Sabaragamuwa",
         vanue: "Sabaragamuwa University",
@@ -302,7 +302,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_10,
+        id: 2025.10,
         name: "SLInspire Uva Province Career Compass Session - 2025",
         province: "Uva",
         vanue: "Uva Wellassa University",
@@ -317,7 +317,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_11,
+        id: 2025.11,
         name: "SLInspire Eastern Province Career Compass Session - 2025",
         province: "Eastern",
         vanue: "South Eastern University of Sri Lanka",
@@ -332,7 +332,7 @@ export const careerCompassSessions: SeminarSession[] = [
     },
 
     {
-        id: 2025_12,
+        id: 2025.12,
         name: "SLInspire Western Province Career Compass Session - 2025",
         province: "Western",
         vanue: "University of Kelaniya",
@@ -346,7 +346,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "https://www.facebook.com/share/p/1CwiNY1hjV/"
     },
     {
-        id: 2026_07,
+        id: 2026.7,
         name: "SLInspire Central Province Career Compass Session - 2026",
         province: "Central",
         vanue: "University of Peradeniya",
@@ -360,7 +360,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2026_06,
+        id: 2026.6,
         name: "SLInspire Eastern Province Career Compass Session - 2026",
         province: "Eastern",
         vanue: "South Eastern University of Sri Lanka",
@@ -374,7 +374,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2026_06,
+        id: 2026.6,
         name: "SLInspire North Central Province Career Compass Session - 2026",
         province: "North Central",
         vanue: "Rajarata University of Sri Lanka",
@@ -388,7 +388,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2026_09,
+        id: 2026.9,
         name: "SLInspire North Western Province Career Compass Session - 2026",
         province: "North Western",
         vanue: "Wayamba University of Sri Lanka",
@@ -402,7 +402,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2026_06,
+        id: 2026.6,
         name: "SLInspire Northern Province Career Compass Session - 2026",
         province: "Northern",
         vanue: "University of Jaffna",
@@ -416,7 +416,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2026_10,
+        id: 2026.10,
         name: "SLInspire Sabaragamuwa Province Career Compass Session - 2026",
         province: "Sabaragamuwa",
         vanue: "Sabaragamuwa University",
@@ -430,7 +430,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2026_09,
+        id: 2026.9,
         name: "SLInspire Southern Province Career Compass Session - 2026",
         province: "Southern",
         vanue: "University of Ruhuna",
@@ -444,7 +444,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2026_11,
+        id: 2026.11,
         name: "SLInspire Uva Province Career Compass Session - 2026",
         province: "Uva",
         vanue: "Uva Wellassa University",
@@ -458,7 +458,7 @@ export const careerCompassSessions: SeminarSession[] = [
         albumURL: "#"
     },
     {
-        id: 2027_05,
+        id: 2027.5,
         name: "SLInspire Western Province Career Compass Session - 2027",
         province: "Western",
         vanue: "University of Jayewardenepura",
