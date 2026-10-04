@@ -208,7 +208,7 @@ export const HeroSection = () => {
           />
           <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-purple-300" />
           <span className="text-xs sm:text-sm font-medium tracking-wide text-purple-100">
-            IEEE YP National Project
+            IEEE YPSL National Project
           </span>
         </motion.div>
 
