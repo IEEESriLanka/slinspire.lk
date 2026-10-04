@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -7,51 +7,121 @@ import {
   Users,
   School,
   Search,
+  Filter,
   ExternalLink,
-  Sparkles,
   RotateCcw,
-  CheckCircle2,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { careerCompassSessions } from "@/data/sessions";
 import { SeminarPagination } from "./SeminarPagination";
 
-export const MonthlySeminarsSection = () => {
+export const MonthlySeminarsSection: React.FC = () => {
+  const cardsSectionRef = useRef<HTMLDivElement>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.05,
   });
 
-  const [selectedProvince, setSelectedProvince] = useState("All");
-  const [selectedYear, setSelectedYear] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedProvince, setSelectedProvince] = useState<string>("All");
+  const [selectedYear, setSelectedYear] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const cardsPerPage = 9;
 
-  // Provinces list in logical geographical order
-  const allProvinces = useMemo(() => {
-    const raw = Array.from(new Set(careerCompassSessions.map((s) => s.province)));
+  // Distinct provinces in alphabetical order
+  const provinces = useMemo(() => {
+    const raw = Array.from(new Set(careerCompassSessions.map((s) => s.province))).sort();
     return ["All", ...raw];
   }, []);
 
+  // Distinct years in descending order
   const years = useMemo(() => {
     const raw = Array.from(new Set(careerCompassSessions.map((s) => s.year))).sort().reverse();
     return ["All", ...raw];
   }, []);
 
-  // Compute seminar counts per province
+  // Compute dynamic seminar counts for each province based on the selected year
   const provinceCounts = useMemo(() => {
-    const counts: Record<string, number> = { All: careerCompassSessions.length };
+    const counts: Record<string, number> = { All: 0 };
     careerCompassSessions.forEach((s) => {
-      counts[s.province] = (counts[s.province] || 0) + 1;
+      const matchesYear = selectedYear === "All" || s.year === selectedYear;
+      if (matchesYear) {
+        counts[s.province] = (counts[s.province] || 0) + 1;
+        counts.All += 1;
+      }
     });
     return counts;
-  }, []);
+  }, [selectedYear]);
+
+  // Handle province change with smart year cascading & immediate page reset
+  const handleProvinceChange = (newProvince: string) => {
+    setSelectedProvince(newProvince);
+    setCurrentPage(1);
+
+    // If a specific province is selected, check if current selectedYear has any sessions in that province.
+    // If not, automatically reset selectedYear to "All" so the student sees results!
+    if (newProvince !== "All" && selectedYear !== "All") {
+      const hasSessionsInYear = careerCompassSessions.some(
+        (s) => s.province === newProvince && s.year === selectedYear
+      );
+      if (!hasSessionsInYear) {
+        setSelectedYear("All");
+      }
+    }
+  };
+
+  // Handle year change with smart province cascading & immediate page reset
+  const handleYearChange = (newYear: string) => {
+    setSelectedYear(newYear);
+    setCurrentPage(1);
+
+    // If a specific year is selected, check if current selectedProvince has any sessions in that year.
+    // If not, automatically reset selectedProvince to "All" to avoid dead-ends.
+    if (newYear !== "All" && selectedProvince !== "All") {
+      const hasSessionsInProvince = careerCompassSessions.some(
+        (s) => s.province === selectedProvince && s.year === newYear
+      );
+      if (!hasSessionsInProvince) {
+        setSelectedProvince("All");
+      }
+    }
+  };
+
+  // Handle search query change with immediate page reset
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  // Reset all filters
+  const resetFilters = () => {
+    setSelectedProvince("All");
+    setSelectedYear("All");
+    setSearchQuery("");
+    setCurrentPage(1);
+  };
+
+  // Handle page change with smooth scroll to seminar card section starting point
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    const element = cardsSectionRef.current || document.getElementById("seminar-cards-start");
+    if (element) {
+      const headerOffset = 85;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth",
+      });
+    }
+  };
 
   // Filter and sort sessions
   const filteredSeminars = useMemo(() => {
+    const trimmed = searchQuery.trim().toLowerCase();
     return careerCompassSessions
       .filter((seminar) => {
         const matchesProvince =
@@ -59,11 +129,11 @@ export const MonthlySeminarsSection = () => {
         const matchesYear =
           selectedYear === "All" || seminar.year === selectedYear;
         const matchesSearch =
-          searchQuery.trim() === "" ||
-          seminar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          seminar.vanue.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          seminar.province.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          seminar.description.toLowerCase().includes(searchQuery.toLowerCase());
+          trimmed === "" ||
+          seminar.name.toLowerCase().includes(trimmed) ||
+          seminar.vanue.toLowerCase().includes(trimmed) ||
+          seminar.province.toLowerCase().includes(trimmed) ||
+          seminar.description.toLowerCase().includes(trimmed);
 
         return matchesProvince && matchesYear && matchesSearch;
       })
@@ -72,26 +142,31 @@ export const MonthlySeminarsSection = () => {
 
   const totalPages = Math.ceil(filteredSeminars.length / cardsPerPage);
 
+  // Safe current page: guarantees no empty slice when switching filters
+  const safeCurrentPage = useMemo(() => {
+    if (totalPages === 0) return 1;
+    if (currentPage > totalPages) return 1;
+    return currentPage;
+  }, [currentPage, totalPages]);
+
   const paginatedSeminars = useMemo(() => {
     return filteredSeminars.slice(
-      (currentPage - 1) * cardsPerPage,
-      currentPage * cardsPerPage
+      (safeCurrentPage - 1) * cardsPerPage,
+      safeCurrentPage * cardsPerPage
     );
-  }, [filteredSeminars, currentPage]);
+  }, [filteredSeminars, safeCurrentPage]);
 
-  // Reset page when filters change
+  // Keep currentPage synced with safeCurrentPage if it adjusted
   useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedProvince, selectedYear, searchQuery]);
-
-  const resetFilters = () => {
-    setSelectedProvince("All");
-    setSelectedYear("All");
-    setSearchQuery("");
-  };
+    if (currentPage !== safeCurrentPage) {
+      setCurrentPage(safeCurrentPage);
+    }
+  }, [safeCurrentPage, currentPage]);
 
   const getYearBadgeClass = (year: string) => {
     switch (year) {
+      case "2027":
+        return "bg-amber-100 text-amber-800 border-amber-200";
       case "2026":
         return "bg-purple-100 text-purple-800 border-purple-200";
       case "2025":
@@ -122,9 +197,9 @@ export const MonthlySeminarsSection = () => {
     if (totalPages <= 5) {
       for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
-      if (currentPage <= 3) {
+      if (safeCurrentPage <= 3) {
         pages.push(1, 2, 3, 4, "...", totalPages);
-      } else if (currentPage >= totalPages - 2) {
+      } else if (safeCurrentPage >= totalPages - 2) {
         pages.push(
           1,
           "...",
@@ -137,9 +212,9 @@ export const MonthlySeminarsSection = () => {
         pages.push(
           1,
           "...",
-          currentPage - 1,
-          currentPage,
-          currentPage + 1,
+          safeCurrentPage - 1,
+          safeCurrentPage,
+          safeCurrentPage + 1,
           "...",
           totalPages
         );
@@ -147,6 +222,9 @@ export const MonthlySeminarsSection = () => {
     }
     return pages;
   };
+
+  const hasActiveFilters =
+    selectedProvince !== "All" || selectedYear !== "All" || searchQuery.trim() !== "";
 
   return (
     <section id="seminars" className="py-24 bg-gradient-to-br from-purple-50/70 via-indigo-50/40 to-purple-50/70 border-t border-purple-100">
@@ -172,74 +250,102 @@ export const MonthlySeminarsSection = () => {
         </motion.div>
 
         {/* Filter Controls Bar */}
-        <div className="mb-10 space-y-4 max-w-6xl mx-auto">
-          {/* Search & Year Selection */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 bg-white/90 backdrop-blur-md rounded-2xl border border-purple-100 shadow-sm">
-            {/* Search Input */}
-            <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search venue, city, or school..."
-                className="w-full pl-10 pr-4 py-2 text-sm bg-purple-50/50 border border-purple-200/80 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-gray-600"
-                >
-                  Clear
-                </button>
-              )}
+        <div className="mb-10 space-y-4 max-w-5xl mx-auto">
+          {/* Main Filter Bar: Province Select, Year Select & Search */}
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 p-4 sm:p-5 bg-white/95 backdrop-blur-md rounded-2xl border border-purple-100 shadow-md">
+            {/* Filter Label & Selects */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1">
+              <div className="flex items-center gap-2 text-purple-800 shrink-0 pr-2 sm:border-r sm:border-purple-200">
+                <Filter className="w-4 h-4 text-purple-600" />
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
+                  Filter by:
+                </span>
+              </div>
+
+              {/* Province Select */}
+              <select
+                value={selectedProvince}
+                onChange={(e) => handleProvinceChange(e.target.value)}
+                className="px-4 py-2.5 rounded-xl border border-purple-200 bg-purple-50/70 text-purple-900 text-xs sm:text-sm font-semibold focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm hover:bg-purple-100 cursor-pointer outline-none"
+              >
+                {provinces.map((province) => (
+                  <option key={province} value={province}>
+                    {province === "All" ? "All Provinces" : `${province} Province`}
+                  </option>
+                ))}
+              </select>
+
+              {/* Year Select */}
+              <select
+                value={selectedYear}
+                onChange={(e) => handleYearChange(e.target.value)}
+                className="px-4 py-2.5 rounded-xl border border-purple-200 bg-purple-50/70 text-purple-900 text-xs sm:text-sm font-semibold focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition shadow-sm hover:bg-purple-100 cursor-pointer outline-none"
+              >
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year === "All" ? "All Years" : `Year ${year}`}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            {/* Year Selector Buttons */}
-            <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
-              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider shrink-0 mr-1">
-                Year:
-              </span>
-              {years.map((year) => {
-                const isActive = selectedYear === year;
-                return (
+            {/* Search Input & Reset Button */}
+            <div className="flex items-center gap-2">
+              <div className="relative w-full sm:w-64">
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  placeholder="Search venue or school..."
+                  className="w-full pl-9 pr-8 py-2.5 text-xs sm:text-sm bg-purple-50/40 border border-purple-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                />
+                {searchQuery && (
                   <button
-                    key={year}
                     type="button"
-                    onClick={() => setSelectedYear(year)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${isActive
-                      ? "bg-purple-600 text-white shadow-sm"
-                      : "bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-100"
-                      }`}
+                    onClick={() => handleSearchChange("")}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-gray-600 p-1"
                   >
-                    {year}
+                    ✕
                   </button>
-                );
-              })}
+                )}
+              </div>
+
+              {hasActiveFilters && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={resetFilters}
+                  className="shrink-0 gap-1.5 text-xs font-semibold text-purple-700 border-purple-200 hover:bg-purple-50"
+                  title="Reset all filters"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Reset</span>
+                </Button>
+              )}
             </div>
           </div>
 
-          {/* Clickable Province Filter Chips */}
+          {/* Quick Province Interactive Chips */}
           <div className="p-3 sm:p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-100 shadow-sm">
             <div className="flex items-center justify-between mb-2.5 px-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-800">
-                Filter by Province:
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-purple-800">
+                Quick Select Province:
               </span>
-              <span className="text-xs text-gray-500">
-                Showing {filteredSeminars.length} sessions
+              <span className="text-xs text-gray-500 font-medium">
+                Showing {filteredSeminars.length} session{filteredSeminars.length === 1 ? "" : "s"}
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              {allProvinces.map((prov) => {
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {provinces.map((prov) => {
                 const isActive = selectedProvince === prov;
                 const count = provinceCounts[prov] || 0;
                 return (
                   <button
                     key={prov}
                     type="button"
-                    onClick={() => setSelectedProvince(prov)}
+                    onClick={() => handleProvinceChange(prov)}
                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${isActive
                       ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/25 scale-[1.03]"
                       : "bg-white text-gray-700 hover:bg-purple-50 hover:text-purple-700 border border-gray-200/80"
@@ -261,13 +367,16 @@ export const MonthlySeminarsSection = () => {
           </div>
         </div>
 
+        {/* Seminar Card Section Starting Point */}
+        <div id="seminar-cards-start" ref={cardsSectionRef} className="scroll-mt-24" />
+
         {/* Top Pagination */}
         {totalPages > 1 && (
           <div className="mb-8">
             <SeminarPagination
-              currentPage={currentPage}
+              currentPage={safeCurrentPage}
               totalPages={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
               getPageNumbers={getPageNumbers}
             />
           </div>
@@ -275,16 +384,21 @@ export const MonthlySeminarsSection = () => {
 
         {/* Seminars Grid */}
         {paginatedSeminars.length > 0 ? (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            <AnimatePresence mode="popLayout">
-              {paginatedSeminars.map((seminar) => (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`seminar-grid-page-${safeCurrentPage}`}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25 }}
+              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+            >
+              {paginatedSeminars.map((seminar, index) => (
                 <motion.div
-                  key={seminar.id}
-                  layout
+                  key={`${seminar.id}-${seminar.province}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.35 }}
+                  transition={{ duration: 0.3, delay: index * 0.04 }}
                   whileHover={{ y: -6 }}
                   className="h-full"
                 >
@@ -299,7 +413,6 @@ export const MonthlySeminarsSection = () => {
                         loading="lazy"
                         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => {
-                          // Fallback image
                           (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}hero_bg.jpeg`;
                         }}
                       />
@@ -400,8 +513,8 @@ export const MonthlySeminarsSection = () => {
                   </Card>
                 </motion.div>
               ))}
-            </AnimatePresence>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         ) : (
           /* Empty State */
           <div className="text-center py-16 px-4 bg-white/70 rounded-3xl border border-purple-100 max-w-xl mx-auto shadow-sm">
@@ -419,7 +532,7 @@ export const MonthlySeminarsSection = () => {
               className="gap-2 text-purple-700 border-purple-200 hover:bg-purple-50"
             >
               <RotateCcw className="w-4 h-4" />
-              <span>Reset Filters</span>
+              <span>Reset All Filters</span>
             </Button>
           </div>
         )}
@@ -428,9 +541,9 @@ export const MonthlySeminarsSection = () => {
         {totalPages > 1 && (
           <div className="mt-10">
             <SeminarPagination
-              currentPage={currentPage}
+              currentPage={safeCurrentPage}
               totalPages={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
               getPageNumbers={getPageNumbers}
             />
           </div>

@@ -6,6 +6,7 @@ import {
     PaginationLink,
     PaginationPrevious,
     PaginationNext,
+    PaginationEllipsis,
 } from "@/components/ui/pagination";
 
 interface SeminarPaginationProps {
@@ -29,38 +30,42 @@ export const SeminarPagination: React.FC<SeminarPaginationProps> = ({
                 {/* Previous */}
                 <PaginationItem>
                     <PaginationPrevious
-                        href="#"
+                        href="#seminar-cards-start"
                         onClick={(e) => {
                             e.preventDefault();
-                            onPageChange(Math.max(1, currentPage - 1));
+                            if (currentPage > 1) {
+                                onPageChange(currentPage - 1);
+                            }
                         }}
                         aria-disabled={currentPage === 1}
                         tabIndex={currentPage === 1 ? -1 : 0}
                         className={`rounded-lg border border-purple-200 bg-white text-purple-600 font-semibold transition hover:bg-purple-50 hover:text-purple-700 focus:ring-2 focus:ring-purple-400
-              ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+              ${currentPage === 1 ? "opacity-50 cursor-not-allowed pointer-events-none" : "cursor-pointer"}`}
                     />
                 </PaginationItem>
 
                 {/* Page numbers */}
                 {getPageNumbers().map((page, idx) =>
                     page === "..." ? (
-                        <PaginationItem key={idx}>
+                        <PaginationItem key={`ellipsis-${idx}`}>
                             <PaginationEllipsis className="bg-transparent text-purple-400" />
                         </PaginationItem>
                     ) : (
-                        <PaginationItem key={page}>
+                        <PaginationItem key={`page-${page}`}>
                             <PaginationLink
-                                href="#"
+                                href="#seminar-cards-start"
                                 isActive={currentPage === page}
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    onPageChange(Number(page));
+                                    if (currentPage !== page) {
+                                        onPageChange(Number(page));
+                                    }
                                 }}
                                 className={`rounded-lg border border-purple-200 font-semibold transition
-                  ${currentPage === page
-                                        ? "bg-purple-600 text-white shadow-md"
-                                        : "bg-white text-purple-600 hover:bg-purple-50 hover:text-purple-700"}
-                  focus:ring-2 focus:ring-purple-400`}
+                   ${currentPage === page
+                                        ? "bg-purple-600 text-white shadow-md cursor-default pointer-events-none"
+                                        : "bg-white text-purple-600 hover:bg-purple-50 hover:text-purple-700 cursor-pointer"}
+                   focus:ring-2 focus:ring-purple-400`}
                                 style={{ minWidth: 40, minHeight: 40 }}
                             >
                                 {page}
@@ -72,15 +77,17 @@ export const SeminarPagination: React.FC<SeminarPaginationProps> = ({
                 {/* Next */}
                 <PaginationItem>
                     <PaginationNext
-                        href="#"
+                        href="#seminar-cards-start"
                         onClick={(e) => {
                             e.preventDefault();
-                            onPageChange(Math.min(totalPages, currentPage + 1));
+                            if (currentPage < totalPages) {
+                                onPageChange(currentPage + 1);
+                            }
                         }}
                         aria-disabled={currentPage === totalPages}
                         tabIndex={currentPage === totalPages ? -1 : 0}
                         className={`rounded-lg border border-purple-200 bg-white text-purple-600 font-semibold transition hover:bg-purple-50 hover:text-purple-700 focus:ring-2 focus:ring-purple-400
-              ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+              ${currentPage === totalPages ? "opacity-50 cursor-not-allowed pointer-events-none" : "cursor-pointer"}`}
                     />
                 </PaginationItem>
             </PaginationContent>
