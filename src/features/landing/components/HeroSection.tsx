@@ -96,11 +96,11 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative flex flex-col items-center justify-center min-h-screen pt-28 pb-16 overflow-hidden bg-gradient-to-br from-purple-950 via-indigo-950 to-purple-900"
+      className="relative flex flex-col items-center justify-center min-h-screen pt-28 pb-16 overflow-hidden bg-slate-950"
     >
-      {/* Background Image Texture */}
+      {/* Background Image Texture - luminous & clearly visible */}
       <div
-        className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none"
+        className="absolute inset-0 opacity-40 md:opacity-50 pointer-events-none"
         style={{
           backgroundImage: `url(${import.meta.env.BASE_URL}hero_bg.jpeg)`,
           backgroundSize: "cover",
@@ -108,9 +108,90 @@ export const HeroSection = () => {
         }}
       />
 
-      {/* Atmospheric ambient glowing orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl pointer-events-none animate-pulse" />
-      <div className="absolute bottom-10 -right-32 w-96 h-96 bg-indigo-500/25 rounded-full blur-3xl pointer-events-none" />
+      {/* Lighter, translucent royal purple & indigo gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/70 via-indigo-950/60 to-purple-900/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/30 pointer-events-none" />
+
+      {/* Live Animated Background Ambient Orbs */}
+      <motion.div
+        animate={{
+          x: [0, 50, -30, 0],
+          y: [0, -40, 30, 0],
+          scale: [1, 1.2, 0.9, 1],
+        }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-500/35 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          x: [0, -50, 30, 0],
+          y: [0, 40, -30, 0],
+          scale: [1, 0.9, 1.15, 1],
+        }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-10 -right-20 w-96 h-96 bg-indigo-500/30 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.25, 1],
+          opacity: [0.15, 0.35, 0.15],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/3 right-1/4 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"
+      />
+
+      {/* Live Animated Floating Luminous Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[
+          { id: 1, left: "10%", top: "25%", size: 3, duration: 6, delay: 0 },
+          { id: 2, left: "20%", top: "65%", size: 4, duration: 7, delay: 1.2 },
+          { id: 3, left: "35%", top: "18%", size: 2.5, duration: 5.5, delay: 0.5 },
+          { id: 4, left: "45%", top: "80%", size: 3.5, duration: 8, delay: 2 },
+          { id: 5, left: "55%", top: "30%", size: 4, duration: 6.5, delay: 1 },
+          { id: 6, left: "70%", top: "70%", size: 3, duration: 7.5, delay: 0.8 },
+          { id: 7, left: "85%", top: "22%", size: 4.5, duration: 6, delay: 1.5 },
+          { id: 8, left: "92%", top: "60%", size: 2, duration: 5, delay: 2.5 },
+          { id: 9, left: "15%", top: "85%", size: 3, duration: 8.5, delay: 0.2 },
+          { id: 10, left: "30%", top: "45%", size: 2.5, duration: 6.2, delay: 1.8 },
+          { id: 11, left: "62%", top: "15%", size: 3.5, duration: 7.2, delay: 2.2 },
+          { id: 12, left: "78%", top: "40%", size: 4, duration: 5.8, delay: 0.7 },
+          { id: 13, left: "88%", top: "85%", size: 3, duration: 6.8, delay: 1.4 },
+          { id: 14, left: "5%", top: "50%", size: 2, duration: 7.8, delay: 0.9 },
+          { id: 15, left: "40%", top: "90%", size: 3, duration: 6.4, delay: 2.7 },
+          { id: 16, left: "50%", top: "10%", size: 4, duration: 8.2, delay: 0.3 },
+          { id: 17, left: "25%", top: "35%", size: 3.5, duration: 5.9, delay: 1.6 },
+          { id: 18, left: "68%", top: "88%", size: 2.5, duration: 7.1, delay: 2.1 },
+          { id: 19, left: "82%", top: "12%", size: 3, duration: 6.7, delay: 0.4 },
+          { id: 20, left: "95%", top: "42%", size: 3.5, duration: 7.6, delay: 1.9 },
+          { id: 21, left: "12%", top: "12%", size: 2.5, duration: 8, delay: 0.6 },
+          { id: 22, left: "28%", top: "92%", size: 4, duration: 6.3, delay: 1.3 },
+          { id: 23, left: "48%", top: "55%", size: 2, duration: 5.7, delay: 2.4 },
+          { id: 24, left: "75%", top: "25%", size: 3.5, duration: 7.4, delay: 1.7 },
+        ].map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute rounded-full bg-white/40 shadow-[0_0_8px_rgba(255,255,255,0.6)]"
+            style={{
+              left: particle.left,
+              top: particle.top,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+            }}
+            animate={{
+              y: [0, -60, 0],
+              x: [0, 20, 0],
+              opacity: [0.2, 0.9, 0.2],
+              scale: [0.8, 1.3, 0.8],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: particle.delay,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="container relative z-10 px-4 mx-auto text-center max-w-6xl">
         {/* Top Organization Badge */}

@@ -9,7 +9,6 @@ import {
   Calendar,
   School,
   Heart,
-  Sparkles,
   Pause,
   Play,
 } from "lucide-react";
@@ -23,6 +22,7 @@ export const FeedbacksSection = () => {
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [autoRotate, setAutoRotate] = useState(true);
   const [feedbackData, setFeedbackData] = useState<FeedbackItem[]>([]);
 
@@ -41,6 +41,7 @@ export const FeedbacksSection = () => {
     if (!autoRotate || feedbackData.length === 0) return;
 
     const interval = setInterval(() => {
+      setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % feedbackData.length);
     }, 6000);
 
@@ -49,17 +50,20 @@ export const FeedbacksSection = () => {
 
   const nextTestimonial = () => {
     if (feedbackData.length === 0) return;
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % feedbackData.length);
     setAutoRotate(false);
   };
 
   const prevTestimonial = () => {
     if (feedbackData.length === 0) return;
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + feedbackData.length) % feedbackData.length);
     setAutoRotate(false);
   };
 
   const goToTestimonial = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
     setAutoRotate(false);
   };
@@ -67,22 +71,40 @@ export const FeedbacksSection = () => {
   const currentItem = feedbackData[currentIndex];
 
   const isSinhala = (text: string) => {
-    // Detect Sinhala Unicode range
     return /[\u0D80-\u0DFF]/.test(text);
   };
 
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 60 : -60,
+      opacity: 0,
+      scale: 0.98,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -60 : 60,
+      opacity: 0,
+      scale: 0.98,
+      transition: { duration: 0.3, ease: "easeIn" },
+    }),
+  };
+
   return (
-    <section id="feedback" className="py-24 bg-white border-t border-purple-100">
+    <section ref={ref} id="feedback" className="py-24 bg-white border-t border-purple-100 overflow-hidden">
       <div className="container px-4 mx-auto max-w-6xl">
         {/* Section Heading */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 35 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mb-14 text-center max-w-3xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-xs font-semibold text-purple-700 bg-purple-100/70 rounded-full border border-purple-200">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-xs font-semibold text-purple-700 bg-purple-100/70 rounded-full border border-purple-200 shadow-sm">
             <Heart className="w-3.5 h-3.5 text-pink-500 fill-pink-500" />
             <span>Real Student Experiences</span>
           </div>
@@ -97,17 +119,24 @@ export const FeedbacksSection = () => {
         {/* Main Testimonial Showcase */}
         {feedbackData.length > 0 && currentItem && (
           <div className="relative max-w-4xl mx-auto mb-10">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ duration: 0.4 }}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
                 className="p-7 sm:p-12 shadow-xl bg-gradient-to-br from-purple-50/80 via-white to-indigo-50/80 rounded-3xl border border-purple-100 relative overflow-hidden"
               >
-                {/* Background decorative quotation */}
-                <Quote className="absolute -bottom-6 -right-6 w-36 h-36 text-purple-100/80 pointer-events-none" />
+                {/* Background decorative quotation with gentle floating animation */}
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-6 -right-6 pointer-events-none"
+                >
+                  <Quote className="w-36 h-36 text-purple-100/70" />
+                </motion.div>
 
                 <div className="relative z-10 space-y-6">
                   {/* Top Metadata Badges */}
@@ -131,8 +160,8 @@ export const FeedbacksSection = () => {
                   <div className="relative py-2">
                     <p
                       className={`text-base sm:text-lg md:text-xl leading-relaxed text-gray-800 ${isSinhala(currentItem.comment)
-                          ? "font-sinhala leading-loose text-[17px] sm:text-[19px]"
-                          : "italic"
+                        ? "font-sinhala leading-loose text-[17px] sm:text-[19px]"
+                        : "italic"
                         }`}
                     >
                       "{currentItem.comment}"
@@ -157,6 +186,17 @@ export const FeedbacksSection = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Animated countdown progress bar for auto-rotation */}
+                {autoRotate && (
+                  <motion.div
+                    key={`progress-${currentIndex}`}
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 6, ease: "linear" }}
+                    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-600 to-indigo-600"
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
 
@@ -165,7 +205,7 @@ export const FeedbacksSection = () => {
               variant="outline"
               size="icon"
               onClick={prevTestimonial}
-              className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-lg border border-purple-200 hover:bg-purple-50 hover:text-purple-700 text-gray-700 transition-all z-20"
+              className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-lg border border-purple-200 hover:bg-purple-50 hover:text-purple-700 text-gray-700 transition-all z-20 hover:scale-105"
               aria-label="Previous story"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -175,7 +215,7 @@ export const FeedbacksSection = () => {
               variant="outline"
               size="icon"
               onClick={nextTestimonial}
-              className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-lg border border-purple-200 hover:bg-purple-50 hover:text-purple-700 text-gray-700 transition-all z-20"
+              className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-lg border border-purple-200 hover:bg-purple-50 hover:text-purple-700 text-gray-700 transition-all z-20 hover:scale-105"
               aria-label="Next story"
             >
               <ChevronRight className="w-5 h-5" />
@@ -193,8 +233,8 @@ export const FeedbacksSection = () => {
                 onClick={() => goToTestimonial(index)}
                 aria-label={`Go to student story ${index + 1}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${index === currentIndex
-                    ? "bg-purple-600 w-8"
-                    : "bg-purple-200 hover:bg-purple-300 w-2.5"
+                  ? "bg-purple-600 w-8"
+                  : "bg-purple-200 hover:bg-purple-300 w-2.5"
                   }`}
               />
             ))}

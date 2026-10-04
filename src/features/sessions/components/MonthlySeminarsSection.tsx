@@ -276,116 +276,131 @@ export const MonthlySeminarsSection = () => {
         {/* Seminars Grid */}
         {paginatedSeminars.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {paginatedSeminars.map((seminar) => (
-              <Card
-                key={seminar.id}
-                className="flex flex-col h-full bg-white border border-gray-200/80 hover:border-purple-300 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden"
-              >
-                {/* Image Cover */}
-                <div className="relative h-48 overflow-hidden bg-purple-950">
-                  <img
-                    src={`${import.meta.env.BASE_URL}${seminar.image}`}
-                    alt={seminar.vanue}
-                    loading="lazy"
-                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      // Fallback image
-                      (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}hero_bg.jpeg`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-black/30" />
+            <AnimatePresence mode="popLayout">
+              {paginatedSeminars.map((seminar) => (
+                <motion.div
+                  key={seminar.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.35 }}
+                  whileHover={{ y: -6 }}
+                  className="h-full"
+                >
+                  <Card
+                    className="flex flex-col h-full bg-white border border-gray-200/80 hover:border-purple-300 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden"
+                  >
+                    {/* Image Cover */}
+                    <div className="relative h-48 overflow-hidden bg-purple-950">
+                      <img
+                        src={`${import.meta.env.BASE_URL}${seminar.image}`}
+                        alt={seminar.vanue}
+                        loading="lazy"
+                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          // Fallback image
+                          (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}hero_bg.jpeg`;
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-black/30" />
 
-                  {/* Province Tag */}
-                  <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 text-xs font-semibold text-white bg-purple-900/80 backdrop-blur-md rounded-full border border-purple-400/30 shadow">
-                      {seminar.province} Province
-                    </span>
-                  </div>
-
-                  {/* Status & Year Badges */}
-                  <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5">
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-semibold rounded-full border shadow-sm ${getStatusBadgeClass(
-                        seminar.status
-                      )}`}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-                      {seminar.status}
-                    </span>
-                    <span
-                      className={`px-2.5 py-0.5 text-[11px] font-bold rounded-full border shadow-sm ${getYearBadgeClass(
-                        seminar.year
-                      )}`}
-                    >
-                      {seminar.year}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <CardContent className="flex flex-col flex-1 p-5 sm:p-6 justify-between">
-                  <div className="space-y-3 mb-4">
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-purple-700 transition-colors line-clamp-2">
-                      {seminar.name}
-                    </h3>
-
-                    {/* Metadata details */}
-                    <div className="space-y-1.5 text-xs text-gray-600">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-purple-600 shrink-0" />
-                        <span>{seminar.date}</span>
+                      {/* Province Tag */}
+                      <div className="absolute top-3 left-3">
+                        <span className="px-3 py-1 text-xs font-semibold text-white bg-purple-900/80 backdrop-blur-md rounded-full border border-purple-400/30 shadow">
+                          {seminar.province} Province
+                        </span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-purple-600 shrink-0" />
-                        <span className="line-clamp-1">{seminar.vanue}</span>
-                      </div>
-                      <div className="flex items-center gap-4 pt-1">
-                        <div className="flex items-center gap-1.5">
-                          <School className="w-4 h-4 text-indigo-600 shrink-0" />
-                          <span className="font-medium">
-                            {seminar.schools ? `${seminar.schools} School(s)` : "Provincial"}
+
+                      {/* Status & Year Badges */}
+                      <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5">
+                        <span
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-semibold rounded-full border shadow-sm ${getStatusBadgeClass(
+                            seminar.status
+                          )}`}
+                        >
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-current" />
                           </span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Users className="w-4 h-4 text-indigo-600 shrink-0" />
-                          <span className="font-medium">
-                            {seminar.participants ? `${seminar.participants} Students` : "N/A"}
-                          </span>
-                        </div>
+                          {seminar.status}
+                        </span>
+                        <span
+                          className={`px-2.5 py-0.5 text-[11px] font-bold rounded-full border shadow-sm ${getYearBadgeClass(
+                            seminar.year
+                          )}`}
+                        >
+                          {seminar.year}
+                        </span>
                       </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
-                      {seminar.description}
-                    </p>
-                  </div>
+                    {/* Content */}
+                    <CardContent className="flex flex-col flex-1 p-5 sm:p-6 justify-between">
+                      <div className="space-y-3 mb-4">
+                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-purple-700 transition-colors line-clamp-2">
+                          {seminar.name}
+                        </h3>
 
-                  {/* Album CTA */}
-                  <div className="mt-auto pt-3 border-t border-gray-100">
-                    <Button
-                      asChild={Boolean(seminar.albumURL && seminar.status === "Completed")}
-                      disabled={!seminar.albumURL || seminar.status !== "Completed"}
-                      size="sm"
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium transition-all"
-                    >
-                      {seminar.albumURL && seminar.status === "Completed" ? (
-                        <a
-                          href={seminar.albumURL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-1.5"
+                        {/* Metadata details */}
+                        <div className="space-y-1.5 text-xs text-gray-600">
+                          <div className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4 text-purple-600 shrink-0" />
+                            <span>{seminar.date}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4 text-purple-600 shrink-0" />
+                            <span className="line-clamp-1">{seminar.vanue}</span>
+                          </div>
+                          <div className="flex items-center gap-4 pt-1">
+                            <div className="flex items-center gap-1.5">
+                              <School className="w-4 h-4 text-indigo-600 shrink-0" />
+                              <span className="font-medium">
+                                {seminar.schools ? `${seminar.schools} School(s)` : "Provincial"}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                              <Users className="w-4 h-4 text-indigo-600 shrink-0" />
+                              <span className="font-medium">
+                                {seminar.participants ? `${seminar.participants} Students` : "N/A"}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
+                          {seminar.description}
+                        </p>
+                      </div>
+
+                      {/* Album CTA */}
+                      <div className="mt-auto pt-3 border-t border-gray-100">
+                        <Button
+                          asChild={Boolean(seminar.albumURL && seminar.status === "Completed")}
+                          disabled={!seminar.albumURL || seminar.status !== "Completed"}
+                          size="sm"
+                          className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium transition-all"
                         >
-                          <span>View Event Album</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      ) : (
-                        <span>Photos Coming Soon</span>
-                      )}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                          {seminar.albumURL && seminar.status === "Completed" ? (
+                            <a
+                              href={seminar.albumURL}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-1.5"
+                            >
+                              <span>View Event Album</span>
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          ) : (
+                            <span>Photos Coming Soon</span>
+                          )}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         ) : (
           /* Empty State */

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import {
   BookOpen,
   Compass,
@@ -7,9 +8,6 @@ import {
   CheckCircle2,
   ArrowRight,
   Sparkles,
-  HelpCircle,
-  Award,
-  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -30,6 +28,11 @@ interface JourneyStep {
 }
 
 export const StudentJourneyGuide: React.FC = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const [activeStep, setActiveStep] = useState<number>(1);
 
   const steps: JourneyStep[] = [
@@ -98,78 +101,101 @@ export const StudentJourneyGuide: React.FC = () => {
   const currentStep = steps.find((s) => s.step === activeStep) || steps[0];
 
   return (
-    <section id="student-journey" className="py-20 bg-gradient-to-b from-white via-purple-50/40 to-white">
+    <section ref={ref} id="student-journey" className="py-24 bg-gradient-to-b from-white via-purple-50/40 to-white overflow-hidden">
       <div className="container px-4 mx-auto max-w-6xl">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-xs font-semibold text-purple-700 bg-purple-100/80 rounded-full border border-purple-200">
-            <Sparkles className="w-3.5 h-3.5" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-xs font-semibold text-purple-700 bg-purple-100/80 rounded-full border border-purple-200 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
             <span>Interactive Student Roadmap</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
             How to Navigate Your Future in <span className="text-purple-600">3 Clear Steps</span>
           </h2>
           <p className="mt-3 text-base sm:text-lg text-gray-600 leading-relaxed">
             Whether you are sitting for O/Ls next month or waiting for university admission letters, here is the proven pathway Sri Lanka Inspire guides you through.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Step Navigation Tabs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-10">
-          {steps.map((s) => {
-            const isActive = activeStep === s.step;
-            return (
-              <button
-                key={s.step}
-                type="button"
-                onClick={() => setActiveStep(s.step)}
-                className={`relative p-5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between ${isActive
-                  ? "bg-white shadow-xl border-purple-300 ring-2 ring-purple-500/20 scale-[1.02]"
-                  : "bg-white/70 hover:bg-white border-gray-200/80 hover:border-purple-200 shadow-sm"
-                  }`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span
-                    className={`inline-block px-2.5 py-1 text-xs font-semibold rounded-full border ${s.badgeBg}`}
-                  >
-                    {s.audience}
-                  </span>
-                  <div
-                    className={`p-2 rounded-xl ${isActive ? "bg-purple-100" : "bg-gray-100"
-                      }`}
-                  >
-                    {s.icon}
+        {/* Step Navigation Tabs with Progress Flow */}
+        <div className="relative mb-12">
+          {/* Background Connecting Line */}
+          <div className="hidden md:block absolute top-1/2 left-8 right-8 h-1 bg-purple-100 -translate-y-1/2 rounded-full -z-0">
+            <motion.div
+              className="h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
+              initial={{ width: "33%" }}
+              animate={{
+                width: activeStep === 1 ? "33%" : activeStep === 2 ? "66%" : "100%",
+              }}
+              transition={{ duration: 0.4 }}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
+            {steps.map((s, idx) => {
+              const isActive = activeStep === s.step;
+              return (
+                <motion.button
+                  key={s.step}
+                  type="button"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -3 }}
+                  onClick={() => setActiveStep(s.step)}
+                  className={`relative p-5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between ${isActive
+                    ? "bg-white shadow-xl border-purple-400 ring-4 ring-purple-500/10 scale-[1.02]"
+                    : "bg-white/80 hover:bg-white border-gray-200/90 hover:border-purple-200 shadow-sm"
+                    }`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span
+                      className={`inline-block px-2.5 py-1 text-xs font-semibold rounded-full border ${s.badgeBg}`}
+                    >
+                      {s.audience}
+                    </span>
+                    <div
+                      className={`p-2 rounded-xl transition-colors ${isActive ? "bg-purple-100 text-purple-700" : "bg-gray-100 text-gray-600"
+                        }`}
+                    >
+                      {s.icon}
+                    </div>
                   </div>
-                </div>
 
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-purple-600 mb-1">
-                    {s.stageName}
-                  </h3>
-                  <h4 className="text-base font-bold text-gray-900 line-clamp-1">
-                    {s.title}
-                  </h4>
-                </div>
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-purple-600 mb-1">
+                      {s.stageName}
+                    </h3>
+                    <h4 className="text-base font-bold text-gray-900 line-clamp-1">
+                      {s.title}
+                    </h4>
+                  </div>
 
-                {isActive && (
-                  <motion.div
-                    layoutId="active-indicator"
-                    className="absolute bottom-0 left-6 right-6 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-t-full"
-                  />
-                )}
-              </button>
-            );
-          })}
+                  {isActive && (
+                    <motion.div
+                      layoutId="step-active-line"
+                      className="absolute bottom-0 left-6 right-6 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-t-full"
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Detailed Step Content Box */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep.step}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35 }}
             className="p-6 sm:p-10 rounded-3xl bg-white border border-purple-100 shadow-2xl relative overflow-hidden"
           >
             {/* Top decorative gradient glow */}
@@ -198,10 +224,16 @@ export const StudentJourneyGuide: React.FC = () => {
                   </h4>
                   <ul className="space-y-2.5">
                     {currentStep.dilemmas.map((dilemma, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-gray-700">
+                      <motion.li
+                        key={idx}
+                        initial={{ opacity: 0, x: -12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.08, duration: 0.3 }}
+                        className="flex items-start gap-2.5 text-sm text-gray-700"
+                      >
                         <CheckCircle2 className="w-5 h-5 text-purple-600 shrink-0 mt-0.5" />
                         <span>{dilemma}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
@@ -209,7 +241,11 @@ export const StudentJourneyGuide: React.FC = () => {
 
               {/* Right Column: Recommended Tool Action Card */}
               <div className="lg:col-span-5">
-                <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white shadow-xl flex flex-col justify-between">
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
+                  className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white shadow-xl flex flex-col justify-between"
+                >
                   <div className="mb-6">
                     <span className="text-xs uppercase tracking-wider font-semibold text-purple-200">
                       Recommended Tool for This Step
@@ -238,7 +274,7 @@ export const StudentJourneyGuide: React.FC = () => {
                       100% Free • Open Access • Mobile Friendly
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>

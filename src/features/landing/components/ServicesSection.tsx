@@ -183,13 +183,14 @@ export const ServicesSection: React.FC = () => {
               <motion.div
                 key={service.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35, delay: index * 0.05 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
               >
                 <Card
-                  className={`h-full flex flex-col overflow-hidden bg-white border border-gray-200/90 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group ${service.accentBorder}`}
+                  className={`h-full flex flex-col overflow-hidden bg-white border border-gray-200/90 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 group ${service.accentBorder}`}
                 >
                   {/* Card Visual Header */}
                   <div className="relative h-56 overflow-hidden bg-purple-950">
@@ -197,7 +198,7 @@ export const ServicesSection: React.FC = () => {
                       src={`${import.meta.env.BASE_URL}${service.image}`}
                       alt={service.title}
                       loading="lazy"
-                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-85"
+                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 opacity-85"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent" />
 
