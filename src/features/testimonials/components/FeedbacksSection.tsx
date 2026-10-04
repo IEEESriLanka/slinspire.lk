@@ -1,22 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ChevronLeft, ChevronRight, Quote, Star, MapPin, Calendar } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+  MapPin,
+  Calendar,
+  School,
+  Heart,
+  Sparkles,
+  Pause,
+  Play,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FeedbackItem } from "../types";
 
 export const FeedbacksSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
   const [feedbackData, setFeedbackData] = useState<FeedbackItem[]>([]);
 
-
-  // get JSON data
+  // Load JSON data safely
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/StudentFeedbackData.json`)
       .then((res) => res.json())
@@ -24,25 +34,27 @@ export const FeedbacksSection = () => {
         setFeedbackData(data);
       })
       .catch((err) => console.error("Error loading Feedback data", err));
-  }, [])
+  }, []);
 
   // Auto-rotation effect
   useEffect(() => {
-    if (!autoRotate) return;
+    if (!autoRotate || feedbackData.length === 0) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % feedbackData.length);
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [autoRotate, feedbackData.length]);
 
   const nextTestimonial = () => {
+    if (feedbackData.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % feedbackData.length);
     setAutoRotate(false);
   };
 
   const prevTestimonial = () => {
+    if (feedbackData.length === 0) return;
     setCurrentIndex((prev) => (prev - 1 + feedbackData.length) % feedbackData.length);
     setAutoRotate(false);
   };
@@ -52,147 +64,158 @@ export const FeedbacksSection = () => {
     setAutoRotate(false);
   };
 
-  const getProgramColor = (program: string) => {
-    switch (program) {
-      case "CAREER COMPASS": return "bg-purple-100 text-purple-800";
-      case "AFTER A/L": return "bg-blue-100 text-blue-800";
-      case "AFTER O/L": return "bg-green-100 text-green-800";
-      default: return "bg-gray-100 text-gray-800";
-    }
+  const currentItem = feedbackData[currentIndex];
+
+  const isSinhala = (text: string) => {
+    // Detect Sinhala Unicode range
+    return /[\u0D80-\u0DFF]/.test(text);
   };
 
   return (
-    <section id="FeedbackData" className="py-20 bg-white">
-      <div className="container px-4 mx-auto">
+    <section id="feedback" className="py-24 bg-white border-t border-purple-100">
+      <div className="container px-4 mx-auto max-w-6xl">
+        {/* Section Heading */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.7 }}
+          className="mb-14 text-center max-w-3xl mx-auto"
         >
-          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
-            Student <span className="text-purple-600">Feedbacks</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 text-xs font-semibold text-purple-700 bg-purple-100/70 rounded-full border border-purple-200">
+            <Heart className="w-3.5 h-3.5 text-pink-500 fill-pink-500" />
+            <span>Real Student Experiences</span>
+          </div>
+          <h2 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+            Voices of Sri Lankan <span className="text-purple-600">Students</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
-            Hear from students who discovered new ideas and direction through our programs and guidance
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+            Real feedback from school students who attended physical Career Compass seminars conducted across Sri Lankan state universities.
           </p>
         </motion.div>
 
-        {/* Main Testimonial Carousel */}
-        <div className="relative max-w-4xl mx-auto mb-12">
-          {feedbackData.length > 0 && (
+        {/* Main Testimonial Showcase */}
+        {feedbackData.length > 0 && currentItem && (
+          <div className="relative max-w-4xl mx-auto mb-10">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
-                className="p-8 shadow-lg bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl md:p-12"
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.4 }}
+                className="p-7 sm:p-12 shadow-xl bg-gradient-to-br from-purple-50/80 via-white to-indigo-50/80 rounded-3xl border border-purple-100 relative overflow-hidden"
               >
-                <div className="flex flex-col items-center gap-8 md:flex-row">
-                  {/* Student Image */}
-                  {/* <div className="flex-shrink-0">
-                  <div className="w-24 h-24 overflow-hidden border-4 border-white rounded-full shadow-lg md:w-32 md:h-32">
-                    <img
-                      src={FeedbackData[currentIndex].image}
-                      alt={FeedbackData[currentIndex].name}
-                      className="object-cover w-full h-full"
-                    />
+                {/* Background decorative quotation */}
+                <Quote className="absolute -bottom-6 -right-6 w-36 h-36 text-purple-100/80 pointer-events-none" />
+
+                <div className="relative z-10 space-y-6">
+                  {/* Top Metadata Badges */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-purple-100">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="px-3 py-1 text-xs font-semibold rounded-full bg-purple-600 text-white shadow-sm">
+                        Grade {currentItem.grade} Student
+                      </span>
+                      <span className="px-3 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800 border border-purple-200">
+                        {currentItem.program}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                      <Calendar className="w-3.5 h-3.5 text-purple-500" />
+                      <span>{currentItem.date}</span>
+                    </div>
                   </div>
-                </div> */}
 
-                  {/* Content */}
-                  <div className="flex-1 text-center md:text-left">
-                    {/* Quote Icon */}
-                    <Quote className="w-8 h-8 mx-auto mb-4 text-purple-400 md:mx-0" />
-
-                    {/* Rating */}
-                    {/* <div className="flex justify-center mb-4 md:justify-start">
-                    {[...Array(FeedbackData[currentIndex].rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div> */}
-
-                    {/* Comment */}
-                    <p className="mb-6 text-lg italic leading-relaxed text-gray-700">
-                      "{feedbackData[currentIndex].comment}"
+                  {/* Comment Body */}
+                  <div className="relative py-2">
+                    <p
+                      className={`text-base sm:text-lg md:text-xl leading-relaxed text-gray-800 ${isSinhala(currentItem.comment)
+                          ? "font-sinhala leading-loose text-[17px] sm:text-[19px]"
+                          : "italic"
+                        }`}
+                    >
+                      "{currentItem.comment}"
                     </p>
+                  </div>
 
-                    {/* Student Info */}
-                    <div className="space-y-2">
-                      <h4 className="text-xl font-bold text-gray-900">
-                        {feedbackData[currentIndex].name}
+                  {/* Student & Venue Info Footer */}
+                  <div className="pt-4 border-t border-purple-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="space-y-1">
+                      <h4 className="text-sm sm:text-base font-bold text-gray-900">
+                        {currentItem.name}
                       </h4>
-                      <p className="text-gray-600">
-                        {feedbackData[currentIndex].school} • Grade {feedbackData[currentIndex].grade}
-                      </p>
-
-                      <div className="flex flex-wrap justify-center gap-4 mt-4 md:justify-start">
-                        <div className="flex items-center gap-1 text-sm text-gray-500">
-                          <MapPin className="w-4 h-4" />
-                          {feedbackData[currentIndex].province}
-                        </div>
-                        <div className="flex items-center gap-1 text-sm text-gray-500">
-                          <Calendar className="w-4 h-4" />
-                          {feedbackData[currentIndex].date}
-                        </div>
-                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getProgramColor(feedbackData[currentIndex].program)}`}>
-                          {feedbackData[currentIndex].program}
-                        </span>
+                      <div className="flex items-center gap-1.5 text-xs text-purple-700 font-medium">
+                        <School className="w-4 h-4 text-purple-600 shrink-0" />
+                        <span className="line-clamp-1">{currentItem.school}</span>
                       </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-gray-700 bg-white rounded-full border border-gray-200 shadow-sm shrink-0">
+                      <MapPin className="w-3.5 h-3.5 text-purple-600" />
+                      <span>{currentItem.province}</span>
                     </div>
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
-          )}
 
-          {/* Navigation Buttons */}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={prevTestimonial}
-            className="absolute transform -translate-y-1/2 bg-white shadow-lg left-4 top-1/2 hover:shadow-xl"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </Button>
+            {/* Navigation Chevron Buttons */}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={prevTestimonial}
+              className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-lg border border-purple-200 hover:bg-purple-50 hover:text-purple-700 text-gray-700 transition-all z-20"
+              aria-label="Previous story"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
 
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={nextTestimonial}
-            className="absolute transform -translate-y-1/2 bg-white shadow-lg right-4 top-1/2 hover:shadow-xl"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </Button>
-        </div>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={nextTestimonial}
+              className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-lg border border-purple-200 hover:bg-purple-50 hover:text-purple-700 text-gray-700 transition-all z-20"
+              aria-label="Next story"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+          </div>
+        )}
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mb-12">
-          {feedbackData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToTestimonial(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                ? 'bg-purple-600 w-8'
-                : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-            />
-          ))}
-        </div>
+        {/* Carousel Indicators & Controls */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex items-center gap-2">
+            {feedbackData.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => goToTestimonial(index)}
+                aria-label={`Go to student story ${index + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 ${index === currentIndex
+                    ? "bg-purple-600 w-8"
+                    : "bg-purple-200 hover:bg-purple-300 w-2.5"
+                  }`}
+              />
+            ))}
+          </div>
 
-        {/* Auto-rotation Toggle */}
-        <div className="text-center">
           <button
+            type="button"
             onClick={() => setAutoRotate(!autoRotate)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${autoRotate
-              ? 'bg-purple-100 text-purple-700'
-              : 'bg-gray-100 text-gray-700'
-              }`}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium text-purple-700 hover:text-purple-900 bg-purple-50 hover:bg-purple-100 transition-colors"
           >
-            {autoRotate ? 'Pause Auto-rotation' : 'Resume Auto-rotation'}
+            {autoRotate ? (
+              <>
+                <Pause className="w-3 h-3" />
+                <span>Pause Auto-play</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-3 h-3" />
+                <span>Resume Auto-play</span>
+              </>
+            )}
           </button>
         </div>
       </div>
