@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Share2, MapPin, Calendar, Clock, ArrowRight, MessageCircle } from 'lucide-react';
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxylGlC8OofZg_DpFeymtV13ddD5LFo1Tn3qvSYYZ1ZaadquDDpXwRduGS7Pw6bV-DZ/exec";
+import { APP_CONFIG } from '@/config/constants';
+
+const GOOGLE_SCRIPT_URL = APP_CONFIG.ENDPOINTS.STEP_UP_GOOGLE_SCRIPT;
 
 const useInView = () => {
     const [inView, setInView] = useState(false);

@@ -1,61 +1,55 @@
-import React from 'react'
-import { Header } from '../components/layout/Header'
-import { Footer } from '../components/layout/Footer'
-import { DegreeTableFilters } from '../components/sections/DegreeTableFilters'
-import DegreeCardGrid from '../components/sections/DegreeCardGrid'
+import React from "react";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { DegreeTableFilters } from "@/features/degree-compass/components/DegreeTableFilters";
+import DegreeCardGrid from "@/features/degree-compass/components/DegreeCardGrid";
+import {
+  DegreeFilters,
+  DegreeFilterOptions,
+} from "@/features/degree-compass/types";
 
 export const CareerCompassWebPage = () => {
-    const [filters, setFilters] = React.useState({
-        university: '',
-        course: '',
-        majorField: '',
-        subField: '', // Added: New state for sub-field
-        type: '',
-        isPaid: '',
-        courseMode: '',
-        qualificationLevel: '',
-        stream: '',
-    });
+  const [filters, setFilters] = React.useState<DegreeFilters>({
+    university: "",
+    course: "",
+    majorField: "",
+    subField: "",
+    type: "",
+    isPaid: "",
+    courseMode: "",
+    qualificationLevel: "",
+    stream: "",
+  });
 
-    const [filterOptions, setFilterOptions] = React.useState({
-        universities: [] as string[],
-        majorFields: [] as string[],
-        subFields: [] as string[], // Added: New options array
-        types: [] as string[],
-        paymentStatuses: [] as string[],
-        courseModes: [] as string[],
-        qualificationLevels: [] as string[],
-        streams: [] as string[],
-    });
+  const [filterOptions, setFilterOptions] = React.useState<DegreeFilterOptions>({
+    universities: [],
+    majorFields: [],
+    subFields: [],
+    types: [],
+    paymentStatuses: [],
+    courseModes: [],
+    qualificationLevels: [],
+    streams: [],
+  });
 
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
-            <Header isMainPage={false} />
-            <main className='max-w-7xl mx-auto px-4 py-24'>
-                <DegreeTableFilters
-                    filters={filters}
-                    onChange={setFilters}
-                    universityOptions={filterOptions.universities}
-                    majorFieldOptions={filterOptions.majorFields}
-                    subFieldOptions={filterOptions.subFields} // Added: Pass sub-field options
-                    typeOptions={filterOptions.types}
-                    isPaidOptions={filterOptions.paymentStatuses}
-                    courseModeOptions={filterOptions.courseModes}
-                    qualificationLevelOptions={filterOptions.qualificationLevels}
-                    streamOptions={filterOptions.streams}
-                />
-                {/* <GoogleSheetTable
-                    filters={filters}
-                    onFiltersChange={setFilters}
-                    onFilterOptions={setFilterOptions}
-                /> */}
-                <DegreeCardGrid
-                    filters={filters}
-                    onFiltersChange={setFilters}
-                    onFilterOptions={setFilterOptions}
-                />
-            </main>
-            <Footer />
-        </div>
-    );
-}
+  return (
+    <PageLayout>
+      <DegreeTableFilters
+        filters={filters}
+        onChange={setFilters}
+        universityOptions={filterOptions.universities}
+        majorFieldOptions={filterOptions.majorFields}
+        subFieldOptions={filterOptions.subFields}
+        typeOptions={filterOptions.types}
+        isPaidOptions={filterOptions.paymentStatuses}
+        courseModeOptions={filterOptions.courseModes}
+        qualificationLevelOptions={filterOptions.qualificationLevels}
+        streamOptions={filterOptions.streams}
+      />
+      <DegreeCardGrid
+        filters={filters}
+        onFiltersChange={setFilters}
+        onFilterOptions={setFilterOptions}
+      />
+    </PageLayout>
+  );
+};

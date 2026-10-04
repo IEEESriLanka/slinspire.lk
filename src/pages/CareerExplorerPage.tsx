@@ -1,17 +1,10 @@
-import React from 'react'
-import { Header } from '../components/layout/Header'
-import { Footer } from '../components/layout/Footer'
-import { CareerFinder } from '../components/careerComponents/CareerFinder';
+import { PageLayout } from "@/components/layout/PageLayout";
+import { CareerFinder } from "@/features/career-explorer/components/CareerFinder";
 
 export const CareerExplorerPage = () => {
-
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
-            <Header isMainPage={false} />
-            <main className='max-w-7xl mx-auto px-4 py-24'>
-                <CareerFinder />
-            </main>
-            <Footer />
-        </div>
-    );
-}
+  return (
+    <PageLayout>
+      <CareerFinder />
+    </PageLayout>
+  );
+};
