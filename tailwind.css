@@ -165,13 +165,21 @@
   }
 }
 
-@layer  {
+@layer utilities {
+  .font-sinhala {
+    font-family: 'Noto Sans Sinhala', 'Poppins', sans-serif;
+  }
+}
+
+@layer {
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', 'Noto Sans Sinhala', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+

@@ -2,9 +2,10 @@
 
 Official web platform for **IEEE Sri Lanka Inspire**, a national project by **IEEE Young Professionals Sri Lanka** dedicated to empowering Sri Lankan school students with guidance, tools, and resources for educational, vocational, and career pathways.
 
-- **Live Website**: [https://slinspire.lk](https://slinspire.lk)
+- **Live Production Website**: [https://slinspire.lk](https://slinspire.lk)
+- **QA & Testing Environment**: [https://slinspire.lk/dev/](https://slinspire.lk/dev/)
 - **Alternative Mirror**: [https://slinspire.ieeeyp.lk](https://slinspire.ieeeyp.lk)
-- **Hosting**: GitHub Pages with custom domain and single-page application routing
+- **Hosting**: GitHub Pages (Dual-environment automated CI/CD for Production & QA)
 
 ---
 
@@ -151,6 +152,34 @@ npm install
 
 ---
 
+## Deployment & Environments (CI/CD)
+
+The platform is deployed to GitHub Pages using an automated dual-environment CI/CD pipeline defined in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Both environments share the same GitHub Pages domain without interference:
+
+| Environment | Branch | URL | Deployment Target | Base Path |
+|---|---|---|---|---|
+| **Production** | `main` | [https://slinspire.lk](https://slinspire.lk) | Root (`/`) | `/` |
+| **QA / Testing** | `development` | [https://slinspire.lk/dev/](https://slinspire.lk/dev/) | Subfolder (`/dev/`) | `/dev/` |
+
+### How It Works
+
+1. **Automated Deployment**:
+   - Pushing or merging code into `main` automatically triggers a production build deployed to root (`https://slinspire.lk`).
+   - Pushing or merging code into `development` automatically triggers a QA build deployed to `/dev/` (`https://slinspire.lk/dev/`).
+2. **Dynamic Base Path**:
+   - Vite is configured in [`vite.config.ts`](vite.config.ts) to evaluate `process.env.VITE_BASE_PATH || "/"`.
+   - The production workflow sets `VITE_BASE_PATH=/`.
+   - The QA workflow sets `VITE_BASE_PATH=/dev/`, ensuring all bundled JavaScript, CSS, and favicon assets resolve under `/dev/`.
+3. **Cross-Environment File Preservation**:
+   - The workflow uses `keep_files: true` via `peaceiris/actions-gh-pages`. Production releases will never overwrite or purge the `/dev/` directory, and QA releases will never modify production files at root.
+4. **Local QA Build Testing**:
+   - To test and verify a QA build locally:
+     ```bash
+     VITE_BASE_PATH=/dev/ npm run build
+     ```
+
+---
+
 ## Architectural Guidelines
 
 1. **Path Aliasing**:
@@ -166,15 +195,27 @@ npm install
 
 4. **GitHub Pages Routing**:
    - GitHub Pages does not have server-side URL rewrites for SPAs. Routing is handled via `HashRouter` (`/#/aboutus`, `/#/career-compass-web`), complemented by `public/404.html` SPA redirect fallback.
+   - Under QA, routes seamlessly resolve with the hash prefix under the subfolder (e.g., `https://slinspire.lk/dev/#/career-compass`).
    - When introducing new routes, update `src/config/routes.ts` and test that deep linking functions properly.
 
 ---
 
-## Contributing
+## Contributing & Release Workflow
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! Please follow this branch & release workflow:
 
-1. Create a feature branch: `git checkout -b feature/your-feature-name`
-2. Commit your changes: `git commit -m "feat: describe your change"`
-3. Verify type checking and build pass: `npm run typecheck && npm run build`
-4. Push to your branch and open a Pull Request against `development`.
+1. **Create a feature branch** from `development`:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+2. **Commit your changes**:
+   ```bash
+   git commit -m "feat: describe your change"
+   ```
+3. **Verify type checking and build**:
+   ```bash
+   npm run typecheck && npm run build
+   ```
+4. **Submit a Pull Request** to the `development` branch.
+5. **QA Verification**: Once merged into `development`, the QA pipeline automatically deploys your updates to [https://slinspire.lk/dev/](https://slinspire.lk/dev/) for testing.
+6. **Production Release**: When the `development` version is verified and approved, open a Pull Request from `development` into `main` to deploy to production at [https://slinspire.lk](https://slinspire.lk).
