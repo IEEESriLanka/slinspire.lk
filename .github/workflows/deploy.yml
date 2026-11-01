@@ -1,28 +1,65 @@
 name: Deploy to GitHub Pages
 
 on:
-    push:
-        branches:
-            - main # change if your branch is different
+  push:
+    branches:
+      - main
+      - development
 
 permissions:
-    contents: write
+  contents: write
 
 jobs:
-    build-deploy:
-        runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: 18
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
 
-            - run: npm install
-            - run: npm run build
+      - name: Install Dependencies
+        run: npm ci
 
-            - uses: peaceiris/actions-gh-pages@v4
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./dist # change to build folder (build / out / dist)
+      # Build step for main branch (Production)
+      - name: Build Production (main)
+        if: github.ref == 'refs/heads/main'
+        run: npm run build
+        env:
+          VITE_BASE_PATH: /
+
+      # Deploy step for main branch -> Root directory
+      - name: Deploy Production to Root
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true
+
+      # Build step for development branch (QA / Testing)
+      - name: Build QA (development)
+        if: github.ref == 'refs/heads/development'
+        run: npm run build
+        env:
+          VITE_BASE_PATH: /dev/
+
+      # Remove duplicate CNAME from QA subfolder build before deployment
+      - name: Remove CNAME from QA build
+        if: github.ref == 'refs/heads/development'
+        run: rm -f ./dist/CNAME
+
+      # Deploy step for development branch -> /dev subdirectory
+      - name: Deploy QA to /dev Subfolder
+        if: github.ref == 'refs/heads/development'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          destination_dir: dev
+          keep_files: true
