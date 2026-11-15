@@ -10,12 +10,13 @@ import {
   Filter,
   ExternalLink,
   RotateCcw,
-  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { careerCompassSessions } from "@/data/sessions";
+// import { careerCompassSessions } from "@/data/sessions";
 import { SeminarPagination } from "./SeminarPagination";
+import { useQuery } from "@tanstack/react-query";
+import { fetchSessions } from "../services/sessionsService";
 
 export const MonthlySeminarsSection: React.FC = () => {
   const cardsSectionRef = useRef<HTMLDivElement>(null);
@@ -24,6 +25,13 @@ export const MonthlySeminarsSection: React.FC = () => {
     threshold: 0.05,
   });
 
+  const { data: careerCompassSessions = [] } = useQuery({
+    queryKey: ["sessions"],
+    queryFn: fetchSessions,
+    staleTime: 1000 * 60 * 5,
+  });
+
+  // const careerCompassSessions = sessionsData ?? [];
   const [selectedProvince, setSelectedProvince] = useState<string>("All");
   const [selectedYear, setSelectedYear] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -34,13 +42,13 @@ export const MonthlySeminarsSection: React.FC = () => {
   const provinces = useMemo(() => {
     const raw = Array.from(new Set(careerCompassSessions.map((s) => s.province))).sort();
     return ["All", ...raw];
-  }, []);
+  }, [careerCompassSessions]);
 
   // Distinct years in descending order
   const years = useMemo(() => {
     const raw = Array.from(new Set(careerCompassSessions.map((s) => s.year))).sort().reverse();
     return ["All", ...raw];
-  }, []);
+  }, [careerCompassSessions]);
 
   // Compute dynamic seminar counts for each province based on the selected year
   const provinceCounts = useMemo(() => {
@@ -53,7 +61,7 @@ export const MonthlySeminarsSection: React.FC = () => {
       }
     });
     return counts;
-  }, [selectedYear]);
+  }, [selectedYear, careerCompassSessions]);
 
   // Handle province change with smart year cascading & immediate page reset
   const handleProvinceChange = (newProvince: string) => {
@@ -138,7 +146,7 @@ export const MonthlySeminarsSection: React.FC = () => {
         return matchesProvince && matchesYear && matchesSearch;
       })
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  }, [selectedProvince, selectedYear, searchQuery]);
+  }, [selectedProvince, selectedYear, searchQuery, careerCompassSessions]);
 
   const totalPages = Math.ceil(filteredSeminars.length / cardsPerPage);
 
