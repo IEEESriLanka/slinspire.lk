@@ -18,65 +18,78 @@ import StepUpPage from "@/pages/step-up/page";
 import RegisterPage from "@/pages/step-up/register";
 import SuccessPage from "@/pages/step-up/success";
 import { LaunchCeremony } from "@/pages/web-launch/page";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 console.log("Deployed at:", new Date().toLocaleString());
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 30,
+      refetchOnWindowFocus: false,
+      retry: 2,
+    },
+  },
+});
 
 export const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
-      <ErrorBoundary>
-        <Router>
-          <ScrollToTop />
-          <Routes>
-            <Route path={ROUTES.HOME} element={<HomePage />} />
-            <Route
-              path={ROUTES.CAREER_COMPASS_WEB}
-              element={<CareerCompassWebPage />}
-            />
-            <Route
-              path={ROUTES.CAREER_COMPASS_BOOK}
-              element={<CareerCompassBookPage />}
-            />
-            <Route
-              path={ROUTES.CAREER_EXPLORER}
-              element={<CareerExplorerPage />}
-            />
-            <Route path={ROUTES.GALLERY} element={<GalleryPage />} />
-            <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
-            <Route path={ROUTES.PARTNERS} element={<PartnersPage />} />
-            <Route
-              path={ROUTES.PARTNERS_LEGACY}
-              element={<PatnersPage />}
-            />
-            <Route path={ROUTES.TEAM} element={<TeamPage />} />
-            <Route
-              path={ROUTES.SESSION_RECORDINGS}
-              element={<SessionRecordingsPage />}
-            />
-            <Route
-              path={ROUTES.PLAYLIST}
-              element={<VideoPlaylistPage />}
-            />
+    <QueryClientProvider client={queryClient}>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
+        <ErrorBoundary>
+          <Router>
+            <ScrollToTop />
+            <Routes>
+              <Route path={ROUTES.HOME} element={<HomePage />} />
+              <Route
+                path={ROUTES.CAREER_COMPASS_WEB}
+                element={<CareerCompassWebPage />}
+              />
+              <Route
+                path={ROUTES.CAREER_COMPASS_BOOK}
+                element={<CareerCompassBookPage />}
+              />
+              <Route
+                path={ROUTES.CAREER_EXPLORER}
+                element={<CareerExplorerPage />}
+              />
+              <Route path={ROUTES.GALLERY} element={<GalleryPage />} />
+              <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
+              <Route path={ROUTES.PARTNERS} element={<PartnersPage />} />
+              <Route
+                path={ROUTES.PARTNERS_LEGACY}
+                element={<PatnersPage />}
+              />
+              <Route path={ROUTES.TEAM} element={<TeamPage />} />
+              <Route
+                path={ROUTES.SESSION_RECORDINGS}
+                element={<SessionRecordingsPage />}
+              />
+              <Route
+                path={ROUTES.PLAYLIST}
+                element={<VideoPlaylistPage />}
+              />
 
-            {/* Step Up Event */}
-            <Route path={ROUTES.STEP_UP} element={<StepUpPage />} />
-            <Route
-              path={ROUTES.STEP_UP_REGISTER}
-              element={<RegisterPage />}
-            />
-            <Route
-              path={ROUTES.STEP_UP_SUCCESS}
-              element={<SuccessPage />}
-            />
+              {/* Step Up Event */}
+              <Route path={ROUTES.STEP_UP} element={<StepUpPage />} />
+              <Route
+                path={ROUTES.STEP_UP_REGISTER}
+                element={<RegisterPage />}
+              />
+              <Route
+                path={ROUTES.STEP_UP_SUCCESS}
+                element={<SuccessPage />}
+              />
 
-            {/* Website Launch */}
-            <Route path={ROUTES.WEB_LAUNCH} element={<LaunchCeremony />} />
+              {/* Website Launch */}
+              <Route path={ROUTES.WEB_LAUNCH} element={<LaunchCeremony />} />
 
-            {/* Fallback */}
-            <Route path="*" element={<HomePage />} />
-          </Routes>
-        </Router>
-      </ErrorBoundary>
-    </div>
+              {/* Fallback */}
+              <Route path="*" element={<HomePage />} />
+            </Routes>
+          </Router>
+        </ErrorBoundary>
+      </div>
+    </QueryClientProvider>
   );
 };

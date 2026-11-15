@@ -16,6 +16,8 @@ export const APP_CONFIG = {
     // Career Compass Degree Database Google Sheets TSV Export
     DEGREE_COMPASS_TSV:
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vTPGaOQkkwdKsJVu1IhzALoLnFs8bAzNFqrbrvvv323Nvdxu1UDiCUNIIh5yvy2HWr6JI8IrlOmzSF4/pub?gid=1377529768&single=true&output=tsv",
+    SESSIONS_TSV:
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSC4_UaXcNdl02Ps7bXdman2vPsrYRW21epi9Mqct2IWaU0dMxAiUMxogM9dk7jBsLR11PfxMvpc6k7/pub?output=tsv"
   },
   SOCIALS: {
     FACEBOOK: "https://www.facebook.com/share/1F5JkhFjdZ/",
