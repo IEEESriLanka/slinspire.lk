@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slinspire.ieeeyp.lk/sitemap.xml
+Sitemap: https://slinspire.lk/sitemap.xml
