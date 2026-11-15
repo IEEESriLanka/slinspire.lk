@@ -1,88 +1,170 @@
-import { BookOpen, University } from "lucide-react";
-import { useState } from "react";
-import { Modal } from "@/components/common/Modal";
+import React, { useState } from "react";
+import { BookOpen, University, GraduationCap, ChevronRight } from "lucide-react";
 import { DegreeRecord } from "../types";
-import DegreePopup from "./DegreePopup";
+import { streamLabels } from "../services/degreeService";
 
-export default function DegreeCard({ degree }: { degree: DegreeRecord }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const uniLogoSrc = `/images/uni/logos/${degree.uniId.toLowerCase()}.png`;
+export interface DegreeCardProps {
+  degree: DegreeRecord;
+  onSelect: (degree: DegreeRecord) => void;
+}
+
+export const DegreeCard: React.FC<DegreeCardProps> = ({ degree, onSelect }) => {
+  const [logoError, setLogoError] = useState(false);
+  const uniLogoSrc = `${import.meta.env.BASE_URL}images/uni/logos/${degree.uniId.toLowerCase()}.png`;
+
+  // Filter streams that are eligible for this degree
+  const eligibleStreams = (
+    Object.keys(streamLabels) as Array<keyof DegreeRecord["stream"]>
+  ).filter((key) => degree.stream[key]);
+
+  const getStreamBadgeColor = (key: string) => {
+    switch (key) {
+      case "physics":
+        return "bg-sky-50 text-sky-700 border-sky-200";
+      case "bio":
+        return "bg-emerald-50 text-emerald-700 border-emerald-200";
+      case "commerce":
+        return "bg-amber-50 text-amber-700 border-amber-200";
+      case "art":
+        return "bg-rose-50 text-rose-700 border-rose-200";
+      case "tech":
+        return "bg-purple-50 text-purple-700 border-purple-200";
+      default:
+        return "bg-gray-50 text-gray-700 border-gray-200";
+    }
+  };
 
   return (
-    <>
-      <div
-        className="relative overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100 z-10 rounded-xl cursor-pointer"
-        onClick={() => setIsModalOpen(true)}
-      >
-        <div className="absolute h-full w-full z-20">
-          <div className="absolute -left-12 -bottom-20 w-96 h-96 bg-white rounded-full opacity-70"></div>
-        </div>
-        <div className="relative h-full p-4 rounded-xl border-black/10 border shadow-lg flex flex-col gap-3 hover:shadow-xl duration-100 z-30">
-          <span className="inline-flex items-baseline gap-1 text-[10px] text-gray-500 uppercase">
-            <University size={10} color="purple" /> {degree.universityName}
-          </span>
-          <div id="card-header" className="flex gap-4 h-full">
-            <div className="w-12 h-12 aspect-square overflow-clip rounded-xl flex items-center justify-center">
-              {hasError ? (
-                <div className="bg-purple-200 w-full h-full flex items-center justify-center rounded-xl">
-                  <University size={22} color="purple" />
-                </div>
-              ) : (
-                <img
-                  src={uniLogoSrc}
-                  alt={degree.universityName}
-                  className="w-full h-full object-contain"
-                  onError={() => setHasError(true)}
-                />
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => onSelect(degree)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect(degree);
+        }
+      }}
+      className="group relative flex flex-col justify-between h-full bg-white rounded-2xl border border-purple-100 hover:border-purple-300 shadow-sm hover:shadow-xl transition-all duration-300 p-5 cursor-pointer overflow-hidden focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
+    >
+      {/* Background Decorative Gradient Accent */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-purple-100/40 via-transparent to-transparent pointer-events-none rounded-tr-2xl" />
+
+      <div>
+        {/* Top Header: Uni Logo & Name */}
+        <div className="flex items-start gap-3.5 mb-3">
+          <div className="w-12 h-12 rounded-xl bg-purple-50/80 border border-purple-100 flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 transition-transform duration-300 overflow-hidden shadow-inner">
+            {logoError ? (
+              <University className="w-6 h-6 text-purple-600" />
+            ) : (
+              <img
+                src={uniLogoSrc}
+                alt={degree.universityName}
+                loading="lazy"
+                className="w-full h-full object-contain"
+                onError={() => setLogoError(true)}
+              />
+            )}
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <span className="text-[11px] font-bold tracking-wider text-purple-700 uppercase line-clamp-1">
+              {degree.universityName}
+            </span>
+            <div className="flex items-center gap-2 mt-0.5">
+              {degree.ugcCode && (
+                <span className="inline-block text-[10px] font-semibold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">
+                  UGC: {degree.ugcCode}
+                </span>
               )}
-            </div>
-            <div className="flex flex-col">
-              <h3 className="text-sm font-medium">{degree.courseName}</h3>
-              <span className="text-xs text-gray-600 inline-flex items-center gap-1 -ml-1">
-                <BookOpen className="h-3" /> {degree.majorField}
-              </span>
-              <div
-                id="card-content"
-                className="flex flex-row gap-2 items-start pt-2"
-              >
-                <div
-                  className="text-[10px] font-medium inline-block px-1 data-[internal=true]:text-purple-700 data-[internal=true]:bg-purple-500/30 bg-gray-100 rounded-sm"
-                  data-internal={
-                    degree.courseType === "INTERNAL" ? "true" : "false"
-                  }
-                >
-                  {degree.courseType}
-                </div>
-                <div
-                  className="text-[10px] font-medium uppercase inline-block px-1 data-[internal=true]:text-blue-700 data-[internal=true]:bg-blue-500/30 data-[internal=false]:text-green-700 data-[internal=false]:bg-green-500/30 rounded-sm"
-                  data-internal={degree.isPaid ? "false" : "true"}
-                >
-                  {degree.isPaid ? "Paid" : "Free"}
-                </div>
-                <div
-                  className="text-[10px] font-medium uppercase inline-block px-1 data-[fulltime=true]:text-green-700 data-[fulltime=true]:bg-green-500/30 data-[parttime=true]:text-blue-700 data-[parttime=true]:bg-blue-500/30 rounded-sm"
-                  data-fulltime={
-                    degree.courseMode === "Full Time" ? "true" : "false"
-                  }
-                  data-parttime={
-                    degree.courseMode === "Part Time" ? "true" : "false"
-                  }
-                >
-                  {degree.courseMode || "N/A"}
-                </div>
-              </div>
+              {degree.qualificationLevel && (
+                <span className="text-[10px] text-gray-500 line-clamp-1">
+                  {degree.qualificationLevel}
+                </span>
+              )}
             </div>
           </div>
         </div>
+
+        {/* Course Title */}
+        <h3 className="text-base font-bold text-gray-900 group-hover:text-purple-700 transition-colors line-clamp-2 leading-snug mb-2">
+          {degree.courseName}
+        </h3>
+
+        {/* Major & Sub Field */}
+        <div className="flex items-center gap-1.5 text-xs text-gray-600 mb-3.5">
+          <BookOpen className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+          <span className="line-clamp-1 font-medium">
+            {degree.majorField}
+            {degree.subField && (
+              <span className="text-gray-400 font-normal"> • {degree.subField}</span>
+            )}
+          </span>
+        </div>
+
+        {/* Eligible A/L Streams */}
+        {eligibleStreams.length > 0 && (
+          <div className="mb-4">
+            <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
+              Eligible A/L Streams:
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {eligibleStreams.map((key) => (
+                <span
+                  key={key}
+                  className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border shadow-2xs ${getStreamBadgeColor(
+                    key
+                  )}`}
+                >
+                  {streamLabels[key]}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Degree Details"
-      >
-        <DegreePopup degree={degree} />
-      </Modal>
-    </>
+
+      {/* Footer Badges & Action */}
+      <div className="pt-3 border-t border-gray-100 flex items-center justify-between gap-2 mt-auto">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {/* Tuition Status */}
+          <span
+            className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${degree.isPaid
+              ? "bg-indigo-50 text-indigo-700 border-indigo-200"
+              : "bg-emerald-50 text-emerald-700 border-emerald-200"
+              }`}
+          >
+            {degree.isPaid ? "Paid / Private" : "Free / State"}
+          </span>
+
+          {/* Course Type */}
+          {degree.courseType && (
+            <span
+              className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${degree.courseType === "INTERNAL"
+                ? "bg-purple-50 text-purple-700 border-purple-200"
+                : "bg-sky-50 text-sky-700 border-sky-200"
+                }`}
+            >
+              {degree.courseType}
+            </span>
+          )}
+
+          {/* Mode */}
+          {degree.courseMode && (
+            <span className="text-[10px] font-medium text-gray-600 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-md">
+              {degree.courseMode}
+            </span>
+          )}
+        </div>
+
+        {/* Interactive View Prompt */}
+        <span className="inline-flex items-center text-xs font-semibold text-purple-600 group-hover:text-purple-800 transition-colors shrink-0">
+          <span className="hidden sm:inline">Details</span>
+          <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+        </span>
+      </div>
+    </div>
   );
-}
+};
+
+export default DegreeCard;
